@@ -1,0 +1,72 @@
+﻿ @using Azmoon.Application.Service.Survaeis.Results.Dto
+@model List<ReportSurvayWorckPlaceDto>
+@{
+    ViewData["Title"] = "ReportWorckplaceResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 1;
+    int mosharekat = 0;
+}
+@section StyleSheet {
+
+    <link href="~/lib/W3/W3.CSS" rel="stylesheet" />
+}
+
+<div class="row justify-content-center mt-2 font_IRANSans" style="text-align:right !important">
+
+    <div class="col-md-6 col-sm-12 mx-auto shadow rounded bg-body ">
+
+        <div class="row">
+
+
+            <a href="/Survey/ReportWorckplaceEXELresult?uniqKay=@ViewBag.uniqKay" class="btn btn-default btn-change-state w3-deep-orange m-1 col-4" style="  margin-right: 14px !important;">
+                خروجی EXEL <i class="fas fa-file-excel"></i>
+            </a>
+        </div>
+        <div class="col-12 bg-blue h1 text-center p-2" style="background-color:cornflowerblue;color:#993167;border-radius:5px;">
+            آمار مشارکت
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>R</th>
+                    <th>نام رده</th>
+                    <th>میزان مشارکت(نفر)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model != null)
+                        {
+                        foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>@counter</td>
+                                <td>@item.WorckPlaceTitle</td>
+                                <td>@item.Nafarat</td>
+                                @{
+                                    counter = counter + 1;
+                                    mosharekat = mosharekat + item.Nafarat;
+                                }
+                            </tr>
+                            }
+
+                        } else{
+                        <tr>
+                          <div class="h1">متاسفانه تا کنون کسی در این نظرسنجی مشارکت نکرده است..</div>
+                       
+                        </tr>
+                        }
+
+                }
+
+
+
+                <tr>
+                    <td>#</td>
+                    <td>جمع کل</td>
+                    <td>@mosharekat</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,183 @@
+﻿@model UserAccessWorkPlacesTreeViewDto
+@using Azmoon.Application.Service.Assessment.Dto
+@functions
+{
+    void RenderCategoryRow(long? parentId)
+        {
+        bool FirstParent = (parentId == null) ? true : false;
+        foreach (var item in Model.getWorksPlaces.Where(p => p.ParentId == parentId).OrderBy(p => p.SortIndex).ToList())
+            {
+
+            var tb = Model.getWorksPlaces.Where(p => p.ParentId == item.Id).ToList().Count();
+            if (!item.IsChailren && tb == 0)
+                {
+                <li>
+
+                    <i class="fas fa-sticky-note"></i>
+
+                    @item.Name
+
+                    @if (!FirstParent)
+                        {
+                        <input type="checkbox" id="Id_@item.Id" name="ids[]" value="@item.Id" data-name="@item.Name" class="checkthis">
+                        }
+
+
+
+
+                </li>
+                }
+            else
+                {
+                <li>
+
+                    <i class="far fa-folder" aria-hidden="true"></i>
+
+                    @item.Name
+
+                    @if (!FirstParent)
+                        {
+                        <input type="checkbox" id="Id_@item.Id" name="ids[]" value="@item.Id" data-name="@item.Name" class="checkthis">
+                        }
+
+
+
+
+                    <span class="badge badge-primary">@tb</span>
+                    <ul class="child2" style="list-style-type:none;" required>
+
+                        @{
+                            RenderCategoryRow(item.Id);
+                        }
+                    </ul>
+                </li>
+                }
+            }
+        }
+
+
+
+    void RenderFirstRow(long? iid)
+        {
+        bool FirstParent = (iid == null) ? true : false;
+        var workplacee = Model.getWorksPlaces.Where(p => p.Id == iid).FirstOrDefault();
+
+
+            var tb = Model.getWorksPlaces.Where(p => p.ParentId == workplacee.Id).ToList().Count();
+            if (!workplacee.IsChailren && tb == 0)
+                {
+                <li>
+
+                    <i class="fas fa-sticky-note"></i>
+
+                    @workplacee.Name
+
+                 
+                        <input type="checkbox" id="Id_@workplacee.Id" name="ids[]" value="@workplacee.Id" data-name="@workplacee.Name" class="checkthis">
+                      
+
+
+
+
+                </li>
+                }
+            else
+                {
+                <li>
+
+                    <i class="far fa-folder" aria-hidden="true"></i>
+
+                    @workplacee.Name
+
+                    @if (!FirstParent)
+                        {
+                        <input type="checkbox" id="Id_@workplacee.Id" name="ids[]" value="@workplacee.Id" data-name="@workplacee.Name" class="checkthis">
+                        }
+
+
+
+
+                    <span class="badge badge-primary">@tb</span>
+                    <ul class="child2" style="list-style-type:none;" required>
+
+                        @{
+                            RenderCategoryRow(workplacee.Id);
+                        }
+                    </ul>
+                </li>
+                }
+         
+        }
+}
+
+
+<div id="divCategotyTreeView">
+    <ul style="list-style-type:none;" id="RootTreeView" required>
+        <li>
+            @{
+                if (Model.getWorksPlaces!=null)
+                    {
+                     RenderFirstRow(Model.wpId);
+                    }
+               
+            }
+        </li>
+    </ul>
+</div>
+
+
+
+
+<script type="text/javascript">
+      $('#RootTreeView ul.child2').hide(300);
+
+        $('#RootTreeView li').on('click', function (e) {
+
+            e.stopPropagation();
+            $(this).children('ul').toggle(500);
+            $(this).children('li').addClass('mr-4');
+            $(this).children('ul').addClass('mr-4');
+            // $(this).find('>:first-child').toggleClass('fa-plus-circle fa-minus-circle')
+            $(this).find('>:first-child').toggleClass('fa-folder  fa-folder-open')
+
+        });
+            $('[data-btn="save"]').click(function (e) {
+                e.preventDefault();
+                $('input[type=checkbox]').each(function () {
+                    if (this.checked) {
+
+                        $('#WorkPlaceId').val($(this).val());
+                        $('#WorkPlaceIdFake').attr('placeholder', $(this).data('name'));
+                        $('#WorkPlaceIdFake').val($(this).data('name'));
+                        $('#TreeViewModal').modal('hide');
+                    }
+                });
+
+            });
+
+              $("#divCategotyTreeView input[type=checkbox]").change(function () {
+                var firstchecked = $(this);
+                var firstcheckedVal = $(this).val();
+                console.log("firstchecked : ", firstchecked.val());
+
+
+                if ($('#divCategotyTreeView input:checkbox:checked').length > 1) {
+
+                    $('#divCategotyTreeView input[type=checkbox]').each(function () {
+                        var secoundchecked = $(this);
+                        if (this.checked) {
+                            if ($(this).val() != firstcheckedVal) {
+                                $(this).prop('checked', false);
+                                $(this).attr('checked', false);
+                                console.log("secoundchecked : ", secoundchecked.val());
+                            }
+
+                        }
+
+
+
+                    });
+
+                }
+            });
+</script>

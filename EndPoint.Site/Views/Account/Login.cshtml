@@ -1,0 +1,90 @@
+﻿@model Azmoon.Application.Service.User.Dto.LoginDto
+
+@{
+    ViewData["Title"] = "ورود";
+    //Layout = "_Layout.cshtml";
+    Layout = "~/Views/Account/_LayoutLogin.cshtml";
+}
+
+@section StyleSheet{
+    <link href="~/Them/css/Mohithpoojary.css" rel="stylesheet" />
+}
+
+<div class="container">
+    <div class="screen">
+       
+        <div class="screen__content">
+           
+            <form class="login" asp-action="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="login__field">
+                    <i class="login__icon fas fa-user" style="color:aliceblue;"></i>
+                    <input type="text" asp-for="UserName" class="login__input" placeholder=" شماره پرسنلی">
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="login__field">
+                    <i class="login__icon fas fa-lock" style="color:aliceblue;"></i>
+                    <input type="password" asp-for="Password" class="login__input" placeholder="رمز عبور">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                @*  <div class="row mt-2">
+
+                  <dnt-captcha asp-captcha-generator-max="999"
+                                 class="input-group"
+                                 asp-captcha-generator-min="110"
+                                 asp-captcha-generator-language="Persian"
+                                 asp-captcha-generator-display-mode="NumberToWord"
+                                 asp-use-relative-urls="true"
+                                 asp-validation-error-message="عبارت را محاسبه و وارد نمائید"
+                                 asp-font-name="iransans"
+                                 asp-font-size="20"
+                                 asp-fore-color="#333333"
+                                 asp-back-color="#F7F9B8"
+                                 asp-text-box-class="login__input"
+                                 asp-text-box-template="<div class=''>{0} </div>"
+                                 asp-validation-message-class="text-danger"
+                                 asp-refresh-button-class="d-none"
+                                 asp-use-noise="false"
+                                 asp-dir="rtl" />
+                                                     <img alt="عبارت_امنیتی" id="imgcpatcha" src="@Url.Action("CaptchaImage","Captcha")" class="col-sm-12 col-md-12 rounded" style="height:37px;border-radius:5px;" />
+
+                </div>
+                 <div class="login__field">
+                    <i class="login__icon fas fa-fingerprint" style="color:aliceblue;"></i>
+                    <input type="text" name="CaptchaInputText" id="CaptchaInputText" class="login__input" placeholder="جمع اعداد بالا را وارد نمایید">
+                   
+                </div>*@
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <span class="ml-2 mr-2">مرا بخاطر بسپار</span>  <input asp-for="IsPersistent" class="form-check-input mr-2" asp-for="IsPersistent" />
+                    </label>
+                </div>
+                <input type="hidden" asp-for="ReturnUrl" />
+                <button class="button login__submit">
+                    <span class="button__text mr-3 ml-3">ورود </span>
+                    <i class="button__icon fas fa-chevron-circle-left"></i>
+                </button>
+            </form>
+
+            <p class="text-center mt-5">
+                حساب کاربری ندارید؟ <a asp-area="" asp-controller="Account" asp-action="CreateUser" class="font-weight-medium ml-1 text-light">ثبت نام کنید</a>
+            </p>
+            <p class="text-center">
+                رمز خود را فرموش کرده اید؟ <a asp-area="" asp-controller="Account" asp-action="ForgotPassword" class="font-weight-medium ml-1 text-light">بازیابی رمز </a>
+            </p>
+
+        </div>
+        <div class="screen__background">
+            <span class="screen__background__shape screen__background__shape4"></span>
+            <span class="screen__background__shape screen__background__shape3"></span>
+            <span class="screen__background__shape screen__background__shape2"></span>
+            @*  <span class="screen__background__shape screen__background__shape1"></span>*@
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

@@ -1,0 +1,121 @@
+﻿@using EndPoint.Site.Useful.Ultimite
+@model Azmoon.Application.Service.Survaeis.Questiones.GetSurvayWithQuestionPager
+@addTagHelper *, LazZiya.TagHelpers
+@{
+    ViewData["Title"] = "جزئیات و سوالات نظرسنجی";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1 class="mr-2">جزئیات نظرسنجی</h1>
+
+<div class="card w3-pale-red w3-text-black text-bold col-md-6 col-sm-12 p-3 m-1">
+    <dl class="row">
+
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.GetSurvayDetiles.Name)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.GetSurvayDetiles.Name)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.GetSurvayDetiles.StartDate)
+        </dt>
+        <dd class="col-sm-5">
+            @Model.GetSurvayDetiles.StartDate.ToPersianDateStrFarsi()
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.GetSurvayDetiles.EndDate)
+        </dt>
+        <dd class="col-sm-5">
+            @Model.GetSurvayDetiles.EndDate.ToPersianDateStrFarsi()
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.GetSurvayDetiles.Status)
+        </dt>
+        <dd class="col-sm-5">
+
+            @{
+                if (Model.GetSurvayDetiles.Status == 1)
+                {
+                    <span class="btn btn-success">فعال</span>
+                }
+                else
+                {
+                    <span class="btn btn-danger">غیر فعال</span>
+                }
+
+            }
+
+        </dd>
+
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.GetSurvayDetiles.GroupName)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.GetSurvayDetiles.GroupName)
+        </dd>
+
+
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("ویرایش", "EditSurvay", new { id = Model.GetSurvayDetiles.Id }, new { @class = "btn btn-outline-primary" })
+    <a asp-action="Index" class="btn btn-outline-info">بازگشت به لیست</a>
+    <a class="btn btn-outline-success"
+       asp-action="CreateQuestionSurvay" asp-route-id="@Model.GetSurvayDetiles.Id" asp-controller="Survay" asp-area="Admin">
+        افزودن سوال
+    </a>
+</div>
+<div id="overlay">
+    <div class="cv-spinner">
+        <span class="spinner"></span>
+    </div>
+</div>
+@{
+
+    if (Model != null && Model.getQuestionWithPager.Data != null && Model.getQuestionWithPager.Data.Count > 0)
+    {
+
+        @(await Component.InvokeAsync("GetQuestionBySurvayId", new { Questiones= Model.getQuestionWithPager.Data }))
+        <div class="card-footer">
+            @{
+                if (Model.getQuestionWithPager.Data != null)
+                {
+                    <paging page-no="@Model.getQuestionWithPager.PageNo"
+                            page-size="@Model.getQuestionWithPager.PageSize"
+                            total-records="@Model.getQuestionWithPager.TotalRecords"
+                            show-prev-next="true"
+                            show-total-pages="true"
+                            show-total-records="true"
+                            show-page-size-nav="true"
+                            show-first-numbered-page="true"
+                            show-last-numbered-page="true"
+                            query-string-key-page-no="PageNo"
+                            query-string-key-page-size="PageSize"
+                            query-string-value="@@(Request.QueryString.Value)"
+                            text-total-pages="صفحه"
+                            text-total-records="رکورد"
+                            text-first="&laquo;"
+                            text-last="&raquo;"
+                            text-previous="&lsaquo;"
+                            text-next="&rsaquo;"
+                            sr-text-first="اولین"
+                            sr-text-last="آخرین"
+                            sr-text-previous="قبلی"
+                            sr-text-next="بعدی"
+                            gap-size="2">
+                    </paging>
+                }
+            }
+
+        </div>
+    }
+}
+@section Styles{
+    <script src="~/lib/jquery/dist/popper.min.js"></script>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <link href="~/backend/css/Spiner.css" rel="stylesheet" />
+}

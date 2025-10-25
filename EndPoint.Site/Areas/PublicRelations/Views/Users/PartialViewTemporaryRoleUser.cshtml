@@ -1,0 +1,140 @@
+﻿@using EndPoint.Site.Areas.PublicRelations.Models.Dto.User
+@model GetUserDetailDto
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel1">
+                نقش
+            </h4>
+    
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="modal-body">
+                <div class="form-body">
+
+                    <div>
+                     
+                            @if (Model.Operator == null)
+                            {
+                                <p class="form-control-static label-danger" style="text-align: center; color:white;"> در حال حاضر کاربر هیچ نقشی ندارد. </p>
+                            }
+                            else
+                            {
+                                 <p class="form-control-static" style="text-align: center;">
+                                    <span style="color: red;">عنوان قبلی:</span> کاربر @Model.Operator
+                                </p>
+                            }
+                        
+
+                    </div>
+                    <hr class="m-t-0 m-b-40">
+
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">اپراتور</label>
+                            </div>
+                            <input type="hidden" id="idInput" value="@Model.Id">
+
+                            <select class="form-control" name="Name" asp-items="ViewBag.TemporaryRole" id="Operator" placeholder="@Model.Operator">
+                                <option value="" disabled selected>انتخاب اپراتور جدید</option>
+                            </select>
+                        </div>
+                    </form>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+            <a onclick="EditOperator()" class="btn btn-primary" style="color:white;">تایید</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    function EditOperator() {
+        // Retrieve edited values from the edit modal form using jQuery
+        var Id = $('#idInput').val();
+        var Operator = $('#Operator').val() || null;  // Use null if not selected
+        var OperatorName = $('#Operator option:selected').text();  // Get the selected operator name
+
+
+        // Check if any changes were made
+        var hasChanges = (
+            Operator !== $('#Operator').data('original-value')
+        );
+
+        // No changes were made: Show info icon and return
+        if (!hasChanges) {
+            swal.fire(
+                'اطلاعات!',
+                'شما هیچ تغییری اعمال نکرده‌اید.',
+                'info'
+            );
+            return;
+        }
+
+        // Send values to the server using AJAX only if changes were made
+        var postData = {
+            'UserId': Id,
+            'Operator': Operator,
+            'OperatorName': OperatorName
+        };
+
+        $.ajax({
+            contentType: 'application/x-www-form-urlencoded',
+            dataType: 'json',
+            type: 'POST',
+            url: '@Url.Action("PartialViewTemporaryRoleUser")',
+            data: postData,
+            success: function (data) {
+                if (data.isSuccess) {
+                    swal.fire(
+                        'موفق!',
+                        data.message,
+                        'success'
+                    ).then(function (isConfirm) {
+                        if (isConfirm) {
+                            location.reload();
+                        }
+                    });
+                } else {
+                    swal.fire(
+                        'خطا!',
+                        data.message,
+                        'error'
+                    );
+                }
+            },
+            error: function (request, status, error) {
+                // Display error message in the console
+                console.error('Error in request:', request.responseText);
+
+                // Display error message to the user
+                swal.fire(
+                    'Error!',
+                    'An error occurred while processing the request. Please try again.',
+                    'error'
+                );
+            },
+        });
+
+     
+    }
+</script>
+
+

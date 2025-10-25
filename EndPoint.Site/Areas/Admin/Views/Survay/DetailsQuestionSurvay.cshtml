@@ -1,0 +1,119 @@
+﻿@using Azmoon.Application.Service.Survaeis.Questiones
+@model GetQuestionDitelWithAnswersPagerInSurvay
+@addTagHelper *, LazZiya.TagHelpers
+
+<h1 class="mr-2">جزئیات سوال</h1>
+
+<div class="card w3-khaki text-primary text-bold col-md-6 col-sm-12 p-3 m-1">
+    <dl class="row">
+
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.GetQuestionDto.Text)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.GetQuestionDto.Text)
+        </dd>
+
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.GetQuestionDto.Status)
+        </dt>
+        <dd class="col-sm-5">
+            @{
+
+                switch (Model.GetQuestionDto.Status)
+                {
+                    case true:
+
+                        <i class="fas fa-check" style="font-size:25px;color:forestgreen"></i>
+                        break;
+                    case false:
+                        <i class="fas fa-window-close" style="font-size:25px;color:red"></i>
+                        break;
+
+                }
+            }
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-info"
+       asp-action="Details" asp-route-id="@Model.GetQuestionDto.SurveyId" asp-route-PageSize="10" asp-route-PageNo="1" asp-controller="Quiz" asp-area="Admin">
+        بازگشت
+    </a>
+    <a class="btn btn-outline-success"
+       asp-action="Create" asp-route-id="@Model.GetQuestionDto.Id" asp-controller="Answer" asp-area="Admin">
+        افزودن پاسخ
+    </a>
+</div>
+@{
+
+    if (Model != null && Model.getAnswers != null && Model.getAnswers.Count > 0)
+    {
+
+
+        <h3 class="w3-panel w3-round-xlarge w3-lime p-2" style="text-align:right !important;"><span>لیست جواب ها</span> </h3>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.getAnswers.ElementAt(0).Title)
+                    </th>
+
+                    <td>
+                        @Html.DisplayNameFor(model => model.getAnswers.ElementAt(0).Wight)
+                    </td>
+                    <td>
+                        @Html.DisplayNameFor(model => model.getAnswers.ElementAt(0).Index)
+                    </td>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model != null)
+                    {
+
+                        @foreach (var item in Model.getAnswers)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Wight)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Index)
+                                </td>
+                                <td>
+
+                                    <a class="btn btn-outline-primary"
+                                       asp-action="EditAnswerSurvay" asp-route-id="@item.Id" asp-controller="Survay" asp-area="Admin">
+                                        ویرایش
+                                    </a>
+
+                                    <a class="btn btn-outline-danger"
+                                       asp-action="DeleteAnswerSurvay" asp-route-id="@item.Id"  asp-controller="Survay" asp-area="Admin">
+                                        حذف
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                }
+
+
+            </tbody>
+        </table>
+
+
+    }
+    else
+    {
+        <h2><span>هیچ رکوردی ثبت نگردیده است</span></h2>
+    }
+}
+

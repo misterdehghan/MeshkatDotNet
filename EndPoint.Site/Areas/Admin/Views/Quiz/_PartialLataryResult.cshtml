@@ -1,0 +1,168 @@
+﻿@model Azmoon.Application.Service.Result.Dto.StimotReportQuizDto
+@using EndPoint.Site.Useful.Ultimite
+@if (Model != null)
+{
+
+    @*<div class="row text-center" style="background-color: #C6D9F0;">
+            <div class="col-4 justify-content-center  text-center">
+                <div class="mt-3"> <span>نام آزمون : </span> <span>@Model.Name</span></div>
+                <div> <span>زمان شروع آزمون : </span> <span>@Model.StartDate</span></div>
+                <div> <span> زمان پایان آزمون : </span> <span>@Model.EndDate</span></div>
+
+
+
+
+
+            </div>
+            <div class="col-4 text-center">
+
+                <img src="~/Report/ArmSaas.png" class="rounded-circle" alt="Cinque Terre" width="50" height="50">
+
+                <div> مقام معظم ولایت فقیه و فرماندهی کل قوا</div>
+                <div>
+                    سازمان عقیدیتی سیاسی انتظامی ج.ا.ایران
+                </div>
+                <div> @Model.Name</div>
+
+            </div>
+            <div class="col-4 justify-content-center  text-center">
+                <div class="mt-5"> <span>شماره آزمون : </span> <span>@Model.QuizNumber</span></div>
+                <div> <span> پیوست</span> <span>صلوات</span></div>
+            </div>
+        </div>*@
+    <table class="table table-striped" id="PrintArea">
+        <thead class="thead-dark">
+            <tr>
+                <th></th>
+                <th>
+                    محل خدمت
+                </th>
+                <th>
+                    نام و نام خانوادگی
+                </th>
+
+
+                <th>
+                    نام کاربری
+                </th>
+                <th>
+                    شماره تلفن همراه
+                </th>
+                 <th>
+                    شماره حساب
+                </th>
+                <th>
+                    نمره
+                </th>
+                <th>
+                    درصد پاسخ صحیح
+                </th>
+                <th>
+                    تاریخ آزمون
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @{
+
+                if (Model.QuizReports != null)
+                {
+                    @foreach (var item in Model.QuizReports)
+                    {
+                        <tr>
+                            <th></th>
+                            <td>
+                                @item.WorkPlaceName
+
+                            </td>
+                            <td>
+                                @item.FullName
+
+                            </td>
+
+                            <td>
+                                @item.UserName
+
+                            </td>
+                            <td>
+                                @item.Phone
+
+                            </td>
+                            <td>
+                                @item.NumberBankAccunt
+
+                            </td>
+
+                            <td>
+                                @item.Point
+
+                            </td>
+                            <td>
+                                @item.Darsad
+
+                            </td>
+                            <td>
+
+                                @item.QuizStart
+                            </td>
+
+
+
+                        </tr>
+                    }
+                }
+            }
+
+        </tbody>
+    </table>
+}
+<script>
+
+    $(document).ready(function () {
+        var table = $('#PrintArea').DataTable({
+            dom: '<"row"<"col-md-12"<"row"<"col-md-6"B><"col-md-6"f> > ><"col-md-12"rt> <"col-md-12"<"row"<"col-md-5"i><"col-md-7"p>>> >',
+            buttons: {
+                buttons: [
+                    { extend: 'copy', className: 'btn' },
+                    {
+                        "extend": "csv",
+                        "text": "CSV",
+                        "filename": "آزمون",
+                        "className": "btn btn-green",
+                        "charset": "utf-8",
+                        "bom": "true",
+                        init: function (api, node, config) {
+                            $(node).removeClass("btn-default");
+                        }
+                    },
+                    { extend: 'excel', className: 'btn' },
+                    { extend: 'print', className: 'btn' }
+                ]
+            },
+            "oLanguage": {
+                "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
+                "sInfo": "صفحه _PAGE_ از _PAGES_",
+                "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+                "sSearchPlaceholder": "جستجو در لحظه...",
+                "sLengthMenu": "نتایج :  _MENU_",
+            },
+            "stripeClasses": [],
+            "lengthMenu": [[5, 10, 15, 25, 50, 100, -1], [5, 10, 15, 25, 50, 100, "All"]],
+            "pageLength": 20,
+
+        });
+        table.on('draw.dt', function () {
+            var PageInfo = $('#PrintArea').DataTable().page.info();
+            table.column(0, { page: 'current' }).nodes().each(function (cell, i) {
+                cell.innerHTML = i + 1 + PageInfo.start;
+            });
+        });
+        table.on('order.dt search.dt', function () {
+            table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+                cell.innerHTML = i + 1;
+            });
+        }).draw();
+        table.order([[4, 'desc']]).draw();
+    });
+</script>

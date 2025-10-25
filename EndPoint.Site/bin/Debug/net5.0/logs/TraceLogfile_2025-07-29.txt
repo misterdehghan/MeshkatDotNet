@@ -1,0 +1,60 @@
+2025-07-29 08:29:18.6938 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-29 08:29:18.7231 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-29 08:29:18.7231 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-29 08:29:19.6660 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-07-29 08:29:27.2085 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/Login|action: Login
+
+2025-07-29 08:29:30.4648 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/Login|action: Login
+
+2025-07-29 08:29:36.2880 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-07-29 08:29:43.4758 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/Admin/User|action: Index
+
+2025-07-29 08:29:43.4758 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/Admin/User|action: Index
+
+2025-07-29 08:30:18.3905 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-07-29 08:48:59.4426 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-29 08:48:59.4693 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-29 08:48:59.4693 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-29 08:48:59.9765 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-07-29 08:49:07.2285 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/Login|action: Login
+
+2025-07-29 08:49:10.4704 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/Login|action: Login
+
+2025-07-29 08:49:18.3024 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/Admin/User|action: Index
+
+2025-07-29 08:49:18.3054 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/Admin/User|action: Index
+
+2025-07-29 09:35:40.8742 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-29 09:35:40.9114 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-29 09:35:40.9114 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-29 09:35:41.4136 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-07-29 09:35:45.8251 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/Login|action: Login
+
+2025-07-29 09:35:49.1001 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/Login|action: Login
+
+2025-07-29 09:35:56.9046 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/Admin/User|action: Index
+
+2025-07-29 09:35:56.9046 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/Admin/User|action: Index
+
+2025-07-29 09:37:51.5144 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-29 09:37:51.5445 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-29 09:37:51.5445 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-29 09:37:52.0432 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+

@@ -1,0 +1,430 @@
+﻿@model Azmoon.Application.Service.User.Dto.GetDitalesUserProfileDto
+@addTagHelper *, DNTCaptcha.Core
+@using EndPoint.Site.Models
+@{
+    ViewData["Title"] = "ChangeProfile";
+    Layout = "~/Areas/Student/Views/Profile/_Layout.cshtml";
+}
+
+
+<form asp-action="ChangeProfile" method="post" class="shadow p-3 mb-5 bg-body rounded">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+
+    @if (ViewBag.Errors != null)
+    {
+        <div class=" alert alert-danger">
+            <ul>
+                @foreach (var item in ViewBag.Errors)
+                {
+                    <li>@item</li>
+
+                }
+            </ul>
+        </div>
+
+    }
+
+    <input type="hidden" asp-for="userId" class="form-control" />
+    <input type="hidden" asp-for="personId" class="form-control" />
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <label asp-for="WorkPlaceId"></label>
+            <div class="input-group">
+
+                <div class="input-group-prepend" id="select-WorkPlaceId">
+                    <span class="input-group-text cursor-pointer"><i class='fas far fa-eye' style='font-size: 24px; color: red; padding-left: 16px;'></i></span>
+                </div>
+                <input type="text" id="WorkPlaceIdFake" class="form-control" placeholder="@Model.WorkplaceName " />
+                <input type="hidden" asp-for="WorkPlaceId" />
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone" class="form-control" type="text" pattern="(^09)?(\d{9,10})$" placeholder="مثال : 09123654789" required />
+
+            </div>
+
+        </div>
+        <div class="col-md-12">
+            <div class="mb-3">
+                <label class="form-label">شماره حساب سپه   <span class="text-danger">*</span></label>
+                <div class="form-icon position-relative">
+                    <i data-feather="user" class="fea icon-sm icons"></i>
+                    <input type="number" asp-for="NumberBankAccunt" class="form-control ps-5" maxlength="15" placeholder=" 13 تا 15 رقم "  required="">
+                </div>
+            </div>
+        </div><!--end col-->
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+                <label asp-for="TypeDarajeh"></label>
+                <select class="form-control" asp-for="TypeDarajeh" required>
+                    <option value="">انتخاب...</option>
+                    @foreach (var std3 in ViewData["listTypeDarajeh"] as List<KeyValuePair<string, int>>)
+                    {
+                        <option value=@std3.Value.ToString()>@std3.Key</option>
+
+                    }
+
+                </select>
+
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+                <label asp-for="darajeh"></label>
+                <select class="form-control" asp-for="darajeh" searchable required>
+                    @{
+                        var lstdarajeh = ViewData["Darajeh"] as List<optionAllDarajeh>;
+                       
+                            <optgroup label="نظامی">
+                                @foreach (var std in lstdarajeh.Where(p => p.drtype == 1).ToList())
+                                {
+
+                                    <option value="@std.value" data-dgtype="@std.drtype" selected="@(std.value == Model.darajeh ? "selected" : "")">@std.text</option>
+
+                                }
+                            </optgroup>
+                      
+                     
+
+                            <optgroup label="کارمند">
+                                @foreach (var std in lstdarajeh.Where(p => p.drtype == 0).ToList())
+                                {
+
+                                    <option value="@std.value" data-dgtype="@std.drtype" selected="@(std.value == Model.darajeh ? "selected" : "")">@std.text</option>
+
+                                }
+                            </optgroup>
+                        
+                      
+                            <optgroup label="روحانی">
+                                @foreach (var std in lstdarajeh.Where(p => p.drtype == 2).ToList())
+                                {
+
+                                    <option value="@std.value" data-dgtype="@std.drtype" selected="@(std.value == Model.darajeh ? "selected" : "")">@std.text</option>
+
+                                }
+                            </optgroup>
+                       
+
+
+                    }
+
+                </select>
+                <span asp-validation-for="darajeh" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>عبارت را محاسبه و وارد نمائید</label>
+        <dnt-captcha asp-captcha-generator-max="999"
+                     class="input-group"
+                     asp-captcha-generator-min="110"
+                     asp-captcha-generator-language="Persian"
+                     asp-captcha-generator-display-mode="NumberToWord"
+                     asp-use-relative-urls="true"
+                     asp-validation-error-message="عبارت را محاسبه و وارد نمائید"
+                     asp-font-name="Tahoma"
+                     asp-font-size="16"
+                     asp-fore-color="#333333"
+                     asp-back-color="#F7F9B8"
+                     asp-text-box-class="form-control"
+                     asp-text-box-template="<div class='ml-auto'>{0}</div>"
+                     asp-validation-message-class="text-danger"
+                     asp-refresh-button-class="fas fa-redo btn-sm d-none"
+                     asp-use-noise="false"
+                     asp-dir="rtl" />
+        <div class="form-group text-center mt-3 mb-0">
+            <input type="submit" value="ذخیره تغییرات " class="btn btn-primary px-5 py-2" />
+        </div>
+    </div>
+
+
+
+</form>
+
+<div class="modal fade" id="TreeViewModal" role="dialog" tabindex="-1" aria-labelledby="TreeViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TreeViewModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="WorkPlaceTreeView_modal_body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary mr-2" data-btn="save">ثبت انتخاب  </button>
+                <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">خروج</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Styles
+{
+
+
+    <link href="~/lib/select2/select2.css" rel="stylesheet" />
+    <link href="~/lib/SweetAlert/sweetalert2.css" rel="stylesheet" />
+}
+@section Scripts{
+    <style>
+        .select2-container .select2-selection--single {
+            height: 38px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 34px;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+    <script src="~/lib/select2/select2.js"></script>
+    <script src="~/lib/SweetAlert/sweetalert2.js"></script>
+    <script src="~/lib/SweetAlert/polyfill.js.js"></script>
+    <script type="text/javascript">
+        let serieHtml = $('select[name=darajeh]').html();
+        selectedFilter();
+        $(document).ready(function () {
+            //$('#darajeh').select2({
+            //    placeholder: ' ... انتخاب ',
+            //    height: 30,
+            //});
+
+            $('#select-WorkPlaceId').click(function () {
+                selectWorkPlaceId()
+
+            });
+            $('#WorkPlaceIdFake').click(function () {
+                selectWorkPlaceId()
+
+            });
+        });
+        $('[data-btn="save"]').click(function (e) {
+            e.preventDefault();
+            $('input[type=checkbox]').each(function () {
+                if (this.checked) {
+
+                    $('#WorkPlaceId').val($(this).val());
+                    $('#WorkPlaceIdFake').attr('placeholder', $(this).data('name'));
+                    $('#TreeViewModal').modal('hide');
+                }
+            });
+
+        });
+        function selectWorkPlaceId() {
+            $.getJSON('/Student/Profile/GetWorkPlaceTreeView', { name: 'kami', family: 'zare' }, function (result, textStatus, jqXHR) {
+
+
+            })
+                .done(function (result) {
+                    if (result.isSuccess) {
+                        $('#WorkPlaceTreeView_modal_body').empty();
+                        $('#WorkPlaceTreeView_modal_body').html(result.data);
+                        $('#TreeViewModal').modal('show');
+
+                    }
+                    else {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: result.data,
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+
+                    }
+
+
+                })
+                .fail(function (jqxhr, settings, ex) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'اطلاعات و مقادیر وارد شده نادرست می باشد دقت فرمائید!!',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                });
+        }
+
+                function getDarajeh(type) {
+            $.getJSON('/Account/GetDarajeh', { type: type }, function (result, textStatus, jqXHR) {
+
+
+            })
+                .done(function (result) {
+                    if (result.isSuccess) {
+                        $("#darajeh option").each(function () {
+                            $(this).remove();
+                        });
+                        $.each(result.data.lstoption, function (i, item) {
+                           // console.log("item : ", item);
+                            $('#darajeh').append($('<option>', {
+                                value: item.value,
+                                text: item.text
+                            }));
+                        });
+                        $("#darajeh option").each(function () {
+                            if ($(this).val() == type) {
+                                console.log("item", $(this).val());
+                            }
+
+                        });
+
+                    }
+
+
+
+                })
+                .fail(function (jqxhr, settings, ex) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'اطلاعات و مقادیر وارد شده نادرست می باشد دقت فرمائید!!',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                });
+        }
+        function getDarajehAfterPost(type ,selectdrajeh) {
+            $.getJSON('/Account/GetDarajeh', { type: type }, function (result, textStatus, jqXHR) {
+
+
+            })
+                .done(function (result) {
+                    if (result.isSuccess) {
+                        //console.log("datatt : ", result.data.lstoption);
+                        $("#darajeh option").each(function () {
+                            $(this).remove();
+                        });
+                        $.each(result.data.lstoption, function (i, item) {
+                            // console.log("item : ", item);
+                            $('#darajeh').append($('<option>', {
+                                value: item.value,
+                                text: item.text
+                            }));
+                        });
+                        $("#darajeh option").each(function () {
+                            if ($(this).val() == selectdrajeh) {
+                                console.log("item", $(this).val());
+                                $('#darajeh option[value='+selectdrajeh+']').attr('selected', 'selected');
+                                $("#darajeh option[value="+selectdrajeh+"]").prop('selected', true);
+                            }
+
+                        });
+
+                    }
+
+
+
+                })
+                .fail(function (jqxhr, settings, ex) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'اطلاعات و مقادیر وارد شده نادرست می باشد دقت فرمائید!!',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                });
+        }
+        $('#TypeDarajeh').change(function () {
+            $('#darajeh').removeAttr('disabled');
+            var $this = $(this).val();
+            // var sel_make = $(this).text();
+            var sel_make = $('#TypeDarajeh :selected').text();
+
+            if ($this == 1 || $this == 0 || $this == 2) {
+
+                $('#darajeh').removeAttr('disabled');
+                $('#darajeh').css('display', 'block');
+                /*  getDarajeh($this);*/
+
+                var serie = $('#darajeh');
+                // restore the full select list first.
+                serie.html(serieHtml);
+
+                //option 1 (show optgroup label + options)
+                var optGroup = $('optgroup[label="' + sel_make + '"]')[0].outerHTML;
+
+                // option 2 (show only options)
+                // var optGroup = $('optgroup[label="' + sel_make + '"]').html();
+
+                serie.html(optGroup);
+
+                $('#darajeh').select2({ placeholder: ' ... انتخاب ', height: 30 });
+
+
+            }
+
+        });
+        function selectedFilter () {
+            $('#darajeh').removeAttr('disabled');
+            var $this = $('#TypeDarajeh').val();
+            // var sel_make = $(this).text();
+            var sel_make = $('#TypeDarajeh :selected').text();
+
+            if ($this == 1 || $this == 0 || $this == 2) {
+
+                $('#darajeh').removeAttr('disabled');
+                $('#darajeh').css('display', 'block');
+                /*  getDarajeh($this);*/
+
+                var serie = $('#darajeh');
+                // restore the full select list first.
+                serie.html(serieHtml);
+
+                //option 1 (show optgroup label + options)
+                var optGroup = $('optgroup[label="' + sel_make + '"]')[0].outerHTML;
+
+                // option 2 (show only options)
+                // var optGroup = $('optgroup[label="' + sel_make + '"]').html();
+
+                serie.html(optGroup);
+
+                $('#darajeh').select2({ placeholder: ' ... انتخاب ', height: 30 });
+
+
+            }
+
+        }
+        $(document).ready(function () {
+
+            $('#darajeh').attr('disabled', true);
+            $('#darajeh').prop('disabled', true);
+            var $this2 = $('#TypeDarajeh').find(":selected");
+            if ($this2.val() != 'NULL' || $this2.val() != '') {
+                var bbb = '@Html.Raw(Json.Serialize(Model))';
+                var model = '@(Model !=null ? Model.darajeh : 0)';
+
+                if (model != 0) {
+                    $('#darajeh').removeAttr('disabled');
+                    $('#darajeh').css('display', 'block');
+                    getDarajehAfterPost($this2.val(), model);
+
+
+
+
+                }
+
+            }
+
+        });
+    </script>
+}

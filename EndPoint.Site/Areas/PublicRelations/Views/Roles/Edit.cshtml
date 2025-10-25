@@ -1,0 +1,67 @@
+﻿@using EndPoint.Site.Areas.PublicRelations.Models.Dto.Roles
+@model RoleEditDto
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/PublicRelations/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-5 align-self-center">
+        </div>
+        <div class="col-7 align-self-center">
+            <div class="d-flex align-items-center justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">ورودی ها</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">ویرایش رول </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+
+    <div class="card">
+        <div class="card-header bg-info">
+            <h4 class="m-b-0 text-white">ویرایش رول</h4>
+        </div>
+
+        <div class="form-body">
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row p-t-20">
+                        <div class="col-md-3">
+                            <label asp-for="Id" class="control-label">آی دی</label>
+                            <input asp-for="Id" disabled class="form-control" />
+                        </div>
+                        <div class="col-md-3">
+                            <label asp-for="Name" class="control-label">نام</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <div class="card-body text-right">
+                            <input type="submit" value="ذخیره" class="btn btn-info" />
+                            <a asp-action="Index" class="btn btn-dark">انصراف</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

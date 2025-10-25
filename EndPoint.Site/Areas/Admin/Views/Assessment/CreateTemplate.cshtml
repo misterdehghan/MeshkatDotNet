@@ -1,0 +1,224 @@
+﻿@using Azmoon.Application.Service.Assessment.Dto
+@model AddTemplateDto
+@{
+    ViewData["Title"] = "ایجاد کلیشه";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-9 col-sm-12">
+        <form asp-action="CreateTemplate" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="Id" type="hidden" class="form-control" />
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="card" style="background-color: rgb(215, 224, 227);">
+                <div class="card-header"> سوال ها</div>
+                <div class="card-body">
+
+                    <div class="row mb-4">
+                        <div class="input-group col-md-10 col-sm-12">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text cursor-pointer" title=""><i class='fas fa-file-alt' style='font-size: 24px; color: blue'></i></span>
+                            </div>
+                            <input type="text" class="form-control" name="QuestionTitleWeight" id="QuestionTitleWeight" placeholder="عنوان سوال " />
+                        </div>
+
+
+                        <button type="button" id="btn_addQuestion" class="btn btn-primary col-md-1 input-group text-center"> ثبت سوال</button>
+                    </div>
+                </div>
+                <table class="table table-striped" id="tbl_question" style="color:none">
+                    <thead>
+                        <tr>
+                            <th>عنوان سوال</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+            <div class="card" style="background-color: rgb(204, 207, 208);">
+                <div class="card-header"> جواب ها</div>
+                <div class="card-body">
+
+                    <div class="row mb-4">
+                        <div class="input-group col-md-5 col-sm-12">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text cursor-pointer" title=""><i class='fas fa-file-alt' style='font-size: 24px; color: blue'></i></span>
+                            </div>
+                            <input type="text" class="form-control" name="AnswerTitleWeight" id="AnswerTitleWeight" placeholder="عنوان کلید " />
+                        </div>
+
+                        <div class="input-group col-md-5 col-sm-12">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text cursor-pointer" title=""><i class='fas fa-key' style='font-size:24px;color:blue'></i></span>
+                            </div>
+                            <input type="number" class="form-control" name="AnswerKeyWeight" id="AnswerKeyWeight" placeholder="وزن  " />
+                        </div>
+                        <button type="button" id="btn_addKey" class="btn btn-primary col-md-1 input-group text-center"> ثبت کلید</button>
+                    </div>
+                </div>
+                <table class="table table-striped" id="tbl_answer">
+                    <thead>
+                        <tr>
+                            <th>عنوان کلید</th>
+                            <th>وزن</th>
+                            <th>عملیات</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="row">
+                <button type="submit" id="btn_form_submit" class="btn btn-success col-6 pl-2" style="text-align: center !important; font-size: 24px; color: red ">ذخیره <i class="fa fa-save"></i></button>
+                <a asp-action="Index" asp-controller="Survay" class="btn btn-primary col-6" style="font-size: 24px;">بازگشت <i class="fa fa-undo"></i></a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div id="overlay">
+    <div class="cv-spinner">
+        <span class="spinner"></span>
+    </div>
+</div>
+
+@section Styles {
+    <link href="~/lib/SweetAlert/sweetalert2.css" rel="stylesheet" />
+    <link href="~/backend/css/Spiner.css" rel="stylesheet" />
+    <link href="~/lib/trumbowyg-2_25_1/ui/trumbowyg.css" rel="stylesheet" />
+    <link href="~/lib/MD_BootstrapPersianDateTimePicker-master-bs5/dist/jquery.md.bootstrap.datetimepicker.style.css" rel="stylesheet" />
+    <style>
+        select.form-control:not([size]):not([multiple]) {
+            height: calc(3.0rem + 2px);
+        }
+    </style>
+}
+@section Scripts {
+    <script src="~/lib/SweetAlert/sweetalert2.js"></script>
+    <script src="~/lib/trumbowyg-2_25_1/trumbowyg.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/lib/MD_BootstrapPersianDateTimePicker-master-bs5/dist/jquery.md.bootstrap.datetimepicker.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn_addKey").click(function (e) {
+                e.preventDefault();
+                var titleKey = $('#AnswerTitleWeight').val();
+                var KeyWeight = $('#AnswerKeyWeight').val();
+                $('#tbl_answer').append('<tr><td>' + titleKey + ' </td><td>' + KeyWeight + '</td><td> <input type="button"  value="حذف" class="btn btn-danger deletedKeyWeight" data-action="delete" /> </td> </tr>');
+            });
+            $("#btn_addQuestion").click(function (e) {
+                e.preventDefault();
+                var QtitleKey = $('#QuestionTitleWeight').val();
+                console.log("QtitleKey : ", QtitleKey);
+                $('#tbl_question').append('<tr><td>' + QtitleKey + ' </td><td><input type="button"  value="حذف" class="btn btn-danger deletedKeyWeight" data-action="delete" /> </td> </tr>');
+            });
+            $('#tbl_answer').on('click', '.deletedKeyWeight', function (e) {
+                e.preventDefault();
+                console.log("$(this) : ", $(this));
+                $(this).closest("tr").remove();
+            });
+            $('#tbl_question').on('click', '.deletedKeyWeight', function (e) {
+                e.preventDefault();
+                console.log("$(this) : ", $(this));
+                $(this).closest("tr").remove();
+            });
+
+        });
+
+        $("#btn_form_submit").click(function (e) {
+            e.preventDefault();
+            $("#overlay").fadeIn(300);
+            var data = new FormData();
+
+            data.append("Name", $("#Name").val());
+
+            //دریافت ویژگی سوال از جدول
+            var dataFeaturesViewModel = $('#tbl_question tr:gt(0)').map(function () {
+                return {
+                    DisplayName: $(this.cells[0]).text(),
+                    Value: $(this.cells[1]).text(),
+
+                };
+            }).get();
+
+            $.each(dataFeaturesViewModel, function (i, val) {
+                data.append('QuestionFeatures[' + i + '].Title', val.DisplayName);
+            });
+
+            //دریافت ویژگی جواب از جدول
+            var dataFeaturesViewModel2 = $('#tbl_answer tr:gt(0)').map(function () {
+                return {
+                    DisplayName: $(this.cells[0]).text(),
+                    Value: $(this.cells[1]).text(),
+
+                };
+            }).get();
+
+            $.each(dataFeaturesViewModel2, function (i, val) {
+                data.append('AnswerFeatures[' + i + '].Title', val.DisplayName);
+                data.append('AnswerFeatures[' + i + '].Wight', val.Value);
+            });
+            console.log("data : ", data);
+            var ajaxRequest = $.ajax({
+                type: "POST",
+                url: "/Admin/Assessment/CreateTemplate",
+                contentType: false,
+                processData: false,
+                data: data,
+                headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                success: function (data) {
+                    $("#overlay").fadeOut(300);
+                    if (data.isSuccess == true) {
+                        swal.fire(
+                            'موفق!',
+                            'نظرسنجی با موفقیت ثبت شد',
+                            'success'
+                        ).then(function (isConfirm) {
+                            window.location.href = "/Admin/Assessment/Templates";
+                        });
+                    }
+                    else {
+                        swal.fire(
+                            'هشدار!',
+                            'مشکل در ارسال و ذخیره داده',
+                            'warning'
+                        );
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    $("#overlay").fadeOut(300);
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+        });
+
+
+
+
+                       
+    </script>
+
+}
+
+

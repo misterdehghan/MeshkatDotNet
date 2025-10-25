@@ -1,0 +1,52 @@
+/**
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
+ *
+ * Version: 5.7.1 (2021-03-17)
+ */
+(function () {
+    'use strict';
+
+    var global = tinymce.util.Tools.resolve('tinymce.PluginManager');
+
+    var register = function (editor) {
+        editor.addCommand('InsertReadMore', function () {
+            if (editor.getContent().match(/<hr\s+id=("|')system-readmore("|')\s*\/*>/i)) {
+                alert("فقط یک لینک ادامه مطلب مجاز است");
+                return false;
+            } else {
+                editor.execCommand('mceInsertContent', false, '<hr id="system-readmore" />');
+            }
+            //console.log(editor.getBody());
+        });
+    };
+
+    var register$1 = function (editor) {
+        editor.ui.registry.addButton('readmore', {
+            icon: 'page-break',
+            tooltip: 'ادامه مطلب',
+            onAction: function () {
+                return editor.execCommand('InsertReadMore');
+            }
+        });
+        editor.ui.registry.addMenuItem('readmore', {
+            icon: 'page-break',
+            text: 'ادامه مطلب',
+            onAction: function () {
+                return editor.execCommand('InsertReadMore');
+            }
+        });
+    };
+
+    function Plugin() {
+        global.add('readmore', function (editor) {
+            register(editor);
+            register$1(editor);
+        });
+    }
+
+    Plugin();
+
+}());

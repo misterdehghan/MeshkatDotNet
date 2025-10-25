@@ -1,0 +1,128 @@
+﻿@model IEnumerable<Azmoon.Application.Service.Survaeis.Survayy.GetSurvayViewModel>
+@using EndPoint.Site.Useful.Ultimite
+
+@{
+    int counter2 = 1;
+}
+
+
+
+@if (Model != null && Model.Count() > 0)
+{
+    <div class="form-group flex-grow-1">
+        <nav class="navbar navbar-expand-lg navbar-dark  mt-4 p-2" style="background-color: #62BBA2 !important;">
+            <div class="container">
+                <h5 class="mb-0">نظرسنجی ها </h5>
+                <button class="navbar-toggler collapsed bg-primary"
+                        type="button" data-toggle="collapse"
+                        data-target="#navbarNavDropdown222"
+                        aria-controls="navbarNavDropdown222"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+            </div>
+        </nav>
+        <div class="component">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+
+                        <th>
+                            ردیف
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ElementAt(0).Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ElementAt(0).StartDate)
+
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ElementAt(0).EndDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ElementAt(0).Status)
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        if (Model != null)
+                        {
+                            @foreach (var survay in Model)
+                            {
+                                <tr class="table-active bg-white">
+
+                                    <td>
+                                        @counter2
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => survay.Name)
+                                    </td>
+                                    <td>
+                                        @survay.StartDate.ToPersianDateStrFarsi()
+                                    </td>
+                                    <td>
+                                        @survay.EndDate.ToPersianDateStrFarsi()
+                                    </td>
+
+                                    <td>
+
+
+                                        @{
+
+                                            switch (survay.Status)
+                                            {
+                                                case 1:
+
+                                                    <span>فعال</span> <i class='fas fa-circle' style='font-size:25px;color:green'></i>
+                                                    break;
+                                                case 2:
+                                                    <span>در انتظار شروع</span> <i class='fas fa-circle blink' style='font-size:25px;color:orange'></i>
+                                                    break;
+                                                case 3:
+                                                    <span>پایان یافته</span> <i class='fas fa-circle' style='font-size:25px;color:red'></i>
+                                                    break;
+                                            }
+                                        }
+                                    </td>
+                                    @if (survay.Status == 1)
+                                    {
+                                        <td class="text-right ">
+                                            <ul class="navbar-nav ml-auto d-inline-block">
+                                                <li class="nav-item m-1  d-inline-block">
+                                                    <form method="post">
+                                                        <button formaction="/Survey/Start" class="btn btn-primary"> شرکت در نظرسنجی</button>
+                                                        <input type="hidden" value="@survay.Id" name="survayId">
+                                                    </form>
+                                                </li>
+                                               
+                                            </ul>
+                                        </td>
+                                    }
+
+                                    @{counter2++;
+                                    }
+                                </tr>
+
+                            }
+                        }
+                        else
+                        {
+                            <tr>هیچ رکوردی یافت نگردید :)</tr>
+                        }
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <tr class="h4">هیچ نظرسنجی فعالی برای نمایش یافت نگردید :)</tr>
+}

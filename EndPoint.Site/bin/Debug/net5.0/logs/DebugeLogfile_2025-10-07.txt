@@ -1,0 +1,6 @@
+2025-10-07 08:49:18.7978||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-07 08:49:18.8116||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-07 08:49:18.8116||INFO|Microsoft.Hosting.Lifetime|Content root path: F:\PROJECT\AzmoonNew\Azmoon\EndPoint.Site |url: |action: 
+

@@ -1,0 +1,356 @@
+﻿@addTagHelper *, LazZiya.TagHelpers
+@model IEnumerable<EndPoint.Site.Areas.PublicRelations.Models.Dto.Account.PublicRelationUserListDto>
+
+@using Azmoon.Domain.Entities
+@inject Microsoft.AspNetCore.Identity.SignInManager<User> _signInManager;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/PublicRelations/Views/Shared/_Layout.cshtml";
+    int startIndex = @ViewBag.PageSize * (@ViewBag.PageNumber - 1); // شروع از شماره مورد نظر بر اساس صفحه جاری
+    int rowIndex = startIndex + 1;
+
+      var isSuperUserAccount = User.IsInRole("SuperUserAccountPR"); // بررسی اینکه کاربر نقش SuperUserAccountPR دارد یا خیر
+     var isAdmin = User.IsInRole("AdminPR"); // بررسی اینکه کاربر نقش AdminPR دارد یا خیر
+}
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-5 align-self-center">
+        </div>
+        <div class="col-7 align-self-center">
+            <div class="d-flex align-items-center justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">گزارش ها</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">گزارش کاربران</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">گزارش کاربران</h4>
+                    <h6 class="card-subtitle">"لطفاً توجه داشته باشید که این صفحه حاوی اطلاعات با ارزش است و باید از هر گونه تغییر در آن بدون اطلاع قبلی پرهیز کرد."</h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm m-b-0">
+                            <thead class="bg-info text-white">
+                                <tr>
+                                    <th scope="col" style="text-align:center;">ردیف</th>
+                                    <th scope="col" style="text-align:center;">اپراتور</th>
+                                    <th scope="col" style="text-align:center;">نام و نام خانوادگی</th>
+                                    <th scope="col" style="text-align:center;">کد پرسنلی</th>
+                                    <th scope="col" style="text-align:center;">استان</th>
+                                    <th scope="col" style="text-align:center;">شماره تماس</th>
+                                    <th scope="col" style="text-align:center;">وضعیت</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td scope="row" style="text-align:center;">@rowIndex</td>
+                                        <td style="text-align:center;">
+                                            @if (item.Operator == "بدون انتخاب")
+                                            {
+                                                <span class="label label-warning">@item.Operator</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="label label-inverse">@item.Operator</span>
+                                            }
+
+
+                                        </td>
+                                        <td style="text-align:center;">@item.FullName</td>
+                                        <td style="text-align:center;">@item.PersonnelCode</td>
+                                        <td style="text-align:center;">@item.Province</td>
+                                        <td style="text-align:center;">@item.PhoneNumber</td>
+                                        <td style="text-align:center;">
+                                            @if (item.IsActive == true)
+                                            {
+
+                                                <i class="fas fa-toggle-on text-success" data-toggle="tooltip" data-placement="top" title="فعال" onclick="UserSatusChange('@item.Id')">
+                                                </i>
+
+                                            }
+                                            else
+                                            {
+
+                                                <i class=" fas fa-toggle-off text-secondary " data-toggle="tooltip" data-placement="top" title="غیر فعال" onclick="UserSatusChange('@item.Id')">
+                                                </i>
+
+                                            }
+                                        </td>
+                                        <td style="text-align: left;">
+                                           @if (isSuperUserAccount)
+                                            {
+                                            <button type="button"
+                                                    class="btnRoles btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"
+                                                    data-toggle="tooltip"
+                                                    data-original-title="موقیت رول"
+                                                    data-user-id="@item.Id"
+                                                    data-url="@Url.Action("PartialViewAssignRoleToUser", "Roles")">
+                                                <i class="fas fa-user-secret" aria-hidden="true"></i>
+                                            </button>
+                                            }
+
+                                            <button type="button"
+                                                    class="btnTemporaryRole btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"
+                                                    data-toggle="tooltip"
+                                                    data-original-title="موقیت نقش"
+                                                    data-user-id="@item.Id"
+                                                    data-url="@Url.Action("PartialViewTemporaryRoleUser", "Users")">
+                                                <i class="fas fa-user" aria-hidden="true"></i>
+                                            </button>
+
+                                            <button type="button"
+                                                    class="btn3 btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"
+                                                    data-toggle="tooltip"
+                                                    data-original-title="تغییر رمز عبور"
+                                                    data-user-id="@item.Id"
+                                                    data-url="@Url.Action("PartialViewResetPasswordModal", "Users")">
+                                                <i class="fas fa-key" aria-hidden="true"></i>
+                                            </button>
+
+                                            <button type="button"
+                                                    class="btn6 btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"
+                                                    data-user-id="@item.Id"
+                                                    data-url="@Url.Action("PartialViewDetailUserModal", "Users")">
+                                                <i class="fas fa-info" aria-hidden="true"></i>
+                                            </button>
+
+                                            <button type="button"
+                                                    class="btn4 btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"
+                                                    data-toggle="tooltip"
+                                                    data-original-title="ویرایش"
+                                                    data-user-id="@item.Id"
+                                                    data-url="@Url.Action("PartialViewEditUserModal", "Users")">
+                                                <i class="fas fa-edit" aria-hidden="true"></i>
+                                            </button>
+
+                                            <button type="button"
+                                                    class="btn5 btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"
+                                                    data-toggle="tooltip"
+                                                    data-original-title="حذف"
+                                                    data-user-id="@item.Id"
+                                                    data-url="@Url.Action("PartialViewDeleteUserModal", "Users")">
+                                                <i class="fas fa-trash" aria-hidden="true"></i>
+                                            </button>
+
+                                        </td>
+                                    </tr>
+
+                                    rowIndex++;
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="  text-center">
+                    <paging total-records="@ViewBag.TotalRowCount"
+                            page-no="@ViewBag.PageNumber"
+                            page-size="@ViewBag.PageSize"
+                            show-prev-next="true"
+                            show-total-pages="false"
+                            show-total-records="false"
+                            show-page-size-nav="true"
+                            show-first-numbered-page="true"
+                            show-last-numbered-page="true"
+                            query-string-key-page-no="Page"
+                            query-string-key-page-size="PageSize"
+                            gap-size="2">
+                    </paging>
+                </div>
+            </div>
+            <a asp-action="AddUser" class="btn btn-primary mb-2" ><i class="fas fa-plus"></i>&nbsp; افزودن کاربر جدید</a>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+@section Modals
+{
+
+    <script src="~/theme/assets/libs/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+
+    <div data-url='@Url.Action("PartialViewTemporaryRoleUser", "Users")' class="modal fade" id="TemporaryRole" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" style="display: none;" aria-hidden="true"></div>
+    <div data-url='@Url.Action("PartialViewResetPasswordModal", "Users")' class="modal fade" id="ResetPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" style="display: none;" aria-hidden="true"></div>
+    <div data-url='@Url.Action("PartialViewEditUserModal", "Users")' class="modal fade" id="EditUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" style="display: none;" aria-hidden="true"></div>
+    <div data-url='@Url.Action("PartialViewDeleteUserModal", "Users")' class="modal fade" id="DeleteUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" style="display: none;" aria-hidden="true"></div>
+    <div data-url='@Url.Action("PartialViewDetailUserModal", "Users")' class="modal fade" id="DetailUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" style="display: none;" aria-hidden="true"></div>
+    <div data-url='@Url.Action("PartialViewAssignRoleToUser", "Roles")' class="modal fade" id="RolesInUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" style="display: none;" aria-hidden="true"></div>
+}
+
+
+@section Scripts
+    {
+     <link href="~/PublicRelations/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+     <script src="~/PublicRelations/Sweetalert2/sweetalert2.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.btnTemporaryRole').click(function () {
+                // گرفتن ای دی از دکمه
+                var userId = $(this).data('user-id');
+
+                // ساختن URL با ای دی گرفته شده
+                var url = $('#TemporaryRole').data('url') + '?userId=' + userId;
+
+                // ارسال درخواست با ای دی
+                $.get(url, function (data) {
+                    $("#TemporaryRole").html(data);
+                    $("#TemporaryRole").modal('show');
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.btn3').click(function () {
+                // گرفتن ای دی از دکمه
+                var userId = $(this).data('user-id');
+
+                // ساختن URL با ای دی گرفته شده
+                var url = $('#ResetPassword').data('url') + '?userId=' + userId;
+
+                // ارسال درخواست با ای دی
+                $.get(url, function (data) {
+                    $("#ResetPassword").html(data);
+                    $("#ResetPassword").modal('show');
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.btn4').click(function () {
+                // گرفتن ای دی از دکمه
+                var userId = $(this).data('user-id');
+
+                // ساختن URL با ای دی گرفته شده
+                var url = $('#EditUser').data('url') + '?userId=' + userId;
+
+                // ارسال درخواست با ای دی
+                $.get(url, function (data) {
+                    $("#EditUser").html(data);
+                    $("#EditUser").modal('show');
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.btn5').click(function () {
+                // گرفتن ای دی از دکمه
+                var userId = $(this).data('user-id');
+
+                // ساختن URL با ای دی گرفته شده
+                var url = $('#DeleteUser').data('url') + '?userId=' + userId;
+
+                // ارسال درخواست با ای دی
+                $.get(url, function (data) {
+                    $("#DeleteUser").html(data);
+                    $("#DeleteUser").modal('show');
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.btn6').click(function () {
+                // گرفتن ای دی از دکمه
+                var userId = $(this).data('user-id');
+
+                // ساختن URL با ای دی گرفته شده
+                var url = $('#DetailUser').data('url') + '?userId=' + userId;
+
+                // ارسال درخواست با ای دی
+                $.get(url, function (data) {
+                    $("#DetailUser").html(data);
+                    $("#DetailUser").modal('show');
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.btnRoles').click(function () {
+                // گرفتن ای دی از دکمه
+                var userId = $(this).data('user-id');
+
+                // ساختن URL با ای دی گرفته شده
+                var url = $('#RolesInUser').data('url') + '?userId=' + userId;
+
+                // ارسال درخواست با ای دی
+                $.get(url, function (data) {
+                    $("#RolesInUser").html(data);
+                    $("#RolesInUser").modal('show');
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        function UserSatusChange(UserId) {
+
+            var postData = {
+                'UserId': UserId,
+            };
+
+            $.ajax({
+                contentType: 'application/x-www-form-urlencoded',
+                dataType: 'json',
+                type: "POST",
+                url: "@Url.Action("UserSatusChange")",
+                data: postData,
+                success: function (data) {
+                    if (data.isSuccess == true) {
+                        swal.fire(
+                            'وضعیت کاربر تغییر یافت!',
+                            data.message,
+                            'success'
+                        ).then(function (isConfirm) {
+                            location.reload();
+                        });
+                    }
+                    else {
+
+                        swal.fire(
+                            'هشدار!',
+                            data.message,
+                            'warning'
+                        );
+
+                    }
+                },
+                error: function (request, status, error) {
+                    alert(request.responseText);
+                }
+
+            });
+
+        }
+
+    </script>
+}

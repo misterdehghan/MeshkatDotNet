@@ -1,0 +1,122 @@
+﻿ @using Azmoon.Common.ResultDto
+@using Azmoon.Application.Service.Assessment.Dto
+@model GetAssessmentPagination
+@using EndPoint.Site.Useful.Ultimite
+@{
+
+    if (Model != null && Model.Assessmentes.Count() > 0)
+        {
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        انتخاب
+                    </th>
+                    <th>
+                        شاخص
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Assessmentes.ElementAt(0).Name)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Assessmentes.ElementAt(0).WorkPlaceName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Assessmentes.ElementAt(0).CreatorUserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Assessmentes.ElementAt(0).StartDate)
+
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Assessmentes.ElementAt(0).EndDate)
+                    </th>
+                    <th>
+                        وضعیت
+                    </th>
+
+
+                    <th>
+                        تعداد
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model.Assessmentes != null)
+                        {
+
+                        @foreach (var item in Model.Assessmentes)
+                            {
+                            <tr>
+                                <td>
+                                    <input name="posts[]" type="checkbox" class="checkthis" value="@item.Id" data-username="@item.Id" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.WorkPlaceName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreatorUserName)
+                                </td>
+                                <td>
+                                    @item.StartDate.ToPersianDateStrFarsi()
+                                </td>
+                                <td>
+                                    @item.EndDate.ToPersianDateStrFarsi()
+                                </td>
+                                <td>
+
+                                    @{
+
+                                        switch ((Int16)item.Status)
+                                            {
+                                            case 1:
+
+                                                <i class='fas fa-circle' style='font-size:25px;color:green'></i>
+                                                break;
+                                            case 2:
+                                                <i class='fas fa-circle blink' style='font-size:25px;color:orange'></i>
+                                                break;
+                                            case 3:
+                                                <i class='fas fa-circle' style='font-size:25px;color:red'></i>
+                                                break;
+                                            }
+                                    }
+                                </td>
+
+                                <td>
+                                    @item.countUser
+                                </td>
+                            </tr>
+                            }
+                        }
+
+                }
+
+            </tbody>
+        </table>
+
+        }
+    else
+        {
+
+        <div class="row justify-content-center align-items-center mt-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="alert alert-danger h2" role="alert">هیچ دوره ارزشیابی با مقادیر انتخاب شده شما یافت نگردید!!!</div>
+                   
+                </div>
+            </div>
+        </div>
+
+        }
+}
+

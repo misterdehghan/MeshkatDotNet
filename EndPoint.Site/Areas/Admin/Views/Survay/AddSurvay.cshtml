@@ -1,0 +1,237 @@
+﻿@model Azmoon.Application.Service.Survaeis.Survayy.AddSurvayDto
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "افزودن نظرسنجی";
+}
+
+
+<h1>ایجاد نظرسنجی</h1>
+
+
+
+<div class="row">
+    <div class="col-md-9 col-sm-12">
+        <form asp-action="AddSurvay">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="Id" type="hidden" class="form-control" />
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+     
+            <div class="row mb-4">
+                <div class="input-group col-md-6 col-sm-12">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text cursor-pointer" id="date5" data-mdpersiandatetimepicker="" data-mdpersiandatetimepicker-group="rangeSelector1" data-todate="" data-original-title="" title=""><i class='fas fa-calendar-alt' style='font-size:24px;color:forestgreen'></i></span>
+                    </div>
+                    <input asp-for="StartDate" type="hidden" />
+                    <input type="text" id="StartDateFake" value="@Model.StartDate" class="form-control" aria-label="date5" aria-describedby="date5" placeholder="زمان شروع نظرسنجی" />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+
+                <div class="input-group col-md-6 col-sm-12">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text cursor-pointer" id="date6" data-mdpersiandatetimepicker="" data-mdpersiandatetimepicker-group="rangeSelector1" data-todate="" data-original-title="" title=""><i class='fas fa-calendar-alt' style='font-size:24px;color:red'></i></span>
+                    </div>
+                    <input asp-for="EndDate" type="hidden" />
+                    <input type="text" id="EndDateFake" value="@Model.EndDate" class="form-control" aria-label="date6" aria-describedby="date6" placeholder="زمان پایان نظرسنجی" />
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="row mb-4">
+                <div class="input-group col-md-6 col-sm-12">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text cursor-pointer"><i class='fas fa-check' style='font-size:24px;color:red'></i></span>
+                    </div>
+                    <select asp-for="GroupId" class="form-control" asp-items="Model.GroupSelectList">
+                        <option> انتخاب دسته بندی....</option>
+                    </select>
+                    <span asp-validation-for="GroupId" class="text-danger"></span>
+                </div>
+               
+       
+
+                <div class="input-group col-md-6 col-sm-12">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">تعداد دفعات مجاز برای هر آی پی</span>
+                    </div>
+                    <input asp-for="AllowCountPerIp" class="form-control" aria-describedby="basic-addon3">
+                    <span asp-validation-for="AllowCountPerIp" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="card" style="background-color: rgb(204, 207, 208);">
+                <div class="card-header">کلید سوال ها</div>
+                <div class="card-body">
+
+                    <div class="row mb-4">
+                        <div class="input-group col-md-5 col-sm-12">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text cursor-pointer" title=""><i class='fas fa-file-alt' style='font-size: 24px; color: blue'></i></span>
+                            </div>
+                            <input type="text" class="form-control" name="TitleWeight" id="TitleWeight" placeholder="عنوان کلید " />
+                        </div>
+
+                        <div class="input-group col-md-5 col-sm-12">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text cursor-pointer" title=""><i class='fas fa-key' style='font-size:24px;color:blue'></i></span>
+                            </div>
+                            <input type="number" class="form-control" name="KeyWeight" id="KeyWeight" placeholder="وزن  " />
+                        </div>
+                        <button type="submit" id="btn_addKey" class="btn btn-primary col-md-1 input-group text-center"> ثبت کلید</button>
+                    </div>
+                </div>
+                <table class="table" id="tbl_KeyWeight">
+                    <thead>
+                        <tr>
+                            <th>عنوان کلید</th>
+                            <th>وزن</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <button type="submit" id="btn_form_submit" class="btn btn-success col-6 pl-2" style="text-align: center !important; font-size: 24px; color: red ">ذخیره <i class="fa fa-save"></i></button>
+                <a asp-action="Index" asp-controller="Survay" class="btn btn-primary col-6" style="font-size: 24px;">بازگشت <i class="fa fa-undo"></i></a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div id="overlay">
+    <div class="cv-spinner">
+        <span class="spinner"></span>
+    </div>
+</div>
+
+@section Styles{
+    <link href="~/lib/SweetAlert/sweetalert2.css" rel="stylesheet" />
+    <link href="~/backend/css/Spiner.css" rel="stylesheet" />
+    <link href="~/lib/trumbowyg-2_25_1/ui/trumbowyg.css" rel="stylesheet" />
+    <link href="~/lib/MD_BootstrapPersianDateTimePicker-master-bs5/dist/jquery.md.bootstrap.datetimepicker.style.css" rel="stylesheet" />
+    <style>
+        select.form-control:not([size]):not([multiple]) {
+            height: calc(3.0rem + 2px);
+        }
+    </style>
+}
+@section Scripts{
+    <script src="~/lib/SweetAlert/sweetalert2.js"></script>
+    <script src="~/lib/trumbowyg-2_25_1/trumbowyg.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/lib/MD_BootstrapPersianDateTimePicker-master-bs5/dist/jquery.md.bootstrap.datetimepicker.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#Description').trumbowyg();
+            $("#btn_addKey").click(function (e) {
+                e.preventDefault();
+                var titleKey = $('#TitleWeight').val();
+                var KeyWeight = $('#KeyWeight').val();
+                $('#tbl_KeyWeight').append('<tr><td>' + titleKey + ' </td><td>' + KeyWeight + '</td><td> <input type="button"  value="حذف" class="btn btn-danger deletedKeyWeight" data-action="delete" /> </td> </tr>');
+            });
+
+            $('#tbl_KeyWeight').on('click', '.deletedKeyWeight', function (e) {
+                e.preventDefault();
+                console.log("$(this) : ", $(this));
+                $(this).closest("tr").remove();
+            });
+
+
+        });
+        $('#date5').MdPersianDateTimePicker({
+            targetTextSelector: '#StartDateFake',
+            targetDateSelector: '#StartDate',
+            groupId: 'date5',
+            fromDate: true,
+            enableTimePicker: true,
+            modalMode: true
+        });
+        $('#date6').MdPersianDateTimePicker({
+            targetTextSelector: '#EndDateFake',
+            targetDateSelector: '#EndDate',
+            groupId: 'date5',
+            toDate: true,
+            enableTimePicker: true,
+            modalMode: true
+        });
+        $("#btn_form_submit").click(function (e) {
+            e.preventDefault();
+            $("#overlay").fadeIn(300);
+            var data = new FormData();
+            data.append("StartDate", $("#StartDate").val());
+            data.append("EndDate", $("#EndDate").val());
+
+       
+            data.append("Name", $("#Name").val());
+            data.append("AllowCountPerIp", $("#AllowCountPerIp").val());
+            data.append("GroupId", $("#GroupId").find('option:selected').val());
+            data.append("Description", $('textarea#Description').val());
+            //دریافت ویژگی های  از جدول
+            var dataFeaturesViewModel = $('#tbl_KeyWeight tr:gt(0)').map(function () {
+                return {
+                    DisplayName: $(this.cells[0]).text(),
+                    Value: $(this.cells[1]).text(),
+
+                };
+            }).get();
+
+            $.each(dataFeaturesViewModel, function (i, val) {
+                data.append('Features[' + i + '].Title', val.DisplayName);
+                data.append('Features[' + i + '].Title', val.DisplayName);
+                data.append('Features[' + i + '].Wight', val.Value);
+            });
+            console.log("data : ", data);
+            var ajaxRequest = $.ajax({
+                type: "POST",
+                url: "/Admin/Survay/AddSurvay",
+                contentType: false,
+                processData: false,
+                data: data,
+                headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                success: function (data) {
+                    $("#overlay").fadeOut(300);
+                    if (data.isSuccess == true) {
+                        swal.fire(
+                            'موفق!',
+                            'نظرسنجی با موفقیت ثبت شد',
+                            'success'
+                        ).then(function (isConfirm) {
+                            window.location.href = "/Admin/Survay/index";
+                        });
+                    }
+                    else {
+                        swal.fire(
+                            'هشدار!',
+                            "دیتا ثبت نشد",
+                            'warning'
+                        );
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+        });
+
+
+    </script>
+
+}

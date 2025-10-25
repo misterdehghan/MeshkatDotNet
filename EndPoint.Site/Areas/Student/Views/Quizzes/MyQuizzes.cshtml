@@ -1,0 +1,220 @@
+﻿@using  Azmoon.Application.Service.Result.Query
+@model GetResutQuizMyWithPager
+@addTagHelper *, LazZiya.TagHelpers
+@using EndPoint.Site.Useful.Ultimite
+@{
+    Layout = "~/Areas/Student/Views/Shared/_LayoutStudent.cshtml";
+    ViewData["Title"] = "آزمون من";
+}
+
+
+@if (Model.ResultQuizDtos != null && Model.ResultQuizDtos.Count() > 0)
+{
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.ResultQuizDtos.ElementAt(0).Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ResultQuizDtos.ElementAt(0).UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ResultQuizDtos.ElementAt(0).PhoneNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ResultQuizDtos.ElementAt(0).MaxPoints)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ResultQuizDtos.ElementAt(0).Points)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ResultQuizDtos.ElementAt(0).StartQuiz)
+                </th>
+                @*<th>عملیات</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @{
+
+                foreach (var item in Model.ResultQuizDtos)
+                {
+                    <tr>
+
+                        <td>
+                            @item.Title
+
+                        </td>
+                        <td>
+                            @item.UserName
+
+                        </td>
+                        <td>
+                            @item.PhoneNumber
+
+                        </td>
+
+                        <td>
+                            @item.MaxPoints
+
+                        </td>
+                        <td>
+                            @item.Points
+
+                        </td>
+                        <td>
+
+                            @item.StartQuiz.ToPersianDateStrFarsi()
+                        </td>
+
+                        @*<td>
+                        <a href="#" class="btn btn-light linkkarnameh" data-karnameh="@item.Id"><i class="fa fa-list-alt"></i> کارنامه</a>
+                        </td>*@
+
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+}
+
+else
+{
+    <h2>کاربر محترم ، شما تاکنون در هیچ آزمونی شرکت ننموده اید.</h2>
+}
+
+
+@if (Model != null && Model.PagerDto != null && Model.PagerDto.TotalRecords > 0)
+{
+    <div class="card-footer">
+        <paging page-no="@Model.PagerDto.PageNo"
+                page-size="@Model.PagerDto.PageSize"
+                total-records="@Model.PagerDto.TotalRecords"
+                show-prev-next="true"
+                show-total-pages="true"
+                show-total-records="true"
+                show-page-size-nav="true"
+                show-first-numbered-page="true"
+                show-last-numbered-page="true"
+                query-string-key-page-no="PageNo"
+                query-string-key-page-size="PageSize"
+                query-string-value="@@(Request.QueryString.Value)"
+                text-total-pages="صفحه"
+                text-total-records="رکورد"
+                text-first="&laquo;"
+                text-last="&raquo;"
+                text-previous="&lsaquo;"
+                text-next="&rsaquo;"
+                sr-text-first="اولین"
+                sr-text-last="آخرین"
+                sr-text-previous="قبلی"
+                sr-text-next="بعدی"
+                gap-size="2">
+        </paging>
+
+    </div>
+
+}
+<div class="modal fade" id="TreeViewModal" role="dialog" tabindex="-1" aria-labelledby="TreeViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TreeViewModalLabel">کارنامه</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="TreeView_modal_body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">خروج</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="overlay">
+    <div class="cv-spinner">
+        <span class="spinner"></span>
+    </div>
+</div>
+@section Styles{
+    <link href="~/lib/SweetAlert/sweetalert2.css" rel="stylesheet" />
+    <link href="~/lib/select2/select2.css" rel="stylesheet" />
+
+}
+@section Scripts{
+    <link href="~/backend/css/Spiner.css" rel="stylesheet" />
+    <script src="~/lib/SweetAlert/sweetalert2.js"></script>
+    <script src="~/lib/SweetAlert/polyfill.js.js"></script>
+    <script>
+
+        $('.linkkarnameh').click(function (e) {
+            e.preventDefault();
+            $("#overlay").fadeIn(300);
+            var resultId = $(this).data("karnameh");
+
+            console.log("resultId   : ", resultId);
+
+            var url = '/Student/Quizzes/karnameh';
+
+            if (resultId > 0) {
+                console.log("test  : ", resultId);
+                $.getJSON(url, { resultId: resultId }, function (result, textStatus, jqXHR) {
+
+
+                })
+                    .done(function (result) {
+                        $("#overlay").fadeOut(300);
+                       
+                        if (result.isSuccess) {
+                            console.log("OK  Result.isSuccess");
+                          
+                            $('#TreeViewModal').modal('show');
+                            $('#TreeView_modal_body').html(result.data);
+                            Swal.fire({
+                                icon: 'success',
+                                title: result.message,
+                                showConfirmButton: false,
+                                timer: 1000
+                            });
+
+
+
+                        }
+                        else {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: result.message,
+                                showConfirmButton: false,
+                                timer: 3000
+                            })
+
+                        }
+
+
+                    })
+                    .fail(function (jqxhr, settings, ex) {
+                        $("#overlay").fadeOut(300);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'اطلاعات و مقادیر وارد شده نادرست می باشد دقت فرمائید!!',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                    });
+            }
+
+            //  window.location.href = Aarea + '/' + controller + '/' + linkk + '?rezultId=' + rezultId;
+
+
+
+        });
+
+    </script>
+}
+
+

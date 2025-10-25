@@ -1,0 +1,210 @@
+﻿@using EndPoint.Site.Areas.PublicRelations.Models.Dto.Doshbord
+@model ChannelAndGroupStatisticsDto
+@{
+    ViewData["Title"] = "ChannelAndGroupStatistics";
+    Layout = null;
+}
+
+ <div class="row">
+    <div class="col-lg-2 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-7">
+                        <img width="30" src="~/PublicRelations/Theme/assets/images/Logo/whatsapp.png" />
+
+                        <p class="font-14 m-b-5">واتس آپ</p>
+                        <span>
+                            WhatsApp
+                        </span>
+                    </div>
+                    <div class="col-5">
+                        <h1 class="font-light text-right mb-0">@Model.whatsapp.ToString("N0")</h1>
+                        <h5 class="font-light text-right mb-0">@Model.TotalMembersWhatsapp.ToString("N0")</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-7">
+                        <img width="30" src="~/PublicRelations/Theme/assets/images/Logo/telegram.png" />
+                        <p class="font-14 m-b-5">تلگرام</p>
+                        <span>
+                            Telegram
+                        </span>
+                    </div>
+                    <div class="col-5">
+                        <h1 class="font-light text-right mb-0">@Model.telegram.ToString("N0")</h1>
+                        <h5 class="font-light text-right mb-0">@Model.TotalMembersTelegram.ToString("N0")</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-7">
+                        <img width="30" src="~/PublicRelations/Theme/assets/images/Logo/Instagram.png" />
+                        <p class="font-14 m-b-5">انیستاگرام</p>
+                        <span>
+                            Instagram
+                        </span>
+                    </div>
+                    <div class="col-5">
+                        <h1 class="font-light text-right mb-0">@Model.Instagram.ToString("N0")</h1>
+                        <h5 class="font-light text-right mb-0">@Model.TotalMembersInstagram.ToString("N0")</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-7">
+                        <img width="30" src="~/PublicRelations/Theme/assets/images/Logo/x.png" />
+                        <p class="font-14 m-b-5">ایکس</p>
+                        <span>
+                            X
+                        </span>
+                    </div>
+                    <div class="col-5">
+                        <h1 class="font-light text-right mb-0">@Model.x.ToString("N0")</h1>
+                        <h5 class="font-light text-right mb-0">@Model.TotalMembersX.ToString("N0")</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-7">
+                        <img width="30" src="~/PublicRelations/Theme/assets/images/Logo/sorosh.png" />
+                        <p class="font-14 m-b-5">سروش</p>
+                        <span>
+                            Soroush+
+                        </span>
+                    </div>
+                    <div class="col-5">
+                        <h1 class="font-light text-right mb-0">@Model.sorosh.ToString("N0")</h1>
+                        <h5 class="font-light text-right mb-0">@Model.TotalMembersSorosh.ToString("N0")</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-7">
+                        <img width="30" src="~/PublicRelations/Theme/assets/images/Logo/iGap.png" />
+                        <p class="font-14 m-b-5">آی گپ</p>
+                        <span>
+                            IGap
+                        </span>
+                    </div>
+                    <div class="col-5">
+                        <h1 class="font-light text-right mb-0">@Model.iGap.ToString("N0")</h1>
+                        <h5 class="font-light text-right mb-0">@Model.TotalMembersIGap.ToString("N0")</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-7">
+                        <img width="30" src="~/PublicRelations/Theme/assets/images/Logo/eeta.png" />
+                        <p class="font-14 m-b-5">ایتا</p>
+                        <span>
+                            Eitaa
+                        </span>
+                    </div>
+                    <div class="col-5">
+                        <h1 class="font-light text-right mb-0">@Model.eeta.ToString("N0")</h1>
+                        <h5 class="font-light text-right mb-0">@Model.TotalMembersEeta.ToString("N0")</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-7">
+                        <img width="30" src="~/PublicRelations/Theme/assets/images/Logo/bale.png" />
+                        <p class="font-14 m-b-5">بله</p>
+                        <span>
+                            Bale
+                        </span>
+                    </div>
+                    <div class="col-5">
+                        <h1 class="font-light text-right mb-0">@Model.bale.ToString("N0")</h1>
+                        <h5 class="font-light text-right mb-0">@Model.TotalMembersBale.ToString("N0")</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-7">
+                        <img width="30" src="~/PublicRelations/Theme/assets/images/Logo/rubika.png" />
+                        <p class="font-14 m-b-5">روبیکا</p>
+                        <span>
+                            Rubika
+                        </span>
+                    </div>
+                    <div class="col-5">
+                        <h1 class="font-light text-right mb-0">@Model.rubika.ToString("N0")</h1>
+                        <h5 class="font-light text-right mb-0">@Model.TotalMembersRubika.ToString("N0")</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-8">
+                        <img width="30" src="~/PublicRelations/Theme/assets/images/Logo/whatsapp.png" />
+                        <img width="30" src="~/PublicRelations/Theme/assets/images/Logo/telegram.png" />
+                        <img width="30" src="~/PublicRelations/Theme/assets/images/Logo/Instagram.png" />
+                        <img width="30" src="~/PublicRelations/Theme/assets/images/Logo/x.png" />
+                        <img width="30" src="~/PublicRelations/Theme/assets/images/Logo/sorosh.png" />
+                        <img width="30" src="~/PublicRelations/Theme/assets/images/Logo/iGap.png" />
+                        <img width="30" src="~/PublicRelations/Theme/assets/images/Logo/eeta.png" />
+                        <img width="30" src="~/PublicRelations/Theme/assets/images/Logo/bale.png" />
+                        <img width="30" src="~/PublicRelations/Theme/assets/images/Logo/rubika.png" />
+                        <p class="font-14 m-b-5">جمع کانال ها و گروه ها</p>
+                        <span>
+                            Sum of channels and groups
+                        </span>
+                    </div>
+                    <div class="col-4">
+                        <h1 class="font-light text-right mb-0">@Model.total.ToString("N0")</h1>
+                        <h5 class="font-light text-right mb-0">@Model.TotalMembers.ToString("N0")</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+

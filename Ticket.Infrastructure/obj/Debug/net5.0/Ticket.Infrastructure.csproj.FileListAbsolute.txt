@@ -1,0 +1,12 @@
+D:\PROJECT\Ticket\Ticket.Infrastructure\bin\Debug\net5.0\Ticket.Infrastructure.deps.json
+D:\PROJECT\Ticket\Ticket.Infrastructure\bin\Debug\net5.0\Ticket.Infrastructure.dll
+D:\PROJECT\Ticket\Ticket.Infrastructure\bin\Debug\net5.0\ref\Ticket.Infrastructure.dll
+D:\PROJECT\Ticket\Ticket.Infrastructure\bin\Debug\net5.0\Ticket.Infrastructure.pdb
+D:\PROJECT\Ticket\Ticket.Infrastructure\obj\Debug\net5.0\Ticket.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\PROJECT\Ticket\Ticket.Infrastructure\obj\Debug\net5.0\Ticket.Infrastructure.AssemblyInfoInputs.cache
+D:\PROJECT\Ticket\Ticket.Infrastructure\obj\Debug\net5.0\Ticket.Infrastructure.AssemblyInfo.cs
+D:\PROJECT\Ticket\Ticket.Infrastructure\obj\Debug\net5.0\Ticket.Infrastructure.csproj.CoreCompileInputs.cache
+D:\PROJECT\Ticket\Ticket.Infrastructure\obj\Debug\net5.0\Ticket.Infrastructure.dll
+D:\PROJECT\Ticket\Ticket.Infrastructure\obj\Debug\net5.0\ref\Ticket.Infrastructure.dll
+D:\PROJECT\Ticket\Ticket.Infrastructure\obj\Debug\net5.0\Ticket.Infrastructure.pdb
+D:\PROJECT\Ticket\Ticket.Infrastructure\obj\Debug\net5.0\Ticket.Infrastructure.csproj.AssemblyReference.cache

@@ -1,0 +1,486 @@
+2025-07-26 07:37:13.9864 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 07:37:14.0198 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 07:37:14.0430 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 07:37:14.8398 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-07-26 07:37:22.8109 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/Login|action: Login
+
+2025-07-26 07:37:25.9045 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/Login|action: Login
+
+2025-07-26 07:37:35.0357 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-07-26 07:37:45.2206 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 07:37:45.2322 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 07:43:52.8179 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 07:43:52.8323 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 07:43:52.8358 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 07:43:53.1134 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-07-26 07:43:57.9351 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/Login|action: Login
+
+2025-07-26 07:44:00.5208 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/Login|action: Login
+
+2025-07-26 07:44:05.3421 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-07-26 07:44:08.4838 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 07:44:08.4917 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 07:45:06.4307 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 07:45:06.4502 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 07:45:06.4502 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 07:48:23.6808 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 07:48:23.6984 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 07:48:23.6984 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 07:48:24.1528 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-07-26 07:48:29.7768 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 07:48:29.7768 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 08:20:37.9171 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 08:20:37.9308 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 08:20:37.9308 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 08:20:40.6901 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 08:20:40.6997 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 08:21:33.7887 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 08:21:33.8035 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 08:21:33.8035 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 08:21:36.1925 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 08:21:36.2026 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 08:31:10.6321 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 08:31:10.6458 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 08:31:10.6458 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:27:59.5521 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:27:59.5687 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:27:59.5687 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:34:52.9433 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:34:52.9570 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:34:52.9570 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:34:53.4393 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-07-26 09:38:18.6383 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 09:38:18.6383 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 09:43:45.3192 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:43:45.3374 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:43:45.3374 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:43:47.6457 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 09:43:47.6555 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 09:51:12.5533 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:51:12.5703 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:51:12.5703 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:51:14.9213 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 09:51:14.9316 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 09:54:54.0734 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:54:54.0886 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:54:54.0886 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:55:31.4910 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:55:31.5057 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:55:31.5057 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:56:54.3313 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:56:54.3457 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 09:56:54.3457 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:00:00.2922 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:00:00.2922 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:00:00.3090 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:01:38.4383 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:01:38.4562 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:01:38.4602 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:03:17.6529 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:03:17.6691 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:03:17.6691 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:03:45.7217 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:03:45.7395 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:03:45.7395 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:05:48.1489 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:05:48.1659 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:05:48.1659 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:07:45.3257 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:07:45.3479 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:07:45.3479 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:08:28.0623 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:08:28.0800 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:08:28.0800 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:11:04.6793 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:11:04.6945 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:11:04.6945 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:11:45.3782 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:11:45.3933 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:11:45.3967 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:14:29.2938 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:14:29.3162 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:14:29.3162 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:17:01.4292 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:17:01.4428 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:17:01.4428 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:17:25.1292 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 10:17:25.1392 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 10:28:44.0616 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:28:44.0828 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:28:44.0828 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:31:23.2667 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:31:23.2829 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:31:23.2829 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:38:48.7302 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:38:48.7493 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:38:48.7493 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:42:09.6982 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:42:09.7144 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:42:09.7144 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:47:46.6628 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:47:46.6765 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:47:46.6765 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:47:49.3971 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 10:47:49.4066 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 10:48:05.0109 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/Person/HourlyLeave/GrantAccess|action: GrantAccess
+
+2025-07-26 10:48:54.2302 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:48:54.2544 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:48:54.2579 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:48:55.0866 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-07-26 10:49:39.6485 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/Person/HourlyLeave/GrantAccess|action: GrantAccess
+
+2025-07-26 10:55:08.7615 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:55:08.7769 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:55:08.7804 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:55:09.3018 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-07-26 10:55:33.1919 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:55:33.2084 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:55:33.2084 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 10:55:33.6947 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-07-26 10:59:55.6433 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 10:59:55.6433 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 11:09:42.7100 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 11:09:42.7240 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 11:09:42.7265 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:04:31.5038 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:04:31.5209 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:04:31.5209 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:04:32.3413 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-07-26 12:04:41.0421 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/Login|action: Login
+
+2025-07-26 12:04:44.4593 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/Login|action: Login
+
+2025-07-26 12:04:49.6722 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-07-26 12:06:01.5205 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:06:01.5396 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:06:01.5396 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:06:33.6691 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:06:33.6832 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:06:33.6832 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:07:26.9397 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:07:26.9536 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:07:26.9536 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:08:21.4630 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:08:21.4776 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:08:21.4776 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:08:32.2514 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 12:08:32.2514 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 12:32:30.4884 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:32:30.5022 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:32:30.5022 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:35:19.1049 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:35:19.1049 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:35:19.1214 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:37:46.2516 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:37:46.2694 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:37:46.2719 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:56:23.6025 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:56:23.6167 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:56:23.6194 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:56:25.8995 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 12:56:25.8995 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 12:57:13.0736 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:57:13.0930 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:57:13.0930 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:57:54.2808 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:57:54.2953 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:57:54.2953 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:58:47.7139 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:58:47.7347 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:58:47.7347 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:59:22.7505 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:59:22.7656 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 12:59:22.7656 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:01:17.7208 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 13:01:17.7301 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 13:04:01.9334 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:04:01.9509 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:04:01.9509 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:04:46.0109 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:04:46.0291 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:04:46.0315 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:05:13.3566 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/Person/HourlyLeave/AttendanceSummaryDaily|action: AttendanceSummaryDaily
+
+2025-07-26 13:05:21.6775 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/Person/HourlyLeave/AttendanceSummaryDaily|action: AttendanceSummaryDaily
+
+2025-07-26 13:05:27.3733 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 13:05:27.3733 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 13:07:24.4024 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:07:24.4213 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:07:24.4213 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:09:14.0206 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:09:14.0426 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:09:14.0426 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:09:14.8165 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-07-26 13:09:54.4499 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 13:09:54.4499 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 13:10:12.8264 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/Person/HourlyLeave/AttendanceSummaryDaily|action: AttendanceSummaryDaily
+
+2025-07-26 13:12:01.7923 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:12:01.8069 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:12:01.8069 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:12:02.2171 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-07-26 13:13:21.4474 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:13:21.4610 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:13:21.4610 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:16:26.0394 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 13:16:26.0394 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 13:19:23.6237 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:19:23.6380 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:19:23.6380 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:19:47.3161 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:19:47.3324 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:19:47.3324 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:20:04.7635 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 13:20:04.7732 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 13:28:22.4073 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:28:22.4232 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:28:22.4232 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:28:25.2614 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 13:28:25.2751 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 13:29:36.0929 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:29:36.1117 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:29:36.1117 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:29:38.5449 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 13:29:38.5545 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 13:31:05.9831 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:31:05.9831 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:31:05.9996 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:31:08.4533 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 13:31:08.4629 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Person/HourlyLeave/AttendanceSummary|action: AttendanceSummary
+
+2025-07-26 13:32:33.5181 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:32:33.5327 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-07-26 13:32:33.5327 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+

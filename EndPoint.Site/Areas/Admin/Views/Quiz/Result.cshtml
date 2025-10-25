@@ -1,0 +1,520 @@
+﻿@{
+
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using Azmoon.Application.Service.Result.Query
+@model GetResutQuizWithPager
+@addTagHelper *, LazZiya.TagHelpers
+@using EndPoint.Site.Useful.Ultimite
+     @using System.Security.Claims;
+@{
+    var name = ViewBag.QuizName;
+    var guizId = ViewBag.guizId;
+    ViewData["Title"] = name;
+    var roles = ((ClaimsIdentity)User.Identity).Claims
+.Where(c => c.Type == ClaimTypes.Role)
+.Select(c => c.Value).ToList();
+}
+<h1>@name </h1>
+
+<div class="row">
+    <div class="col-sm-4 col-xs-6">
+        <form asp-action="Result" method="get">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control float-right" placeholder="جستجو">
+                <input type="hidden" name="guizId" value="@guizId" />
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fa fa-search"></i></span>
+                </div>
+                <button type="submit" class="btn btn-primary">جستجو</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-sm-4 col-xs-4">
+        <div class="form-group form-group-sm">
+
+
+            <form class="form-inline d-inline" asp-action="Result" method="get">
+                <input type="hidden" name="guizId" value="@guizId" />
+                <button type="submit" name="search" value="clear" class="btn btn-default d-inline">
+                    پاک کن
+                </button>
+            </form>
+
+            <form class="form-inline d-inline" asp-action="QuizResultReportPrint" method="get">
+                <button type="submit" name="quizId" value="@guizId" class="btn btn-info d-inline">
+                    گزارش چاپی
+                </button>
+            </form>
+            <form class="form-inline d-inline" asp-action="ResultXlsx" method="get">
+                <button type="submit" name="quizId" value="@guizId" class="btn btn-warning d-inline">
+                    گزارش اکسل
+                </button>
+            </form> 
+       
+            <button type="submit" class="btn btn-danger d-inline" data-latary="@guizId" id="lataryBtn">
+                قرعه کشی
+            </button>
+
+            @if (roles.Contains("Administrator"))
+                {
+
+
+
+
+                <a href="/Admin/Apnl/DeletedQuizeUser" class="btn btn-default  d-inline"> <i class="fas fa-exclamation-circle"></i></a>
+               
+                }
+        </div>
+    </div>
+
+</div>
+<div id="alertPanel"></div>
+<div id="ResultPanel">
+    @{
+
+        if (Model != null)
+        {
+            //<div class="row mr-1">
+
+            //    <div>
+            //        <span>حداقل نمره :</span>
+            //        <input type="text" id="min" class="form-control" name="min">
+            //    </div>
+            //    <div>
+            //        <span>حداکثر نمره :</span>
+            //        <input type="text" id="max" class="form-control" name="max">
+            //    </div>
+            //</div>
+
+
+            <table class="table table table-striped non-hover" id="PrintArea">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ResultQuizDtos.ElementAt(0).WorkPlaceName)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.ResultQuizDtos.ElementAt(0).FullName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ResultQuizDtos.ElementAt(0).UserName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ResultQuizDtos.ElementAt(0).Phone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ResultQuizDtos.ElementAt(0).Point)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ResultQuizDtos.ElementAt(0).Darsad)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ResultQuizDtos.ElementAt(0).QuizStart)
+                        </th>
+                        <th>
+                            اعتبارسنجی نتیجه
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int countter = 1 ;
+                        if (Model.PagerDto.PageNo>1)
+                        {
+                            countter = (Model.PagerDto.PageSize * (Model.PagerDto.PageNo-1))+1;
+                        }
+                        if (Model.ResultQuizDtos != null)
+                        {
+                            @foreach (var item in Model.ResultQuizDtos)
+                            {
+                                <tr>
+                                    <th>@countter</th>
+                                    <td>
+                                        @item.WorkPlaceName
+
+                                    </td>
+                                    <td>
+                                        @item.FullName
+
+                                    </td>
+                                    <td>
+                                        @item.UserName
+
+                                    </td>
+                                    <td>
+                                        @item.Phone
+
+                                    </td>
+
+                                    <td>
+                                        @item.Point
+
+                                    </td>
+                                    <td>
+                                        @item.Darsad
+
+                                    </td>
+                                    <td>
+
+                                        @item.QuizStart
+                                    </td>
+
+                                    <td>
+
+
+                                        <a class="btn btn-outline-danger" data-result="@item.Id" data-action="AuthorizeResultQuiz" data-controller="Quiz" data-area="Admin">تست</a>
+                                        <a href="#" class="btn btn-outline-primary linkkarnameh mr-1" data-karnameh="@item.Id"><i class="fa fa-list-alt"></i> کارنامه</a>
+                                    </td>
+
+                                </tr>
+                                countter++;
+                            }
+                        }
+                    }
+
+                </tbody>
+            </table>
+
+            <!-- The Modal latary-->
+            <div class="modal" id="myModalLatary">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h6 class="modal-title">قرعه کشی</h6>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form action="/Admin/Quiz/Lottery" method="post" id="formLatary" class="form-inline">
+
+                                <input type="hidden" id="QuizIdLatary" name="id" value="@ViewBag.guizId" />
+                                <input type="text" name="min" class="form-control col-sm-4" placeholder="از نمره ...">
+                                <input type="text" name="max" class="form-control col-sm-4" placeholder="تا نمره ...">
+                                <input type="text" name="count" class="form-control col-sm-4" placeholder="تعداد">
+
+
+
+                            </form>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" onclick="submitFormLatary(event)" class="btn btn-outline-primary">ارسال <i class="fa fa-save" style="font-size: 19px;"></i></button>
+
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">لغو</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="overlay">
+                <div class="cv-spinner">
+                    <span class="spinner"></span>
+                </div>
+            </div>
+            <div class="card-footer">
+                @{
+                    if (Model != null && Model.PagerDto != null)
+                    {
+                        <paging page-no="@Model.PagerDto.PageNo"
+                page-size="@Model.PagerDto.PageSize"
+                total-records="@Model.PagerDto.TotalRecords"
+                show-prev-next="true"
+                show-total-pages="true"
+                show-total-records="true"
+                show-page-size-nav="true"
+                show-first-numbered-page="true"
+                show-last-numbered-page="true"
+                query-string-key-page-no="PageNo"
+                query-string-key-page-size="PageSize"
+                query-string-value="@@(Request.QueryString.Value)"
+                text-total-pages="صفحه"
+                text-total-records="رکورد"
+                text-first="&laquo;"
+                text-last="&raquo;"
+                text-previous="&lsaquo;"
+                text-next="&rsaquo;"
+                sr-text-first="اولین"
+                sr-text-last="آخرین"
+                sr-text-previous="قبلی"
+                sr-text-next="بعدی"
+                gap-size="2">
+                        </paging>
+                    }
+                }
+
+            </div>
+        }
+    }
+</div>
+<div class="modal fade" id="TreeViewModal" role="dialog" tabindex="-1" aria-labelledby="TreeViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TreeViewModalLabel">کارنامه</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="TreeView_modal_body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">خروج</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Styles  {
+    <link href="~/lib/SweetAlert/sweetalert2.css" rel="stylesheet" />
+    <link href="~/lib/select2/select2.css" rel="stylesheet" />
+    <link href="~/backend/css/Spiner.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/lib/table/datatable/datatables.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/table/datatable/custom_dt_html5.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/table/datatable/dt-global_style.css">
+}
+    @section StartScripts{
+
+
+    <script src="~/lib/jquery/dist/popper.min.js"></script>
+}
+    @section Scripts{
+
+    <script src="~/lib/SweetAlert/sweetalert2.js"></script>
+    <script src="~/lib/SweetAlert/polyfill.js.js"></script>
+    <!--  Start datatables AREA  -->
+    <script src="~/lib/table/datatable/popper.min.js"></script>
+    <script src="~/lib/table/datatable/datatables.js"></script>
+    <script src="~/lib/table/datatable/button-ext/dataTables.buttons.min.js"></script>
+    <script src="~/lib/table/datatable/button-ext/jszip.min.js"></script>
+    <script src="~/lib/table/datatable/button-ext/pdfmake.min.js"></script>
+    @*<script src="~/lib/table/datatable/button-ext/vfs_fonts.js"></script>*@
+    <script src="~/lib/table/datatable/button-ext/buttons.html5.min.js"></script>
+    <script src="~/lib/table/datatable/button-ext/buttons.print.min.js"></script>
+    <!--  END datatables AREA  -->
+
+    <script>
+        $(document).on("click", "a[data-action]", function(e) {
+            e.preventDefault();
+            $("#overlay").fadeIn(300);
+            var rezultId = $(this).data("result");
+            var linkk = $(this).data("action");
+            var controller = $(this).data("controller");
+            var area = $(this).data("area");
+            var Aarea = "";
+            if (area != "") {
+                Aarea = '/' + area;
+            }
+
+            var url = Aarea + '/' + controller + '/' + linkk;
+            console.log("url  : ", url);
+            console.log("rezultId  : ", rezultId);
+            if (rezultId > 0) {
+                console.log("test  : ", "ok");
+                $.getJSON(url, { rezultId: rezultId }, function(result, textStatus, jqXHR) {
+
+
+                })
+                    .done(function(result) {
+                        $("#overlay").fadeOut(300);
+                        if (result.isSuccess) {
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: result.message,
+                                showConfirmButton: false,
+                                timer: 3000
+                            });
+
+
+
+                        }
+                        else {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: result.message,
+                                showConfirmButton: false,
+                                timer: 3000
+                            })
+
+                        }
+
+
+                    })
+                    .fail(function(jqxhr, settings, ex) {
+                        $("#overlay").fadeOut(300);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'اطلاعات و مقادیر وارد شده نادرست می باشد دقت فرمائید!!',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                    });
+            }
+
+            //  window.location.href = Aarea + '/' + controller + '/' + linkk + '?rezultId=' + rezultId;
+
+
+
+        });
+        $(document).ready(function() {
+            $("#lataryBtn").on('click', function(e) {
+                e.preventDefault();
+
+
+                $('#myModalLatary').modal('show');
+
+            });
+        });
+        function submitFormLatary(event) {
+            event.preventDefault();
+            $('#myModalLatary').modal('toggle');
+            $("#overlay").fadeIn(300);
+            var max = $("#formLatary :input[name=max]").val(),
+                min = $("#formLatary :input[name=min]").val(),
+                id = $("#formLatary :input[name=id]").val(),
+                count = $("#formLatary :input[name=count]").val();
+            if (1 == 2) {
+
+                Swal.fire({
+
+                    icon: 'error',
+                    title: 'ناموفق :(',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+            else {
+                //      var RequestVerificationToken = $('#formAddQuestion input[name=__RequestVerificationToken]').val();
+                var inputs = $("#formLatary :input");
+                var dataO = {
+                    max: max,
+                    min: min,
+                    id: id,
+                    count: count,
+                };
+                arr = {};
+                var obj = $.map(inputs, function(x, y) {
+
+                    arr[x.name] = $(x).val();
+                });
+
+                // console.log("obj : ", obj);
+                 console.log("dataO : ", dataO);
+                //   console.log("__RequestVerificationToken : ", RequestVerificationToken);
+                $.ajax({
+                    type: "POST",
+                    url: '/Admin/Quiz/Lottery',
+                    //  headers: { "__RequestVerificationToken": RequestVerificationToken },
+                    data: dataO,
+                    success: function(data) {
+                        $("#overlay").fadeOut(300);
+                        // console.log("data : ", data);
+                        if (data.isSuccess) {
+                            $('#ResultPanel').html(data.data);
+                            Swal.fire({
+                                title: data.message,
+                                text: 'عملیات با موفقیت انجام شد ',
+                                icon: 'success',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'باشه!',
+                                showCancelButton: false,
+                            }).then((result) => {
+                                //if (result.isConfirmed) {
+                                //    location.reload();
+                                //}
+                            })
+                        } else {
+                            $('#QuizIdAddQuestion').val('');
+                            $('#TextAddQuestion').val('');
+                            Swal.fire({
+
+                                icon: 'error',
+                                title: 'ناموفق :(',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        }
+                    }
+                    , error: function(jqXhr, textStatus, errorMessage) {
+                        $("#overlay").fadeOut(300);
+                        $('#QuizIdAddQuestion').val('');
+                        $('#TextAddQuestion').val('');
+                        console.log('Error: ' + errorMessage);
+                    }
+                });
+            }
+
+        }
+        $('.linkkarnameh').click(function(e) {
+            e.preventDefault();
+            $("#overlay").fadeIn(300);
+            var resultId = $(this).data("karnameh");
+
+            console.log("resultId   : ", resultId);
+
+            var url = '/Student/Quizzes/karnameh';
+
+            if (resultId > 0) {
+                console.log("test  : ", resultId);
+                $.getJSON(url, { resultId: resultId }, function(result, textStatus, jqXHR) {
+
+
+                })
+                    .done(function(result) {
+                        $("#overlay").fadeOut(300);
+
+                        if (result.isSuccess) {
+                            console.log("OK  Result.isSuccess");
+
+                            $('#TreeViewModal').modal('show');
+                            $('#TreeView_modal_body').html(result.data);
+                            Swal.fire({
+                                icon: 'success',
+                                title: result.message,
+                                showConfirmButton: false,
+                                timer: 1000
+                            });
+
+
+
+                        }
+                        else {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: result.message,
+                                showConfirmButton: false,
+                                timer: 3000
+                            })
+
+                        }
+
+
+                    })
+                    .fail(function(jqxhr, settings, ex) {
+                        $("#overlay").fadeOut(300);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'اطلاعات و مقادیر وارد شده نادرست می باشد دقت فرمائید!!',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                    });
+            }
+
+            //  window.location.href = Aarea + '/' + controller + '/' + linkk + '?rezultId=' + rezultId;
+
+
+
+        });
+    </script>
+      
+}

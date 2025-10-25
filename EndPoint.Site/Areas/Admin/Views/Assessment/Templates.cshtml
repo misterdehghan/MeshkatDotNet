@@ -1,0 +1,112 @@
+﻿    @using Azmoon.Application.Service.Assessment.Dto
+    @model IEnumerable<GetTemplatesDto>
+@{
+    ViewData["Title"] = "کلیشه";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>لیست کلیشه ها</h2>
+  @if (User.IsInRole("Administrator") || User.IsInRole("AdminAssessment")) {
+<form asp-action="CreateTemplate" asp-area="Admin" asp-controller="Assessment" method="get">
+    <button type="submit" class="btn btn-default btn-change-state w3-green m-1">
+        کلیشه جدید  <i class="nav-icon fa fa-plus-circle"></i>
+    </button>
+</form>
+  }
+<table class="table table-striped" id="tbl_question" style="color:none">
+    <thead>
+        <tr>
+            <th>عنوان </th>
+            <th>نام کاربر ایجاد کننده </th>
+            <th>عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count() > 0)
+            {
+            foreach (var item in Model)
+                {
+                <tr data-id="@item.Id">
+                    <td>@item.Name</td>
+                    <td>@item.UserName</td>
+                    <td class="row">
+                        <a class="ml-3" href="/Admin/Assessment/GetDiteles/@item.Id"><i class='far fa-eye' style='font-size:25px;'></i></a>
+                          @if (User.IsInRole("Administrator") || User.IsInRole("AdminAssessment")) {
+                        <a class="ml-3" data-deleted="@item.Id"><i class="fa fa-trash" style="font-size:25px;color:red; "></i></a>
+                        <a href="/Admin/Assessment/EditTemplateQustionAnswer/@item.Id"><i class='far fa-edit' style='font-size:25px;'></i></a>
+                          }
+                    </td>
+                </tr>
+                }
+            }
+
+    </tbody>
+</table>
+<div id="overlay">
+    <div class="cv-spinner">
+        <span class="spinner"></span>
+    </div>
+</div>
+      @section Scripts{
+                <link href="~/lib/SweetAlert/sweetalert2.css" rel="stylesheet" />
+    <link href="~/backend/css/Spiner.css" rel="stylesheet" />
+      <script src="~/lib/SweetAlert/sweetalert2.js"></script>
+    <script>
+        $('[data-deleted]').click(function (e) {
+        e.preventDefault();
+        
+        var dId=$(this).attr("data-deleted")
+         console.log("dId : ", dId);
+         Swal.fire({
+  title: "آیا از حذف کلیشه اطمینان دارید؟",
+
+  showCancelButton: true,
+  confirmButtonText: "بله!",
+
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.isConfirmed) {
+       $("#overlay").fadeIn(300);
+     $.ajax({
+                type: "GET",
+                url: "/Admin/Assessment/deleteAssessment",
+                data: { "dId": dId },
+                success: function (response) {
+                    $("#overlay").fadeOut(300);
+           
+                  
+                   
+                        if (response.isSuccess == true) {
+                        swal.fire(
+                            'موفق!',
+                            'کلیشه با موفقیت حذف شد',
+                            'success'
+                     );
+                       var $row = $('#tbl_question tr[data-id="' + dId + '"]');
+                        $row.remove();
+                    }
+                    else {
+                        swal.fire(
+                            'هشدار!',
+                            "دیتا ثبت نشد",
+                            'warning'
+                        );
+                    }
+                },
+                error: function (xhr) {
+                    $("#overlay").fadeOut(300);
+                    swal.fire(
+                        'هشدار!',
+                        "خطا در ارسال و دریافت اطلاعات",
+                        'warning'
+                    );
+                }
+            });
+  } else if (result.isDenied) {
+    Swal.fire("شما از حذف منصرف شدید", "", "info");
+  }
+});
+           
+
+    });
+    </script>
+    }

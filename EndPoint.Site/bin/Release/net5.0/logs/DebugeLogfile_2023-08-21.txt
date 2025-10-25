@@ -1,0 +1,10 @@
+2023-08-21 09:49:24.9846||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2023-08-21 09:49:24.9993||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2023-08-21 09:49:24.9993||INFO|Microsoft.Hosting.Lifetime|Content root path: D:\PROJECT\Azmoon\Azmoon-14000231-PM\Azmoon\EndPoint.Site |url: |action: 
+
+2023-08-21 09:49:28.4301||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/Admin/Quiz/Details/1|action: Details
+
+2023-08-21 09:49:28.4301||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: PageNo, QueryStringKeyPageSize: PageSize,  |url: https://localhost/Admin/Quiz/Details/1|action: Details
+

@@ -1,0 +1,243 @@
+﻿@using EndPoint.Site.Models
+ @using EndPoint.Site.Useful.Ultimite;
+@{
+    ViewData["Title"] = "MonthlyReportResult";
+    Layout = "~/Areas/Person/Views/Shared/_LayoutPerson.cshtml";
+}
+
+@model MonthlyReportViewModel
+@{
+    ViewBag.Title = "نتایج گزارش ماهانه";
+}
+
+@using System.Globalization
+@{
+    // فرهنگ فارسی برای نمایش نام روز هفته
+    var persian = new CultureInfo("fa-IR");
+
+    // محاسبه آمار کلی
+    int daysPresent = Model.Days.Count(d =>
+        !d.IsIncomplete &&
+        d.FirstEntry.HasValue &&
+        d.LastExit.HasValue);
+
+    var totalWorkTicks = Model.Days.Sum(d => d.WorkHours.Ticks);
+    var totalOvertimeTicks = Model.Days.Sum(d => d.Overtime.Ticks);
+    var totalWork = new TimeSpan(totalWorkTicks);
+    var totalOvertime = new TimeSpan(totalOvertimeTicks);
+
+    int dailyLeaveDays = Model.Days.Count(d => d.HasDailyLeave);
+
+    // جمع ساعات مرخصی ساعتی
+    var totalHourlyLeaveTicks = Model.Days
+        .SelectMany(d => d.HourlyLeaves)
+        .Sum(h => (h.To - h.From).Ticks);
+    var totalHourlyLeave = new TimeSpan(totalHourlyLeaveTicks);
+
+    string fmt = @"hh\:mm";
+}
+
+
+
+<style>
+    .card {
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: rgba(0,123,255,0.05);
+    }
+
+    .text-overtime {
+        color: #d9534f;
+        font-weight: bold;
+    }
+
+    .text-work {
+        color: #28a745;
+    }
+
+    .text-incomplete {
+        color: #ffc107;
+        font-weight: bold;
+    }
+
+    tfoot tr {
+        background-color: #f8f9fa;
+        font-weight: bold;
+    }
+</style>
+
+<div class="card mb-4">
+  <div class="card-header bg-primary text-white">
+    <i class="fas fa-calendar-alt"></i>
+    گزارش ماه @Model.Year/@Model.Month — @Model.FullName
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table id="reportTable" class="table table-striped table-hover text-center mb-0">
+        <thead class="thead-light">
+          <tr>
+            <th>تاریخ</th>
+            <th>تعطیلی/مناسبت</th>
+            <th>مرخصی روزانه</th>
+            <th>مرخصی ساعتی</th>
+            <th>تردد</th>
+            <th>اولین ورود</th>
+            <th>آخرین خروج</th>
+            <th>ساعت کارکرد</th>
+            <th>اضافه‌کاری</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var day in Model.Days)
+          {
+              var dayName  = day.Date.ToString("dddd", persian);
+              var isFriday = day.Date.DayOfWeek == DayOfWeek.Friday;
+              var rowClass = day.IsHoliday
+                             ? "table-danger"
+                             : isFriday
+                               ? "table-warning"
+                               : "";
+          <tr class="@rowClass">
+            <td>
+                                @day.Date.ToPersianDateStrFarsi()<br />
+              <small class="text-muted">@dayName</small>
+            </td>
+       
+
+            <td>
+              @if (day.IsHoliday)
+              {
+                <span class="text-danger">
+                  <i class="fas fa-star-of-life"></i>
+                  @day.Occurrence
+                </span>
+              }
+              else
+              {
+                <span class="text-muted">&ndash;</span>
+              }
+            </td>
+            <td>
+              @if (day.HasDailyLeave)
+              {
+                <span class="badge badge-info">
+                  <i class="fas fa-check"></i>
+                </span>
+              }
+              else { <span class="text-muted">&ndash;</span> }
+            </td>
+            <td class="text-left">
+              @if (day.HourlyLeaves.Any())
+              {
+                @foreach (var hl in day.HourlyLeaves)
+                {
+                  <div>    از :
+                    <i class="fas fa-hourglass-start text-primary"></i>
+                    @hl.From —     تا:
+                    <i class="fas fa-hourglass-end text-danger"></i>
+                    @hl.To
+                  </div>
+                }
+              }
+              else { <span class="text-muted">&ndash;</span> }
+            </td>
+            <td>
+              @if (day.IsIncomplete)
+              {
+                <span class="text-incomplete">
+                  <i class="fas fa-exclamation-triangle"></i>
+                  تردد ناقص
+                </span>
+              }
+              else
+              {
+                @day.AttendanceCount
+              }
+            </td>
+                            <td>@(day.FirstEntry?.ToString("HH:mm tt").Replace("AM", "ق.ظ").Replace("PM", "ب.ظ") ?? "-")</td>
+                            <td>@(day.LastExit?.ToString("HH:mm tt").Replace("AM", "ق.ظ").Replace("PM", "ب.ظ") ?? "-")</td>
+                            <td class="text-work">
+                                @(day.WorkHours == TimeSpan.Zero
+                                    ? "0"
+                                    : day.WorkHours.ToString(@"hh\:mm"))
+                            </td>
+                            <td class="text-overtime">
+                                @(day.Overtime == TimeSpan.Zero
+                                    ? "0"
+                                    : day.Overtime.ToString(@"hh\:mm"))
+                            </td>
+
+          </tr>
+          }
+        </tbody>
+                <tfoot>
+                    <tr>
+                        <td  class="text-right">حضور کامل:</td>
+                        <td>@daysPresent</td>
+                        <td >ساعت کارکرد :</td>
+                        <td class="text-work">
+                            @(totalWork == TimeSpan.Zero
+                                ? "0"
+                                : totalWork.ToString(fmt))
+                        </td>
+                        <td class="text-overtime">
+                          ساعت اضافه کار :  @(totalOvertime == TimeSpan.Zero
+                                ? "0"
+                                : totalOvertime.ToString(fmt))
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  class="text-right">مرخصی روزانه:</td>
+                        <td>@dailyLeaveDays روز</td>
+                        <td class="text-right">مرخصی ساعتی:</td>
+                        <td >
+                            @(totalHourlyLeave == TimeSpan.Zero
+                                ? "0"
+                                : totalHourlyLeave.ToString(fmt))
+                        </td>
+                        <td ></td>
+                    </tr>
+                </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+@section Styles {
+    <link href="~/lib/datatable/datatables.css" rel="stylesheet" />
+}
+
+@section Scripts {
+
+    <script src="~/lib/datatable/datatables.js"></script>
+    <script>
+        $(function(){
+          // Initialize Select2
+          $('#YearSelect, #MonthSelect').select2({
+            theme: 'bootstrap4',
+            dir: 'rtl',
+            placeholder: 'انتخاب کنید'
+          });
+
+          // Tooltip globally
+          $('[data-toggle="tooltip"]').tooltip();
+
+          // DataTable on result table
+          $('#reportTable').DataTable({
+            paging:   true,
+            searching:true,
+            info:     false,
+            order:    [[0, 'asc']],
+            language: {
+              url: '/assets/js/persian.json'
+            }
+          });
+        });
+    </script>
+ }

@@ -1,0 +1,46 @@
+﻿
+@model IEnumerable<Azmoon.Application.Service.Result.Dto.GetKarnamehViewModel>
+
+@if (Model != null && Model.Count() > 0)
+{
+    <div class="component">
+
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-12 col-md-12 ">
+                    <div class="card mb-1 rounded">
+                        <div class="mt-1 ">
+                            <h6 class="quiz" style="text-align:right !important;"><span>سوال : </span>  @Html.Raw(item.questionText)</h6>
+                        </div>
+                        <h6 class="d-inline-block mt-0 mr-1 quiz">
+                            <span>جواب  : </span>  @Html.Raw(item.userAnswer)
+                            <span class="mr-1">
+                                @{
+
+                                    switch (item.IsTrue)
+                                    {
+                                        case true:
+
+                                            <i class="fas fa-check" style="font-size:25px;color:forestgreen"></i>
+                                            break;
+                                        case false:
+                                            <i class="fas fa-window-close" style="font-size:25px;color:red"></i>
+                                            break;
+
+                                    }
+                                }
+
+                            </span>
+                        </h6>
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    </div>
+}
+
+

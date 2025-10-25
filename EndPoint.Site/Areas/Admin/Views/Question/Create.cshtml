@@ -1,0 +1,33 @@
+﻿@model Azmoon.Application.Service.Question.Dto.AddQuestionViewModel
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>ایجاد سوال</h1>
+
+
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+        <form asp-action="Create" asp-controller="Question" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Text" class="control-label"></label>
+                <textarea asp-for="Text" class="form-control" ></textarea>
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <input asp-for="QuizId" value="@ViewBag.QuizId" type="hidden" />
+
+            <div class="form-group row">
+                <button type="submit"   class="btn btn-primary ml-2" >ذخیره <i class="fa fa-save" style="font-size: 19px;"></i></button>
+                <a asp-action="Details" asp-controller="Quiz" asp-area="Admin" asp-route-id="@ViewBag.QuizId" as class="btn btn-primary" >بازگشت <i class="fa fa-undo" style="font-size: 19px;"></i></a>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+   
+</div>
+

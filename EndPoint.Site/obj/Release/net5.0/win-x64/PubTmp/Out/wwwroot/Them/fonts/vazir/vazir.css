@@ -1,0 +1,65 @@
+﻿@font-face {
+    font-family: Vazir;
+    font-style: normal;
+    font-weight: 900;
+    src: url('./eot/Vazir-Black.eot');
+    src: url('./eot/Vazir-Black.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+    url('./woff2/Vazir-Black.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+    url('./woff/Vazir-Black.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('./ttf/Vazir-Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Vazir;
+    font-style: normal;
+    font-weight: bold;
+    src: url('./eot/Vazir-Bold.eot');
+    src: url('./eot/Vazir-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+    url('./woff2/Vazir-Bold.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+    url('./woff/Vazir-Bold.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('./ttf/Vazir-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Vazir;
+    font-style: normal;
+    font-weight: 500;
+    src: url('./eot/Vazir-Medium.eot');
+    src: url('./eot/Vazir-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+    url('./woff2/Vazir-Medium.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+    url('./woff/Vazir-Medium.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('./ttf/Vazir-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Vazir;
+    font-style: normal;
+    font-weight: 300;
+    src: url('./eot/Vazir-Light.eot');
+    src: url('./eot/Vazir-Light.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+    url('./woff2/Vazir-Light.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+    url('./woff/Vazir-Light.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('./ttf/Vazir-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Vazir;
+    font-style: normal;
+    font-weight: 100;
+    src: url('./eot/Vazir-Thin.eot');
+    src: url('./eot/Vazir-Thin.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+    url('./woff2/Vazir-Thin.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+    url('./woff/Vazir-Thin.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('./ttf/Vazir-Thin.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Vazir;
+    font-style: normal;
+    font-weight: normal;
+    src: url('./eot/Vazir.eot');
+    src: url('./eot/Vazir.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+    url('./woff2/Vazir.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+    url('./woff/Vazir.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('./ttf/Vazir.ttf') format('truetype');
+}

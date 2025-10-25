@@ -1,0 +1,89 @@
+﻿
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+ @using EndPoint.Site.Useful.Ultimite;
+@using X.PagedList.Mvc.Core.Common
+@using X.PagedList.Web.Common
+ @model IPagedList<UserShowPersonDtoLogin>
+
+@{
+    ViewData["Title"] = "سوابق ورود به سامانه";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-6">
+        <form method="get" asp-action="Index" class="mb-3">
+            <div class="form-inline">
+                <input type="text" name="searchIp" value="@ViewBag.SearchIp" placeholder="جستجو IP" class="form-control mx-2" />
+                <input type="text" name="searchUserName" value="@ViewBag.SearchUserName" placeholder="جستجو نام کاربری" class="form-control mx-2" />
+                <button type="submit" class="btn btn-primary">جستجو</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-3 col-xs-3 " style="text-align:right">
+        <div class="form-group form-group-sm">
+
+
+            <form class="form-inline d-inline" asp-action="Index" method="get">
+                <button type="submit" name="searchIp" value="clear" class="btn btn-default d-inline">
+                    پاک کن
+                </button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr class="table-primary">
+   
+            <th> پرسنلی</th>
+            <th> نام ونام خانوادگی</th>
+            <th>محل خدمت</th>
+               <th>تلفن</th>
+            <th>IP</th>
+            <th>زمان ثبت</th>
+         
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var log in Model)
+            {
+            <tr>
+                <td>@log.UserName</td>
+                <td>@log.FirstName &nbsp; @log.LastName</td>
+                <td>@log.WorkPlaceName</td>
+                       <td>@log.Phone</td>
+                <td>@log.Ip</td>
+                <td>@log.RegesterAt?.ToPersianDateTimeStrFarsi()</td>
+              
+            </tr>
+            }
+    </tbody>
+</table>
+
+@* @Html.PagedListPager(Model, page => Url.Action("Index", new
+        {
+        page,
+        searchIp = ViewBag.SearchIp,
+        searchUserName = ViewBag.SearchUserName
+        })) *@
+
+<div class="text-center mt-3">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { searchIp = ViewBag.SearchIp, searchUserName = ViewBag.SearchUserName, page }),
+            new PagedListRenderOptions
+        {
+        DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+        DisplayLinkToLastPage = PagedListDisplayMode.Always,
+        DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+        DisplayLinkToNextPage = PagedListDisplayMode.Always,
+        DisplayLinkToIndividualPages = true,
+        MaximumPageNumbersToDisplay = 5,
+        UlElementClasses = new[] { "pagination" },
+        LiElementClasses = new[] { "page-item" },
+        PageClasses = new[] { "page-link" }
+        })
+</div>
+
+

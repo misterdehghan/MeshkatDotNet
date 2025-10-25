@@ -1,0 +1,664 @@
+﻿@addTagHelper *, LazZiya.TagHelpers
+@using Azmoon.Application.Service.PublicRelations.NewsPerformancesServices
+@model ResultListNewsP
+@using EndPoint.Site.Areas.PublicRelations.Helpers.Convertors;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/PublicRelations/Views/Shared/_Layout.cshtml";
+    int pageSize = ViewBag.PageSize ?? 10; // مقدار پیش‌فرض 10 در صورت null بودن
+    int pageNumber = ViewBag.PageNumber ?? 1; // مقدار پیش‌فرض 1 در صورت null بودن
+    int startIndex = pageSize * (pageNumber - 1); // شروع از شماره مورد نظر بر اساس صفحه جاری
+    int rowIndex = startIndex + 1;
+}
+
+<style>
+    .messenger-logo {
+    width: 25px; /* عرض مورد نظر خود را تنظیم کنید */
+    height: 25px; /* ارتفاع مورد نظر خود را تنظیم کنید */
+    }
+
+    th, td {
+    text-align: center;
+    }
+</style>
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-5 align-self-center">
+        </div>
+        <div class="col-7 align-self-center">
+            <div class="d-flex align-items-center justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">گزارش ها</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">گزارش کانال ها</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">گزارش عملکرد خبری</h4>
+                    <h6 class="card-subtitle">"لطفاً توجه داشته باشید که این صفحه حاوی اطلاعات با ارزش است و باید از هر گونه تغییر در آن بدون اطلاع قبلی پرهیز کرد."</h6>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-2">
+                            <div class="form-group">
+                                <label for="yearSelect" class="control-label col-form-label">انتخاب سال</label>
+                                <select class="form-control" id="yearSelect">
+                                    <option value="">انتخاب سال</option>
+                                    @foreach (var year in ViewBag.Years)
+                                    {
+                                        <option value="@year">@DateConvertor.ConvertYearToShamsi(year)</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-2">
+                            <div class="form-group">
+                                <label for="courseSelect" class="control-label col-form-label">انتخاب دوره</label>
+                                <select class="form-control" id="courseSelect">
+                                    <option value="" disabled selected>انتخاب دوره</option>
+                                    <!-- دوره‌ها اینجا بارگذاری می‌شوند -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-2">
+                            <div class="form-group">
+                                <label class="control-label col-form-label">&nbsp;</label>
+                                <div>
+                                    <button type="button" class="btn btn-success" id="submitButton">نمایش</button>
+                                    <a id="reloadCourseButton" class="btn btn-dark" style="color:white">باز نشانی</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        @*------*@
+                        @if (Model != null)
+                        {
+                            <div id="file_export_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+
+                                <div class="dt-buttons">
+                                    <a href="@Url.Action("ExportToExcel", new { searchKey = ViewBag.CurrentFilter, CommunicationPeriodId = ViewBag.CommunicationPeriodId })" class="dt-button buttons-excel buttons-html5 btn btn-cyan text-white mr-1" tabindex="0" aria-controls="file_export" id="exportExcelLink"><span>Excel</span></a>
+                                    <a href="@Url.Action("ExportToPdf", new { searchKey = ViewBag.CurrentFilter, CommunicationPeriodId = ViewBag.CommunicationPeriodId })" class="dt-button buttons-pdf buttons-html5 btn btn btn-cyan text-white mr-1" tabindex="0" aria-controls="file_export" id="exportPdfLink"><span>PDF</span></a>
+                                </div>
+                                <form class="m-t-20" method="get" asp-controller="NewsPerformances" asp-action="Index">
+                                    <div class="input-group mb-3 col-md-5 ml-auto">
+                                        <div class="input-group-prepend">
+                                            <a class="btn btn-secondary" id="reloadButton"><i class="ti-reload" style="color:white"></i></a>
+                                        </div>
+                                        <input class="form-control" placeholder="متن مورد نظر خود را وارد کنید" name="searchKey" id="searchInput" value="@ViewBag.CurrentFilter">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-success" id="searchButton"><i class="ti-search"></i></button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-secondary btn-sm disabled">
+                                        <input type="radio" name="filterOptions" id="option0" autocomplete="off" disabled>
+                                        <i class="fas fa-filter"></i>&nbsp;فیلتر
+                                    </label>
+                                    <label class="btn btn-light btn-sm">
+                                        <input type="radio" name="filterOptions" id="optionAll" value="all" onchange="getConfirmationStatus(this)">
+                                        همه
+                                    </label>
+                                    <label class="btn btn-light btn-sm">
+                                        <input type="radio" name="filterOptions" id="optionConfirmed" value="true" onchange="getConfirmationStatus(this)">
+                                        تایید شده
+                                    </label>
+                                    <label class="btn btn-light btn-sm">
+                                        <input type="radio" name="filterOptions" id="optionNotConfirmed" value="false" onchange="getConfirmationStatus(this)">
+                                        تایید نشده
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <table id="my-table" class="table table-sm m-b-0">
+                                <thead class="bg-danger text-white">
+                                    <tr>
+                                        <th scope="col">ردیف</th>
+                                        <th scope="col">اپرتور</th>
+                                        <th scope="col">نام خبرگزاری</th>
+                                        <th scope="col">موضوع</th>
+                                        <th scope="col">تاریخ انتشار</th>
+                                        <th scope="col">مستند</th>
+                                        <th scope="col">وضعیت آماری</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.newsDtos)
+                                    {
+                                        <tr>
+                                            <td scope="row">@rowIndex</td>
+                                            <td>@item.Operator</td>
+                                            <td>@item.NewsAgencyName</td>
+                                            <td>@item.Subject</td>
+                                            <td>@item.PublicationDate.ToShamsi()</td>
+                                            <td style="text-align: center;">
+                                                <a href="/@item.Image" class="image-popup-no-margins">
+                                                    @* <img src="/@item.Image" class="img-fluid" width="70" height="40"> *@
+                                                    <div style="width: 70px; height: 40px; overflow: hidden;">
+                                                        <img src="/@item.Image" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;">
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                @if (item.Confirmation)
+                                                {
+                                                    <i class="fas fa-check-circle clickable-icon" data-id="@item.Id" style="color:green; cursor:pointer;"></i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="fas fa-times-circle clickable-icon" data-id="@item.Id" style="color:red; cursor:pointer;"></i>
+                                                }
+                                            </td>
+                                            <td  style="display:none;">@item.Id</td>
+                                            <td style="text-align: left;">
+                                                <button type="button" class="btn btn4 btn-sm btn-icon btn-pure btn-outline delete-row-btn"
+                                                data-newsper-id="@item.Id"
+                                                data-url="@Url.Action("PartialViewDetailModal", "NewsPerformances")">
+                                                    <i class="fas fa-info" aria-hidden="true"></i>
+                                                </button>
+                                               
+                                                @if (!ViewBag.IsActive && !ViewBag.IsOperatorMatch)
+                                                {
+                                                    <button disabled type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn">
+                                                        <i class="fas fa-edit" aria-hidden="true"></i>
+                                                    </button>
+                                                    <button disabled type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn">
+                                                        <i class="fas fa-trash" aria-hidden="true"></i>
+                                                    </button>
+                                                }
+                                                else
+                                                {
+                                                    <button type="button" class="btn btn6 btn-sm btn-icon btn-pure btn-outline delete-row-btn"
+                                                            data-newsperformances-id="@item.Id"
+                                                            data-url="@Url.Action("PartialViewEditModal", "NewsPerformances")">
+                                                        <i class="fas fa-edit" aria-hidden="true"></i>
+                                                    </button>
+                                                    
+                                                    <button type="button" class="btn btn5 btn-sm btn-icon btn-pure btn-outline delete-row-btn"
+                                                            onclick="DeleteNewsPerformance(event)">
+                                                        <i class="fas fa-trash" aria-hidden="true"></i>
+                                                    </button>
+                                                }
+
+                                            </td>
+                                        </tr>
+                                        rowIndex++;
+                                    }
+                                </tbody>
+                            </table>
+                        }
+
+                        @if (TempData["ErrorMessage"] != null)
+                        {
+                            <div class="alert alert-danger">
+                                @TempData["ErrorMessage"]
+                            </div>
+                        }
+                        @if (TempData["InfoMessage"] != null)
+                        {
+                            <div class="alert alert-info">
+                                @TempData["InfoMessage"]
+                            </div>
+                        }
+                    </div>
+
+                    <div class="text-center">
+                        @if (Model != null)
+                        {
+                            <paging total-records="@Model.RowCount"
+                                    page-no="@Model.CurrentPage"
+                                    page-size="@Model.PageSize"
+                                    show-prev-next="true"
+                                    show-total-pages="false"
+                                    show-total-records="false"
+                                    show-page-size-nav="true"
+                                    show-first-numbered-page="true"
+                                    show-last-numbered-page="true"
+                                    query-string-key-page-no="Page"
+                                    query-string-key-page-size="PageSize"
+                                    gap-size="2">
+                            </paging>
+                        }
+                    </div>
+
+                </div>
+
+            </div>
+            <a class="btn btn-primary mb-2" asp-controller="Channel" asp-action="AddChannel">
+                <i class="fas fa-plus"></i>&nbsp; افزودن جدید
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+@section Styles {
+    <!-- This Page CSS -->
+    <link href="~/PublicRelations/theme/assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
+    <link href="~/PublicRelations/theme/assets/libs/magnific-popup/animation.css" rel="stylesheet">
+}
+
+
+@section Modals
+{
+
+    <script src="~/PublicRelations/theme/assets/libs/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+
+    <div data-url='@Url.Action("PartialViewDetailModal", "NewsPerformances")' class="modal fade" id="DetailNewsPerformances" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" style="display: none;" aria-hidden="true"></div>
+    <div data-url='@Url.Action("PartialViewEditModal", "NewsPerformances")' class="modal fade" id="EditNewsPerformances" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" style="display: none;" aria-hidden="true"></div>
+}
+@section Scripts {
+
+     <link href="~/PublicRelations/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+     <script src="~/PublicRelations/Sweetalert2/sweetalert2.min.js"></script>
+
+
+    <!-- This Page JS -->
+    <script src="~/PublicRelations/theme/assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+    <script src="~/PublicRelations/theme/assets/libs/magnific-popup/meg.init.js"></script>
+
+
+    <script>
+        if (window.location.pathname === '/PublicRelations/NewsPerformances' && window.location.search.length === 0) {
+            localStorage.removeItem("selectedCourseId");
+            localStorage.removeItem("selectedYear");
+            localStorage.removeItem("ConfirmationStatus");
+
+
+            // بازنشانی دراپ‌دان‌ها به حالت پیش‌فرض
+            yearSelect.value = '';
+            courseSelect.innerHTML = '<option value="" disabled selected>انتخاب دوره</option>';
+        }
+    </script>
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // تابع برای دریافت پارامتر از URL
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+
+            // دریافت مقدار ConfirmationStatus از URL
+            const confirmationStatus = getQueryParam("ConfirmationStatus");
+
+            // اگر مقدار ConfirmationStatus موجود است، لینک‌ها را به‌روزرسانی کنید
+            if (confirmationStatus) {
+                const excelLink = document.getElementById("exportExcelLink");
+                const pdfLink = document.getElementById("exportPdfLink");
+
+                // افزودن پارامتر ConfirmationStatus به انتهای URL
+                excelLink.href += `&ConfirmationStatus=${confirmationStatus}`;
+                pdfLink.href += `&ConfirmationStatus=${confirmationStatus}`;
+            }
+        });
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+
+            var courseSelect = document.getElementById("courseSelect");
+            var yearSelect = document.getElementById("yearSelect");
+
+            // بازیابی مقادیر انتخاب شده از Local Storage
+            var savedCourseId = localStorage.getItem("selectedCourseId");
+            var savedYear = localStorage.getItem("selectedYear");
+
+            if (savedYear) {
+                yearSelect.value = savedYear;
+                loadCourses(savedYear, savedCourseId);
+            }
+
+            if (savedCourseId) {
+                courseSelect.value = savedCourseId;
+            }
+
+            // بارگذاری دوره‌ها بر اساس سال انتخاب‌شده
+            yearSelect.addEventListener("change", function () {
+                var selectedYear = yearSelect.value;
+                localStorage.setItem("selectedYear", selectedYear);
+
+                if (!selectedYear) {
+                    courseSelect.innerHTML = '<option value="" disabled selected>انتخاب دوره</option>';
+                    return;
+                }
+
+                loadCourses(selectedYear, null);
+            });
+
+            document.getElementById("submitButton").addEventListener("click", function () {
+                var courseId = courseSelect.value;
+
+                if (!courseId) {
+                    alert('لطفاً یک دوره انتخاب کنید.');
+                    return;
+                }
+
+                localStorage.setItem("selectedCourseId", courseId);
+
+                var url = '/PublicRelations/NewsPerformances/Index?CommunicationPeriodId=' + courseId;
+                window.location.href = url;
+            });
+
+            document.getElementById("searchButton").addEventListener("click", function (event) {
+                event.preventDefault();
+
+                var courseId = courseSelect.value;
+                var searchQuery = document.getElementById("searchInput").value;
+
+                if (!courseId) {
+                    alert('لطفاً یک دوره انتخاب کنید.');
+                    return;
+                }
+
+                localStorage.setItem("selectedCourseId", courseId);
+
+                // بازیابی ConfirmationStatus از Local Storage
+                var confirmationStatus = localStorage.getItem("ConfirmationStatus");
+                var url = `?CommunicationPeriodId=${courseId}`;
+
+                // اضافه کردن پارامترهای جستجو و فیلتر
+                if (searchQuery) {
+                    url += `&searchKey=${searchQuery}`;
+                }
+                if (confirmationStatus) {
+                    url += `&ConfirmationStatus=${confirmationStatus}`;
+                }
+
+                window.location.href = url;
+            });
+
+
+
+            // تابع برای ذخیره وضعیت ConfirmationStatus و ارسال به سرور
+            window.getConfirmationStatus = function (el) {
+                var courseId = localStorage.getItem("selectedCourseId");
+
+                if (!courseId) {
+                    alert('لطفاً ابتدا یک دوره انتخاب کنید.');
+                    return;
+                }
+
+                var confirmationStatus = el.value;
+                localStorage.setItem("ConfirmationStatus", confirmationStatus);
+
+                updateRadioButtonUI(el); // بروزرسانی رنگ دکمه فعال
+
+                // بازیابی searchKey از جستجوی قبلی
+                var searchQuery = document.getElementById("searchInput").value;
+                var url = `?CommunicationPeriodId=${courseId}&ConfirmationStatus=${confirmationStatus}`;
+
+                // اضافه کردن پارامترهای جستجو و فیلتر
+                if (searchQuery) {
+                    url += `&searchKey=${searchQuery}`;
+                }
+
+                window.location.href = url; // ارسال درخواست به سرور
+            };
+
+
+            // تنظیم رنگ دکمه‌ها هنگام بارگذاری صفحه
+            function setActiveRadioButton() {
+                var confirmationStatus = localStorage.getItem("ConfirmationStatus");
+
+                // اگر confirmationStatus وجود نداشت، به پیش‌فرض 'all' تنظیم شود
+                if (!confirmationStatus) {  // <-- تغییر: بررسی وجود confirmationStatus
+                    confirmationStatus = 'all'; // <-- تغییر: تنظیم مقدار پیش‌فرض به 'all'
+                    localStorage.setItem("ConfirmationStatus", confirmationStatus); // <-- تغییر: ذخیره 'all' در localStorage
+                }
+
+                var radioButton = document.querySelector(`input[name="filterOptions"][value="${confirmationStatus}"]`);
+                if (radioButton) {
+                    radioButton.checked = true;
+                    updateRadioButtonUI(radioButton);
+                }
+            }
+
+            // بروزرسانی رنگ دکمه‌های فعال
+            function updateRadioButtonUI(selectedButton) {
+                document.querySelectorAll('.btn-group-toggle .btn').forEach(btn => {
+                    btn.classList.remove('btn-success');
+                    btn.classList.add('btn-light');
+                });
+                selectedButton.parentElement.classList.add('btn-success');
+                selectedButton.parentElement.classList.remove('btn-light');
+            }
+
+            setActiveRadioButton();
+
+            document.getElementById("reloadButton").addEventListener("click", function () {
+                var courseId = localStorage.getItem("selectedCourseId");
+                if (courseId) {
+                    var url = '/PublicRelations/NewsPerformances/Index?CommunicationPeriodId=' + courseId;
+                    window.location.href = url;
+                } else {
+                    alert('لطفاً یک دوره انتخاب کنید.');
+                }
+            });
+
+            document.getElementById("reloadCourseButton").addEventListener("click", function () {
+                localStorage.removeItem("selectedCourseId");
+                localStorage.removeItem("selectedYear");
+                localStorage.removeItem("ConfirmationStatus");
+                window.location.href = '/PublicRelations/NewsPerformances';
+            });
+
+            function loadCourses(year, selectedCourseId) {
+                $.ajax({
+                    url: '/PublicRelations/NewsPerformances/GetCoursesByYear',
+                    type: 'GET',
+                    data: { year: year },
+                    success: function (data) {
+                        courseSelect.innerHTML = '<option value="" disabled selected>انتخاب دوره</option>';
+                        data.forEach(function (course) {
+                            var option = document.createElement("option");
+                            option.value = course.id;
+                            option.text = course.statisticalPeriod;
+                            courseSelect.appendChild(option);
+                        });
+                        if (selectedCourseId) {
+                            courseSelect.value = selectedCourseId;
+                        }
+                    },
+                    error: function () {
+                        alert('خطا در دریافت اطلاعات. لطفاً دوباره تلاش کنید.');
+                    }
+                });
+            }
+
+
+            function getQueryParam(param) {
+                // جستجوی مقدار پارامتر در URL
+                var urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+
+
+
+        });
+
+    </script>
+
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            $(".clickable-icon").click(function () {
+                var icon = $(this);
+                var id = icon.data("id");
+
+                $.ajax({
+                    url: '@Url.Action("ChangeOfStatus", "NewsPerformances")', // به جای نام کنترلر و اکشن خود را وارد کنید
+                    type: 'POST',
+                    data: { id: id },
+                    success: function (response) {
+                        if (response.success) {
+                            // بازخوانی وضعیت جدید از سرور
+                            $.ajax({
+                                url: '@Url.Action("GetStatus", "NewsPerformances")', // اکشنی برای دریافت وضعیت جدید
+                                type: 'GET',
+                                data: { id: id },
+                                success: function (data) {
+                                    console.log("data" + data)
+                                    if (data.success) {
+                                        if (data.data) {
+                                            icon.removeClass("fa-times-circle").addClass("fa-check-circle").css("color", "green");
+                                        } else {
+                                            icon.removeClass("fa-check-circle").addClass("fa-times-circle").css("color", "red");
+                                        }
+                                    } else {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'خطا',
+                                            text: data.message
+                                        });
+                                    }
+                                },
+                                error: function () {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'خطا',
+                                        text: 'خطا در بازخوانی وضعیت. لطفاً دوباره تلاش کنید.'
+                                    });
+                                }
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'خطا',
+                                text: response.message
+                            });
+                        }
+                    },
+                    error: function () {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'خطا',
+                            text: 'خطا در تغییر وضعیت. لطفاً دوباره تلاش کنید.'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        function DeleteNewsPerformance(event) {
+            event.preventDefault();
+
+            var newsPerformanceId = $(event.target).closest('tr').find('td[style="display:none;"]').text();
+
+
+            Swal.fire({
+                title: "آیا مطمئن هستید؟",
+                text: "این عملیات قابل بازگشت نیست!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "بله، حذف کن",
+                cancelButtonText: "لغو"
+            }).then((result) => {
+                if (result.value) {
+
+                    $.ajax({
+                        contentType: 'application/x-www-form-urlencoded',
+                        dataType: 'json',
+                        type: "POST",
+                        url: "DeleteNewsPerformances",
+                        data: {
+                            id: newsPerformanceId
+                        },
+                        success: function (data) {
+                            console.log("AJAX request successful: ", data);
+                            if (data.isSuccess) {
+                                swal.fire(
+                                    'موفق!',
+                                    data.message,
+                                    'success'
+                                ).then(function () {
+                                    location.reload();
+                                });
+                            } else {
+                                swal.fire(
+                                    'هشدار!',
+                                    data.message,
+                                    'warning'
+                                );
+                            }
+                        },
+                        error: function (request, status, error) {
+                            console.error("خطا در درخواست:", request.responseText);
+                            console.log("Error details: ", status, error);
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+
+
+    @* --------------- *@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.btn4').click(function () {
+                // گرفتن ای دی از دکمه
+                var newsId = $(this).data('newsperformances-id');
+
+                // ساختن URL با ای دی گرفته شده
+                var url = $('#DetailNewsPerformances').data('url') + '?id=' + newsId;
+
+                // ارسال درخواست با ای دی
+                $.get(url, function (data) {
+                    $("#DetailNewsPerformances").html(data);
+                    $("#DetailNewsPerformances").modal('show');
+                });
+            });
+        });
+    </script>
+
+     <script type="text/javascript">
+        $(document).ready(function () {
+            $('.btn6').click(function () {
+                // گرفتن ای دی از دکمه
+                var newsId = $(this).data('newsperformances-id');
+
+                // ساختن URL با ای دی گرفته شده
+                var url = $('#EditNewsPerformances').data('url') + '?id=' + newsId;
+
+                // ارسال درخواست با ای دی
+                $.get(url, function (data) {
+                    $("#EditNewsPerformances").html(data);
+                    $("#EditNewsPerformances").modal('show');
+                });
+            });
+        });
+    </script> 
+
+
+
+}

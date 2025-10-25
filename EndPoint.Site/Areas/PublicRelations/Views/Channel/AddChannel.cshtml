@@ -1,0 +1,229 @@
+﻿@using Azmoon.Domain.Entities
+@using Microsoft.AspNetCore.Identity
+@model EndPoint.Site.Areas.PublicRelations.Models.Dto.Channel.AddChannlDto
+@inject UserManager<User> UserManager
+
+
+
+@{
+    ViewData["Title"] = "AddChannel";
+    Layout = "~/Areas/PublicRelations/Views/Shared/_Layout.cshtml";
+    var user = await UserManager.FindByNameAsync(User.Identity.Name);
+}
+@*<style>
+    input::placeholder {
+        color: #bebfc1 !important;
+    }
+</style>*@
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-5 align-self-center">
+            @*<h4 class="page-title">افزودن کانال جدید</h4>*@
+        </div>
+        <div class="col-7 align-self-center">
+            <div class="d-flex align-items-center justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">ورودی ها</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">افزودن کانال جدید </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+
+    <div class="card">
+        <div class="card-header bg-success">
+            <h4 class="m-b-0 text-white">افزودن کانال جدید</h4>
+        </div>
+
+        <div class="form-body">
+            <div class="card-body">
+                <div class="row p-t-20">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">نام پیامرسان</label>
+                            <select class="form-control" name="Name" asp-items="@ViewBag.Messenger" id="Messenger" autocomplete="off">
+                                <option value="" disabled selected>انتخاب پیامرسان</option>
+                            </select>
+                            <small class="form-control-feedback"> از بین پیامرسان های موجود گزینه مورد نظر را انتخاب کنید </small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group has-danger">
+                            <label class="control-label">نام کانال</label>
+                            <input type="text" id="Channel" class="form-control form-control-danger" placeholder="" autocomplete="off" />
+                            <small class="form-control-feedback"><span asp-validation-for="ChannelName" class="text-danger"></span></small>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group has-danger">
+                            <label class="control-label">شماره تلفن کانال</label>
+                            <input type="text" id="PhoneNumber" class="form-control form-control-danger" placeholder="09121234567" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group has-danger">
+                            <label class="control-label">آدرس کانال</label>
+                            <input type="text" id="Address" class="form-control form-control-danger" placeholder="Example@@" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+                <!--/row-->
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">تاریخ ایجاد کانال</label>
+                            <input type="text" id="date-input" data-jdp data-jdp-miladi-input="miladi_date" class="form-control" autocomplete="off">
+                            <input type="hidden" id="miladi_date" />
+
+                        </div>
+                    </div>
+
+
+                    @if (user.Operator == "Senior")
+                    {
+                        <div class="form-group">
+                            <label class="control-label">اپراتور</label>
+                            <select class="form-control" name="Name" asp-items="@ViewBag.Operator" id="Operator" autocomplete="off">
+                                <option value="" disabled selected>--بدون انتخاب--</option>
+                            </select>
+                            <small class="form-control-feedback"> از بین اپراتور های موجود گزینه مورد نظر را انتخاب کنید </small>
+                        </div>
+                    }
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <div class="card-body text-right">
+                <button type="button" onclick="AddChannel()" class="btn btn-info"> <i class="fa fa-check"></i> ذخیره</button>
+                <button type="button" class="btn btn-dark">انصراف</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Styles
+{
+    @*Date Picker*@
+    <link href="~/PublicRelations/theme/jalalidatepicker/jalalidatepicker.css" rel="stylesheet" />
+    <script src="~/PublicRelations/theme/jalalidatepicker/jalalidatepicker.js"></script>
+}
+
+
+@section Scripts
+{
+
+
+     <link href="~/PublicRelations/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+     <script src="~/PublicRelations/Sweetalert2/sweetalert2.min.js"></script>
+
+
+    @*Date Picker*@
+    <script>
+        jalaliDatepicker.startWatch();
+
+        document.querySelector("[data-jdp-miladi-input]").addEventListener("jdp:change", function (e) {
+            var miladiInput = document.getElementById(this.getAttribute("data-jdp-miladi-input"));
+            if (!this.value) {
+                miladiInput.value = "";
+                return;
+            }
+            var date = this.value.split("/");
+            miladiInput.value = jalali_to_gregorian(date[0], date[1], date[2]).join("/")
+        });
+
+        function jalali_to_gregorian(jy, jm, jd) {
+            jy = Number(jy);
+            jm = Number(jm);
+            jd = Number(jd);
+            var gy = (jy <= 979) ? 621 : 1600;
+            jy -= (jy <= 979) ? 0 : 979;
+            var days = (365 * jy) + ((parseInt(jy / 33)) * 8) + (parseInt(((jy % 33) + 3) / 4))
+                + 78 + jd + ((jm < 7) ? (jm - 1) * 31 : ((jm - 7) * 30) + 186);
+            gy += 400 * (parseInt(days / 146097));
+            days %= 146097;
+            if (days > 36524) {
+                gy += 100 * (parseInt(--days / 36524));
+                days %= 36524;
+                if (days >= 365) days++;
+            }
+            gy += 4 * (parseInt((days) / 1461));
+            days %= 1461;
+            gy += parseInt((days - 1) / 365);
+            if (days > 365) days = (days - 1) % 365;
+            var gd = days + 1;
+            var sal_a = [0, 31, ((gy % 4 == 0 && gy % 100 != 0) || (gy % 400 == 0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            var gm
+            for (gm = 0; gm < 13; gm++) {
+                var v = sal_a[gm];
+                if (gd <= v) break;
+                gd -= v;
+            }
+            return [gy, gm, gd];
+        }
+    </script>
+
+    <script>
+        function AddChannel() {
+            var Messenger = $("#Messenger").val();
+            var Channel = $("#Channel").val();
+            var PhoneNumber = $("#PhoneNumber").val();
+            var Address = $("#Address").val();
+            var datepicker = $("#miladi_date").val();
+            var Operator = $("#Operator").val();
+
+            var postData = {
+                'MessengersName': Messenger,
+                'ChannelName': Channel,
+                'PhoneNumber': PhoneNumber,
+                'Address': Address,
+                'ActivationDate': datepicker,
+                'Operator': Operator,
+            };
+            $.ajax({
+                contentType: 'application/x-www-form-urlencoded',
+                dataType: 'json',
+                type: "POST",
+                url: "AddChannel", // تغییر به URL درخواست به وب‌سرور
+                data: postData,
+                success: function (data) {
+                    if (data.isSuccess == true) {
+                        swal.fire(
+                            'موفق!',
+                            data.message,
+                            'success'
+                        ).then(function (isConfirm) {
+                            location.reload();
+                        });
+                    }
+                    else {
+                        swal.fire(
+                            'هشدار!',
+                            data.message,
+                            'warning'
+                        );
+                    }
+                },
+                error: function (request, status, error) {
+                    // نمایش پیام خطا در کنسول
+                    console.error("خطا در درخواست:", request.responseText);
+                }
+            });
+        }
+
+
+    </script>
+}

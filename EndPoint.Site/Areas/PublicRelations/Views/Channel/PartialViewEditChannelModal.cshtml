@@ -1,0 +1,165 @@
+﻿@using EndPoint.Site.Areas.PublicRelations.Models.Dto.Channel
+@model GetChannelEditDto
+@using EndPoint.Site.Areas.PublicRelations.Helpers.Convertors;
+
+<style>
+    label {
+        color: #4f54677a;
+        font-size: 90%;
+    }
+</style>
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel1">
+                @("ویرایش اطلاعات کانال:" + " " + Model.ChannelName)
+            </h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="idInputChannel" value="@Model.Id">
+
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">نام کانال</label>
+                    <input type="text" class="form-control" id="ChannelName" value="@Model.ChannelName" data-original-value="@Model.ChannelName">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">
+                        <span>
+                            @* نمایش اطلاعات ادیت در اینجا *@
+                            @Html.Raw("پیامرسان قبلی: <u style='color:red;'>" + Model.MessengersName + "</u>")
+                        </span>
+                    </label>
+                    <select class="form-control" name="Name" asp-items="@ViewBag.Messenger" id="Messenger">
+                        <option value="" disabled selected>انتخاب پیامرسان</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">آدرس کانال</label>
+                    <input type="text" class="form-control" id="Address" value="@Model.Address" data-original-value="@Model.Address">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">شماره تلفن</label>
+                    <input type="text" class="form-control" id="PhoneNumber" value="@Model.PhoneNumber" data-original-value="@Model.PhoneNumber">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">تاریخ ایجاد کانال</label>
+                    <input type="text" class="form-control" value="@Model.ActivationDate.ToShamsi()" disabled>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">تاریخ ثبت</label>
+                    <input type="text" class="form-control" value="@Model.InsertTime.ToShamsi()" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+            <a onclick="EditChannel()" class="btn btn-primary" style="color:white;">تایید</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function EditChannel() {
+        // دریافت مقادیر ویرایش شده از فرم مدال با استفاده از jQuery
+        var Id = $('#idInputChannel').val();
+        var ChannelName = $("#ChannelName").val();
+        var Messenger = $("#Messenger").val();
+        var Address = $("#Address").val();
+        var PhoneNumber = $("#PhoneNumber").val();
+
+        // لاگ گذاری مقادیر دریافت شده
+        console.log('Id:', Id);
+        console.log('ChannelName:', ChannelName);
+        console.log('Messenger:', Messenger);
+        console.log('Address:', Address);
+        console.log('PhoneNumber:', PhoneNumber);
+
+
+        // دریافت مقادیر اولیه از data-original-value برای لاگ گذاری
+        var originalChannelName = $('#ChannelName').data('original-value');
+        var originalMessenger = $('#Messenger').data('original-value');
+        var originalAddress = $('#Address').data('original-value');
+        var originalPhoneNumber = $('#PhoneNumber').data('original-value');
+
+        // لاگ گذاری مقادیر اولیه
+        console.log('originalChannelName:', originalChannelName);
+        console.log('originalMessenger:', originalMessenger);
+        console.log('originalAddress:', originalAddress);
+        console.log('originalPhoneNumber:', originalPhoneNumber);
+
+        // بررسی اینکه آیا تغییری اعمال شده است یا خیر
+        var hasChanges = (
+            ChannelName !== originalChannelName ||
+            Messenger !== null && Messenger !== originalMessenger ||
+            Address !== originalAddress ||
+            PhoneNumber !== originalPhoneNumber
+        );
+
+        // لاگ گذاری نتیجه بررسی تغییرات
+        console.log('hasChanges:', hasChanges);
+
+        // اگر هیچ تغییری اعمال نشده باشد: نمایش آیکون اطلاعات و بازگشت
+        if (!hasChanges) {
+            swal.fire(
+                'توجه!',
+                'شما هیچ تغییری اعمال نکرده‌اید.',
+                'info'
+            );
+            return;
+        }
+
+        // ارسال مقادیر به سرور با استفاده از AJAX فقط اگر تغییرات اعمال شده باشد
+        var postData = {
+            'Id': Id,
+            'ChannelName': ChannelName,
+            'MessengersName': Messenger,
+            'Address': Address,
+            'PhoneNumber': PhoneNumber
+        };
+        console.log('اطلاعات ویرایش شده:', postData);
+
+        $.ajax({
+            contentType: 'application/x-www-form-urlencoded',
+            dataType: 'json',
+            type: 'POST',
+            url: '@Url.Action("PartialViewEditChannelModal")',
+            data: postData,
+            success: function (data) {
+                if (data.isSuccess) {
+                    swal.fire(
+                        'موفق!',
+                        data.message,
+                        'success'
+                    ).then(function (isConfirm) {
+                        if (isConfirm) {
+                            location.reload();
+                        }
+                    });
+                } else {
+                    swal.fire(
+                        'خطا!',
+                        data.message,
+                        'error'
+                    );
+                }
+            },
+            error: function (request, status, error) {
+                // نمایش پیام خطا در کنسول
+                console.error('Error in request:', request.responseText);
+
+                // نمایش پیام خطا به کاربر
+                swal.fire(
+                    'خطا!',
+                    'هنگام پردازش درخواست خطایی روی داد. لطفا دوباره تلاش کنید.',
+                    'error',
+
+                );
+            }
+        });
+    }
+</script>

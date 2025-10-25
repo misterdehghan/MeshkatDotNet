@@ -1,0 +1,22 @@
+2025-08-18 08:28:50.0982 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-08-18 08:28:50.1125 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-08-18 08:28:50.1125 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-08-18 08:28:50.5312 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-08-18 08:28:53.5796 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/CreateUser|action: CreateUser
+
+2025-08-18 08:29:21.8637 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/CreateUser|action: CreateUser
+
+2025-08-18 08:29:44.3997 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/CreateUser|action: CreateUser
+
+2025-08-18 08:30:48.2132 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/CreateUser|action: CreateUser
+
+2025-08-18 08:32:30.2358 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/login|action: Login
+
+2025-08-18 08:33:52.9536 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/CreateUser|action: CreateUser
+
+2025-08-18 08:34:17.0320 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/login|action: Login
+

@@ -1,0 +1,227 @@
+﻿@using Azmoon.Domain.Entities
+@inject Microsoft.AspNetCore.Identity.SignInManager<User> _signInManager;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/PublicRelations/Views/Shared/_Layout.cshtml";
+    var isActivePerformances = ViewBag.isActivePerformances;
+    var isActiveVirtualSpace = ViewBag.isActiveVirtualSpace;
+
+    var isSuperUserAccount = User.IsInRole("SuperUserAccountPR"); // بررسی اینکه کاربر نقش SuperUserAccount دارد یا خیر
+    var isAdmin = User.IsInRole("AdminPR"); // بررسی اینکه کاربر نقش Admin دارد یا خیر
+
+
+}
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-5 align-self-center">
+            <h4 class="page-title">داشبورد</h4>
+        </div>
+        <div class="col-7 align-self-center">
+            <div class="d-flex align-items-center justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">مشترک</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">داشبورد</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-bottom border-info">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            @if (isActivePerformances)
+                            {
+                                <a asp-controller="MediaPerformances" asp-action="Add">
+                                    <h6> <span class="label label-success">کلیک کنید</span></h6>
+                                </a>
+                            }
+                            else
+                            {
+                                <h6 style="color:red;"> <span class="label label-danger">غیر فعال</span></h6>
+
+                            }
+                            <h6 class="text-info">عملکرد رسانه ای</h6>
+                        </div>
+                        @if (isActivePerformances)
+                        {
+                            <div class="ml-auto">
+                                <span class="text-info display-6"><i class="mdi mdi-television"></i></span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="ml-auto">
+                                <span class="text-info display-6"><i style="color:darkgray;" class="mdi mdi-television"></i></span>
+                            </div>
+                        }
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-bottom border-cyan">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            @if (isActivePerformances)
+                            {
+                                <a asp-controller="NewsPerformances" asp-action="Add">
+                                    <h6> <span class="label label-success">کلیک کنید</span></h6>
+                                </a>
+                            }
+                            else
+                            {
+                                <h6 style="color:red;"> <span class="label label-danger">غیر فعال</span></h6>
+
+                            }
+                            <h6 class="text-cyan">عملکرد خبری</h6>
+                        </div>
+                        @if (isActivePerformances)
+                        {
+                            <div class="ml-auto">
+                                <span class="text-cyan display-6"><i class="mdi mdi-newspaper"></i></span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="ml-auto">
+                                <span class="text-cyan display-6"><i style="color:darkgray;" class="mdi mdi-newspaper"></i></span>
+                            </div>
+                        }
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-bottom border-success">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <a asp-controller="Channel" asp-action="AddChannel">
+                                <h6> <span class="label label-success">کلیک کنید</span></h6>
+                            </a>
+                            <h6 class="text-success">افزودن کانال جدید</h6>
+                        </div>
+                        <div class="ml-auto">
+                            <span class="text-success display-6"><i class="m-r-10 mdi mdi-plus-box"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-bottom border-orange">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            @if (isActiveVirtualSpace)
+                            {
+                                <a asp-controller="Channel" asp-action="Index">
+                                    <h6> <span class="label label-success">@ViewBag.ActiveVirtualSpace</span></h6>
+                                </a>
+                            }
+                            else
+                            {
+                                    <h6> <span class="label label-danger">@ViewBag.ActiveVirtualSpace</span></h6>
+                                
+                            } 
+                            <h6 class="text-orange">ثبت آمار جدید کانال یا گروه</h6>
+                        </div>
+                        @if (isActiveVirtualSpace)
+                        {
+                            <div class="ml-auto">
+                                <span class="text-orange display-6"><i class="m-r-10 mdi mdi-account-settings-variant"></i></span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="ml-auto">
+                                <span class="text-orange display-6"><i style="color:darkgray;" class="m-r-10 mdi mdi-account-settings-variant"></i></span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      @if (isAdmin || isSuperUserAccount)
+      {
+    @await Component.InvokeAsync("StatisticsForDoshbord")
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">فراوانی بر اساس تعداد کانال ها گروه ها</h4>
+                    <div class="ct-donute-chart" style="height: 400px;">
+                        @await Component.InvokeAsync("ChannelAndGroupStatistics")
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">فراوانی بر اساس تعداد اعضا</h4>
+                    <div class="ct-donute-chart" style="height: 400px;">
+                        @await Component.InvokeAsync("MessengerMemberStatistics")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">روند تغییر مخاطبین کانال ها و گروه ها</h4>
+                    <div class="ct-donute-chart" style="height: 400px;">
+                        @await Component.InvokeAsync("LineChartMessengerPeriod")
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+     <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">فراوانی بر اساس بیشترین افزایش عضو</h4>
+                    <div class="ct-donute-chart" style="height: 400px;">
+                        @await Component.InvokeAsync("IncreasingMemberTrend")
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">فراوانی بر اساس بیشترین کاهش عضو</h4>
+                    <div class="ct-donute-chart" style="height: 400px;">
+                        @await Component.InvokeAsync("DecreasingMemberTrend")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+ </div>
+
+
+

@@ -1,0 +1,144 @@
+﻿@using Azmoon.Domain.Entities
+@model IPagedList<Azmoon.Domain.Entities.LeaveRequest>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Mvc.Core.Common
+@using X.PagedList.Web.Common
+@using EndPoint.Site.Useful.Ultimite;
+@{
+    Layout = "~/Areas/Person/Views/Shared/_LayoutPerson.cshtml";
+    ViewData["Title"] = "همه درخواستها";
+}
+
+
+
+<div class="container mt-5">
+    <h4 class="text-center mb-4">مدیریت درخواست‌های مرخصی</h4>
+
+    <table class="table table-bordered table-striped text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th>مشخصات</th>
+                <th>نوع</th>
+                <th>تاریخ درخواست</th>
+                <th>از</th>
+                <th>تا</th>
+                <th>دلیل</th>
+                <th>وضعیت</th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var req in Model)
+                {
+                <tr>
+              
+                    <td>@req.Employee?.UserName</td>
+              
+                 
+                        @if (req.Type == LeaveType.Hourly)
+                            {
+                        <td>
+                            <span class="badge badge-info">
+                                <i class="fas fa-clock"></i>
+                                ساعتی
+                            </span>
+                        </td>
+                          
+                        <td>@req.RequestDate?.ToPersianDateTimeStrFarsi()</td>
+                     
+                        <td>
+                            @(req.FromHour.HasValue ? req.FromHour.Value.ToString("HH:mm tt").Replace("AM", "ق.ظ").Replace("PM", "ب.ظ") : "ندارد")
+
+                        </td>
+                        <td>
+                            @(req.ToHour.HasValue ? req.ToHour.Value.ToString("HH:mm tt").Replace("AM", "ق.ظ").Replace("PM", "ب.ظ") : "ندارد")
+
+
+                        </td>
+                            }
+                        else
+                            {
+                        <td>
+                            <span class="badge badge-danger">
+                                <i class="fas fa-calendar"></i>
+                                روزانه
+                            </span>
+                        </td>
+                        <td>@req.RequestDate?.ToPersianDateTimeStrFarsi()</td>
+       
+
+                        <td>@req.FromDate?.ToPersianDateStrFarsi()</td>
+
+                        <td>@req.ToDate?.ToPersianDateStrFarsi()</td>
+                            }
+                
+                    <td>@req.Reason</td>
+                    <td>
+
+                        <span class="badge badge-@GetStatusClass(req.Status)">
+
+                            @Ultimite.Translate(req.Status)
+                        </span>
+                    </td>
+                    <td>
+                        @if (req.Status == LeaveStatus.Pending)
+                            {
+                            <a asp-action="Approve" asp-route-id="@req.Id" class="btn btn-sm btn-success mx-1">
+                                <i class="fas fa-check"></i> تأیید
+                            </a>
+                            <a asp-action="Reject" asp-route-id="@req.Id" class="btn btn-sm btn-danger mx-1">
+                                <i class="fas fa-times"></i> رد
+                            </a>
+                            }
+                        else
+                            {
+                            <span class="text-muted"><i class="fas fa-lock"></i> نهایی</span>
+                            }
+                    </td>
+                </tr>
+                }
+        </tbody>
+    </table>
+
+    <!-- صفحه‌بندی با Bootstrap -->
+    <div class="text-center mt-3">
+        @Html.PagedListPager(Model, page => Url.Action("AllRequests", new { page }),
+                 new PagedListRenderOptions
+            {
+            DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+            DisplayLinkToLastPage = PagedListDisplayMode.Always,
+            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+            DisplayLinkToNextPage = PagedListDisplayMode.Always,
+            DisplayLinkToIndividualPages = true, // این مورد مجاز است چون نوعش bool است
+            MaximumPageNumbersToDisplay = 5,
+            UlElementClasses = new[] { "pagination" },
+            LiElementClasses = new[] { "page-item" },
+            PageClasses = new[] { "page-link" }
+            })
+
+    </div>
+</div>
+
+@functions {
+    public string GetStatusClass(LeaveStatus status)
+        {
+        return status switch
+            {
+                LeaveStatus.Approved => "success",
+                LeaveStatus.Rejected => "danger",
+                _ => "secondary"
+                };
+        }
+
+    public string GetStatusIcon(LeaveStatus status)
+        {
+        return status switch
+            {
+                LeaveStatus.Approved => "check",
+                LeaveStatus.Rejected => "times",
+                _ => "hourglass-half"
+                };
+        }
+}
+

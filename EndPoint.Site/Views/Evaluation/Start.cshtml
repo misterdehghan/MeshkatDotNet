@@ -1,0 +1,480 @@
+﻿@model Azmoon.Application.Service.Assessment.Dto.GetStarClientAssessmentDto
+@{
+    ViewData["Title"] = "شروع نظرسنجی";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    if (Model != null && Model.getQuestionAnswer.AnswerFeatures.Count() > 0)
+        {
+
+        var jameiatQustion = Model.getJameiatQustions.Where(p=>p.typeQA==1).ToList();
+        var jameiatAnswer = Model.getJameiatQustions.Where(p=>p.typeQA==2).ToList();
+        <form method="post" class="col-md-10 offset-md-1 col-sm-12" action="/Evaluation/Submit" id="survayForm">
+            @Html.AntiForgeryToken()
+            <div class="card mt-2 mb-3 p-2 rounded-2" style="color: #000 !important;background-color: #A0DAA9 !important; ">
+
+
+                <div class="">
+
+                    <h3><span> ارزشیابی دوره  :</span>  @Model.Name</h3>
+
+
+                    <div class="">
+                        @Html.Raw(Model.Description)
+                    </div>
+
+
+                </div>
+            </div>
+            @if (jameiatQustion.Count() > 0)
+            {
+                <div class="component">
+                    <div class=" card mb-3 rounded">
+                        <div class="row">
+                            <div class="form-inline mb-3 rounded px-4 col-md-12 col-sm-12" style="text-align:right !important;">
+
+                                @for (int i = 0; i < jameiatQustion.Count(); i++)
+                                {
+                                    var Jameiatquestion = jameiatQustion.ElementAt(i);
+                                    var answerjamm = jameiatAnswer.Where(p => p.ParentId == Jameiatquestion.Id).ToList();
+                                    <input name="questionId_@Jameiatquestion.Id" type="hidden" value="@Jameiatquestion.Id" />
+                                    <div class="form-inline jameiatParent">
+                                        <span class="h5" style="text-align:right !important; color:blueviolet">@Html.Raw(Jameiatquestion.Name) :</span>
+                                       
+                                        @for (int j = 0; j < answerjamm.Count(); j++)
+                                        {
+                                            var answer = answerjamm[j];
+
+                                            <div class="p-2 m-2 border-bottom border-warning rounded form-group">
+
+                                                <input type="radio" class="jameiatRadio" name="jameiatanswer_@Jameiatquestion.Id" value="@(answer.Id)_@(answer.Wight)" style=" width: 20px; height: 20px;" />
+                                                <h6 class="d-inline-block mt-0 ml-1 quiz">@Html.Raw(answer.Name)</h6>
+
+                                            </div>
+                                        }
+
+                                    </div>
+
+                                }
+                                <div class="input-group mr-2">
+
+                                    <div class="input-group-prepend" id="select-WorkPlaceId">
+                                        <span class="input-group-text cursor-pointer"><i class='fas far fa-eye' style='font-size: 24px; color: red; padding-left: 6px;'></i></span>
+                                    </div>
+                                    @{
+
+                                     
+                                            <input type="text" id="WorkPlaceIdFake" name="WorkPlaceIdFake" class="form-control" placeholder="انتخاب محل خدمت ... " />
+
+                                    }
+
+                                    <input type="hidden" id="WorkPlaceId" name="WorkPlaceId"/>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            }
+            @if (Model.modaresFeatureDtos.Count() > 0)
+            {
+             
+                 string[] gozineh = { "الف)", "ب)", "ج)", "د)", "ط)", "پ)", "ت)" };
+                <div class="component">
+                      <div class="row">
+                      @if (Model.modaresFeatureDtos.Count() > 0)
+                            {
+                                   var modresCounter = 1;
+                              for (int i = 0; i < Model.modaresFeatureDtos.Count(); i++)
+                        {
+                                var modares = Model.modaresFeatureDtos.ElementAt(i);
+                                var questionName = String.Format(" عملکرد، نحوه تدریس و تسلط به عنوان درسی  <span  style='color:red;font-weight:bold'> {1}  </span> با تدریس   <span style='color:red;font-weight:bold'> {0}  </span>   را خوب ارزیابی می نمائید؟  ", modares.Modares,modares.Title);
+                                
+                                 
+                            <input name="modName_@modares.Modares" type="hidden" value="@modares.Title" />
+
+                            
+                            <div class="col-sm-12 col-md-12 ">
+
+
+                                <div class="card mb-3 rounded parentchecked">
+
+
+                                  
+                                  
+                                    <div class="card-body rounded" style="text-align:right !important;">
+                                        <div class="mt-1 ">
+                                            <h6 class="quiz" style="text-align:right !important;"><span>@modresCounter : </span> 
+                                            
+                                                   @Html.Raw(questionName)
+                                               
+                                            
+                                            </h6>
+                                        </div>
+                                       
+
+                                           
+                                                <div class="row chandanswer">
+                                                    @for (int j = 0; j < Model.getQuestionAnswer.AnswerFeatures.Count(); j++)
+                                                    {
+                                                        var answer = Model.getQuestionAnswer.AnswerFeatures[j];
+
+                                                        <div class="p-1  m-1 border-bottom border-warning rounded ParentChandRadio">
+
+                                                            <input type="radio" class="chandRadio" name="modaresanswer_@modresCounter" value="@(answer.Id)_@(answer.Wight)" style=" width: 20px; height: 20px;" />
+                                                            <h6 class="d-inline-block mt-0 ml-1 quiz">@gozineh[j]  @Html.Raw(answer.Title)</h6>
+
+                                                        </div>
+
+
+
+                                                    }
+                                                </div>
+                                           
+
+                                        
+
+                                    </div>
+
+                                </div>
+                                @{ modresCounter++;}
+
+                            </div>
+
+
+
+                        }
+                            }
+                      
+                    </div>
+                    <div class="row">  
+                    @if (Model.getQuestionAnswer.QuestionFeatures.Count()>0)
+                            {
+
+                                 var chandCounter = 1;
+                              @for (int i = 0; i < Model.getQuestionAnswer.QuestionFeatures.Count(); i++)
+                        {
+                            var question = Model.getQuestionAnswer.QuestionFeatures.ElementAt(i);
+                            <input name="questionId_@question.Id" type="hidden" value="@question.Id" />
+
+                            
+                            <div class="col-sm-12 col-md-12 ">
+
+
+                                <div class="card mb-3 rounded parentchecked">
+
+
+                                  
+                                  
+                                    <div class="card-body rounded" style="text-align:right !important;">
+                                        <div class="mt-1 ">
+                                            <h6 class="quiz" style="text-align:right !important;"><span>@chandCounter : </span>  @Html.Raw(question.Title)</h6>
+                                        </div>
+                                       
+
+                                           
+                                                <div class="row chandanswer">
+                                                    @for (int j = 0; j < Model.getQuestionAnswer.AnswerFeatures.Count(); j++)
+                                                    {
+                                                        var answer = Model.getQuestionAnswer.AnswerFeatures[j];
+
+                                                        <div class="p-1  m-1 border-bottom border-warning rounded ParentChandRadio">
+
+                                                            <input type="radio" class="chandRadio" name="chandanswer_@question.Id" value="@(answer.Id)_@(answer.Wight)" style=" width: 20px; height: 20px;" />
+                                                            <h6 class="d-inline-block mt-0 ml-1 quiz">@gozineh[j]  @Html.Raw(answer.Title)</h6>
+
+                                                        </div>
+
+
+
+                                                    }
+                                                </div>
+                                           
+
+                                        
+
+                                    </div>
+
+                                </div>
+                                @{ chandCounter++;}
+
+                            </div>
+
+
+
+                        }
+                            }
+                      
+                    </div>
+
+                </div>
+
+
+
+            }
+ 
+
+                    <div class="component">
+                        <div class="card mb-3 rounded">
+                            <div class="card-title m-1">
+                                <h4 class="quiz" style="text-align:right !important;">هر گونه نظر ،پیشنهاد و یا انتقادی  پیرامون دوره برگزار شده دارید بیان نمایید</h4>
+                            </div>
+                            <hr>
+                            <div class="card-body px-4 rounded" style="text-align:right !important;">
+
+                                <textarea name="deccriptionAnswer" id="deccriptionAnswer" class="form-control col-12"></textarea>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+          
+
+            <input id="AssessmentId" name="AssessmentId" type="hidden" value="@Model.AssessmentId" />
+            <div class="row text-center">
+                <button id="formsubmit" formaction="/Survey/Submit" class="btn btn-success  col-md-10 offset-md-1 col-sm-12 "> ثبت</button>
+            </div>
+
+        </form>
+
+        <div class="modal fade" id="TreeViewModal" role="dialog" tabindex="-1" aria-labelledby="TreeViewModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="TreeViewModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="WorkPlaceTreeView_modal_body">
+                           @(await Component.InvokeAsync("GetWorkPlaceTreeView"))
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary mr-2" data-btn="save">ثبت انتخاب  </button>
+                        <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">خروج</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="overlay">
+            <div class="cv-spinner">
+                <span class="spinner"></span>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="col-md-6 offset-md-3 mt-4 shadow-lg p-3 mb-5 bg-white rounded card justify-content-center align-items-center">
+
+            <div class="card-body align-middle h2">سلام ؛ متاسفانه هیچ سوال و جوابی در این نظرسنجی ثبت نگردیده است</div>
+
+
+        </div>
+    }
+}
+
+
+@section Scripts{
+    <link href="~/backend/css/Spiner.css" rel="stylesheet" />
+    <link href="~/lib/SweetAlert/sweetalert2.css" rel="stylesheet" />
+    <script src="~/lib/SweetAlert/sweetalert2.js"></script>
+
+    <script>
+          let maxchars = 500;
+
+$('body').on('keyup paste', 'textarea', function () {
+    $(this).val($(this).val().substring(0, maxchars));
+    var tlength = $(this).val().length;
+    remain = maxchars - parseInt(tlength);
+    $('#deccriptionAnswer').text(remain);
+});
+  $('#deccriptionAnswer').on("paste",function(e) {
+      e.preventDefault();
+   });
+        $('.chandRadio').click(function () {
+            $(this).closest('.row').children('.ParentChandRadio').each(function () {
+                $(this).css({
+                    "border-bottom": " 5px solid #ffc107 "
+                });
+
+            });
+            $(this).parent().removeClass("border-bottom border-warning")
+            $(this).parent().css({
+                "border-bottom": " 5px solid red"
+            });
+            $(this).closest('.parentchecked').css({
+                "background": "rgb(210, 236, 247)",
+            });
+        })
+        $('#formsubmit').click(function (e) {
+            var isvalidform = true;
+            e.preventDefault();
+            $('.chandanswer').each(function (i, currProgram) {
+                // console.log("parent"+i+"  :", currProgram)
+                //       console.log("parent chandghozineh" + i + "  ************************************************")
+                $.each($(currProgram), function (key, val) {
+
+
+                    if (!$(val).find(".chandRadio:checked").is(':checked')) {
+                        console.log("chandghozineh uncheked " + key + " :  ", $(val).find(".chandRadio").val());
+                        isvalidform = false;
+                    }
+                   // console.log("chandghozineh true");
+
+                });
+
+            });
+            $('.jameiatParent').each(function (i, currProgram) {
+                // console.log("parent"+i+"  :", currProgram)
+                //   console.log("parent jameiat" + i + "  ************************************************")
+                $.each($(currProgram), function (key, val) {
+
+
+                    if (!$(val).find(".jameiatRadio:checked").is(':checked')) {
+                        console.log("jameiat  uncheked " + key + " :  ", $(val).find(".jameiatRadio").val());
+                        isvalidform = false;
+                        console.log("false");
+                    }
+                //    console.log("jameiat true");
+
+                });
+
+            });
+            var workpalce = $('#WorkPlaceId').val();
+            if (workpalce == 0 || workpalce.length === 0 || workpalce.trim() == '' || workpalce === undefined ) {
+                isvalidform = false;
+            }
+            if (isvalidform) {
+
+                // $('#survayForm').submit();
+                var dataO = $('#survayForm').serialize();
+                //  console.log("data : ", dataO);
+                $("#overlay").fadeIn(300);
+                $.ajax({
+                    type: "POST",
+                    url: '/Evaluation/Submit',
+                    data: dataO,
+                    success: function (data) {
+
+                        if (data.isSuccess) {
+
+                            $('#AnswerQuestionId').val('');
+                            $('#QuizIdAddAnswer').val('');
+                            $('#AnswerQuestionText').val('');
+                            $('#formAddAnswerQuestion [name="IsTrue"]').prop('checked') == false;
+                            $('#formAddAnswerQuestion [name="IsTrue"]').prop('checked', false);
+                            setTimeout(function () {
+                                $("#overlay").fadeOut(300);
+                                Swal.fire({
+                                    title: data.message,
+                                    text: ' ',
+                                    icon: 'success',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    confirmButtonText: 'باشه!',
+                                    showCancelButton: false,
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location = "/Home/Index";
+
+                                    }
+                                })
+                            }, 2000);
+                        } else {
+
+
+                            setTimeout(function () {
+                                $("#overlay").fadeOut(300);
+                                Swal.fire({
+
+                                    icon: 'error',
+                                    title: 'ناموفق',
+                                    text: data.message,
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                })
+                                setTimeout(function () {
+                                    window.location = "/Home/Index";
+                                }, 3000);
+                            }, 2000);
+                        }
+
+                    }
+                });
+            }
+            else {
+                Swal.fire({
+
+                    icon: 'error',
+                    title: 'ناموفق : لطفا تمامی سوالات را پاسخ دهید',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            }
+
+        })
+        $('#WorkPlaceIdFake').click(function () {
+            // selectWorkPlaceId()
+            $('#TreeViewModal').modal('show');
+
+        });
+        function selectWorkPlaceId() {
+            $("#overlay").fadeIn(300);
+            $.getJSON('/Account/GetWorkPlaceTreeView', { name: 'kami', family: 'zare' }, function (result, textStatus, jqXHR) {
+
+
+            })
+                .done(function (result) {
+                    $("#overlay").fadeOut(300);
+                    if (result.isSuccess) {
+                        $('#WorkPlaceTreeView_modal_body').empty();
+                        $('#WorkPlaceTreeView_modal_body').html(result.data);
+                        $('#TreeViewModal').modal('show');
+
+                    }
+                    else {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: result.data,
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+
+                    }
+
+
+                })
+                .fail(function (jqxhr, settings, ex) {
+                    $("#overlay").fadeOut(300);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'اطلاعات و مقادیر وارد شده نادرست می باشد دقت فرمائید!!',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                });
+        }
+
+        $('[data-btn="save"]').click(function (e) {
+            e.preventDefault();
+            $('input[type=checkbox]').each(function () {
+                if (this.checked) {
+
+                    $('#WorkPlaceId').val($(this).val());
+                    $('#WorkPlaceIdFake').attr('placeholder', $(this).data('name'));
+                    $('#WorkPlaceIdFake').val($(this).data('name'));
+                    $('#TreeViewModal').modal('hide');
+                }
+            });
+
+        });
+    </script>
+
+}
+
+

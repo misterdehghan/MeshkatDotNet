@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Azmoon.Application</RootNamespace>
+    <AssemblyName>Azmoon.Application</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.25" />
+    <PackageReference Include="Hangfire.Core" Version="1.7.25" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.7.25" />
+    <PackageReference Include="HtmlSanitizer" Version="5.0.376" />
+    <PackageReference Include="ImageProcessor" Version="2.9.0" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.14" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.14" />
+    <PackageReference Include="System.Drawing.Common" Version="4.7.3" />
+	<PackageReference Include="X.PagedList.Mvc.Core" Version="8.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ticket.Common\Azmoon.Common.csproj" />
+    <ProjectReference Include="..\Ticket.Domain\Azmoon.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\Attachment\" />
+    <Folder Include="Service\JameiatQustion\Query\" />
+    <Folder Include="Service\Login\Dto\" />
+    <Folder Include="Service\Login\Query\" />
+    <Folder Include="Service\UserAccess\Command\" />
+  </ItemGroup>
+
+</Project>

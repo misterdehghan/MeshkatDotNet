@@ -1,0 +1,66 @@
+﻿@using EndPoint.Site.Areas.PublicRelations.Models.Dto.Roles
+@model AddNewRoleDto
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/PublicRelations/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-5 align-self-center">
+            @*<h4 class="page-title">افزودن کانال جدید</h4>*@
+        </div>
+        <div class="col-7 align-self-center">
+            <div class="d-flex align-items-center justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">ورودی ها</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">افزودن رول جدید </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+
+    <div class="card">
+        <div class="card-header bg-info">
+            <h4 class="m-b-0 text-white">افزودن رول جدید</h4>
+        </div>
+ 
+        <div class="form-body">
+            <div class="card-body">
+
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group col-3">
+                        <label asp-for="Name" class="control-label">نام رول جدید</label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-actions">
+                        <div class="card-body text-right">
+                            <input type="submit" value="ذخیره" class="btn btn-info" />
+                            <a asp-action="Index" class="btn btn-dark">برگشت به لیست</a>
+                        </div>
+                    </div>
+                </form>
+                
+
+            </div>
+        </div>
+
+      
+
+    </div>
+
+
+</div>

@@ -1,0 +1,12 @@
+D:\PROJECT\Ticket\Ticket.ElFinder\obj\Debug\net5.0\Ticket.ElFinder.csproj.AssemblyReference.cache
+D:\PROJECT\Ticket\Ticket.ElFinder\obj\Debug\net5.0\Ticket.ElFinder.GeneratedMSBuildEditorConfig.editorconfig
+D:\PROJECT\Ticket\Ticket.ElFinder\obj\Debug\net5.0\Ticket.ElFinder.AssemblyInfoInputs.cache
+D:\PROJECT\Ticket\Ticket.ElFinder\obj\Debug\net5.0\Ticket.ElFinder.AssemblyInfo.cs
+D:\PROJECT\Ticket\Ticket.ElFinder\obj\Debug\net5.0\Ticket.ElFinder.csproj.CoreCompileInputs.cache
+D:\PROJECT\Ticket\Ticket.ElFinder\bin\Debug\net5.0\Ticket.ElFinder.deps.json
+D:\PROJECT\Ticket\Ticket.ElFinder\bin\Debug\net5.0\Ticket.ElFinder.dll
+D:\PROJECT\Ticket\Ticket.ElFinder\bin\Debug\net5.0\ref\Ticket.ElFinder.dll
+D:\PROJECT\Ticket\Ticket.ElFinder\bin\Debug\net5.0\Ticket.ElFinder.pdb
+D:\PROJECT\Ticket\Ticket.ElFinder\obj\Debug\net5.0\Ticket.ElFinder.dll
+D:\PROJECT\Ticket\Ticket.ElFinder\obj\Debug\net5.0\ref\Ticket.ElFinder.dll
+D:\PROJECT\Ticket\Ticket.ElFinder\obj\Debug\net5.0\Ticket.ElFinder.pdb

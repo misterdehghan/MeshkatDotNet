@@ -1,0 +1,128 @@
+﻿@using Azmoon.Application.Service.PublicRelations.NewsPerformancesServices
+@model ResultDetailNews
+@using EndPoint.Site.Areas.PublicRelations.Helpers.Convertors;
+
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel1">
+                @(Model.NewsAgencyName)
+            </h4>
+            @if (Model.Confirmation == true)
+            {
+
+                <span style="font-size:65%;" class="badge badge-pill badge-success">تایید شده</span>
+
+            }
+            else
+            {
+                <span style="font-size:65%;" class="badge badge-pill badge-secondary">تایید نشده</span>
+
+            }
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="idInput" value="@Model.Id">
+
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">نام خبرگزاری</label>
+                    <input type="text" class="form-control" id="NewsAgencyName" value="@Model.NewsAgencyName">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">موضوع</label>
+                    <input type="text" class="form-control" id="Subject" value="@Model.Subject">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">مستند</label>
+                    <input type="file" class="form-control" id="Image" value="">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">تاریخ انتشار</label>
+                    <input type="text" class="form-control" id="PersonnelCode" value="@Model.PublicationDate.ToShamsi()" disabled>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">اپراتور</label>
+                    <input type="text"
+                           class="form-control"
+                           id="Operator"
+                           value="@(Model.Operator == null ? "بدون انتخاب": Model.Operator)"
+                           disabled>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">تاریخ ایجاد</label>
+                    <input type="text" class="form-control" id="validationDefault02" value="@Model.InsertTime.ToShamsi()" disabled>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">تاریخ بروز رسانی</label>
+                    <input type="text"
+                           class="form-control"
+                           id="validationDefault02"
+                           value="@(Model.UpdateTime == null ? "بروز رسانی نشده": Model.UpdateTime?.ToShamsi())"
+                           disabled>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+            <a onclick="EditNews()" class="btn btn-primary" style="color:white;">تایید</a>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    function EditNews() {
+        var formData = new FormData();
+
+        var id = document.getElementById('idInput').value;
+        var newsAgencyName = document.getElementById('NewsAgencyName').value;
+        var subject = document.getElementById('Subject').value;
+        var image = document.getElementById('Image').files[0];
+
+        formData.append('Id', id);
+        formData.append('NewsAgencyName', newsAgencyName);
+        formData.append('Subject', subject);
+        formData.append('Image', image);
+
+        $.ajax({
+            url: '@Url.Action("PartialViewEditModal", "NewsPerformances")',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'ویرایش موفق',
+                        text: 'ویرایش با موفقیت انجام شد.'
+                    }).then(() => {
+                        $('#EditNewsPerformances').modal('hide');
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'خطا',
+                        text: response.message
+                    });
+                }
+            },
+            error: function () {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'خطا',
+                    text: 'خطایی رخ داده است. لطفاً دوباره تلاش کنید.'
+                });
+            }
+        });
+    }
+</script>

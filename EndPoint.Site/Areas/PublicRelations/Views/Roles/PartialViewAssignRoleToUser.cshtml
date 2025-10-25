@@ -1,0 +1,210 @@
+﻿@using EndPoint.Site.Areas.PublicRelations.Models.Dto.Roles
+@model GetAssignRoleToUserDto
+
+<style>
+    .role-pill {
+        display: inline-block;
+        padding: 1px 30px;
+        font-size: 12px;
+        color: #fff !important;
+        background: #4fc3f7;
+        border-radius: 60px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+        .role-pill:hover {
+            background: #e53935; /* قرمز هنگام هاور */
+        }
+</style>
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel1">
+                اختصاص رول به کاربر
+            </h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <h5 class="card-text">
+                @{
+                    string message = $"شما در حال اختصاص رول به  <strong class='text-danger'>{Model.FirstName + " " + Model.LastName}</strong> با کد پرسنلی <strong class='text-danger'>{Model.PersonnelCode}</strong> هستید.";
+                }
+                @Html.Raw(message)
+            </h5>
+            @* <input type="text" id="userId" value="@Model.Id" /> *@
+            @if (@Model.CurrentRole == null)
+            {
+                <center>
+                    <p style="display: inline-block; padding: 1px 30px; font-size: 12px; color: #fff; background: red; border-radius: 60px; text-decoration:none;">لطفا یه رول به کاربر اختصاص دهید.</p>
+                </center>
+            }
+            else
+            {
+                @foreach (var item in Model.CurrentRole)
+                    {
+                <center>
+                    <p>
+                            <a class="role-pill" onclick="confirmDeleteRole('@item')">@item</a>
+                    </p>
+                       
+                 @*   <input id="roleNameD" type="hidden" value="@item" /> *@
+                </center>
+                }
+            }
+
+            <div class="form-group">
+                <label for="roleName">نام رول</label>
+                <select id="roleName" class="form-control" required>
+                    <option value="">انتخاب رول</option>
+                    @foreach (var role in Model.Roles)
+                    {
+                        <option value="@role.Name">@role.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-primary" id="assignRoleBtn">تایید</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('assignRoleBtn').addEventListener('click', function () {
+        const userId = '@Model.Id';
+        const roleName = document.getElementById('roleName').value;
+
+        if (!roleName) {
+            alert('لطفاً یک رول انتخاب کنید');
+            return;
+        }
+
+        fetch('/PublicRelations/Roles/AssignRoleToUserAjax', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ userId, roleName }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    window.location.href = '/PublicRelations/Users/Index'; // انتقال به صفحه دیگر
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('مشکلی در ارتباط با سرور وجود دارد');
+            });
+    });
+
+
+</script>
+
+@* <script>
+    var removeRoleUrl = '@Url.Action("RemoveRoleFromUser", "Roles", new { area = "PublicRelations" })';
+    console.log("Remove Role URL:", removeRoleUrl); // لاگ آدرس اکشن
+
+    function confirmDeleteRole(element) {
+        var roleName = element.getAttribute("data-role");
+        const userId = '@Model.Id';
+
+        console.log("Role to delete:", roleName);
+        console.log("User ID:", userId);
+
+        Swal.fire({
+            title: 'آیا مطمئن هستید؟',
+            text: `می‌خواهید نقش «${roleName}» حذف شود؟`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'بله، حذف کن!',
+            cancelButtonText: 'لغو',
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: removeRoleUrl,
+                    type: 'POST',
+                    data: { roleName: roleName, userId: userId },
+                    success: function (res) {
+                        console.log("AJAX success response:", res);
+                        if (res.success) {
+                            Swal.fire('حذف شد!', res.message, 'success').then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire('خطا!', res.message, 'error');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("AJAX error:", status, error, xhr.responseText);
+                        Swal.fire('خطا!', 'مشکلی در ارتباط با سرور پیش آمد.', 'error');
+                    }
+                });
+            }
+        });
+    }
+</script> *@
+
+
+<script>
+    function confirmDeleteRole(item) {
+        var Id = '@Model.Id';
+        var roleName = item;
+
+
+        var postData = {
+            'userId': Id,
+            'roleName': roleName,
+        };
+
+
+        $.ajax({
+            contentType: 'application/x-www-form-urlencoded',
+            dataType: 'json',
+            type: 'POST',
+            url: '@Url.Action("RemoveRoleFromUser", "Roles", new { area = "PublicRelations" })',
+            data: postData,
+            success: function (data) {
+
+                if (data.success) { // ✅ اصلاح این خط
+                    swal.fire(
+                        'موفق!',
+                        data.message,
+                        'success'
+                    ).then(function (isConfirm) {
+                        if (isConfirm) {
+                            location.reload();
+                        }
+                    });
+                } else {
+                    swal.fire(
+                        'خطا!',
+                        data.message,
+                        'error'
+                    );
+                }
+            },
+            error: function (request, status, error) {
+
+                swal.fire(
+                    'خطا!',
+                    'در هنگام پردازش درخواست مشکلی پیش آمد. لطفاً دوباره تلاش کنید.',
+                    'error'
+                );
+            },
+        });
+    }
+</script>

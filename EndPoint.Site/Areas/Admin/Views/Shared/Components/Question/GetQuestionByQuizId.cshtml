@@ -1,0 +1,505 @@
+﻿@using Azmoon.Application.Service.Question.Dto
+@model List<GetQuestionViewModel>
+
+@{
+    <script src="~/assets/js/vue.js"></script>
+    <script src="~/backend/js/axios.min.js"></script>
+    if (Model != null)
+    {
+        <h3 class="w3-panel w3-round-xlarge w3-teal p-2" style="text-align:right !important;"><span>لیست سوال ها</span> </h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ElementAt(1).Text)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.ElementAt(1).CountTrueAsnswer)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ElementAt(1).CountFalseAsnswer)
+                    </th>
+                    <td> @Html.DisplayNameFor(model => model.ElementAt(1).Status)</td>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model != null)
+                    {
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Text)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CountTrueAsnswer)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CountFalseAsnswer)
+                                </td>
+
+                                <td>
+
+                                    @{
+
+
+                                        switch (item.Status)
+                                        {
+                                            case true:
+
+                                                <i class="fas fa-check" style="font-size:25px;color:forestgreen"></i>
+                                                break;
+                                            case false:
+                                                <i class="fas fa-window-close" style="font-size:25px;color:red"></i>
+                                                break;
+
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    <a class="btn btn-outline-success addansweress"
+                                       href="#" data-textt="@item.Text" data-idt="@item.Id" data-QuizIdd="@item.QuizId">
+                                        افزودن جواب
+                                    </a>
+                                    <a class="btn btn-outline-primary"
+                                       asp-action="Edit" asp-route-id="@item.Id" asp-controller="Question" asp-area="Admin">
+                                        ویرایش
+                                    </a>
+                                    @*<a class="btn btn-outline-info"
+                                           asp-action="Details" asp-route-id="@item.Id" asp-route-PageSize="10" asp-route-PageNo="1" asp-controller="Question" asp-area="Admin">
+                                            جزئیات
+                                        </a>*@
+                                    <a class="btn btn-outline-info"
+                                       href="#" onclick="GetDataAnsweres(@item.Id ,event)">
+                                        مشاهد جواب ها
+                                    </a>
+                                    <a class="btn btn-outline-danger"
+                                       asp-action="Delete" asp-route-id="@item.Id" asp-route-quizid="@item.QuizId" asp-controller="Question" asp-area="Admin">
+                                        حذف
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                }
+
+
+            </tbody>
+        </table>
+
+
+        <!-- The Modal Add Answer-->
+        <div class="modal" id="myModalAddAnswer">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h6 class="modal-title">افزودن جواب به سوال</h6>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form action="/Admin/Answer/Create" method="post" id="formAddAnswerQuestion">
+                            <input type="hidden" id="AnswerQuestionId" name="QuestionId" />
+                            <input type="hidden" id="QuizIdAddAnswer" name="QuizId" />
+                            <div class="form-group">
+                                <label class="control-label"></label>
+                                <textarea name="Text" id="AnswerQuestionText" class="form-control col-12"></textarea>
+
+                            </div>
+
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" name="IsTrue" id="IsTrue" /> گزینه صحیح است ?
+                                </label>
+                            </div>
+                            <button type="button" onclick="submitForm()" class="btn btn-outline-primary ml-2 mt-3">ذخیره <i class="fa fa-save" style="font-size: 19px;"></i></button>
+
+                        </form>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">لغو</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal Get Answeres -->
+        <div class="modal" id="myModalAnsweres">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">جواب ها</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <table id="id110" class="w3-table w3-bordered w3-striped">
+                            <tr v-if="todos[0].Id">
+                                <th>متن جواب</th>
+                                <th>گزینه صحیح</th>
+
+                                <th>{{message}}</th>
+                            </tr>
+                            <tr v-for="x in todos">
+                                <td v-if="x.Id">{{x.Text}} </td>
+                                <td v-if="x.Id">
+                                    <span v-if="x.IsTrue">
+                                        <i class="fas fa-check" style="font-size:25px;color:forestgreen"></i>
+                                    </span>
+
+                                    <span v-else>
+                                        <i class="fas fa-window-close" style="font-size:25px;color:red"></i>
+                                    </span>
+
+
+
+
+
+                                <td>
+                                    <p v-if="x.Id">
+                                        <a class="btn btn-outline-danger" v-bind:href="`/admin/Answer/Delete/${x.Id}?qustionid=${x.QuestionId}`">
+                                            حذف
+                                        </a>
+                                        <a class="btn btn-outline-primary"
+                                           href="#" v-on:click="editAnswerQuestion(x.Id, x.QuestionId , x.Text  , x.IsTrue)">
+                                            ویرایش
+                                        </a>
+                                    </p>
+                                    <h1 v-else>هیچ جوابی ثبت نشده است 😢</h1>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal Edit Answeres -->
+        <div class="modal" id="myModalAEditAnswer">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h6 class="modal-title editAnswerTitle">ویرایش جواب </h6>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form action="/Admin/Answer/Edit" method="post" id="formEditAnswermodal">
+                            <input type="hidden" id="IdAnswerEdit" name="Id" />
+                            <input type="hidden" id="IdQuestionAnswerEdit" name="QuestionId" />
+                            <div class="form-group">
+                                <label class="control-label"></label>
+                                <textarea name="Text" id="EditAnswerText" class="form-control col-12"></textarea>
+
+                            </div>
+
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" name="IsTrue" id="IsTrueEdit" /> گزینه صحیح است ?
+                                </label>
+                            </div>
+                            <button type="button" onclick="EditSubmitForm()" class="btn btn-outline-primary ml-2 mt-3">ذخیره <i class="fa fa-save" style="font-size: 19px;"></i></button>
+
+                        </form>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">لغو</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    }
+    else
+    {
+        <h2><span>هیچ رکوردی ثبت نگردیده است</span></h2>
+    }
+
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/vue2_7.js"></script>
+    <script src="~/backend/js/axios.min.js"></script>
+    <script>
+        let templat = `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalet">
+                                              Launch demo modal
+</button>
+`;
+        let templat2 = `<h1>test</h1>`;
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".addansweress").on('click', function (e) {
+                e.preventDefault();
+
+                var Id = $(this).attr("data-idt");
+                var questionId = $(this).attr("data-QuizIdd");
+                var text = $(this).attr("data-textt");
+
+                $('.modal-title').html("<span> جواب برای : </span>" + text);
+                $('#AnswerQuestionId').val(Id);
+                $('#QuizIdAddAnswer').val(questionId);
+                console.log("test send id", Id)
+                console.log("test send text", text)
+                console.log("test send questionId", questionId);
+                $('#myModalAddAnswer').modal('show');
+
+            });
+        });
+
+        function SendQuestion(a, b, c, event) {
+            event.preventDefault()
+
+
+            //$('.modal-title').html("<span> جواب برای : </span>" + b);
+            //$('#AnswerQuestionId').val(a);
+            //$('#QuizIdAddAnswer').val(c);
+            //console.log("test send id", a)
+            //console.log("test send text", b)
+
+            //$('#myModalAddAnswer').modal('show');
+
+        }
+        function submitForm() {
+            $('#myModalAddAnswer').modal('toggle');
+            var IsTrue = $('#formAddAnswerQuestion [name="IsTrue"]').is(':checked');
+            var QuestionId = $('#AnswerQuestionId').val();
+            var QuizId = $('#QuizIdAddAnswer').val();
+            var Text = $('#AnswerQuestionText').val();
+
+            var dataO = {
+                QuizId: QuizId,
+                QuestionId: QuestionId,
+                Text: Text,
+                IsTrue: IsTrue,
+            };
+            console.log("dataO : ", dataO);
+            $.ajax({
+                type: "POST",
+                url: '/Admin/Answer/Create',
+                data: dataO,
+                success: function (data) {
+                    console.log("data : ", data);
+                    if (data.isSuccess) {
+                        $('#AnswerQuestionId').val('');
+                        $('#QuizIdAddAnswer').val('');
+                        $('#AnswerQuestionText').val('');
+                        $('#formAddAnswerQuestion [name="IsTrue"]').prop('checked') == false;
+                        $('#formAddAnswerQuestion [name="IsTrue"]').prop('checked', false);
+                        Swal.fire({
+                            title: data.message,
+                            text: 'عملیات با موفقیت انجام شد ',
+                            icon: 'success',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'باشه!',
+                            showCancelButton: false,
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        })
+                    } else {
+                        Swal.fire({
+
+                            icon: 'error',
+                            title: 'ناموفق :(',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    }
+                }
+            });
+
+        }
+
+        function EditSubmitForm() {
+
+            $('#myModalAEditAnswer').modal('toggle');
+            var IsTrue = $('#myModalAEditAnswer [name="IsTrue"]').is(':checked');
+            var Id = $('#IdAnswerEdit').val();
+            var QuestionId = $('#IdQuestionAnswerEdit').val();
+            var Text = $('#EditAnswerText').val();
+
+            var dataO = {
+                Id: Id,
+                QuestionId: QuestionId,
+                Text: Text,
+                IsTrue: IsTrue,
+            };
+            console.log("dataO : ", dataO);
+            $.ajax({
+                type: "POST",
+                url: '/admin/answer/edit',
+                data: dataO,
+                success: function (data) {
+                    console.log("data : ", data);
+                    if (data.isSuccess) {
+                        $('#IsTrueEdit').prop('checked') == false;
+                        $('#IsTrueEdit').prop('checked', false);
+                        $('#IdAnswerEdit').val('');
+                        $('#IdQuestionAnswerEdit').val('');
+                        $('#EditAnswerText').val('');
+                        Swal.fire({
+                            title: data.message,
+                            text: 'عملیات با موفقیت انجام شد ',
+                            icon: 'success',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'باشه!',
+                            showCancelButton: false,
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        })
+                    } else {
+                        Swal.fire({
+
+                            icon: 'error',
+                            title: 'ناموفق :(',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    }
+                }
+            });
+
+        }
+    </script>
+    <script>
+
+        function GetDataAnsweres(a, event) {
+
+            event.preventDefault();
+            $("#overlay").fadeIn(300);
+
+
+            w3.getHttpObject("/Admin/Question/GetAnswer/" + a, myFunction);
+            function myFunction(myObject) {
+                w3.displayObject("id110", myObject);
+                //  console.log("start fatch data param : " + a);
+                var arrr = [];
+                var len = myObject.length;
+                for (var i = 0; i < len; i++) {
+
+                    arrr.push({
+                        Id: myObject[i].id,
+                        Text: myObject[i].text,
+                        IsTrue: myObject[i].isTrue,
+                        QuestionId: myObject[i].questionId
+                    });
+                }
+                // console.log("arrr : ", arrr);
+                $('#myModalAnsweres').modal('show');
+                $("#overlay").fadeOut(300);
+                KamiObject = new Vue({
+                    el: '#id110',
+                    data: {
+                        message: 'عملیات',
+                        todos: arrr,
+                        info: null
+                    },
+                    methods: {
+                        editAnswerQuestion: function (a, b, c, d) {
+                            $('.editAnswerTitle').html("<span> ویرایش جواب برای : </span>" + c);
+                            $('#IdAnswerEdit').val(a);
+                            $('#IdQuestionAnswerEdit').val(a);
+                            $('#EditAnswerText').val(c);
+                            $('#EditAnswerText').text(c);
+                            console.log("IsTrueEdit : ", d);
+                            if (d) {
+                                $('#IsTrueEdit').prop('checked') == true;
+                                $('#IsTrueEdit').prop('checked', true);
+
+                            }
+                            console.log("test send id", a)
+                            console.log("test send QuestionId", b)
+                            console.log("test send text", c)
+                            console.log("test send IsTrue", d)
+                            $('#myModalAEditAnswer').modal('show');
+                            $('#myModalAnsweres').modal('toggle');
+
+                        }
+                    }
+                })
+
+            }
+        }
+
+
+            //var app2 = new Vue({
+            //    el: '.appVue',
+            //    data: {
+            //        message: 'عملیات',
+            //        info: [],
+            //        bodymodel: 'سلام بر vue.js3',
+
+
+            //    },
+            //    methods: {
+            //        reverseMessage: function () {
+            //            return this.bodymodel = "test";
+            //        },
+
+
+            //    },
+            //    //computed: {
+            //    //    now: function () {
+            //    //        return this.bodymodel = ':('
+            //    //    }
+            //    //},
+            //    //mounted() {
+            //    //    axios
+            //    //        .get('/Admin/Question/GetAnswer/2')
+            //    //        .then(response => {
+            //    //            console.log("response", response)
+            //    //            console.log("response.data : ", response.data)
+            //    //            var ar2 = [];
+            //    //            var len = response.data.length;
+            //    //            for (var i = 0; i < len; i++) {
+            //    //                ar2.push({
+            //    //                    Id: response.data[i].id,
+            //    //                    Text: response.data[i].text,
+            //    //                    IsTrue: response.data[i].isTrue,
+            //    //                    QuestionId: response.data[i].questionId
+            //    //                });
+            //    //            }
+            //    //            console.log("arry axios:", ar2)
+            //    //            this.info = ar2
+            //    //        })
+            //    //}
+            //})
+
+
+    </script>
+}
+
+

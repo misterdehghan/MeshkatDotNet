@@ -1,0 +1,171 @@
+﻿
+@{
+    ViewData["Title"] = "تعریف دوره زمانی";
+    Layout = "~/Areas/Person/Views/Shared/_LayoutPerson.cshtml";
+}
+@model SchedulePeriodCreateViewModel
+
+@using System.Globalization
+@using EndPoint.Site.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+
+
+<div class="card mx-auto mt-5" style="max-width: 900px;">
+  <div class="card-header bg-primary text-white">
+    <i class="fas fa-clock"></i> تعریف دوره زمانی و ساعات کاری هفتگی
+  </div>
+  <div class="card-body">
+    <form asp-action="CreatePeriod" method="post">
+@*       <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>از تاریخ</label>
+          <div class="input-group">
+            <input asp-for="FromDate" id="FromDate" class="form-control" autocomplete="off" />
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fas fa-calendar-alt"></i>
+              </span>
+            </div>
+          </div>
+          <span asp-validation-for="FromDate" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label>تا تاریخ</label>
+          <div class="input-group">
+            <input asp-for="ToDate" id="ToDate" class="form-control" autocomplete="off" />
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fas fa-calendar-alt"></i>
+              </span>
+            </div>
+          </div>
+          <span asp-validation-for="ToDate" class="text-danger"></span>
+        </div>
+      </div> *@
+            <div id="dailyFields">
+                <div class="row">
+                    <div class="input-group col-md-6 col-sm-12">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text cursor-pointer" id="date5" data-mdpersiandatetimepicker="" data-mdpersiandatetimepicker-group="rangeSelector1" data-todate="" data-original-title="" title=""><i class='fas fa-calendar-alt' style='font-size:24px;color:forestgreen'></i></span>
+                        </div>
+                        <input name="FromDate" id="FromDate" type="hidden" />
+                        <input type="text" id="StartDateFake" class="form-control" aria-label="date5" aria-describedby="date5" placeholder=" از تاریخ " />
+                        <span asp-validation-for="FromDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="input-group col-md-6 col-sm-12">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text cursor-pointer" id="date6" data-mdpersiandatetimepicker="" data-mdpersiandatetimepicker-group="rangeSelector1" data-todate="" data-original-title="" title=""><i class='fas fa-calendar-alt' style='font-size:24px;color:red'></i></span>
+                        </div>
+                        <input name="ToDate" id="ToDate" type="hidden" />
+                        <input type="text" id="EndDateFake" class="form-control" aria-label="date6" aria-describedby="date6" placeholder="تا تاریخ" />
+                        <span asp-validation-for="ToDate" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+      <hr />
+
+      <h5 class="mb-3">
+        <i class="fas fa-calendar-week"></i> ساعات کاری هفتگی
+      </h5>
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>روز هفته</th>
+            <th>از ساعت</th>
+            <th>تا ساعت</th>
+          </tr>
+        </thead>
+        <tbody >
+          @for (int i = 0; i < Model.Days.Count; i++)
+          {
+              <tr>
+                <td>
+                  @Model.Days[i].DayName
+                  <input type="hidden" asp-for="Days[@i].DayOfWeek" />
+                </td>
+                <td>
+                  <input asp-for="Days[@i].StartTime"
+                         type="time"
+                                       class="form-control time-input" style="direction:ltr;text-align:left" />
+                  <span asp-validation-for="Days[@i].StartTime"
+                        class="text-danger"></span>
+                </td>
+                <td>
+                  <input asp-for="Days[@i].EndTime"
+                         type="time"
+                                       class="form-control time-input" style="direction:ltr;text-align:left" />
+                  <span asp-validation-for="Days[@i].EndTime"
+                        class="text-danger"></span>
+                </td>
+              </tr>
+          }
+        </tbody>
+      </table>
+
+      <button type="submit"
+              class="btn btn-success btn-circle btn-block mt-4 shadow-sm">
+        <i class="fas fa-save"></i> ذخیره دوره
+      </button>
+    </form>
+  </div>
+</div>
+@section Styles {
+
+    <link href="~/lib/MD_BootstrapPersianDateTimePicker-master-bs5/dist/jquery.md.bootstrap.datetimepicker.style.css" rel="stylesheet" />
+    <style>
+        .input-group-prepend {
+            margin-left: 10px !important;
+        }
+        .card {
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .time-input {
+            max-width: 120px;
+        }
+
+        .btn-circle {
+            border-radius: 50px;
+            padding: .5rem 1.5rem;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 .2rem rgba(13,110,253,.25);
+        }
+    </style>
+}
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/lib/MD_BootstrapPersianDateTimePicker-master-bs5/dist/jquery.md.bootstrap.datetimepicker.js"></script>
+  <script>
+    $(function () {
+          $('#date5').MdPersianDateTimePicker({
+                targetTextSelector: '#StartDateFake',
+                targetDateSelector: '#FromDate',
+                groupId: 'date5',
+                fromDate: true,
+                enableTimePicker: false,
+                modalMode: true
+            });
+            $('#date6').MdPersianDateTimePicker({
+                targetTextSelector: '#EndDateFake',
+                targetDateSelector: '#ToDate',
+                groupId: 'date5',
+                toDate: true,
+                enableTimePicker: false,
+                modalMode: true
+            });
+    });
+  </script>
+}
+

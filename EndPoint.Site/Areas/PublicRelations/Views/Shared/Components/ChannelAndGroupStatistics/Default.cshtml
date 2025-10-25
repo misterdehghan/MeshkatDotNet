@@ -1,0 +1,69 @@
+﻿@using Azmoon.Application.Service.PublicRelations.DashboardServices
+@model ResultChannelAndGroup
+@{
+    ViewData["Title"] = "Default";
+   Layout = null;
+}
+
+
+
+<div>
+    <canvas id="channelGroupChart" style="width: 100%; height: 300px;"></canvas>
+</div>
+
+@* <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ *@
+<script src="~/lib/chartjs/dist/chart.js"></script>
+
+ <script>
+    var ctx = document.getElementById('channelGroupChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'doughnut', // نوع نمودار دایره‌ای
+        data: {
+            labels: ['واتس‌اپ', 'تلگرام', 'اینستاگرام', 'ایکس', 'سروش', 'آی گپ', 'ایتا', 'بله', 'روبیکا'],
+            datasets: [{
+                label: 'آمار کانال‌ها و گروه‌ها',
+                data: [
+    @Model.whatsapp,
+    @Model.telegram,
+    @Model.Instagram,
+    @Model.x,
+    @Model.sorosh,
+    @Model.iGap,
+    @Model.eeta,
+    @Model.bale,
+    @Model.rubika
+                ],
+                backgroundColor: [
+                    '#4CAF50', // رنگ‌ها برای هر دسته
+                    '#2196F3',
+                    '#FFC107',
+                    '#FF5722',
+                    '#9C27B0',
+                    '#673AB7',
+                    '#3F51B5',
+                    '#009688',
+                    '#795548'
+                ]
+            }]
+        },
+        options: {
+            maintainAspectRatio: false, // نسبت ارتفاع به عرض ثابت را غیرفعال می‌کند
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.label + ': ' + tooltipItem.raw;
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+

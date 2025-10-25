@@ -1,0 +1,362 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/PublicRelations/Theme/assets/images/favicon.png">
+    <title>SAAS-Public Relations-Register</title>
+    <!-- Custom CSS -->
+    <link href="/PublicRelations/Theme/dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        .form-control::placeholder {
+            font-size: 12px; /* اندازه مورد نظر خود را انتخاب کنید */
+        }
+
+        select {
+            font-size: 12px !important;
+        }
+
+        ul {
+            list-style-type: none; /* این خط کنار لیست نقطه را حذف می‌کند */
+            padding: 0; /* این خط کنار لیست پدینگ را حذف می‌کند (اختیاری) */
+            margin: 0; /* این خط کنار لیست مارجین را حذف می‌کند (اختیاری) */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- ============================================================== -->
+        <div class="preloader">
+            <div class="lds-ripple">
+                <div class="lds-pos"></div>
+                <div class="lds-pos"></div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Login box.scss -->
+        <!-- ============================================================== -->
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(/PublicRelations/Theme/assets/images/big/auth-bg.jpg) no-repeat center center;">
+            <div class="auth-box">
+                <div>
+                    <div class="logo">
+                        <span class="db"><img src="/PublicRelations/Theme/assets/images/logo-icon.png" alt="logo" /></span>
+                        <br /><br />
+                        <h5 class="font-medium l-b-20" style="font-weight: bold;">سامانه مدیریت آماری روابط عمومی (سماع)</h5>
+                        <h6 class="">ثبت نام</h6>
+                    </div>
+                    <!-- Form -->
+                    <div class="row">
+                        <div class="col-12">
+                            @if (TempData["Message"] != null)
+                            {
+                                <div class="alert alert-danger">
+                                    <text>@TempData["Message"]</text>
+                                </div>
+                            }
+                            <form class="form-horizontal m-t-20" action="index.html">
+
+                                <div id="validationMessages"></div>
+                                <div class="form-group row ">
+                                    <div class="col-6 ">
+                                        <input class="form-control" type="text" required="" id="FirstName" placeholder="نام" value="" autocomplete="off">
+                                    </div>
+
+                                    <div class="col-6 ">
+                                        <input class="form-control" type="text" required="" id="LastName" placeholder="نام خانوادگی" value="" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-6 ">
+                                        <input class="form-control" type="text" id="PersonnelCode" placeholder="شماره پرسنلی" value="" autocomplete="off">
+                                    </div>
+                                    <div class="col-6 ">
+                                        <input class="form-control" type="text" id="PhoneNumber" placeholder="شماره تلفن امین" value="" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-6 ">
+                                        <select class="form-control" name="Name" asp-items="@ViewBag.Province" id="Province" placeholder="استان" autocomplete="off">
+                                            <option value="" disabled selected>انتخاب استان</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-6 ">
+
+
+
+                                        <select class="form-control" id="City" autocomplete="off">
+                                            <option value="" disabled selected>انتخاب شهرستان</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-6 ">
+                                        <input class="form-control" type="password" required="" id="Password" placeholder="پسورد" value="" autocomplete="off">
+                                    </div>
+
+                                    <div class="col-6 ">
+                                        <input class="form-control" type="password" required="" id="ConfirmPassword" placeholder="تکرار پسورد" value="" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="form-group text-center ">
+                                    <div class="col-xs-12 p-b-20 ">
+                                        <a onclick="Registeruser()" class="btn btn-block btn-lg btn-info" style="color:white;">ثبت نام</a>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-0 m-t-10 ">
+                                    <div class="col-sm-12 text-center ">
+                                        قبلا یک حساب کاربری دارید؟ <a asp-controller="Account" asp-action="PublicRelationLogin" class="text-info m-l-5 "><b>ورود</b></a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- Login box.scss -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper scss in scafholding.scss -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper scss in scafholding.scss -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right Sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right Sidebar -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- All Required js -->
+    <!-- ============================================================== -->
+    <script src="/PublicRelations/Theme/assets/libs/jquery/dist/jquery.min.js "></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="/PublicRelations/Theme/assets/libs/popper.js/dist/umd/popper.min.js "></script>
+    <script src="/PublicRelations/Theme/assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
+    <!-- ============================================================== -->
+    <!-- This page plugin js -->
+    <!-- ============================================================== -->
+    <script>
+        $('[data-toggle="tooltip "]').tooltip();
+        $(".preloader ").fadeOut();
+    </script>
+
+
+    <link href="~/PublicRelations/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <script src="~/PublicRelations/Sweetalert2/sweetalert2.min.js"></script>
+
+
+    <script>
+        function Registeruser() {
+            var FirstName = $("#FirstName").val();
+            var LastName = $("#LastName").val();
+            var PersonnelCode = $("#PersonnelCode").val();
+            var PhoneNumber = $("#PhoneNumber").val();
+            var Province = $("#Province").val();
+            var City = $("#City").val();
+            var Password = $("#Password").val();
+            var ConfirmPassword = $("#ConfirmPassword").val();
+
+            var errors = [];
+
+            // اعتبارسنجی نام
+            if (FirstName.length < 1) {
+                errors.push("نام را وارد کنید.");
+            }
+
+            // اعتبارسنجی نام خانوادگی
+            if (LastName.length < 1) {
+                errors.push("نام خانوادگی را وارد کنید.");
+            }
+
+            // اعتبارسنجی کد پرسنلی
+            if (PersonnelCode.length < 9) {
+                errors.push("لطفا یک شماره پرسنلی معتبر وارد کنید.");
+            }
+
+            // الگو برای شماره تلفن همراه ایران
+            var phoneNumberPattern = /^(?:\d{5}|\d{8})$/;
+
+            // اعتبارسنجی شماره تلفن
+            if (!phoneNumberPattern.test(PhoneNumber)) {
+                errors.push("لطفاً یک شماره تلفن معتبر وارد کنید.");
+            }
+
+            // اعتبارسنجی استان
+            if (Province == null) {
+                errors.push("استان را انتخاب کنید.");
+            }
+
+            // اعتبارسنجی شهرستان
+            if (City == null) {
+                errors.push("شهرستان را انتخاب کنید.");
+            }
+
+            // اعتبارسنجی پسورد
+            if (Password.length < 6) {
+                errors.push("پسورد باید حداقل 6 کاراکتر باشد.");
+            }
+
+            // اعتبارسنجی تکرار پسورد
+            if (Password !== ConfirmPassword) {
+                errors.push("تکرار پسورد مطابقت ندارد.");
+            }
+
+            if (errors.length > 0) {
+                var errorHtml = '<ul>';
+                for (var i = 0; i < errors.length; i++) {
+                    errorHtml += '<li>' + errors[i] + '</li>';
+                }
+                errorHtml += '</ul>';
+                $('#validationMessages').html('<div class="alert alert-danger">' + errorHtml + '</div>');
+            } else {
+                // اگر همه اعتبارسنجی‌ها موفق بودند، نمایش الرت
+                showConfirmationAlert();
+            }
+        }
+
+        function showConfirmationAlert() {
+            swal.fire({
+                title: 'ثبت اطلاعات',
+                text: 'آیا از صحت اطلاعات وارد شده اطمینان دارید؟',
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله',
+                cancelButtonText: 'خیر'
+            }).then((result) => {
+                if (result.value) {
+                    // اگر کاربر "بله" را انتخاب کند، ادامه عملیات ثبت نام
+                    submitRegistration();
+                }
+            });
+        }
+
+        function submitRegistration() {
+            var FirstName = $("#FirstName").val();
+            var LastName = $("#LastName").val();
+            var PersonnelCode = $("#PersonnelCode").val();
+            var PhoneNumber = $("#PhoneNumber").val();
+            var Province = $("#Province").val();
+            var City = $("#City").val();
+            var Password = $("#Password").val();
+            var ConfirmPassword = $("#ConfirmPassword").val();
+
+            var postData = {
+                'FirstName': FirstName,
+                'LastName': LastName,
+                'PersonnelCode': PersonnelCode,
+                'PhoneNumber': PhoneNumber,
+                'Province': Province,
+                'City': City,
+                'Password': Password,
+                'ConfirmPassword': ConfirmPassword,
+            };
+
+            $.ajax({
+                contentType: 'application/x-www-form-urlencoded',
+                dataType: 'json',
+                type: "POST",
+                url: "PublicRelationRegister", // تغییر به URL درخواست به وب‌سرور
+                data: postData,
+                success: function (data) {
+                    if (data.isSuccess == true) {
+                        swal.fire({
+                            title: 'موفق!',
+                            text: data.message,
+                            icon: 'success',
+                            showConfirmButton: false,
+                        });
+                        setTimeout(function () {
+                            window.location.href = '/Account/PublicRelationLogin';
+                        }, 2000); // 2 ثانیه
+                    } else {
+                        swal.fire(
+                            'هشدار!',
+                            data.message,
+                            'warning'
+                        );
+                    }
+                },
+                error: function (request, status, error) {
+                    // نمایش پیام خطا در کنسول
+                    console.error("خطا در درخواست:", request.responseText);
+                }
+            });
+        }
+
+
+
+
+
+
+        $(document).ready(function () {
+            $('#Province').change(function () {
+                var selectedProvinceId = $(this).val();
+
+                // اگر استان انتخاب نشده باشد، خالی کنید
+                if (!selectedProvinceId) {
+                    $('#City').empty();
+                    return;
+                }
+
+
+                $.ajax({
+                    url: '/Account/GetCitiesByProvinceId?provinceId=' + selectedProvinceId,
+                    type: 'GET',
+                    success: function (data) {
+
+
+                        // بازیابی اطلاعات شهرستان‌ها و به‌روز کردن المان دراپ‌دان شهرستان
+                        var cityDropdown = $('#City');
+                        cityDropdown.empty();
+                        $.each(data, function (i, item) {
+                            cityDropdown.append($('<option></option>').val(item.value).text(item.text));
+                        });
+                    },
+                    error: function () {
+                        alert('خطا در دریافت اطلاعات شهرستان‌ها.');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+@section Scripts {
+        @{
+                await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</html>

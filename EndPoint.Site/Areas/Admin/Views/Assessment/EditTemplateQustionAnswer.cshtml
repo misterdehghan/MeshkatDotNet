@@ -1,0 +1,82 @@
+﻿@using Azmoon.Application.Service.Assessment.Dto
+@model GetDitelesTemplateDto
+@{
+    ViewData["Title"] = "تغییرات کلیشه";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<form action="/admin/Assessment/EditTemplateQustionAnswer" method="post">
+    <h4>
+        عنوان کلیشه :
+        <br />
+
+        <input type="text" value="@Model.Name" name="TemplateName" class="col-12" />
+
+    </h4>
+    <input type="hidden" value="@Model.Id" name="TemplateId" />
+    <h2> سوال ها</h2>
+    <table class="table table-striped" id="tbl_question" style="color:none">
+        <thead>
+            <tr>
+                <th>عنوان سوال</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.QuestionFeatures)
+                {
+                <tr>
+                    <td>
+                        <input value="@item.Title" class="col-12" name="QuestionFeaturTitle_@item.Id" />
+                    </td>
+
+
+                </tr>
+                }
+        </tbody>
+    </table>
+
+    <div class="row justify-content-center " style="text-align:right !important">
+
+        <div class="col-md-9 col-sm-12 mx-auto shadow rounded bg-body ">
+        <h2>کلید جواب ها</h2>
+        <div class="col-sm-12 col-md-12">
+
+            <table class="table table-striped " id="tbl_answer">
+                <thead>
+                    <tr>
+                        <th>عنوان کلید</th>
+                        <th>وزن</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.AnswerFeatures)
+                        {
+                        <tr>
+                            <td>  <input value="@item.Title" class="col-12" name="answerFeaturTitle_@item.Id" /></td>
+                            <td>
+
+                                <input value="@item.Wight" class="col-12" name="answerFeaturWight_@item.Id" />
+
+                            </td>
+
+                        </tr>
+                        }
+                </tbody>
+            </table>
+        </div>
+
+            <div class="row">
+                <button type="submit" id="btn_form_submit" class="btn btn-success col-6 pl-2" style="text-align: center !important; font-size: 24px; color: red ">ذخیره تغییرات <i class="fa fa-save"></i></button>
+                <a asp-action="Templates" asp-controller="Assessment" class="btn btn-primary col-6" style="font-size: 24px;">بازگشت <i class="fa fa-undo"></i></a>
+            </div>
+    </div>
+    </div>
+ 
+
+</form>
+

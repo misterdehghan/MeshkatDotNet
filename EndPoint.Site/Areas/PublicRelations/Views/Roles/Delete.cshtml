@@ -1,0 +1,66 @@
+﻿@using EndPoint.Site.Areas.PublicRelations.Models.Dto.Roles
+@model RoleDeleteDto
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/PublicRelations/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-5 align-self-center">
+           @*  <h4 class="page-title">Draggable</h4> *@
+        </div>
+        <div class="col-7 align-self-center">
+            <div class="d-flex align-items-center justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">حذف</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page"> حذف <strong>@Model.Name</strong></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-12">
+            <div class="row draggable-cards" id="draggable-area">
+           
+                <div class="col-md-6 col-sm-12">
+                    <div class="card  card-hover">
+                        <div class="card-header bg-danger">
+                            <h4 class="m-b-0 text-white"> حذف <strong>@Model.Name</strong> </h4>
+                        </div>
+                        <div class="card-body">
+                            @* <h3 class="card-title">حذف</h3> *@
+                            
+                    
+                            <p class="card-text">
+                                @{
+                                    string message1 = $"شما در حال حذف رول <strong>{Model.Name}</strong> با ایدی <strong>{Model.Id}</strong> هستید.";
+                                }
+                                @Html.Raw(message1)
+                            </p>
+
+                            <form asp-action="Delete">
+                                <input type="submit" value="بله" class="btn btn-danger" /> |
+                                <a asp-action="Index" class="btn btn-dark">انصراف</a>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

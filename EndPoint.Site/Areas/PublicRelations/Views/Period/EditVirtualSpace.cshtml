@@ -1,0 +1,290 @@
+﻿@using EndPoint.Site.Areas.PublicRelations.Models.Dto.Statistics
+@model GetDetailStatisticalPeriodDto
+@using EndPoint.Site.Areas.PublicRelations.Helpers.Convertors;
+
+@{
+    ViewData["Title"] = "EditPeriodVirtualSpaceModal";
+    Layout = "~/Areas/PublicRelations/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-5 align-self-center">
+            @*<h4 class="page-title">افزودن کانال جدید</h4>*@
+        </div>
+        <div class="col-7 align-self-center">
+            <div class="d-flex align-items-center justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">ورودی ها</li>
+                        <li class="breadcrumb-item">فضای مجازی </li>
+                        <li class="breadcrumb-item active" aria-current="page">ویرایش دوره آماری</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+
+    <div class="card">
+        <div class="card-header bg-warning">
+            <h4 class="m-b-0 text-white">
+                @("ویرایش دوره آماری" + " " + Model.StatisticalPeriod)
+            </h4>
+        </div>
+
+        <div class="form-body">
+            <div class="card-body">
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                    <h3 class="text-warning"><i class="fa fa-exclamation-triangle"></i> توجه</h3>
+                    توجه داشته باشید در صورت خالی گذاشتن تاریخ شروع یا اتمام آمارگیری تاریخ قبلی ذخیره شده در دیتابیس ذخیره شده و این فیلد ها نمیتواند خالی باشد.
+                </div>
+                <div class="row p-t-20">
+                    <input type="hidden" id="inputId" value="@Model.Id" />
+
+                    <div class="col-md-3">
+                        <div class="form-group has-danger">
+                            <label class="control-label">دوره آماری</label>
+                            <input type="text" id="StatisticalPeriod" class="form-control form-control-danger" placeholder="" value="@Model.StatisticalPeriod" autocomplete="off" />
+                            <small class="form-control-feedback"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">تاریخ شروع آمارگیری</label>
+                            <input type="text" id="from_date" data-jdp data-jdp-miladi-input="Startdate" data-jdp-min-date="today" class="form-control" value="" autocomplete="off">
+                            <small class="form-control-feedback" style="color:red">@("تاریخ شروع آمارگیری قبلی" + " " + Model.StartDate.ToShamsi())</small>
+                            <input type="hidden" id="Startdate" />
+                            <input type="hidden" id="OldStartdate" value="@Model.StartDate" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">تاریخ اتمام آمارگیری</label>
+                            <input type="text" id="to_date" data-jdp data-jdp2-miladi-input="Enddate" class="form-control" value="" autocomplete="off">
+                            <small class="form-control-feedback" style="color:red">@("تاریخ اتمام آمارگیری قبلی" + " " + Model.EndDate.ToShamsi())</small>
+                            <input type="hidden" id="Enddate" />
+                            <input type="hidden" id="OldEnddate" value="@Model.EndDate" />
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <div class="card-body text-right">
+                <button type="button" onclick="EditStatisticalPeriod(event)" class="btn btn-info"> <i class="fa fa-check"></i> ذخیره</button>
+                <button type="button" class="btn btn-dark">انصراف</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Styles
+    {
+    @*Date Picker*@
+    <link href="~/PublicRelations/theme/jalalidatepicker/jalalidatepicker.css" rel="stylesheet" />
+    <script src="~/PublicRelations/theme/jalalidatepicker/jalalidatepicker.js"></script>
+}
+
+
+@section Scripts
+    {
+    <script>
+        jalaliDatepicker.startWatch({
+            minDate: "attr",
+            maxDate: "attr"
+        });
+
+        var fromElm = document.getElementById("from_date");
+        var toElm = document.getElementById("to_date");
+
+        fromElm.addEventListener("jdp:change", function (e) {
+            toElm.setAttribute("data-jdp-min-date", this.value);
+        });
+
+        toElm.addEventListener("jdp:change", function (e) {
+            fromElm.setAttribute("data-jdp-max-date", this.value);
+        });
+    </script>
+
+
+     <link href="~/PublicRelations/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+     <script src="~/PublicRelations/Sweetalert2/sweetalert2.min.js"></script>
+
+    @*Date Picker*@
+    <script>
+        jalaliDatepicker.startWatch();
+
+        document.querySelector("[data-jdp2-miladi-input]").addEventListener("jdp:change", function (e) {
+            var miladiInput = document.getElementById(this.getAttribute("data-jdp2-miladi-input"));
+            if (!this.value) {
+                miladiInput.value = "";
+                return;
+            }
+            var date = this.value.split("/");
+            miladiInput.value = jalali_to_gregorian(date[0], date[1], date[2]).join("/")
+        });
+
+        function jalali_to_gregorian(jy, jm, jd) {
+            jy = Number(jy);
+            jm = Number(jm);
+            jd = Number(jd);
+            var gy = (jy <= 979) ? 621 : 1600;
+            jy -= (jy <= 979) ? 0 : 979;
+            var days = (365 * jy) + ((parseInt(jy / 33)) * 8) + (parseInt(((jy % 33) + 3) / 4))
+                + 78 + jd + ((jm < 7) ? (jm - 1) * 31 : ((jm - 7) * 30) + 186);
+            gy += 400 * (parseInt(days / 146097));
+            days %= 146097;
+            if (days > 36524) {
+                gy += 100 * (parseInt(--days / 36524));
+                days %= 36524;
+                if (days >= 365) days++;
+            }
+            gy += 4 * (parseInt((days) / 1461));
+            days %= 1461;
+            gy += parseInt((days - 1) / 365);
+            if (days > 365) days = (days - 1) % 365;
+            var gd = days + 1;
+            var sal_a = [0, 31, ((gy % 4 == 0 && gy % 100 != 0) || (gy % 400 == 0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            var gm
+            for (gm = 0; gm < 13; gm++) {
+                var v = sal_a[gm];
+                if (gd <= v) break;
+                gd -= v;
+            }
+            return [gy, gm, gd];
+        }
+    </script>
+
+    <script>
+        jalaliDatepicker.startWatch();
+
+        document.querySelector("[data-jdp-miladi-input]").addEventListener("jdp:change", function (e) {
+            var miladiInput = document.getElementById(this.getAttribute("data-jdp-miladi-input"));
+            if (!this.value) {
+                miladiInput.value = "";
+                return;
+            }
+            var date = this.value.split("/");
+            miladiInput.value = jalali_to_gregorian(date[0], date[1], date[2]).join("/")
+        });
+
+        function jalali_to_gregorian(jy, jm, jd) {
+            jy = Number(jy);
+            jm = Number(jm);
+            jd = Number(jd);
+            var gy = (jy <= 979) ? 621 : 1600;
+            jy -= (jy <= 979) ? 0 : 979;
+            var days = (365 * jy) + ((parseInt(jy / 33)) * 8) + (parseInt(((jy % 33) + 3) / 4))
+                + 78 + jd + ((jm < 7) ? (jm - 1) * 31 : ((jm - 7) * 30) + 186);
+            gy += 400 * (parseInt(days / 146097));
+            days %= 146097;
+            if (days > 36524) {
+                gy += 100 * (parseInt(--days / 36524));
+                days %= 36524;
+                if (days >= 365) days++;
+            }
+            gy += 4 * (parseInt((days) / 1461));
+            days %= 1461;
+            gy += parseInt((days - 1) / 365);
+            if (days > 365) days = (days - 1) % 365;
+            var gd = days + 1;
+            var sal_a = [0, 31, ((gy % 4 == 0 && gy % 100 != 0) || (gy % 400 == 0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            var gm
+            for (gm = 0; gm < 13; gm++) {
+                var v = sal_a[gm];
+                if (gd <= v) break;
+                gd -= v;
+            }
+            return [gy, gm, gd];
+        }
+    </script>
+
+
+
+    <script>
+        function EditStatisticalPeriod(event) {
+            event.preventDefault(); // جلوگیری از ارسال فرم به صورت پیش‌فرض
+
+            var inputId = $("#inputId").val();
+            var StatisticalPeriod = $("#StatisticalPeriod").val();
+            var Startdate = $("#Startdate").val();
+            var Enddate = $("#Enddate").val();
+
+
+            var fromdate = $("#from_date").val();
+            var todate = $("#to_date").val();
+
+            // اگر از اینپوت خالی بودند، تاریخ قبلی رو استفاده کن
+            if (!fromdate) {
+                Startdate = $("#OldStartdate").val();
+            } else {
+                Startdate;
+            }
+
+            if (!todate) {
+                Enddate = $("#OldEnddate").val();
+            } else {
+                Enddate;
+            }
+
+
+
+
+            var postData = {
+                'Id': inputId,
+                'StatisticalPeriod': StatisticalPeriod,
+                'StartDate': Startdate,
+                'EndDate': Enddate
+            };
+
+            // لاگ‌گذاری داده‌های ارسالی
+            console.log("Post Data: ", postData);
+
+            $.ajax({
+                contentType: 'application/x-www-form-urlencoded',
+                dataType: 'json',
+                type: "POST",
+                url: "EditVirtualSpace", // تغییر به URL درخواست به وبسرور
+                data: postData,
+                success: function (data) {
+                    // لاگ‌گذاری پاسخ دریافت شده
+                    console.log("Response Data: ", data);
+
+                    if (data.isSuccess == true) {
+                        swal.fire(
+                            'موفق!',
+                            data.message,
+                            'success'
+                        ).then(function (isConfirm) {
+                            // location.reload();
+                            window.location.href = "/PublicRelations/Period/IndexVirtualSpace";
+                        });
+                    } else {
+                        swal.fire(
+                            'هشدار!',
+                            data.message,
+                            'warning'
+                        );
+                    }
+                },
+                error: function (request, status, error) {
+                    // نمایش پیام خطا در کنسول
+                    console.error("خطا در درخواست:", request.responseText);
+                }
+            });
+        }
+    </script>
+
+
+}

@@ -1,0 +1,557 @@
+﻿
+ @using Azmoon.Common.ResultDto
+@using Azmoon.Application.Service.Assessment.Dto
+@model GetAssessmentPagination
+@using EndPoint.Site.Useful.Ultimite
+
+@addTagHelper *, LazZiya.TagHelpers
+@{
+    ViewData["Title"] = "ارزشیابی دوره ها";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>ارزشیابی دوره های آموزشی</h1>
+<div class="row">
+    <nav class="navbar navbar-expand-sm submenu-nav">
+        <ul class="navbar-nav">
+
+
+            <li class="nav-item">
+                <form asp-action="AddAssessment" asp-area="Admin" asp-controller="Assessment" method="get">
+                    <button type="submit" class="btn btn-default btn-change-state w3-green m-1">
+                        نظرسنجی جدید  <i class="nav-icon fa fa-plus-circle"></i>
+                    </button>
+                </form>
+            </li>
+            <li class="nav-item">
+                <form id="edit_form" asp-action="EditSurvay">
+                    <button type="submit" class="btn btn-default btn-change-state w3-orange m-1" data-action="EditAssessment" data-controller="Assessment" data-area="Admin">
+                        ویرایش <i class="nav-icon fa fa-edit"></i>
+                    </button>
+                </form>
+            </li>
+      
+
+            <li class="nav-item">
+                <form id="unpublish_form" asp-action="Result">
+                    <button type="submit" class="btn btn-default btn-change-state w3-deep-orange m-1" data-action="Result" data-controller="Assessment" data-area="Admin">
+                        خروجی EXEL <i class="fas fa-file-excel"></i>
+                    </button>
+                </form>
+            </li>
+            <li class="nav-item">
+                <form id="unpublish_form" asp-action="Result">
+                    <button type="submit" class="btn btn-default btn-change-state w3-green m-1" data-action="ResultDescription" data-controller="Assessment" data-area="Admin">
+                        جوابهای تشریحی  EXEL <i class="fas fa-file-excel"></i>
+                    </button>
+                </form>
+                        <li class="nav-item">
+      
+           <button type="submit" class="btn btn-default btn-change-state w3-blue m-1" data-action="viewTemplateDiteles" data-controller="Assessment" data-area="Admin">
+               مشاهده <i class="nav-icon fas fa-eye"></i>
+           </button>
+       
+   </li>
+
+            <li class="nav-item">
+                <form id="unpublish_form" asp-action="Delete">
+                    <button type="submit" class="btn btn-default btn-change-state w3-pink m-1" data-action="deleteAssessment" data-controller="Assessment" data-area="Admin">
+                        حذف <i class="nav-icon fas fa-exclamation-circle"></i>
+                    </button>
+                </form>
+            </li>
+
+
+
+             
+  
+
+        </ul>
+    </nav>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-10">
+        <form asp-action="Index" method="get" class="row">
+            <div class="col-3">
+                <div class="input-group">
+
+                    <div class="input-group-prepend" id="select-WorkPlaceId">
+                        <span class="input-group-text cursor-pointer"><i class='fas far fa-eye' style='font-size: 24px; color: red; padding-left: 16px;'></i></span>
+                    </div>
+
+
+
+                    <input type="text" id="WorkPlaceIdFake" name="WorkPlaceIdFake" class="form-control" placeholder="انتخاب محل برگزاری " autocomplete="off" />
+
+
+
+
+                    <input type="hidden" id="WorkPlaceId" name="WorkPlaceId" required />
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="input-group col-md-6 col-sm-12">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text cursor-pointer" id="date5" data-mdpersiandatetimepicker="" data-mdpersiandatetimepicker-group="rangeSelector1" data-todate="" data-original-title="" title=""><i class='fas fa-calendar-alt' style='font-size:24px;color:forestgreen'></i></span>
+                        </div>
+                        <input name="StartDate" id="StartDate" type="hidden" required />
+                        <input type="text" id="StartDateFake" value="" class="form-control" aria-label="date5" aria-describedby="date5" placeholder="زمان شروع نظرسنجی" />
+
+                    </div>
+
+                    <div class="input-group col-md-6 col-sm-12">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text cursor-pointer" id="date6" data-mdpersiandatetimepicker="" data-mdpersiandatetimepicker-group="rangeSelector1" data-todate="" data-original-title="" title=""><i class='fas fa-calendar-alt' style='font-size:24px;color:red'></i></span>
+                        </div>
+                        <input id="EndDate" name="EndDate" type="hidden" required />
+                        <input type="text" id="EndDateFake" name="EndDateFake" value="" class="form-control" aria-label="date6" aria-describedby="date6" placeholder="زمان پایان نظرسنجی" />
+
+                    </div>
+                </div>
+   
+            </div>
+            <div class="col-3">
+                <div class="input-group">
+                    <input type="text" name="qSearch" id="qSearch" class="form-control float-right" placeholder="جستجو با نام">
+
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fa fa-search"></i></span>
+                    </div>
+
+                    <button type="submit" id="btn_form_submit" class="btn btn-primary">جستجو</button>
+                </div>
+            </div>
+           
+           
+        </form>
+    </div>
+
+    <div class="col-sm-4 col-md-2">
+      
+
+
+            <a class="form-inline btn btn-info" href="/Admin/Assessment/Index" >
+               
+                    پاک کن
+               
+            </a>
+
+      
+    </div>
+</div>
+
+
+<div id="resultPageQuery">
+
+@{
+
+    if (Model != null)
+        {
+                            <div id="alertPanel"></div>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            انتخاب
+                                        </th>
+                                        <th>
+                                            شاخص
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Assessmentes.ElementAt(0).Name)
+                                        </th>
+                                       
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Assessmentes.ElementAt(0).WorkPlaceName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Assessmentes.ElementAt(0).CreatorUserName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Assessmentes.ElementAt(0).StartDate)
+
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Assessmentes.ElementAt(0).EndDate)
+                                        </th>
+                                        <th>
+                                            وضعیت
+                                        </th>
+
+
+                                        <th>
+                                           تعداد 
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                    if (Model.Assessmentes != null)
+                        {
+
+                                                                @foreach (var item in Model.Assessmentes)
+                            {
+                                                                    <tr>
+                                                                        <td>
+                                                                            <input name="posts[]" type="checkbox" class="checkthis" value="@item.Id" data-username="@item.Id" />
+                                                                        </td>
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item.Id)
+                                                                        </td>
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item.Name)
+                                                                        </td>
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item.WorkPlaceName)
+                                                                        </td> 
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item.CreatorUserName)
+                                                                        </td>
+                                                                        <td>
+                                                                            @item.StartDate.ToPersianDateStrFarsi()
+                                                                        </td>
+                                                                        <td>
+                                                                            @item.EndDate.ToPersianDateStrFarsi()
+                                                                        </td>
+                                                                        <td>
+
+                                                                            @{
+
+                                        switch ((Int16)item.Status)
+                                            {
+                                            case 1:
+
+                                                                                                            <i class='fas fa-circle' style='font-size:25px;color:green'></i>
+                                                break;
+                                            case 2:
+                                                                                                            <i class='fas fa-circle blink' style='font-size:25px;color:orange'></i>
+                                                break;
+                                            case 3:
+                                                                                                            <i class='fas fa-circle' style='font-size:25px;color:red'></i>
+                                                break;
+                                            }
+                                                                            }
+                                                                        </td>
+
+                                                                        <td>
+                                                                    @item.countUser
+                                                                </td>
+                                                                    </tr>
+                            }
+                        }
+
+                                    }
+
+                                </tbody>
+                            </table>
+                            <div class="card-footer">
+                                @{
+                if (Model != null && Model.Assessmentes != null)
+                    {
+                                                            <paging page-no="@Model.PagerDto.PageNo"
+                                                                    page-size="@Model.PagerDto.PageSize"
+                                                                    total-records="@Model.PagerDto.TotalRecords"
+                                                                    show-prev-next="true"
+                                                                    show-total-pages="true"
+                                                                    show-total-records="true"
+                                                                    show-page-size-nav="true"
+                                                                    show-first-numbered-page="true"
+                                                                    show-last-numbered-page="true"
+                                                                    query-string-key-page-no="PageNo"
+                                                                    query-string-key-page-size="PageSize"
+                                                                    query-string-value="@@(Request.QueryString.Value)"
+                                                                    text-total-pages="صفحه"
+                                                                    text-total-records="رکورد"
+                                                                    text-first="&laquo;"
+                                                                    text-last="&raquo;"
+                                                                    text-previous="&lsaquo;"
+                                                                    text-next="&rsaquo;"
+                                                                    sr-text-first="اولین"
+                                                                    sr-text-last="آخرین"
+                                                                    sr-text-previous="قبلی"
+                                                                    sr-text-next="بعدی"
+                                                                    gap-size="2">
+                                                            </paging>
+                    }
+                                }
+
+                            </div>
+        }
+}
+</div>
+  <div class="modal fade" id="TreeViewModal" role="dialog" tabindex="-1" aria-labelledby="TreeViewModalLabel" aria-hidden="true" style="margin-top:40px">
+    <div class="modal-dialog modal-dialog-scrollable  modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TreeViewModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="WorkPlaceTreeView_modal_body" style=" overflow-y: auto;max-height: calc(100vh - 200px);">
+             
+
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary mr-2" data-btn="save">ثبت انتخاب  </button>
+                <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">خروج</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="overlay">
+    <div class="cv-spinner">
+        <span class="spinner"></span>
+    </div>
+</div>
+@section ScriptPagination {
+    <script src="~/lib/jquery/dist/jquery-3.1.1.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery-3.5.1.slim.min.js"></script>
+    <script src="~/lib/jquery/dist/popper.min.js"></script>
+        <link href="~/lib/SweetAlert/sweetalert2.css" rel="stylesheet" />
+    <link href="~/backend/css/Spiner.css" rel="stylesheet" />
+    <link href="~/lib/trumbowyg-2_25_1/ui/trumbowyg.css" rel="stylesheet" />
+    <link href="~/lib/MD_BootstrapPersianDateTimePicker-master-bs5/dist/jquery.md.bootstrap.datetimepicker.style.css" rel="stylesheet" />
+
+}
+@section Scripts {
+           <script src="~/lib/SweetAlert/sweetalert2.js"></script>
+    <script src="~/lib/trumbowyg-2_25_1/trumbowyg.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/lib/MD_BootstrapPersianDateTimePicker-master-bs5/dist/jquery.md.bootstrap.datetimepicker.js"></script>
+ 
+    <script>
+
+        //$(".blinking").setInterval(function () {
+        //    $(".blinking").fadeOut(100).fadeIn(100)
+        //}, 1000);
+
+    </script>
+    <script>
+
+        $(document).on("click", "button[data-action]", function (e) {
+            e.preventDefault();
+            var linkk = $(this).data("action");
+            var controller = $(this).data("controller");
+            var area = $(this).data("area");
+            var Aarea = "";
+            if (area != "") {
+                Aarea = '/' + area;
+            }
+            console.log("linkk  : ", linkk);
+            var numberOfChecked = $('input:checkbox:checked');
+
+            var test = TestnumberOfChecked(numberOfChecked);
+            if (test) {
+
+                console.log("val    : ", numberOfChecked.val());
+                if (linkk == "ResultDescription" || linkk == "Result") {
+
+
+                    window.location.href = Aarea + '/' + controller + '/' + linkk + '?assessmentId=' + numberOfChecked.val();
+                }
+                else if(linkk == "deleteAssessment"){
+                    Swal.fire({
+                                title: 'اخطار',
+                                text: 'آیا از حذف نظر سنجی مطمئن هستید؟ ',
+                                icon: 'success',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'بله!',
+                                cancelButtonText: 'انصراف می دهم!',
+                                showCancelButton: true,
+                            }).then((result) => {
+                                    if (result.isConfirmed) {
+                                      window.location.href = Aarea + '/' + controller + '/' + linkk + '/' + numberOfChecked.val();
+                                }
+                                
+                              
+                            })
+                }
+                else {
+
+                    console.log("link    : ", Aarea + '/' + controller + '/' + linkk + '/' + numberOfChecked.val());
+                    window.location.href = Aarea + '/' + controller + '/' + linkk + '/' + numberOfChecked.val();
+                }
+
+            }
+
+        });
+
+        function TestnumberOfChecked(numberOfChecked) {
+            if (numberOfChecked.length === 0 || numberOfChecked.length > 1) {
+                console.log("publish_form click", numberOfChecked);
+                var errorMessage = "لطفاً! یک  نظرسنجی را انتخاب نمایید.";
+                var alertPanelContent =
+                    `<div class="alert alert-warning alert-dismissible">
+                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                     ${errorMessage}
+                      </div>`;
+                $("#alertPanel").html(alertPanelContent);
+                $("#alertPanel").slideDown("fast");
+                window.setTimeout(function () {
+                    $("#alertPanel").slideUp(500);
+                }, 3000);
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+    </script>
+
+
+
+
+
+        <script>
+        let wpselcted = 0;
+      
+           $('#date5').MdPersianDateTimePicker({
+            targetTextSelector: '#StartDateFake',
+            targetDateSelector: '#StartDate',
+            groupId: '',
+            fromDate: false,
+            enableTimePicker: true,
+            modalMode: true
+        });
+        $('#date6').MdPersianDateTimePicker({
+            targetTextSelector: '#EndDateFake',
+            targetDateSelector: '#EndDate',
+            groupId: '',
+            toDate: false,
+            enableTimePicker: true,
+            modalMode: true
+        });
+        $("#btn_form_submit").click(function (e) {
+            e.preventDefault();
+            
+              console.log("formisValid : ", "test");
+            if ($("#Name").val()!="" && $("#StartDate").val()!="" &&  $("#EndDate").val()!="" && $("#WorkPlaceId").val()!="") 
+            {
+            $("#overlay").fadeIn(300);
+            var data = new FormData();
+            data.append("StartDate", $("#StartDate").val());
+            data.append("EndDate", $("#EndDate").val());
+            data.append("WorkPlaceId", $("#WorkPlaceId").val());
+            data.append("WorkPlaceIdFake", $("#WorkPlaceIdFake").val());
+            data.append("qSearch", $("#qSearch").val());
+
+                var StartDate = $("#StartDate").val();
+                var EndDate =  $("#EndDate").val();
+                var WorkPlaceId = $("#WorkPlaceId").val();              
+                var WorkPlaceIdFake = $("#WorkPlaceIdFake").val();
+                var qSearch = $("#qSearch").val();
+
+                 console.log("data : ", data);
+                 $.ajax({
+                 type: "GET",
+                 url: "/Admin/Assessment/GetSearchAssessment",
+                 data: {"qSearch": qSearch,"StartDate":StartDate,"EndDate":EndDate,"WorkPlaceId":WorkPlaceId ,"WorkPlaceIdFake":WorkPlaceIdFake},
+                 success: function(response) {
+                     $("#overlay").fadeOut(300);
+                     $('#resultPageQuery').html(response);     
+                 },
+                 error: function(xhr) {
+                      $("#overlay").fadeOut(300);
+                      swal.fire(
+                          'هشدار!',       
+                          "خطا در ارسال و دریافت اطلاعات",         
+                          'warning'   
+                      ); 
+                 }
+                 });
+            } 
+            else { 
+                swal.fire(
+                            'هشدار!',
+                            "فرم را کامل پر کنید",
+                            'warning'
+                        );
+            }
+
+
+     
+        });
+
+        $('input[name="WorkPlaceIdFake"]').attr('autocomplete', 'none');
+
+        $('#select-WorkPlaceId').click(function () {
+            selectWorkPlaceId()
+
+        });
+        $('#WorkPlaceIdFake').click(function () {
+            selectWorkPlaceId()
+
+        });
+            function seda() { 
+                wpselcted = 1;
+              var url = "/admin/Assessment/WPartial";
+            $("#WorkPlaceTreeView_modal_body").load(url);
+        
+        } 
+              function runSeda() { 
+                if (wpselcted==0) { 
+                seda();
+            }
+      
+        
+        }
+            runSeda();
+        function selectWorkPlaceId() {
+           
+             $('#TreeViewModal').modal('toggle');
+                $('#TreeViewModal').modal({
+                         show: 'true'
+                         });
+
+        }
+           $('[data-btn="save"]').click(function (e) {
+                e.preventDefault();
+                $('input[type=checkbox]').each(function () {
+                    if (this.checked) {
+
+                        $('#WorkPlaceId').val($(this).val());
+                        $('#WorkPlaceIdFake').attr('placeholder', $(this).data('name'));
+                        $('#WorkPlaceIdFake').val($(this).data('name'));
+                        $('#TreeViewModal').modal('toggle');
+                        $('#TreeViewModal').modal({
+                         show: 'false'
+                         }); 
+                    }
+                });
+
+            });
+    </script>
+    <script>
+        $(document).ready(function () {
+          
+
+         
+
+
+
+        });
+        // hide childe treeView
+        $(function () {
+            $('#RootTreeView ul.child2').hide(300);
+        //    $('#RootTreeView li').on('click', function (e) {
+
+        //     e.stopPropagation();
+        //     $(this).children('ul').toggle(500);
+        //     $(this).children('li').addClass('mr-4');
+        //     $(this).children('ul').addClass('mr-4');
+        //     // $(this).find('>:first-child').toggleClass('fa-plus-circle fa-minus-circle')
+        //     $(this).find('>:first-child').toggleClass('fa-folder  fa-folder-open')
+
+        // });
+          
+        });
+    </script>
+}

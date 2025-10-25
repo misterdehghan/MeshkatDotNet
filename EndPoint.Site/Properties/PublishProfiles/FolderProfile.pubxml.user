@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>F:\PROJECT\publish_Azmoon</_PublishTargetUrl>
+    <History>True|2023-12-05T06:48:45.3631330Z;True|2023-12-04T22:24:27.1258823-08:00;True|2023-11-29T23:45:56.4413610-08:00;True|2023-11-29T23:38:43.4328465-08:00;True|2022-05-19T02:34:46.4442477-07:00;True|2022-05-19T02:14:07.1832466-07:00;True|2022-05-19T01:56:16.8672470-07:00;True|2022-05-19T00:56:07.1632072-07:00;True|2022-05-16T22:15:26.5116000-07:00;True|2022-05-16T02:43:42.7025484-07:00;</History>
+  </PropertyGroup>
+</Project>

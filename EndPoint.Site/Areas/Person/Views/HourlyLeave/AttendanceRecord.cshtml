@@ -1,0 +1,30 @@
+﻿@model Azmoon.Domain.Entities.AttendanceType?
+@{
+    Layout = "~/Areas/Person/Views/Shared/_LayoutPerson.cshtml";
+
+    ViewData["Title"] = "ثبت ورود و خروج";
+}
+
+<div class="container mt-5 text-center">
+  
+
+    <div class="alert alert-primary h4">
+        <strong>با انتخاب و فشردن </strong> هر یک از دکمه های زیر ، برابر تاریخ و ساعت نمایش داده شده زمان ورود و یا خروج شما ثبت می شود .
+        <strong>همچنین با در نظر داشتن مسافت ورودی یگان ها و مدت روشن کردن سیستم برای ثبت ورود ، مدت 10 دقیقه از زمان حال سیستم در ثبت کمتر محسوب می شود. </strong>
+    </div>
+    <h2><strong>تاریخ و زمان فعلی:</strong> @ViewBag.currentTime</h2>  
+    <h2><strong>IP:</strong> @ViewBag.ip</h2>
+
+    <form method="post" asp-action="AttendanceRecord" asp-asp-area="Student" asp-asp-controller="HourlyLeave">
+        <button type="submit" name="type" value="Entry" class="btn btn-success btn-lg mx-2">ثبت ورود</button>
+        <button type="submit" name="type" value="Exit" class="btn btn-danger btn-lg mx-2">ثبت خروج</button>
+    </form>
+
+    @if (TempData["Message"] != null)
+        {
+        <div class="alert alert-info mt-3">
+            @TempData["Message"]
+        </div>
+        }
+</div>
+

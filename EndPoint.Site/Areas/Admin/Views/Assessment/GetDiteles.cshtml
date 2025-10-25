@@ -1,0 +1,127 @@
+﻿@using Azmoon.Application.Service.Assessment.Dto
+@model GetDitelesTemplateDto
+@{
+    ViewData["Title"] = "GetDiteles";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var modresCounter = 1;
+    var modaresnameCounter = 1;
+}
+<div class="row justify-content-center " style="text-align:right !important">
+
+    <div class="col-md-9 col-sm-12 mx-auto shadow rounded bg-body ">
+        <h1>@Model.Name</h1>
+
+        @if (Model.JameiatQustions != null && Model.JameiatQustions.Count() > 0)
+            {
+            <h2 class="bg-success" style="color:white"> سوال های جمعیت شناسی</h2>
+            @foreach (var item in Model.JameiatQustions.Where(p => p.typeQA == 1).ToList())
+                {
+                var javab = Model.JameiatQustions.Where(p => p.ParentId == item.Id && p.typeQA == 2).ToList();
+                var javabCounter = 1;
+                <div class="h-divider">
+                    <h4><span>سوال @modresCounter: </span>@item.Name</h4>
+                    <div class="row">
+                        @foreach (var item2 in javab)
+                            {
+                            <h4 class="col-sm-12 col-md-4">
+                                @javabCounter <span>) @item2.Name</span> : <span class="badge bg-warning text-dark">  وزن جواب @item2.Wight</span>
+
+                                @{
+                                    javabCounter++;
+                                }
+                            </h4>
+
+                            }
+                    </div>
+                    @{
+                        modresCounter++;
+                    }
+
+
+                </div>
+                }
+            <hr class="h-divider" />
+            }
+
+        @if (Model.ModaresFeatures != null && Model.ModaresFeatures.Count() > 0)
+            {
+            <h2 class="bg-success" style="color:white"> مدرسین دوره</h2>
+            <div class="row mb-3">
+                @foreach (var item in Model.ModaresFeatures)
+                    {
+                    <h4 class="col-sm-12 col-md-4">
+                        @modaresnameCounter <span>) @item.Modares</span> : <span class="badge bg-primary">  عنوان درسی : @item.Title</span>
+
+                        @{
+                            modaresnameCounter++;
+                        }
+                    </h4>
+
+                    }
+            </div>
+            }
+
+
+        @if (Model.QuestionFeatures != null && Model.QuestionFeatures.Count() > 0)
+            {
+
+            <h2 class="bg-success" style="color:white"> سوال های کلیشه</h2>
+            <table class="table table-striped" id="tbl_question" style="color:none">
+                <thead>
+                    <tr>
+                        <th>عنوان سوال</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.QuestionFeatures)
+                        {
+                        <tr>
+                            <td>@item.Title</td>
+
+
+                        </tr>
+                        }
+                </tbody>
+            </table>
+            }
+        @if (Model.AnswerFeatures != null && Model.AnswerFeatures.Count() > 0)
+            {
+
+            <h2 class="bg-success" style="color:white">کلید جواب ها</h2>
+            <table class="table table-striped" id="tbl_answer">
+                <thead>
+                    <tr>
+                        <th>عنوان کلید</th>
+                        <th>وزن</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.AnswerFeatures)
+                        {
+                        <tr>
+                            <td>@item.Title</td>
+                            <td>@item.Wight</td>
+
+                        </tr>
+                        }
+                </tbody>
+            </table>
+            }
+
+    </div>
+</div>
+@section Styles {
+    <style type="text/css">
+        .h-divider {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 90%;
+            border-radius: 5px;
+            border-top: 1px solid black;
+        }
+    </style>
+
+}

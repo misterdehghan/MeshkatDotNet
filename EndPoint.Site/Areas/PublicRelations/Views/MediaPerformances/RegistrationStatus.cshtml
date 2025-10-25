@@ -1,0 +1,267 @@
+﻿@using Application.Services.Period.Communication;
+@model List<ResultStatusRegistrationMedia>
+@using EndPoint.Site.Areas.PublicRelations.Helpers.Convertors;
+
+
+@{
+    ViewData["Title"] = "RegistrationStatus";
+    Layout = "~/Areas/PublicRelations/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-5 align-self-center">
+            @*<h4 class="page-title">افزودن کانال جدید</h4>*@
+        </div>
+        <div class="col-7 align-self-center">
+            <div class="d-flex align-items-center justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">ورودی ها</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">وضعیت ثبت عملکرد رسانه ای</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">گزارش وضعیت ثبت عملکرد رسانه ای</h4>
+            <h6 class="card-subtitle">"لطفاً توجه داشته باشید که این صفحه حاوی اطلاعات با ارزش است و باید از هر گونه تغییر در آن بدون اطلاع قبلی پرهیز کرد."</h6>
+            <div class="row">
+                <div class="col-sm-12 col-md-2">
+                    <div class="form-group">
+                        <label for="yearSelect" class="control-label col-form-label">انتخاب سال</label>
+                        <select class="form-control" id="yearSelect">
+                            <option value="">انتخاب سال</option>
+                            @foreach (var year in ViewBag.Years)
+                            {
+                                <option value="@year">@DateConvertor.ConvertYearToShamsi(year)</option>
+                            }
+                        </select>
+
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-2">
+                    <div class="form-group">
+                        <label for="courseSelect" class="control-label col-form-label">انتخاب دوره</label>
+                        <select class="form-control" id="courseSelect">
+                            <option value="" disabled selected>انتخاب دوره</option>
+                            <!-- دوره‌ها اینجا بارگذاری می‌شوند -->
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-2">
+                    <div class="form-group">
+                        <label class="control-label col-form-label">&nbsp;</label>
+                        <div>
+                            <button type="button" class="btn btn-success" id="submitButton">نمایش</button>
+                            <a asp-controller="NewsPerformances" asp-action="RegistrationStatus" class="btn btn-dark" id="submitButton">باز نشانی</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-header bg-danger">
+            <h4 class="m-b-0 text-white">
+                @("وضعیت ثبت عملکرد رسانه ای" + " " + ViewBag.SelectedCourse)
+            </h4>
+        </div>
+
+        @if (Model != null)
+        {
+            <div class="form-body">
+                <div class="card-body">
+                    <div id="validationMessages"></div>
+
+                    <div class="row p-t-20">
+                        <div class="row">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-3 mb-2">
+                                    <div class="card text-white @(item.IsRegistered ? "bg-success" : "bg-secondary")" style="height: 70px;">
+                                        <div class="card-body d-flex justify-content-between align-items-center">
+                                            <span>@item.Operator</span> <!-- نام اپراتور در سمت چپ -->
+
+                                            <div class="d-flex align-items-center">
+                                                <!-- استفاده از یک div برای آیکن‌ها -->
+                                                <span class="label label-danger mr-2">
+                                                    <!-- فاصله به سمت راست -->
+                                                    <i class="fas fa-plus-circle"></i> @item.RegisteredNumber
+                                                </span>
+                                                <span class="label label-warning mr-2">
+                                                    <!-- فاصله به سمت راست -->
+                                                    <i class="fas fa-thumbs-down"></i> @item.UnconfirmedNumber
+                                                </span>
+                                                <span class="label label-success mr-2">
+                                                    <!-- بدون فاصله اضافی -->
+                                                    <i class="fas fa-thumbs-up"></i> @item.ConfirmedNumber
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+    </div>
+
+
+
+</div>
+
+
+
+@section Scripts
+{
+    <script>
+        if (window.location.pathname === '/PublicRelations/MediaPerformances/RegistrationStatus' && window.location.search.length === 0) {
+            localStorage.removeItem("selectedCourseId");
+            localStorage.removeItem("selectedYear");
+
+            // بازنشانی دراپ‌دان‌ها به حالت پیش‌فرض
+            yearSelect.value = '';
+            courseSelect.innerHTML = '<option value="" disabled selected>انتخاب دوره</option>';
+        }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var courseSelect = document.getElementById("courseSelect");
+            var yearSelect = document.getElementById("yearSelect");
+
+            // بازیابی مقادیر انتخاب شده از Local Storage
+            var savedCourseId = localStorage.getItem("selectedCourseId");
+            var savedYear = localStorage.getItem("selectedYear");
+
+            if (savedYear) {
+                yearSelect.value = savedYear;
+                loadCourses(savedYear, savedCourseId);
+            }
+
+            if (savedCourseId) {
+                courseSelect.value = savedCourseId;
+            }
+
+            // بارگذاری دوره‌ها بر اساس سال انتخاب‌شده
+            yearSelect.addEventListener("change", function () {
+                var selectedYear = yearSelect.value;
+                localStorage.setItem("selectedYear", selectedYear);
+
+                if (!selectedYear) {
+                    courseSelect.innerHTML = '<option value="" disabled selected>انتخاب دوره</option>';
+                    return;
+                }
+
+                loadCourses(selectedYear, null);
+            });
+
+            document.getElementById("submitButton").addEventListener("click", function () {
+                var courseId = courseSelect.value;
+
+                if (!courseId) {
+                    alert('لطفاً یک دوره انتخاب کنید.');
+                    return;
+                }
+
+                localStorage.setItem("selectedCourseId", courseId);
+
+                // ساختن URL جدید با اضافه کردن آیدی دوره به پارامتر URL
+                var url = '/PublicRelations/MediaPerformances/RegistrationStatus?CommunicationPeriodId=' + courseId;
+                // هدایت کاربر به URL جدید
+                window.location.href = url;
+            });
+
+
+
+
+            // ثبت کلیک دکمه باز نشانی دوره
+            document.getElementById("reloadButton").addEventListener("click", function () {
+                localStorage.removeItem("selectedCourseId");
+                localStorage.removeItem("selectedYear");
+                window.location.href = '/PublicRelations/MediaPerformances/RegistrationStatus'; // هدایت به صفحه دوره‌ها
+            });
+
+            function loadCourses(year, selectedCourseId) {
+                $.ajax({
+                    url: '/PublicRelations/MediaPerformances/GetCoursesByYear',
+                    type: 'GET',
+                    data: { year: year },
+                    success: function (data) {
+                        courseSelect.innerHTML = '<option value="" disabled selected>انتخاب دوره</option>';
+                        data.forEach(function (course) {
+                            var option = document.createElement("option");
+                            option.value = course.id;
+                            option.text = course.statisticalPeriod;
+                            courseSelect.appendChild(option);
+                        });
+                        if (selectedCourseId) {
+                            courseSelect.value = selectedCourseId;
+                        }
+                    },
+                    error: function () {
+                        alert('خطا در دریافت اطلاعات. لطفاً دوباره تلاش کنید.');
+                    }
+                });
+            }
+        });
+    </script>
+
+
+    <script>
+        $('#submitButton').click(function () {
+            var courseId = $('#courseSelect').val(); // دریافت آیدی دوره
+
+            if (!courseId) {
+                alert('لطفاً یک دوره انتخاب کنید.');
+                return;
+            }
+
+            console.log("Selected Course ID: " + courseId);
+
+            // ساختن URL جدید با اضافه کردن آیدی دوره به پارامتر URL
+            var url = '/PublicRelations/MediaPerformances/RegistrationStatus?CommunicationPeriodId=' + courseId;
+
+            // هدایت کاربر به URL جدید
+            window.location.href = url;
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#yearSelect').change(function () {
+                var selectedYear = $(this).val();
+                var selectedYearText = $(this).find('option:selected').text();
+                console.log('Selected Year ID: ' + selectedYear);
+                console.log('Selected Year Text: ' + selectedYearText);
+            });
+
+            $('#courseSelect').change(function () {
+                var selectedCourse = $(this).val();
+                var selectedCourseText = $(this).find('option:selected').text();
+                console.log('Selected Course ID: ' + selectedCourse);
+                console.log('Selected Course Text: ' + selectedCourseText);
+            });
+        });
+
+    </script>
+
+}

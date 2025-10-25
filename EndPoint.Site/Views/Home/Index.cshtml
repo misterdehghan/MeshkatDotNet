@@ -1,0 +1,98 @@
+﻿@{
+    this.ViewData["Title"] = "صفحه نخست";
+}
+@section StyleSheet {
+
+    <style>
+        .colx {
+            flex: 1;
+            padding-top: 60px;
+            padding-bottom: 30px;
+            padding-left: 24px;
+            padding-right: 24px;
+            margin: 5px;
+            border-radius: 25px;
+        }
+
+        p {
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
+            font-size: 15px;
+        }
+
+        .b-headings {
+            border-radius: 15px;
+            border: 2px solid white;
+            padding: 20px 35px;
+            display: inline-block;
+            font-size: 4rem;
+        }
+    </style>
+}
+<div class="bg-white text-primary" id="banner">
+    @*<partial name="_BublesAndCirclesPrtial" />*@
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-5">
+                <div class="title text-center pt-5">
+                    @*<h1 class="display-2 text-primary">سامانه آزمون و نظرسنجی</h1>*@
+                    <h3 class="text-primary">به  سامانه مشکاة سازمان عقیدتی سیاسی انتظامی جمهوری اسلامی ایران خوش آمدید.</h3>
+                </div>
+            </div>
+        </div>
+        <div class="container h-100">
+            <div class="row align-items-center h-100">
+
+                <div class="col-12 mx-auto">
+
+                    <div class="row align-items-center text-center">
+                        <div class="col-md-4 rounded-2 text-primary colx" style="background-color: #94bfa2; ">
+                            <a href="/Home/Quiz" style="border-bottom: none !important;"><h6 class="b-headings">آزمون</h6></a>
+                            <p>
+                                <a href="/Home/Quiz" class="w3-button w3-round w3-margin-top w3-margin-bottom w3-border w3-hover-white" style="font-size:19px">مشاهده آزمون ها »</a>
+                            </p>
+                        </div>
+                        <div class="col-md-4 rounded-2 text-primary colx" style="background-color: #94bfa2; ">
+                            <a href="/Home/Survay" style="border-bottom: none !important;"><h6 class="b-headings" style="font-size: 4rem;">نظرسنجی</h6></a>
+                            <p>
+                                <a href="/Home/Survay" class="w3-button w3-round w3-margin-top w3-margin-bottom w3-border w3-hover-white" style="font-size:19px">مشاهده نظرسنجی ها »</a>
+                            </p>
+                        </div>
+                      
+                        <div class="col-md-4 rounded-2 text-primary colx" style="background-color: #94bfa2;padding-top: 55px;padding-bottom: 20px; ">
+                            <a href="/Person/HourlyLeave/AttendanceRecord" style="border-bottom: none !important;"><h6 class="b-headings" style="font-size: 4.5rem;"> بصیر </h6></a>
+                            <p>
+                                <a href="/Person/HourlyLeave/AttendanceRecord" class="w3-button w3-round w3-margin-top w3-margin-bottom w3-border w3-hover-white" style="font-size:19px">سامانه کنترل تردد »</a>
+                            </p>
+                        </div>
+
+                    
+                        <div class="col-md-4 rounded-2 text-primary colx" style="background-color: #94bfa2;padding-top: 55px;padding-bottom: 20px; ">
+                            <a asp-controller="Account" asp-action="PublicRelationLogin" style="border-bottom: none !important;"><h6 class="b-headings" style="font-size: 2.5rem;">سماع</h6></a>
+                            <p>
+                                <a asp-controller="Account" asp-action="PublicRelationLogin" class="w3-button w3-round w3-margin-top w3-margin-bottom w3-border w3-hover-white" style="font-size:18px">سامانه مدیریت آماری روابط عمومی</a>
+                            </p>
+                        </div>
+
+
+                          <div class="col-md-4 rounded-2 text-primary colx" style="background-color: #94bfa2;padding-top: 55px;padding-bottom: 20px; ">
+                            <a href="/Home/Assessment" style="border-bottom: none !important;">
+                                <h6 class="b-headings" style="font-size: 2rem;padding: 10px 20px !important;">
+                                    ارزشیابی دوره های آموزشی
+                                </h6>
+                            </a>
+                            <p>
+                                <a href="/Home/Assessment" class="w3-button w3-round w3-margin-top w3-margin-bottom w3-border w3-hover-white" style="font-size:19px">مشاهده دوره ها »</a>
+                            </p>
+                        </div>
+                    </div>
+                 
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+

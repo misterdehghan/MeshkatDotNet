@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewData["Title"] = "_SideNavBarPartial";
+}
+
+<div id="side-bar" class="col-12 col-md-2 border-right ml-1 mb-5 pb-5">
+    <ul class="navbar-nav text-center">
+ 
+
+        <li class="nav-item">
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true"
+               class="dropdown-toggle btn btn-primary manage-account-btn"> کارتابل</a>
+            <ul class="list-unstyled collapse show" id="pageSubmenu" style="">
+                <li class="dropdown-item nav-item">
+                    <a class="nav-link text-primary"
+                       asp-area="Person"
+                       asp-controller="HourlyLeave"
+                       asp-action="AttendanceSummaryDaily">
+                       آخرین تردد کارکنان
+                    </a>
+                </li>
+                <li class="dropdown-item nav-item">
+                    <a class="nav-link text-primary"
+                       asp-area="Person"
+                       asp-controller="HourlyLeave"
+                       asp-action="AttendanceSummary">
+                           گزارش تردد و مدیریت کارکنان
+                    </a>
+                </li>
+             
+                <li class="dropdown-item nav-item">
+                    <a class="nav-link text-primary"
+                       asp-area="Person"
+                       asp-action="AllRequests"
+                       asp-controller="HourlyLeave">
+                        کارتابل مدیریت مرخصی
+                    </a>
+                </li> 
+                <li class="dropdown-item nav-item">
+                    <a class="nav-link text-primary"
+                       asp-area="Person"
+                       asp-action="Index"
+                       asp-controller="Schedule">
+                        دوره زمانی
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true"
+               class="dropdown-toggle btn btn-primary manage-account-btn"> تردد و مرخصی من</a>
+            <ul class="list-unstyled collapse show" id="pageSubmenu" style="">
+                <li class="dropdown-item nav-item">
+                    <a class="nav-link text-primary"
+                       asp-area="Person"
+                       asp-controller="HourlyLeave"
+                       asp-action="AttendanceRecord">
+                        ثبت تردد روزانه
+                    </a>
+                </li>
+                <li class="dropdown-item nav-item">
+                    <a class="nav-link text-primary"
+                       asp-area="Person"
+                       asp-controller="HourlyLeave"
+                       asp-action="Create">
+                       ثبت مرخصی
+                    </a>
+                </li>
+                <li class="dropdown-item nav-item">
+                    <a class="nav-link text-primary"
+                       asp-area="Person"
+                       asp-controller="HourlyLeave"
+                       asp-action="MyLogsAttendance">
+                    تردد من
+                    </a>
+                </li>
+                <li class="dropdown-item nav-item">
+                    <a class="nav-link text-primary"
+                       asp-area="Person"
+                       asp-controller="HourlyLeave"
+                       asp-action="MyRequests">
+                      مرخصی من
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

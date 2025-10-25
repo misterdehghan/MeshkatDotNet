@@ -1,0 +1,44 @@
+﻿@model Azmoon.Application.Service.UserAccess.Dto.AddUserAccessDto
+
+@if (Model != null)
+    {
+    <table class="table table-striped" id="tbl_question" style="color:none">
+        <thead>
+            <tr>
+
+                <th>نام کاربر  </th>
+                <th>محل دسترسی </th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>@Model.FullName</td>
+                <td>@Model.WorkPlaceName</td>
+                <td class="row">
+
+                    <a class="ml-3"><i class="fa fa-trash" style="font-size:25px;color:red; " onclick="userAccessDeleteFunction(@Model.UserName ,event)"></i></a>
+
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    }
+else
+    {
+    <h2>کابر فاقد دسترسی ایجاد ارزشیابی دوره های آموزشی می باشد</h2>
+    <a href="#" id="creatroleforUser" class="btn btn-success">ایجاد دسترسی جدید</a>
+    }
+
+<script>
+
+    $('#creatroleforUser').click(function (e) {
+        console.log("btn modal TreeViewModalUserAccess clicked");
+        $("#partialModal").modal('toggle');
+        $("#TreeViewModal").modal('toggle');
+
+
+    });
+</script>

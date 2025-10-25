@@ -1,0 +1,17 @@
+D:\PROJECT\Ticket\Ticket.Application\bin\Debug\net5.0\Ticket.Application.deps.json
+D:\PROJECT\Ticket\Ticket.Application\bin\Debug\net5.0\Ticket.Application.dll
+D:\PROJECT\Ticket\Ticket.Application\bin\Debug\net5.0\ref\Ticket.Application.dll
+D:\PROJECT\Ticket\Ticket.Application\bin\Debug\net5.0\Ticket.Application.pdb
+D:\PROJECT\Ticket\Ticket.Application\bin\Debug\net5.0\Ticket.Common.dll
+D:\PROJECT\Ticket\Ticket.Application\bin\Debug\net5.0\Ticket.Domain.dll
+D:\PROJECT\Ticket\Ticket.Application\bin\Debug\net5.0\Ticket.Common.pdb
+D:\PROJECT\Ticket\Ticket.Application\bin\Debug\net5.0\Ticket.Domain.pdb
+D:\PROJECT\Ticket\Ticket.Application\obj\Debug\net5.0\Ticket.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\PROJECT\Ticket\Ticket.Application\obj\Debug\net5.0\Ticket.Application.AssemblyInfoInputs.cache
+D:\PROJECT\Ticket\Ticket.Application\obj\Debug\net5.0\Ticket.Application.AssemblyInfo.cs
+D:\PROJECT\Ticket\Ticket.Application\obj\Debug\net5.0\Ticket.Application.csproj.CoreCompileInputs.cache
+D:\PROJECT\Ticket\Ticket.Application\obj\Debug\net5.0\Ticket.Application.csproj.CopyComplete
+D:\PROJECT\Ticket\Ticket.Application\obj\Debug\net5.0\Ticket.Application.dll
+D:\PROJECT\Ticket\Ticket.Application\obj\Debug\net5.0\ref\Ticket.Application.dll
+D:\PROJECT\Ticket\Ticket.Application\obj\Debug\net5.0\Ticket.Application.pdb
+D:\PROJECT\Ticket\Ticket.Application\obj\Debug\net5.0\Ticket.Application.csproj.AssemblyReference.cache

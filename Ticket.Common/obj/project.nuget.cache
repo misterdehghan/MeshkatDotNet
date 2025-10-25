@@ -1,0 +1,110 @@
+{
+  "version": 2,
+  "dgSpecHash": "pFY/bT7wpQU=",
+  "success": true,
+  "projectFilePath": "E:\\Code\\Asp.net\\Meshkat\\Azmoon\\Ticket.Common\\Azmoon.Common.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.2\\microsoft.aspnetcore.http.2.2.2.nupkg.sha512",
+    "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
+    "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
+    "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\5.0.0\\microsoft.extensions.fileproviders.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\5.0.0\\microsoft.extensions.hosting.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.extensions.objectpool\\2.2.0\\microsoft.extensions.objectpool.2.2.0.nupkg.sha512",
+    "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.extensions.options\\2.2.0\\microsoft.extensions.options.2.2.0.nupkg.sha512",
+    "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
+    "C:\\Users\\Mohammad\\.nuget\\packages\\sixlabors.imagesharp\\1.0.3\\sixlabors.imagesharp.1.0.3.nupkg.sha512",
+    "C:\\Users\\Mohammad\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
+    "C:\\Users\\Mohammad\\.nuget\\packages\\system.componentmodel.annotations\\4.5.0\\system.componentmodel.annotations.4.5.0.nupkg.sha512",
+    "C:\\Users\\Mohammad\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "Package 'SixLabors.ImageSharp' 1.0.3 has a known high severity vulnerability, https://github.com/advisories/GHSA-2cmq-823j-5qj8",
+      "projectPath": "E:\\Code\\Asp.net\\Meshkat\\Azmoon\\Ticket.Common\\Azmoon.Common.csproj",
+      "warningLevel": 1,
+      "filePath": "E:\\Code\\Asp.net\\Meshkat\\Azmoon\\Ticket.Common\\Azmoon.Common.csproj",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "message": "Package 'SixLabors.ImageSharp' 1.0.3 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-5x7m-6737-26cr",
+      "projectPath": "E:\\Code\\Asp.net\\Meshkat\\Azmoon\\Ticket.Common\\Azmoon.Common.csproj",
+      "warningLevel": 1,
+      "filePath": "E:\\Code\\Asp.net\\Meshkat\\Azmoon\\Ticket.Common\\Azmoon.Common.csproj",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "Package 'SixLabors.ImageSharp' 1.0.3 has a known high severity vulnerability, https://github.com/advisories/GHSA-63p8-c4ww-9cg7",
+      "projectPath": "E:\\Code\\Asp.net\\Meshkat\\Azmoon\\Ticket.Common\\Azmoon.Common.csproj",
+      "warningLevel": 1,
+      "filePath": "E:\\Code\\Asp.net\\Meshkat\\Azmoon\\Ticket.Common\\Azmoon.Common.csproj",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "Package 'SixLabors.ImageSharp' 1.0.3 has a known high severity vulnerability, https://github.com/advisories/GHSA-65x7-c272-7g7r",
+      "projectPath": "E:\\Code\\Asp.net\\Meshkat\\Azmoon\\Ticket.Common\\Azmoon.Common.csproj",
+      "warningLevel": 1,
+      "filePath": "E:\\Code\\Asp.net\\Meshkat\\Azmoon\\Ticket.Common\\Azmoon.Common.csproj",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "message": "Package 'SixLabors.ImageSharp' 1.0.3 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-g85r-6x2q-45w7",
+      "projectPath": "E:\\Code\\Asp.net\\Meshkat\\Azmoon\\Ticket.Common\\Azmoon.Common.csproj",
+      "warningLevel": 1,
+      "filePath": "E:\\Code\\Asp.net\\Meshkat\\Azmoon\\Ticket.Common\\Azmoon.Common.csproj",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "message": "Package 'SixLabors.ImageSharp' 1.0.3 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-qxrv-gp6x-rc23",
+      "projectPath": "E:\\Code\\Asp.net\\Meshkat\\Azmoon\\Ticket.Common\\Azmoon.Common.csproj",
+      "warningLevel": 1,
+      "filePath": "E:\\Code\\Asp.net\\Meshkat\\Azmoon\\Ticket.Common\\Azmoon.Common.csproj",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "message": "Package 'SixLabors.ImageSharp' 1.0.3 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-rxmq-m78w-7wmc",
+      "projectPath": "E:\\Code\\Asp.net\\Meshkat\\Azmoon\\Ticket.Common\\Azmoon.Common.csproj",
+      "warningLevel": 1,
+      "filePath": "E:\\Code\\Asp.net\\Meshkat\\Azmoon\\Ticket.Common\\Azmoon.Common.csproj",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
+}

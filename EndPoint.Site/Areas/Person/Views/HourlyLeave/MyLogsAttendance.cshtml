@@ -1,0 +1,61 @@
+﻿@* @using Azmoon.Domain.Entities
+@model IEnumerable<AttendanceLog> *@
+@using Azmoon.Domain.Entities
+@using EndPoint.Site.Models
+@using EndPoint.Site.Useful.Ultimite;
+@{
+    ViewData["Title"] = "درخواست های من ";
+    Layout = "~/Areas/Person/Views/Shared/_LayoutPerson.cshtml";
+}
+ @model IPagedList<AttendanceDailyListViewModel>
+
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+
+@using X.PagedList.Mvc.Core.Common
+@using X.PagedList.Web.Common
+<h4 class="text-center mb-4">گزارش کامل ورود و خروج روزانه</h4>
+
+<table class="table table-bordered text-center">
+    <thead class="thead-dark">
+        <tr>
+            <th style="width: 20%">تاریخ</th>
+            <th>ترددها</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var day in Model)
+        {
+            <tr>
+                <td>@day.Date.ToPersianDateStrFarsi()</td>
+                <td style="text-align:right !important;">
+                    @foreach (var record in day.Records)
+                    {
+                        <span class="badge badge-@(record.Type == AttendanceType.Entry ? "success" : "danger")" style="margin: 2px">
+                            @record.Time.ToString("HH:mm tt").Replace("AM", "ق.ظ").Replace("PM", "ب.ظ") - @(record.Type == AttendanceType.Entry ? "ورود" : "خروج")
+                        </span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- صفحه‌بندی -->
+<div class="text-center mt-3">
+    @Html.PagedListPager(Model, page => Url.Action("MyLogsAttendance", new { page }),
+        new PagedListRenderOptions
+        {
+            DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+            DisplayLinkToLastPage = PagedListDisplayMode.Always,
+            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+            DisplayLinkToNextPage = PagedListDisplayMode.Always,
+            DisplayLinkToIndividualPages = true,
+            MaximumPageNumbersToDisplay = 5,
+            UlElementClasses = new[] { "pagination" },
+            LiElementClasses = new[] { "page-item" },
+            PageClasses = new[] { "page-link" }
+        })
+</div>
+
+

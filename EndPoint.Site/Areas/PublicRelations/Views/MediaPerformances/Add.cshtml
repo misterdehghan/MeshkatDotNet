@@ -1,0 +1,325 @@
+﻿@using Azmoon.Domain.Entities
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<User> UserManager
+
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/PublicRelations/Views/Shared/_Layout.cshtml";
+    var user = await UserManager.FindByNameAsync(User.Identity.Name);
+    var isActive = ViewBag.IsActive;
+
+}
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-5 align-self-center">
+            @*<h4 class="page-title">افزودن کانال جدید</h4>*@
+        </div>
+        <div class="col-7 align-self-center">
+            <div class="d-flex align-items-center justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">ورودی ها</li>
+                        <li class="breadcrumb-item">فضای مجازی </li>
+                        <li class="breadcrumb-item active" aria-current="page">افزودن عملکرد رسانه ای </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+
+    <div class="card">
+        <div class="card-header bg-danger">
+            <h4 class="m-b-0 text-white">افزودن عملکرد رسانه ای</h4>
+        </div>
+        @if (isActive)
+        {
+            <div class="form-body">
+                <div class="card-body">
+                    <div id="validationMessages"></div>
+
+                    <div class="row p-t-20">
+
+                        <div class="col-md-3">
+                            <div class="form-group has-danger">
+                                <label class="control-label">نام رسانه</label>
+                                <select class="form-control" name="Name" asp-items="@ViewBag.Media" id="MediaId" placeholder="رسانه" autocomplete="off">
+                                    <option value="" disabled selected>انتخاب رسانه</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group has-danger">
+                                <label class="control-label">نام شبکه</label>
+                                <input type="text" id="NetworkNameId" class="form-control form-control-danger" placeholder="نام را شبکه کنید" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group has-danger">
+                                <label class="control-label">نام برنامه</label>
+                                <input type="text" id="ProgramNameId" class="form-control form-control-danger" placeholder="نام برنامه را وارد کنید" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group has-danger">
+                                <label class="control-label">موضوع برنامه</label>
+                                <input type="text" id="SubjectId" class="form-control form-control-danger" placeholder="موضوع برنامه را وارد کنید" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">تاریخ پخش</label>
+                                <input type="text" id="date-input" data-jdp data-jdp-miladi-input="miladi_date" class="form-control" autocomplete="off">
+                                <input type="hidden" id="miladi_date" />
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group has-danger">
+                                <label class="control-label">مدت زمان</label>
+                                <input id="TimeId" data-jdp data-jdp-only-time class="form-control form-control-danger" placeholder="مدت زمان برنامه" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group has-danger">
+                                <label class="control-label">تصویر(مستندات)</label>
+                                <input type="file" id="ImageId" class="form-control form-control-danger" placeholder="" accept="image/*" onchange="loadFile(event)" autocomplete="off">
+                            </div>
+                        </div>
+
+                        @if (user.Operator == "Senior")
+                        {
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">اپراتور</label>
+                                    <select class="form-control" name="Name" asp-items="@ViewBag.Operator" id="Operator" autocomplete="off">
+                                        <option value="" disabled selected>--بدون انتخاب--</option>
+                                    </select>
+                                    <small class="form-control-feedback"> از بین اپراتور های موجود گزینه مورد نظر را انتخاب کنید </small>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="text-center col-lg-4 col-md-6">
+                            <img style="width:200px; border:none;" class="img-responsive" id="output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <div class="card-body text-right">
+                    <button onclick="AddMedia()" class="btn btn-info"> <i class="fa fa-check"></i> ذخیره</button>
+                    <button type="button" class="btn btn-dark">انصراف</button>
+                </div>
+            </div>
+
+            <div class="text-center mb-2">
+                <img src="~/PublicRelations/theme/images/Tv/1.png" width="40px" />
+                <img src="~/PublicRelations/theme/images/Tv/2.png" width="40px" />
+                <img src="~/PublicRelations/theme/images/Tv/3.png" width="40px" />
+                <img src="~/PublicRelations/theme/images/Tv/4.png" width="40px" />
+                <img src="~/PublicRelations/theme/images/Tv/5.png" width="40px" />
+                <img src="~/PublicRelations/theme/images/Tv/8.png" width="40px" /><br />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/10.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/11.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/12.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/13.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/14.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/15.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/16.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/17.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/18.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/19.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/20.png" width="30px" /><br />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/21.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/22.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/23.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/24.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/25.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/26.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/27.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/28.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/29.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/30.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/31.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/32.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/33.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/34.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/35.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/36.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/37.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/38.png" width="30px" />
+                <img src="~/PublicRelations/theme/images/ProvincialNetworks/39.png" width="30px" />
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-danger">
+                <p>هیچ دوره فعالی وجود ندارد.</p>
+            </div>
+        }
+    </div>
+
+
+    <div id="warnning" asp-validation-summary="All" style="display:none"></div>
+
+
+
+
+</div>
+
+
+@section Styles
+{
+    @*Date Picker*@
+    <link href="~/PublicRelations/theme/jalalidatepicker/jalalidatepicker.css" rel="stylesheet" />
+    <script src="~/PublicRelations/theme/jalalidatepicker/jalalidatepicker.js"></script>
+}
+
+
+
+@section Scripts
+{
+
+     <link href="~/PublicRelations/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+     <script src="~/PublicRelations/Sweetalert2/sweetalert2.min.js"></script>
+
+    @*Date Picker*@
+    <script>
+        jalaliDatepicker.startWatch();
+
+        document.querySelector("[data-jdp-miladi-input]").addEventListener("jdp:change", function (e) {
+            var miladiInput = document.getElementById(this.getAttribute("data-jdp-miladi-input"));
+            if (!this.value) {
+                miladiInput.value = "";
+                return;
+            }
+            var date = this.value.split("/");
+            miladiInput.value = jalali_to_gregorian(date[0], date[1], date[2]).join("/")
+        });
+
+        function jalali_to_gregorian(jy, jm, jd) {
+            jy = Number(jy);
+            jm = Number(jm);
+            jd = Number(jd);
+            var gy = (jy <= 979) ? 621 : 1600;
+            jy -= (jy <= 979) ? 0 : 979;
+            var days = (365 * jy) + ((parseInt(jy / 33)) * 8) + (parseInt(((jy % 33) + 3) / 4))
+                + 78 + jd + ((jm < 7) ? (jm - 1) * 31 : ((jm - 7) * 30) + 186);
+            gy += 400 * (parseInt(days / 146097));
+            days %= 146097;
+            if (days > 36524) {
+                gy += 100 * (parseInt(--days / 36524));
+                days %= 36524;
+                if (days >= 365) days++;
+            }
+            gy += 4 * (parseInt((days) / 1461));
+            days %= 1461;
+            gy += parseInt((days - 1) / 365);
+            if (days > 365) days = (days - 1) % 365;
+            var gd = days + 1;
+            var sal_a = [0, 31, ((gy % 4 == 0 && gy % 100 != 0) || (gy % 400 == 0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            var gm
+            for (gm = 0; gm < 13; gm++) {
+                var v = sal_a[gm];
+                if (gd <= v) break;
+                gd -= v;
+            }
+            return [gy, gm, gd];
+        }
+    </script>
+
+
+    <script>
+        var loadFile = function (event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function () {
+                URL.revokeObjectURL(output.src) // free memory
+            }
+        };
+    </script>
+
+
+
+
+    <script>
+        function AddMedia() {
+            var Media = $("#MediaId").val();
+            var NetworkName = $("#NetworkNameId").val();
+            var ProgramName = $("#ProgramNameId").val();
+            var Subject = $("#SubjectId").val();
+            var BroadcastDate = $("#miladi_date").val();
+            var Time = $("#TimeId").val();
+            var ImageFile = $("#ImageId")[0].files[0]; // دریافت فایل تصویر
+            var Operator = $("#Operator").val();
+
+            // ایجاد یک شیء FormData برای ارسال داده‌ها
+            var formData = new FormData();
+            formData.append('Media', Media);
+            formData.append('NetworkName', NetworkName);
+            formData.append('ProgramName', ProgramName);
+            formData.append('Subject', Subject);
+            formData.append('BroadcastDate', BroadcastDate);
+            formData.append('Time', Time);
+            formData.append('Image', ImageFile); // اضافه کردن فایل تصویر به FormData
+            formData.append('Operator', Operator);
+
+            // ارسال درخواست AJAX با استفاده از FormData
+            $.ajax({
+                type: "POST",
+                url: "Add", // تغییر به URL درخواست به وب‌سرور
+                data: formData,
+                contentType: false, // تنظیم برای ارسال داده‌ها به‌صورت فرم
+                processData: false, // جلوگیری از پردازش خودکار داده‌ها
+                success: function (data) {
+                    if (data.isSuccess == true) {
+                        swal.fire(
+                            'موفق!',
+                            data.message,
+                            'success'
+                        ).then(function (isConfirm) {
+                            location.reload();
+                        });
+                    } else {
+                        // swal.fire(
+                        //     'هشدار!',
+                        //     data.message,
+                        //     'warning'
+                        // );
+                        // نمایش خطاهای اعتبارسنجی در SweetAlert
+                        if (data.errors && data.errors.length > 0) {
+                            var errorMessages = data.errors.join('<br>');
+                            swal.fire(
+                                'خطا!',
+                                errorMessages,
+                                'error'
+                            );
+                        } else {
+                            swal.fire(
+                                'هشدار!',
+                                data.message,
+                                'warning'
+                            );
+                        }
+
+
+
+
+                    }
+                },
+                error: function (request, status, error) {
+                    // نمایش پیام خطا در کنسول
+                    console.error("خطا در درخواست:", request.responseText);
+                }
+            });
+        }
+    </script>
+
+}

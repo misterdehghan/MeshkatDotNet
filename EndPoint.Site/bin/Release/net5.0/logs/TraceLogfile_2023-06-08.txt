@@ -1,0 +1,20 @@
+2023-06-08 09:56:50.8260 -WARN|Microsoft.AspNetCore.Identity.UserManager| url: |action: 
+
+2023-06-08 09:56:50.9558 -WARN|Microsoft.AspNetCore.Identity.UserManager| url: |action: 
+
+2023-06-08 09:56:50.9925 -WARN|Microsoft.AspNetCore.Identity.UserManager| url: |action: 
+
+2023-06-08 09:57:00.1622 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2023-06-08 09:57:00.1622 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2023-06-08 09:57:00.1622 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2023-06-08 09:57:00.6025 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Admin/Survay|action: Index
+
+2023-06-08 09:57:00.6025 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/Admin/Survay|action: Index
+
+2023-06-08 09:57:00.9877 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/Admin/Survay|action: Index
+
+2023-06-08 09:57:00.9877 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/Admin/Survay|action: Index
+

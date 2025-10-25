@@ -1,0 +1,450 @@
+﻿@using Azmoon.Application.Service.User.Dto
+@using Azmoon.Common.ResultDto
+@model PagingDto<List<UserShowAdminDto>>
+@addTagHelper *, LazZiya.TagHelpers
+@{
+    ViewData["Title"] = "مدیریت کاربران";
+}
+<div class="row">
+    <div class="col-sm-9 col-xs-9">
+        <form asp-action="Index" method="get">
+
+            <div class="row">
+
+                <div class="col-6">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control float-right" placeholder="جستجو نام ،نام خانوادگی یا پرسنلی">
+                        <input type="text" name="mcode" class="form-control float-right" placeholder="جستجو  کد ملی">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-search"></i></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">جستجو</button>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-6 row">
+                    <div class="form-group form-group-sm">
+
+
+                        <form class="form-inline d-inline" asp-action="Index" method="post">
+                            <button type="submit" name="search" value="clear" class="btn btn-default d-inline">
+                                پاک کن
+                            </button>
+                        </form>
+
+                    </div>
+                    <a class="btn btn-warning  d-inline" style="height: 36px;margin-right:5px;" href="/Admin/LoginLog/Index">Login Log</a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+
+</div>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.Data.ElementAt(0).WorkPlaceName)
+            </th>
+            <th>
+                نام و نام خانوادگی
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data.ElementAt(0).UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data.ElementAt(0).melli)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data.ElementAt(0).Phone)
+            </th>
+
+
+            <th>عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+            {
+            @foreach (var item in Model.Data)
+                {
+                <tr>
+
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WorkPlaceName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName) &nbsp;  @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.melli)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+
+                    <td>
+                        <div class="row">
+
+
+                            <a class="" data-toggle="tooltip" data-placement="right" title=" نقش کاربری  " href="@Url.Action("UserRoles" , new { id=item.Id })">
+                                <i class='fas fa-user-graduate' style='font-size:25px;color:olive'></i>
+                            </a>
+
+                            <a class="" data-toggle="tooltip" data-placement="top" title="  ویرایش کاربر " href="@Url.Action("UpdateUser" , new { id=item.Id })">
+                                <i class='fas fa-user-edit' style='font-size:25px;color:red'></i>
+                            </a>
+
+                            <a class="" data-toggle="tooltip" data-placement="top" title="  دسترسی به گروه ها " href="@Url.Action("GroupAccess" , new { Id = item.Id })">
+                                <i class='fas fa-user-shield' style='font-size:25px;color:blueviolet;'></i>
+
+                            </a>
+
+
+                            <a class="" data-toggle="tooltip" data-placement="top" title="تغییر پسورد " href="@Url.Action("ResetPassword" , new { userName = item.UserName })">
+                                <i class="fas fa-key" style="font-size:25px;color:blue"></i>
+
+                            </a>
+
+                            @if (item.LockoutEnabled)
+                                {
+
+                                <a class="" data-toggle="tooltip" data-placement="top" title=" غیر فعال کردن" href="@Url.Action("ChengeLockAccunt" , new { userName = item.UserName })">
+                                    <i class='fas fa-lock-open' style='font-size:25px;color:forestgreen;'></i>
+
+                                </a>
+
+
+                                }
+                            else
+                                {
+
+                                <a class="" data-toggle="tooltip" data-placement="top" title="  فعال کردن" href="@Url.Action("ChengeLockAccunt" , new { userName = item.UserName })">
+                                    <i class='fas fa-lock' style='font-size:25px;color:red'></i>
+
+                                </a>
+
+
+                                }
+
+                            <a class="" data-toggle="tooltip" data-placement="top" title="سوابق مسابقه" href="/admin/Quiz/UserHistoryQuiz/@item.Id"><i class="fa fa-history" style='font-size:25px;'></i></a>
+                            <a class="" data-toggle="tooltip" data-placement="left" title=" دسترسی ارزشیابی دوره های " href="#" onclick="userAccessFunction(@item.UserName ,event)"><i class="fas fa-user-cog" style='font-size:25px;color:brown'></i></a>
+
+                        </div>
+
+                    </td>
+                </tr>
+                }
+            }
+        else
+            {
+            <tr>
+                <td><span class="badge badge-info">هیچ رکوردی ثبت نشده است</span></td>
+            </tr>
+            }
+
+    </tbody>
+</table>
+@{
+    if (Model != null)
+        {
+        <paging page-no="@Model.PageNo"
+                page-size="@Model.PageSize"
+                total-records="@Model.TotalRecords"
+                show-prev-next="true"
+                show-total-pages="true"
+                show-total-records="true"
+                show-page-size-nav="true"
+                show-first-numbered-page="true"
+                show-last-numbered-page="true"
+                query-string-key-page-no="PageIndex"
+                query-string-key-page-size="PageSize"
+                query-string-value="@@(Request.QueryString.Value)"
+                text-total-pages="صفحه"
+                text-total-records="رکورد"
+                text-first="&laquo;"
+                text-last="&raquo;"
+                text-previous="&lsaquo;"
+                text-next="&rsaquo;"
+                sr-text-first="اولین"
+                sr-text-last="آخرین"
+                sr-text-previous="قبلی"
+                sr-text-next="بعدی"
+                gap-size="2">
+        </paging>
+        }
+}
+<div id="partialModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">دسترسی ارزشیابی دوره ها</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <input type="hidden" id="usernameModal" />
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="TreeViewModal" role="dialog" tabindex="-1" aria-labelledby="TreeViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TreeViewModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="WorkPlaceTreeView_modal_body">
+                @(await Component.InvokeAsync("GetWorkPlaceTreeView"))
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary mr-2" data-btn="saveTreeViewModal">ثبت انتخاب  </button>
+                <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">خروج</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="overlay">
+    <div class="cv-spinner">
+        <span class="spinner"></span>
+    </div>
+</div>
+@section Styles {
+    <link href="~/backend/css/Spiner.css" rel="stylesheet" />
+    <link href="~/lib/SweetAlert/sweetalert2.css" rel="stylesheet" />
+
+}
+@section ScriptPagination {
+
+    <script src="~/lib/SweetAlert/sweetalert2.js"></script>
+    <script src="~/lib/jquery/dist/jquery-3.1.1.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery-3.5.1.slim.min.js"></script>
+    <script src="~/lib/jquery/dist/popper.min.js"></script>
+
+
+}
+@section Scripts {
+
+
+    <script>
+                $(function () {
+          $('[data-toggle="tooltip"]').tooltip()
+        })
+                let usernameeee = "";
+                  function userAccessFunction(id, event) {
+                    $("#overlay").fadeIn(300);
+                    event.preventDefault();
+                  //  console.log("id user : ", id);
+                      usernameeee = id;
+                      $('#usernameModal').val(usernameeee);
+                    $.ajax({
+                        type: "POST",
+                        url: "/admin/Assessment/GetAccess",
+                        data: { "username": id },
+                        success: function (response) {
+                            $("#overlay").fadeOut(300);
+                            $("#partialModal").find(".modal-body").html(response);
+                            $("#partialModal").modal('show');
+                        },
+                        failure: function (response) {
+                            $("#overlay").fadeOut(300);
+                             Swal.fire({
+                                        icon: 'info',
+                                        title: `خطا در ارسال و دریافت اطلاعات بعدآ امتحان بفرمایید`,
+                                        showConfirmButton: false,
+                                        timer: 2000
+                                    })
+                        },
+                        error: function (response) {
+                            $("#overlay").fadeOut(300);
+                             Swal.fire({
+                                        icon: 'info',
+                                        title: `خطا در ارسال و دریافت اطلاعات بعدآ امتحان بفرمایید`,
+                                        showConfirmButton: false,
+                                        timer: 2000
+                                    })
+                        }
+                    });
+                }
+
+                  function userAccessDeleteFunction(id, event) {
+                    $("#overlay").fadeIn(300);
+                    event.preventDefault();
+                  //  console.log("id user : ", id);
+                      usernameeee = id;
+                    $.ajax({
+                        type: "POST",
+                        url: "/admin/Assessment/DeletedAccess",
+                        data: { "username": id },
+                        success: function (response) {
+                            $("#overlay").fadeOut(300);
+                            $("#partialModal").find(".modal-body").html(response);
+                            $("#partialModal").modal('show');
+                        },
+                        failure: function (response) {
+                            $("#overlay").fadeOut(300);
+                             Swal.fire({
+                                        icon: 'info',
+                                        title: `خطا در ارسال و دریافت اطلاعات بعدآ امتحان بفرمایید`,
+                                        showConfirmButton: false,
+                                        timer: 2000
+                                    })
+                        },
+                        error: function (response) {
+                            $("#overlay").fadeOut(300);
+                             Swal.fire({
+                                        icon: 'info',
+                                        title: `خطا در ارسال و دریافت اطلاعات بعدآ امتحان بفرمایید`,
+                                        showConfirmButton: false,
+                                        timer: 2000
+                                    })
+                        }
+                    });
+                }
+
+                      $('#select-WorkPlaceId').click(function () {
+                    selectWorkPlaceId()
+
+                });
+                $('#WorkPlaceIdFake').click(function () {
+                    selectWorkPlaceId()
+
+                });
+                       function selectWorkPlaceId() {
+
+                     $('#TreeViewModal').modal('toggle');
+                        $('#TreeViewModal').modal({
+                                 show: 'true'
+                                 });
+
+                }
+                  $('[data-btn="save"]').click(function (e) {
+                        e.preventDefault();
+                        $('input[type=checkbox]').each(function () {
+                            if (this.checked) {
+
+                                $('#WorkPlaceId').val($(this).val());
+                                $('#WorkPlaceIdFake').attr('placeholder', $(this).data('name'));
+                                $('#WorkPlaceIdFake').val($(this).data('name'));
+                                $('#TreeViewModal').modal('toggle');
+                                $('#TreeViewModal').modal({
+                                 show: 'false'
+                                 });
+                            }
+                        });
+
+                    });
+                $('#creatroleforUser').click(function (e) {
+                    console.log("btn modal TreeViewModalUserAccess clicked");
+                     $("#partialModal").modal('toggle');
+                      $("#TreeViewModalUserAccess").modal('toggle');
+
+
+                });
+
+                    $("#divCategotyTreeView input[type=checkbox]").change(function () {
+                        var firstchecked = $(this);
+                        var firstcheckedVal = $(this).val();
+                        console.log("firstchecked : ", firstchecked.val());
+
+
+                        if ($('#divCategotyTreeView input:checkbox:checked').length > 1) {
+
+                            $('#divCategotyTreeView input[type=checkbox]').each(function () {
+                                var secoundchecked = $(this);
+                                if (this.checked) {
+                                    if ($(this).val() != firstcheckedVal) {
+                                        $(this).prop('checked', false);
+                                        $(this).attr('checked', false);
+                                        console.log("secoundchecked : ", secoundchecked.val());
+                                    }
+
+                                }
+
+
+
+                            });
+
+                        }
+                    });
+
+                    $('[data-btn="saveTreeViewModal"]').click(function (e) {
+                        e.preventDefault();
+                         $("#overlay").fadeIn(300);
+                        var wp = "";
+                        var id= usernameeee;
+                        $('input[type=checkbox]').each(function () {
+                            if (this.checked) {
+                              wp = $(this).val();
+                            }
+                        });
+                         $('#TreeViewModal').modal('hide');
+                            $.ajax({
+                        type: "POST",
+                        url: "/admin/Assessment/AddAccessToUser",
+                        data: { "username": id ,"wp": wp},
+                        success: function (response) {
+                            $("#overlay").fadeOut(300);
+                            $("#partialModal").find(".modal-body").html(response);
+                            $("#partialModal").modal('show');
+                        },
+                        failure: function (response) {
+                            $("#overlay").fadeOut(300);
+                             Swal.fire({
+                                        icon: 'info',
+                                        title: `خطا در ارسال و دریافت اطلاعات بعدآ امتحان بفرمایید`,
+                                        showConfirmButton: false,
+                                        timer: 2000
+                                    })
+                        },
+                        error: function (response) {
+                            $("#overlay").fadeOut(300);
+                             Swal.fire({
+                                        icon: 'info',
+                                        title: `خطا در ارسال و دریافت اطلاعات بعدآ امتحان بفرمایید`,
+                                        showConfirmButton: false,
+                                        timer: 2000
+                                    })
+                        }
+                    });
+                    });
+
+                // hide childe treeView
+                $(function () {
+                    $('#RootTreeView ul.child2').hide(300);
+
+                    $('#RootTreeView li').on('click', function (e) {
+
+                        e.stopPropagation();
+                        $(this).children('ul').toggle(500);
+                        $(this).children('li').addClass('mr-4');
+                        $(this).children('ul').addClass('mr-4');
+                        // $(this).find('>:first-child').toggleClass('fa-plus-circle fa-minus-circle')
+                        $(this).find('>:first-child').toggleClass('fa-folder  fa-folder-open')
+
+                    });
+                });
+    </script>
+
+}
+

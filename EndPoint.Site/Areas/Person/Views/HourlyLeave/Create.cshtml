@@ -1,0 +1,172 @@
+﻿@model Azmoon.Domain.Entities.LeaveRequest
+@{
+    Layout = "~/Areas/Person/Views/Shared/_LayoutPerson.cshtml";
+    ViewData["Title"] = "ثبت درخواست مرخصی";
+}
+
+<div class="container mt-5">
+    <h4 class="text-center mb-4">ثبت درخواست مرخصی</h4>
+    <form asp-action="Create" method="post">
+        <div class="form-group">
+            <label for="Type">نوع مرخصی</label>
+            <select class="form-control" id="Type" name="Type">
+                <option value="Hourly">ساعتی</option>
+                <option value="Daily">روزانه</option>
+            </select>
+        </div>
+
+        <!-- مرخصی ساعتی -->
+        <div id="hourlyFields" class="row">
+
+
+            <div class="form-group col-md-4 col-sm-12">
+                <label>تاریخ</label> <br />
+                <div class="input-group col-12">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="calendarTrigger" style="cursor: pointer;">
+                            <i class="fas fa-calendar-alt text-danger"></i>
+                        </span>
+                    </div>
+
+                    <!-- ورودی مخفی برای ذخیره تاریخ واقعی -->
+                    <input type="hidden" id="RequestDate" name="RequestDate" />
+
+                    <!-- ورودی قابل مشاهده برای کاربر -->
+                    <input type="text" id="RequestDateFake" class="form-control" placeholder="تاریخ را انتخاب کنید" />
+                </div>
+              </div>
+    
+            <div class="form-group col-4">
+                <label>ساعت شروع</label>
+                <input type="time" class="form-control" name="FromHour" style="direction:ltr;text-align:left" />
+            </div>
+            <div class="form-group col-4">
+                <label>ساعت پایان</label>
+                <input type="time" class="form-control" name="ToHour" style="direction:ltr;text-align:left"/>
+            </div>
+        </div>
+
+        <!-- مرخصی روزانه -->
+        <div id="dailyFields" style="display:none;">
+            <div class="row">
+                <div class="input-group col-md-6 col-sm-12">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text cursor-pointer" id="date5" data-mdpersiandatetimepicker="" data-mdpersiandatetimepicker-group="rangeSelector1" data-todate="" data-original-title="" title=""><i class='fas fa-calendar-alt' style='font-size:24px;color:forestgreen'></i></span>
+                    </div>
+                    <input name="FromDate" id="FromDate" type="hidden" />
+                    <input type="text" id="StartDateFake"  class="form-control" aria-label="date5" aria-describedby="date5" placeholder=" از تاریخ " />
+                
+                </div>
+
+                <div class="input-group col-md-6 col-sm-12">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text cursor-pointer" id="date6" data-mdpersiandatetimepicker="" data-mdpersiandatetimepicker-group="rangeSelector1" data-todate="" data-original-title="" title=""><i class='fas fa-calendar-alt' style='font-size:24px;color:red'></i></span>
+                    </div>
+                    <input name="ToDate" id="ToDate" type="hidden" />
+                    <input type="text" id="EndDateFake"  class="form-control" aria-label="date6" aria-describedby="date6" placeholder="تا تاریخ" />
+         
+                </div>
+            </div>
+         
+        </div>
+
+        <div class="form-group">
+            <label>دلیل</label>
+            <textarea class="form-control" name="Reason" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">ثبت درخواست</button>
+    </form>
+</div>
+
+
+
+@section Styles {
+    <link href="~/lib/trumbowyg-2_25_1/ui/trumbowyg.css" rel="stylesheet" />
+    <link href="~/lib/MD_BootstrapPersianDateTimePicker-master-bs5/dist/jquery.md.bootstrap.datetimepicker.style.css" rel="stylesheet" />
+    <style>
+        .input-group-prepend {
+            margin-left: 10px !important;
+        }
+    </style>
+}
+@section Scripts {
+    <script src="~/lib/trumbowyg-2_25_1/trumbowyg.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/lib/MD_BootstrapPersianDateTimePicker-master-bs5/dist/jquery.md.bootstrap.datetimepicker.js"></script>
+    <script>
+        $('#Type').change(function () {
+            if ($(this).val() === "Hourly") {
+                $('#hourlyFields').show();
+                $('#dailyFields').hide();
+            } else {
+                $('#dailyFields').show();
+                $('#hourlyFields').hide();
+            }
+        }).trigger('change');
+    </script>
+
+    <script>
+        $(document).ready(function () {
+        //     $('#date4').MdPersianDateTimePicker({
+        //     targetTextSelector: '#RequestDateFake',
+        //     targetDateSelector: '#RequestDate',
+        //     fromDate: true,
+        //     enableTimePicker: false,
+        //     modalMode: true
+        // });
+          $('#calendarTrigger').MdPersianDateTimePicker({
+            targetTextSelector: '#RequestDateFake',
+            targetDateSelector: '#RequestDate',
+           // groupId: 'calendarTrigger',
+           // fromDate: true,
+            enableTimePicker: false,
+            modalMode: true
+        });
+
+        $('#date5').MdPersianDateTimePicker({
+            targetTextSelector: '#StartDateFake',
+            targetDateSelector: '#FromDate',
+            groupId: 'date5',
+            fromDate: true,
+            enableTimePicker: false,
+            modalMode: true
+        });
+        $('#date6').MdPersianDateTimePicker({
+            targetTextSelector: '#EndDateFake',
+            targetDateSelector: '#ToDate',
+            groupId: 'date5',
+            toDate: true,
+            enableTimePicker: false,
+            modalMode: true
+        });
+
+
+
+            $('#RequestDate').MdPersianDateTimePicker({
+                targetTextSelector: '#RequestDate',
+                isGregorian: false,
+                enableTimePicker: false
+            });
+ 
+            $('#FromHour').MdPersianDateTimePicker({
+                targetTextSelector: '#FromHour',
+                isGregorian: false,
+                enableTimePicker: true,
+                placement: 'bottom',
+                textFormat: 'HH:mm'
+            });
+
+            $('#ToHour').MdPersianDateTimePicker({
+                targetTextSelector: '#ToHour',
+                isGregorian: false,
+                enableTimePicker: true,
+                placement: 'bottom',
+                textFormat: 'HH:mm'
+            });
+        });
+    </script>
+
+  }

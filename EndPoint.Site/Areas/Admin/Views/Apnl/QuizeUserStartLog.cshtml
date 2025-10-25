@@ -1,0 +1,115 @@
+﻿@using EndPoint.Site.Useful.Ultimite;
+
+@{
+    ViewData["Title"] = "QuizeUserStartLog";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-6 offset-md-3 col-sm-12 w3-pale-lime w3-panel w3-card pb-4 p-2">
+        <h1>لاگ شرکت نمودن کاربر در آزمون</h1>
+        <form action="/Admin/Apnl/tota" method="post" id="totaForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label for="username"> نام کاربری:</label>
+                <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="quizId"> کد آزمون:</label>
+                <input type="number" class="form-control" placeholder="" id="quizId" name="quizId">
+            </div>
+
+
+
+            <div class="col-12 text-center">
+
+                <button type="submit" onclick="submitForm(event)" class="btn btn-outline-danger ml-2" style="text-align: center !important; font-size: 24px; color: green ">مشاهده سوابق <i class="fa fa-search"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="ResultPanel"></div>
+<div id="overlay">
+    <div class="cv-spinner">
+        <span class="spinner"></span>
+    </div>
+</div>
+@section Styles {
+    <link href="~/lib/trumbowyg-2_25_1/ui/trumbowyg.css" rel="stylesheet" />
+    <link href="~/lib/MD_BootstrapPersianDateTimePicker-master-bs5/dist/jquery.md.bootstrap.datetimepicker.style.css" rel="stylesheet" />
+}
+@section Scripts {
+    <script src="~/lib/trumbowyg-2_25_1/trumbowyg.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/lib/MD_BootstrapPersianDateTimePicker-master-bs5/dist/jquery.md.bootstrap.datetimepicker.js"></script>
+
+    <link href="~/lib/SweetAlert/sweetalert2.css" rel="stylesheet" />
+    <script src="~/lib/SweetAlert/sweetalert2.js"></script>
+    <link href="~/backend/css/Spiner.css" rel="stylesheet" />
+    <script>
+
+
+
+        function submitForm(event) {
+            event.preventDefault()
+            $("#overlay").fadeIn(300);
+
+
+            var username = $('#username').val();
+            var quizId = $('#quizId').val();
+
+
+
+                var dataO = {
+                    username: username,
+                    quizId: quizId,
+
+                };
+
+            console.log("dataO : ", dataO);
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Admin/Apnl/QuizeUserStartLog',
+                    data: dataO,
+                    success: function (data) {
+                        $("#overlay").fadeOut(300);
+                        console.log("data : ", data);
+                        if (data.isSuccess) {
+                               $('#ResultPanel').html(data.data);
+                            Swal.fire({
+                                title:data.message ,
+                                text: data.message,
+                                icon: 'success',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'باشه!',
+                                showCancelButton: false,
+                            }).then((result) => {
+                             
+                            })
+                        } else {
+                              $('#ResultPanel').empty();
+                            Swal.fire({
+
+                                icon: 'error',
+                                title: 'ناموفق :(',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        }
+                    }
+                    , error: function (jqXhr, textStatus, errorMessage) {
+                        $("#overlay").fadeOut(300);
+
+                        console.log('Error: ' + errorMessage);
+                    }
+                });
+
+
+        }
+    </script>
+}
+
+

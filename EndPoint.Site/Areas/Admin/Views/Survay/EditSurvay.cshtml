@@ -1,0 +1,260 @@
+﻿@using Azmoon.Application.Service.Survaeis.Survayy
+@model AddSurvayDto
+
+@{
+    ViewData["Title"] = "ویرایش نظرسنجی";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var TowDate = ViewData["TowDate"] as List<EditFeature_dto>;
+}
+
+
+
+<div class="row">
+    <div class="col-md-9 col-sm-12">
+        <form asp-action="EditSurvay">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="Id" type="hidden" class="form-control" />
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+           
+            <div class="row mb-4">
+                <div class="input-group col-md-6 col-sm-12">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text cursor-pointer" id="date5" data-mdpersiandatetimepicker="" data-mdpersiandatetimepicker-group="rangeSelector1" data-todate="" data-original-title="" title=""><i class='fas fa-calendar-alt' style='font-size:24px;color:forestgreen'></i></span>
+                    </div>
+                    <input asp-for="StartDate" type="hidden" />
+                    <input type="text" id="StartDateFake" value="@Model.StartDate" class="form-control" aria-label="date5" aria-describedby="date5" placeholder="زمان شروع نظرسنجی" />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+
+                <div class="input-group col-md-6 col-sm-12">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text cursor-pointer" id="date6" data-mdpersiandatetimepicker="" data-mdpersiandatetimepicker-group="rangeSelector1" data-todate="" data-original-title="" title=""><i class='fas fa-calendar-alt' style='font-size:24px;color:red'></i></span>
+                    </div>
+                    <input asp-for="EndDate" type="hidden" />
+                    <input type="text" id="EndDateFake" value="@Model.EndDate" class="form-control" aria-label="date6" aria-describedby="date6" placeholder="زمان پایان نظرسنجی" />
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="row mb-4">
+                <div class="input-group col-md-6 col-sm-12">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text cursor-pointer"><i class='fas fa-check' style='font-size:24px;color:red'></i></span>
+                    </div>
+                    <select asp-for="GroupId" class="form-control" asp-items="Model.GroupSelectList">
+                        <option> انتخاب دسته بندی....</option>
+                    </select>
+                    <span asp-validation-for="GroupId" class="text-danger"></span>
+                </div>
+
+
+                <div class="input-group col-md-6 col-sm-12">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">تعداد دفعات مجاز برای هر آی پی</span>
+                    </div>
+                    <input asp-for="AllowCountPerIp" class="form-control" aria-describedby="basic-addon3">
+                    <span asp-validation-for="AllowCountPerIp" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="card" style="background-color: rgb(234, 234, 234);">
+                <div class="card-header">کلید سوال ها</div>
+                <div id="body_tbl_kay">
+                    <table class="table table-striped" id="tbl_KeyWeight">
+                        <thead>
+                            <tr>
+                                <th>عنوان کلید</th>
+                                <th>وزن</th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in TowDate)
+                            {
+                                <tr>
+                                    <td>@item.Title</td>
+                                    <td>@item.Wight</td>
+                                    <td><input type="button" class="btn btn-outline-primary btn_edit_Features" value="ویرایش" data-IId="@item.Id" data-tile="@item.Title" data-wight="@item.Wight" onclick="editfeicher(event)" /></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+            <div class="row">
+
+                <button type="submit" class="btn btn-success col-6 pl-2" style="text-align: center !important; font-size: 24px; color: red ">ذخیره <i class="fa fa-save"></i></button>
+                <a asp-action="Index" asp-controller="Survay" class="btn btn-primary col-6" style="font-size: 24px;">بازگشت <i class="fa fa-undo"></i></a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="myModalAEditAnswer">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h6 class="modal-title editAnswerTitle">ویرایش کلید </h6>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/Admin/Survay/EditAnsweSurvay" method="post" id="formEditAnswermodal">
+                    <input type="hidden" id="modalEditId" name="Id" />
+                    <input type="hidden" id="modalEditAnswerSurvayId" name="SurveyId" />
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">عنوان</label>
+                        <input type="text" name="Title" id="modalEditTitle" class="form-control col-12">
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label>وزن</label>
+                            <input type="number" class="form-control" id="modalEditWight" name="Wight">
+                        </div>
+
+
+
+                    </div>
+                    <button type="button" onclick="EditSubmitForm(event)" class="btn btn-outline-primary ml-2 mt-3">به روز رسانی <i class="fa fa-save" style="font-size: 19px;"></i></button>
+
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">لغو</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="overlay">
+    <div class="cv-spinner">
+        <span class="spinner"></span>
+    </div>
+</div>
+<div class="modal fade" id="TreeViewModal" role="dialog" tabindex="-1" aria-labelledby="TreeViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TreeViewModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="WorkPlaceTreeView_modal_body">
+                @(await Component.InvokeAsync("GetWorkPlaceTreeView"))
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary mr-2" data-btn="save">ثبت انتخاب  </button>
+                <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">خروج</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Styles{
+    <link href="~/lib/SweetAlert/sweetalert2.css" rel="stylesheet" />
+    <link href="~/lib/trumbowyg-2_25_1/ui/trumbowyg.css" rel="stylesheet" />
+    <link href="~/lib/MD_BootstrapPersianDateTimePicker-master-bs5/dist/jquery.md.bootstrap.datetimepicker.style.css" rel="stylesheet" />
+    <link href="~/backend/css/Spiner.css" rel="stylesheet" />
+    <style>
+        select.form-control:not([size]):not([multiple]) {
+            height: calc(3.0rem + 2px);
+        }
+    </style>
+}
+@section Scripts{
+    <script src="~/lib/trumbowyg-2_25_1/trumbowyg.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/lib/MD_BootstrapPersianDateTimePicker-master-bs5/dist/jquery.md.bootstrap.datetimepicker.js"></script>
+    <script src="~/lib/SweetAlert/sweetalert2.js"></script>
+    <script>
+
+        function editfeicher( event) {
+            event.preventDefault();
+            console.log("title ,wight ");
+            $(this).attr("data-id")
+        }
+        $(document).ready(function () {
+            $('#Description').trumbowyg();
+            $('input[name="WorkPlaceIdFake"]').attr('autocomplete', 'none');
+
+
+
+        });
+        $('#date5').MdPersianDateTimePicker({
+            targetTextSelector: '#StartDateFake',
+            targetDateSelector: '#StartDate',
+            groupId: 'date5',
+            fromDate: true,
+            enableTimePicker: true,
+            modalMode: true
+        });
+        $('#date6').MdPersianDateTimePicker({
+            targetTextSelector: '#EndDateFake',
+            targetDateSelector: '#EndDate',
+            groupId: 'date5',
+            toDate: true,
+            enableTimePicker: true,
+            modalMode: true
+        });
+        $(".btn_edit_Features").click(function (e) {
+            e.preventDefault();
+            console.log("test btn clicked ", $(this).attr("data-tile") + "///" + $(this).attr("data-wight") + "//" +@(Model.Id) +"////"+ $(this).attr("data-IId"));
+            $('#myModalAEditAnswer').modal('toggle');
+            $('#modalEditId').val($(this).attr("data-IId"));
+            $('#modalEditAnswerSurvayId').val(@(Model.Id));
+            $('#modalEditTitle').val($(this).attr("data-tile"));
+            $('#modalEditWight').val($(this).attr("data-wight"));
+        });
+        function EditSubmitForm(e) {
+            $('#myModalAEditAnswer').modal('toggle');
+           // document.getElementById("formEditAnswermodal").submit();
+            e.preventDefault(); // avoid to execute the actual submit of the form.
+            $("#overlay").fadeIn(300);
+            var form = $('#formEditAnswermodal');
+            var actionUrl = form.attr('action');
+            var fr = form.serialize();
+            console.log('fr : ', fr);
+            console.log('actionUrl : ', actionUrl);
+            $.ajax({
+                type: form.attr('method'),
+                url: actionUrl,
+                data: fr,
+                success: function (data) {
+                    $("#overlay").fadeOut(300);
+                    $('#body_tbl_kay').html(data);
+                    Swal.fire({
+
+                        icon: 'success',
+                        title: 'موفق :)',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            });
+        }
+
+
+    </script>
+  
+}
+

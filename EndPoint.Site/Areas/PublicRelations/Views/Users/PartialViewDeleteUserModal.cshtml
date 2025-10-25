@@ -1,0 +1,105 @@
+﻿@using EndPoint.Site.Areas.PublicRelations.Models.Dto.User
+@model GetUserDeleteDto
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel1">
+                @("حذف" + " " + Model.FirstName + " " + Model.LastName)
+            </h4>
+            @if (Model.IsActive == true)
+            {
+
+                <span style="font-size:65%;" class="badge badge-pill badge-success">فعال</span>
+
+            }
+            else
+            {
+                <span style="font-size:65%;" class="badge badge-pill badge-secondary">غیر فعال</span>
+
+            }
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="idInput" value="@Model.Id">
+            <input type="hidden" id="FirstName" value="@Model.FirstName">
+            <input type="hidden" id="LastName" value="@Model.LastName">
+            <input type="hidden" id="PersonnelCode" value="@Model.PersonnelCode">
+
+
+            <div class="form-row">
+            <p>
+                    @("شما در حال حذف کامل" + " " + Model.FirstName + " " + Model.LastName + " " + "با کد پرسنلی" + " " + Model.PersonnelCode + " " + "هستید.")
+            </p>
+            <p class="text-danger">
+                آیا مایل به ادامه این عملیات هستید؟
+            </p>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-danger" data-dismiss="modal">خیر</button>
+            <a onclick="DeleteUser()" class="btn btn-primary" style="color:white;">بله</a>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function DeleteUser() {
+        var Id = $('#idInput').val();
+        var FirstName = $('#FirstName').val();
+        var LastName = $('#LastName').val();
+        var PersonnelCode = $('#PersonnelCode').val();
+
+        var postData = {
+            'Id': Id,
+            'FirstName': FirstName,
+            'LastName': LastName,
+            'PersonnelCode': PersonnelCode,
+        };
+
+        $.ajax({
+            contentType: 'application/x-www-form-urlencoded',
+            dataType: 'json',
+            type: 'POST',
+            url: '@Url.Action("PartialViewDeleteUserModal")',
+            data: postData,
+            success: function (data) {
+                if (data.isSuccess) {
+                    swal.fire(
+                        'موفق!',
+                        data.message,
+                        'success'
+                    ).then(function (isConfirm) {
+                        if (isConfirm) {
+                            location.reload();
+                        }
+                    });
+                } else {
+                    swal.fire(
+                        'خطا!',
+                        data.message,
+                        'error'
+                    );
+                }
+            },
+            error: function (request, status, error) {
+                // Display error message in the console
+                console.error('Error in request:', request.responseText);
+
+                // Display error message to the user
+                swal.fire(
+                    'Error!',
+                    'An error occurred while processing the request. Please try again.',
+                    'error'
+                );
+            },
+        });
+        
+    }
+</script>

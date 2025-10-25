@@ -1,0 +1,304 @@
+﻿@using Azmoon.Common.ResultDto
+@using Azmoon.Application.Service.Survaeis.Survayy
+@model PagingDto<List<GetSurvayDto>>
+@using EndPoint.Site.Useful.Ultimite
+@addTagHelper *, LazZiya.TagHelpers
+@{
+    ViewData["Title"] = "نظرسنجی";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>لیست نظرسنجی ها</h1>
+<div class="row">
+    <nav class="navbar navbar-expand-sm submenu-nav">
+        <ul class="navbar-nav">
+
+
+            <li class="nav-item">
+                <form asp-action="AddSurvay" asp-area="Admin" asp-controller="Survay" method="get">
+                    <button type="submit" class="btn btn-default btn-change-state w3-green m-1">
+                        نظرسنجی جدید  <i class="nav-icon fa fa-plus-circle"></i>
+                    </button>
+                </form>
+            </li>
+            <li class="nav-item">
+                <form id="edit_form" asp-action="EditSurvay">
+                    <button type="submit" class="btn btn-default btn-change-state w3-orange m-1" data-action="EditSurvay" data-controller="Survay" data-area="Admin">
+                        ویرایش <i class="nav-icon fa fa-edit"></i>
+                    </button>
+                </form>
+            </li>
+            <li class="nav-item">
+                <form id="edit_form" asp-action="Details">
+                    <button type="submit" class="btn btn-default btn-change-state w3-purple m-1" data-action="Details" data-controller="Survay" data-area="Admin">
+                        جزئیات <i class="nav-icon fa fa-clipboard-list"></i>
+                    </button>
+                </form>
+            </li>
+
+            <li class="nav-item">
+                <form id="unpublish_form" asp-action="Result">
+                    <button type="submit" class="btn btn-default btn-change-state w3-deep-orange m-1" data-action="Result" data-controller="Survay" data-area="Admin">
+                        خروجی EXEL <i class="fas fa-file-excel"></i>
+                    </button>
+                </form>
+            </li>
+            <li class="nav-item">
+                <form id="unpublish_form" asp-action="Result">
+                    <button type="submit" class="btn btn-default btn-change-state w3-green m-1" data-action="ResultDescription" data-controller="Survay" data-area="Admin">
+                         جوابهای تشریحی  EXEL <i class="fas fa-file-excel"></i>
+                    </button>
+                </form>
+            </li>
+            @* <li class="nav-item">
+                <form id="unpublish_form" asp-action="ExportCSV">
+                    <button type="submit" class="btn btn-default btn-change-state w3-amber m-1" data-action="ExportCSV" data-controller="Survay" data-area="Admin">
+                        خروجی CSV <i class="fas fa-file-alt"></i>
+                    </button>
+                </form>
+            </li> *@
+
+            <li class="nav-item">
+                <form id="unpublish_form" asp-action="Delete">
+                    <button type="submit" class="btn btn-default btn-change-state w3-pink m-1" data-action="Delete" data-controller="Survay" data-area="Admin">
+                        حذف <i class="nav-icon fas fa-exclamation-circle"></i>
+                    </button>
+                </form>
+            </li>
+
+
+
+        </ul>
+    </nav>
+</div>
+<div class="row">
+    <div class="col-sm-4 col-xs-6">
+        <form asp-action="Index" method="get">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control float-right" placeholder="جستجو">
+
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fa fa-search"></i></span>
+                </div>
+                <button type="submit" class="btn btn-primary">جستجو</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-sm-4 col-xs-6">
+        <div class="form-group form-group-sm">
+
+
+            <form class="form-inline d-inline" asp-action="Index" method="post">
+                <button type="submit" name="search" value="clear" class="btn btn-default d-inline">
+                    پاک کن
+                </button>
+            </form>
+
+        </div>
+    </div>
+</div>
+@{
+
+    if (Model != null)
+    {
+        <div id="alertPanel"></div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        انتخاب
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.ElementAt(0).Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.ElementAt(0).Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.ElementAt(0).GroupName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.ElementAt(0).StartDate)
+
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.ElementAt(0).EndDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.ElementAt(0).Status)
+                    </th>
+
+                 
+                    <th>
+                        آمارمشارکت
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model.Data != null)
+                    {
+
+                        @foreach (var item in Model.Data)
+                        {
+                <tr>
+                    <td>
+                        <input name="posts[]" type="checkbox" class="checkthis" value="@item.Id" data-username="@item.Id" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GroupName)
+                    </td>
+                    <td>
+                        @item.StartDate.ToPersianDateStrFarsi()
+                    </td>
+                    <td>
+                        @item.EndDate.ToPersianDateStrFarsi()
+                    </td>
+                    <td>
+
+                        @{
+
+                            switch ((Int16)item.state)
+                            {
+                                case 1:
+
+                                    <i class='fas fa-circle' style='font-size:25px;color:green'></i>
+                                    break;
+                                case 2:
+                                    <i class='fas fa-circle blink' style='font-size:25px;color:orange'></i>
+                                    break;
+                                case 3:
+                                    <i class='fas fa-circle' style='font-size:25px;color:red'></i>
+                                    break;
+                            }
+                        }
+                    </td>
+              
+                    <td>
+                                    <a class="btn btn-default btn-change-state w3-deep-orange m-1 rounded-pill p-2" href="~/Survey/ReportWorckplaceResult?uniqKay=@item.UniqKey" target="_blank">
+                                        @item.CountResoult <i class="fa" style="font-size:20px">&#xf080;</i>
+                                    </a>
+                      
+                    </td>
+                </tr>
+                        }
+                    }
+
+                }
+
+            </tbody>
+        </table>
+        <div class="card-footer">
+            @{
+                if (Model != null && Model.Data != null)
+                {
+                    <paging page-no="@Model.PageNo"
+                            page-size="@Model.PageSize"
+                            total-records="@Model.TotalRecords"
+                            show-prev-next="true"
+                            show-total-pages="true"
+                            show-total-records="true"
+                            show-page-size-nav="true"
+                            show-first-numbered-page="true"
+                            show-last-numbered-page="true"
+                            query-string-key-page-no="PageNo"
+                            query-string-key-page-size="PageSize"
+                            query-string-value="@@(Request.QueryString.Value)"
+                            text-total-pages="صفحه"
+                            text-total-records="رکورد"
+                            text-first="&laquo;"
+                            text-last="&raquo;"
+                            text-previous="&lsaquo;"
+                            text-next="&rsaquo;"
+                            sr-text-first="اولین"
+                            sr-text-last="آخرین"
+                            sr-text-previous="قبلی"
+                            sr-text-next="بعدی"
+                            gap-size="2">
+                    </paging>
+                }
+            }
+
+        </div>
+    }
+}
+@section ScriptPagination{
+    <script src="~/lib/jquery/dist/jquery-3.1.1.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery-3.5.1.slim.min.js"></script>
+    <script src="~/lib/jquery/dist/popper.min.js"></script>
+
+}
+@section Scripts{
+
+    <script src="~/lib/modal-popup-ybox/js/directive.js"></script>
+    <script src="~/lib/modal-popup-ybox/js/yBox.js"></script>
+    <script>
+
+        //$(".blinking").setInterval(function () {
+        //    $(".blinking").fadeOut(100).fadeIn(100)
+        //}, 1000);
+
+    </script>
+    <script>
+
+        $(document).on("click", "button[data-action]", function (e) {
+            e.preventDefault();
+            var linkk = $(this).data("action");
+            var controller = $(this).data("controller");
+            var area = $(this).data("area");
+            var Aarea = "";
+            if (area != "") {
+                Aarea = '/' + area;
+            }
+            console.log("linkk  : ", linkk);
+            var numberOfChecked = $('input:checkbox:checked');
+
+            var test = TestnumberOfChecked(numberOfChecked);
+            if (test) {
+
+                console.log("val    : ", numberOfChecked.val());
+                if (linkk == "ResultDescription" || linkk == "Result") {
+
+
+                    window.location.href = Aarea + '/' + controller + '/' + linkk + '?survayId=' + numberOfChecked.val();
+                }
+                else {
+
+
+                    window.location.href = Aarea + '/' + controller + '/' + linkk + '/' + numberOfChecked.val();
+                }
+
+            }
+
+        });
+
+        function TestnumberOfChecked(numberOfChecked) {
+            if (numberOfChecked.length === 0 || numberOfChecked.length > 1) {
+                console.log("publish_form click", numberOfChecked);
+                var errorMessage = "لطفاً! یک  نظرسنجی را انتخاب نمایید.";
+                var alertPanelContent =
+                    `<div class="alert alert-warning alert-dismissible">
+                                                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                                                ${errorMessage}
+                                                                            </div>`;
+                $("#alertPanel").html(alertPanelContent);
+                $("#alertPanel").slideDown("fast");
+                window.setTimeout(function () {
+                    $("#alertPanel").slideUp(500);
+                }, 3000);
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+    </script>
+}

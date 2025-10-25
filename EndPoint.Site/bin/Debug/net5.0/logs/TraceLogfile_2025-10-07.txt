@@ -1,0 +1,14 @@
+2025-10-07 08:49:18.7978 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-07 08:49:18.8116 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-07 08:49:18.8116 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-07 08:49:19.2652 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-07 08:49:33.0728 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/Login|action: Login
+
+2025-10-07 08:49:36.8483 -TRACE|EndPoint.Site.Controllers.AccountController| url: https://localhost/Account/Login|action: Login
+
+2025-10-07 08:49:43.2552 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+

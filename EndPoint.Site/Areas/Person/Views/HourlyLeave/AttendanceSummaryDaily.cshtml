@@ -1,0 +1,78 @@
+﻿@using EndPoint.Site.Models
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+ @using EndPoint.Site.Useful.Ultimite;
+@using X.PagedList.Mvc.Core.Common
+@using X.PagedList.Web.Common
+@{
+    ViewData["Title"] = "ورود و خروج روزانه";
+    Layout = "~/Areas/Person/Views/Shared/_LayoutPerson.cshtml";
+}
+
+@model IPagedList<AttendanceLogGroupViewModel>
+<h4 class="text-center mb-4">آخرین  ورود و خروج روزانه</h4>
+<table class="table table-bordered text-center">
+    <thead class="thead-dark">
+        <tr>
+            <th style="width: 10%">تاریخ</th>
+            <th style="width: 20%">نام کاربر</th>
+            <th style="width: 25%">محل خدمت </th>
+            <th>ترددها</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (Model != null)
+                {
+                foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.Date.ToPersianDateStrFarsi()</td>
+                        <td>@item.FullName</td>
+                        <td>@item.WorkPlaceName</td>
+                        <td style="text-align:right">
+                            @foreach (var record in item.Activities)
+                                {
+                                <span class="badge badge-@(record.Type == "ورود" ? "success" : "danger")" style="margin: 2px">
+                                    @record.Time.ToString("HH:mm tt").Replace("AM", "ق.ظ").Replace("PM", "ب.ظ") - @record.Type  - &nbsp; Ip: @record.Ip
+                                </span>
+                                }
+                        </td>
+                    </tr>
+                    }
+                }
+            else
+                {
+                <tr>
+                    <div class="alert alert-danger" role="alert">
+                        <i class="fas fa-exclamation-triangle"></i> 
+                        با دسترسی که شما دارید و بررسی لاگ کاربران مورد خاصی یافت نگردید.
+                    </div>
+                </tr>
+                }
+
+        }
+    </tbody>
+</table>
+@if (Model != null)
+    {
+    <!-- صفحه‌بندی -->
+    <div class="text-center mt-3">
+        @Html.PagedListPager(Model, page => Url.Action("AttendanceSummaryDaily", new { page }),
+                new PagedListRenderOptions
+        {
+        DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+        DisplayLinkToLastPage = PagedListDisplayMode.Always,
+        DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+        DisplayLinkToNextPage = PagedListDisplayMode.Always,
+        DisplayLinkToIndividualPages = true,
+        MaximumPageNumbersToDisplay = 5,
+        UlElementClasses = new[] { "pagination" },
+        LiElementClasses = new[] { "page-item" },
+        PageClasses = new[] { "page-link" }
+        })
+    </div>
+
+    }
+
+

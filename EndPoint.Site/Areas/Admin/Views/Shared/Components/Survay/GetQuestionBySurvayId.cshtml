@@ -1,0 +1,409 @@
+﻿
+@using Azmoon.Application.Service.Survaeis.Questiones
+@model List<GetQuestionSurvayViewModel>
+
+@{
+    if (Model != null)
+    {
+        <h3 class="w3-panel w3-round-xlarge w3-teal p-2" style="text-align:right !important;"><span>لیست سوال ها</span> </h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ElementAt(1).Text)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.ElementAt(1).CountAsnswer)
+                    </th>
+
+                    <td> @Html.DisplayNameFor(model => model.ElementAt(1).QuestionType)</td>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model != null)
+                    {
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Text)
+                                </td>
+
+                                <td>
+                                  
+                                    @switch (item.QuestionType)
+                                    {
+                                    case 0:
+
+                                    <span>برابر کلید </span> 
+                                    break;
+                                    case 1:
+                                <span> @item.CountAsnswer</span>
+                                    break;
+                                
+
+                                    }
+                                 
+                                </td>
+
+                                <td>
+
+                                    @{
+
+
+                                        switch (item.QuestionType)
+                                        {
+                                            case 0:
+
+                                                <span>فرم چند گزینه ای</span> <i class="fas fa-check" style="font-size:25px;color:forestgreen"> </i>
+                                                break;
+                                            case 1:
+                                                <span>جمعیت شناسی</span> <i class="fas fa-edit" style="font-size:25px;color:brown"></i>
+                                                break;
+                                            case 2:
+                                                <span>تشریحی</span> <i class="fas fa-pen" style="font-size:25px;color:blue"></i>
+                                                break;
+
+                                        }
+                                    }
+                                </td>
+                                <td>
+
+
+                                    <a class="btn btn-outline-primary"
+                                       asp-action="EditQuestionSurvay" asp-route-id="@item.Id" asp-controller="Survay" asp-area="Admin">
+                                        ویرایش سوال
+                                    </a>
+                                    <a class="btn btn-outline-danger"
+                                       asp-action="DeleteQuestionSurvay" asp-route-id="@item.Id" asp-controller="Survay" asp-area="Admin">
+                                        حذف سوال
+                                    </a>
+                                    @if (item.QuestionType == 1)
+                                    {
+                                        <a class="btn btn-outline-success addansweress"
+                                           href="#" data-textt="@item.Text" data-idt="@item.Id" data-survayIId="@item.SurveyId">
+                                            افزودن جواب
+                                        </a>
+                                    }
+                                    @if (item.QuestionType == 1)
+                                    {
+                                        <a class="btn btn-outline-info"
+                                           href="#" onclick="GetDataAnsweres(@item.Id ,event)">
+                                            مشاهد جواب ها
+                                        </a>
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                }
+
+
+            </tbody>
+        </table>
+
+
+    }
+    else
+    {
+        <h2><span>هیچ رکوردی ثبت نگردیده است</span></h2>
+    }
+}
+
+<!-- The Modal Get Answeres -->
+<div class="modal" id="myModalAnsweres">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">جواب ها</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <table id="id01" class="w3-table w3-bordered w3-striped">
+                    <tr v-if="todos[0].Id">
+                        <th>عنوان</th>
+                        <th>اولویت نمایش</th>
+                        <th>وزن</th>
+                        <th>عملیات</th>
+                    </tr>
+                    <tr v-for="x in todos">
+                        <td v-if="x.Id">{{x.Title}}</td>
+                        <td v-if="x.Id">{{x.Index}}</td>
+                        <td v-if="x.Id">{{x.Wight}}</td>
+                        <td>
+                            <p v-if="x.Id">
+                                <a class="btn btn-outline-danger" v-bind:href="`/admin/survay/DeleteAnswer/${x.Id}`">
+                                    حذف
+                                </a>
+                                <a class="btn btn-outline-primary"
+                                   href="#" v-on:click="displaynumbers(x.Id , x.Title , x.Wight , x.Index ,x.SurveyQuestionId ,x.SurveyId)">
+                                    ویرایش
+                                </a>
+                            </p>
+                            <h1 v-else>هیچ جوابی ثبت نشده است 😢</h1>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- The Modal Add Answer-->
+<div class="modal" id="myModalAddAnswer">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h6 class="modal-title">افزودن جواب به سوال</h6>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/Admin/Survay/AddAnswerQuestionSurvay" method="post" id="formAddAnswerQuestionSurvay">
+                    <input type="hidden" id="IdAnswerQuestionSurvay" name="SurveyQuestionId" />
+                    <input type="hidden" id="IdAnswerSurvay" name="SurveyId" />
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">عنوان</label>
+                        <textarea name="Title" id="Title" class="form-control col-12"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label>وزن</label>
+                            <input type="number" class="form-control" id="Wight" name="Wight">
+                        </div>
+                        @*<div class="col-6">
+                <label>اولویت نمایش</label>
+                <input type="number" class="form-control" id="Index" name="Index">
+            </div>*@
+
+
+                    </div>
+                    <button type="button" onclick="submitForm()" class="btn btn-outline-primary ml-2 mt-3">ذخیره <i class="fa fa-save" style="font-size: 19px;"></i></button>
+
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">لغو</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- The Modal Edit Answer-->
+<div class="modal" id="myModalAEditAnswer">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h6 class="modal-title editAnswerTitle">ویرایش جواب </h6>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/Admin/Survay/EditAnswerQuestionSurvay" method="post" id="formEditAnswermodal">
+                    <input type="hidden" id="modalEditId" name="Id" />
+                    <input type="hidden" id="modalEditSurveyQuestionId" name="SurveyQuestionId" />
+                    <input type="hidden" id="modalEditAnswerSurvayId" name="SurveyId" />
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">عنوان</label>
+                        <textarea name="Title" id="modalEditTitle" class="form-control col-12"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label>وزن</label>
+                            <input type="number" class="form-control" id="modalEditWight" name="Wight">
+                        </div>
+                        <div class="col-6">
+                            @*<label>اولویت نمایش</label>*@
+                            <input type="hidden" class="form-control" id="modalEditIndex" name="Index">
+                        </div>
+
+
+                    </div>
+                    <button type="button" onclick="EditSubmitForm()" class="btn btn-outline-primary ml-2 mt-3">به روز رسانی <i class="fa fa-save" style="font-size: 19px;"></i></button>
+
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">لغو</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="~/assets/js/jquery.min.js"></script>
+
+<script src="~/assets/js/vue2_7.js"></script>
+<script src="~/backend/js/axios.min.js"></script>
+@*<script src="~/backend/js/lodash.min.js"></script>*@
+<script>
+    $(document).ready(function () {
+        $(".addansweress").on('click', function (e) {
+            e.preventDefault();
+
+            var Id = $(this).attr("data-idt");
+            var survayIId = $(this).attr("data-survayIId");
+            var text = $(this).attr("data-textt");
+
+            $('.modal-title').html("<span> جواب برای : </span>" + text);
+            $('#IdAnswerQuestionSurvay').val(Id);
+            $('#IdAnswerSurvay').val(survayIId);
+
+            console.log("test send id", Id)
+            console.log("test send text", text)
+
+            $('#myModalAddAnswer').modal('show');
+
+        });
+    });
+    //function SendQuestion(a, b, event) {
+    //    event.preventDefault()
+
+
+    //    $('.modal-title').html("<span> جواب برای : </span>" + b);
+    //    $('#modalEditId').val(a);
+    //    console.log("test send id", a)
+    //    console.log("test send text", b)
+    //    $('#myModalAEditAnswer').modal('show');
+
+    //}
+    function EditAnswer(a, b) {
+        //  event.preventDefault()
+
+
+        $('.editAnswerTitle').html("<span> ویرایش جواب برای : </span>" + b);
+        $('#IdAnswerQuestionSurvay').val(a);
+        console.log("test send id", a)
+        console.log("test send text", b)
+        $('#myModalAEditAnswer').modal('show');
+
+    }
+
+
+    function submitForm() {
+        $('#myModalAddAnswer').modal('toggle');
+        document.getElementById("formAddAnswerQuestionSurvay").submit();
+
+    }
+    function EditSubmitForm() {
+        $('#myModalAEditAnswer').modal('toggle');
+        document.getElementById("formEditAnswermodal").submit();
+
+    }
+
+</script>
+<script>
+
+    function GetDataAnsweres(a, event) {
+        event.preventDefault();
+        $("#overlay").fadeIn(300);
+        w3.getHttpObject("/Admin/Survay/GetAnsweresQuestionSurvay/" + a, myFunction);
+
+        function myFunction(myObject) {
+
+            w3.displayObject("id01", myObject);
+         
+            var arr = [];
+            var len = myObject.length;
+            for (var i = 0; i < len; i++) {
+                arr.push({
+                    Id: myObject[i].id,
+                    Title: myObject[i].title,
+                    Wight: myObject[i].wight,
+                    Index: myObject[i].index,
+                    SurveyId: myObject[i].surveyId,
+                    SurveyQuestionId: myObject[i].surveyQuestionId          
+                });
+            }
+            console.log("test cbjactes  :id: ", arr[0].Id + " /surveyQuestionId:" + arr[0].SurveyQuestionId + " /SurveyId :" + arr[0].SurveyId + "***")
+            $('#myModalAnsweres').modal('show');
+            $("#overlay").fadeOut(300);
+            KamiObject = new Vue({
+                el: '#id01',
+                data: {
+                    todos: arr,
+                    info: null
+                },
+
+                methods: {
+                    displaynumbers: function (a, b, wi, d, s ,sid) {
+                        var vm = this
+                        axios.get('/Admin/Survay/GetAnsweresQuestionSurvay/'+s)
+                            .then(function (response) {
+                                var eee = response.data;
+                                var arr2 = [];
+                                var len2 = eee.length;
+                                for (var i = 0; i < len2; i++) {
+                                    arr2.push({
+                                        Id: eee[i].id,
+                                        Title: eee[i].title,
+                                        Wight: eee[i].wight,
+                                        Index: eee[i].index,
+                                        SurveyQuestionId: eee[i].surveyQuestionId,
+                                        SurveyId: eee[i].SurveyId
+                                    });
+                                }
+
+                                console.log("test  inline arr2  : ", arr2)
+                                this.info = arr2
+                                console.log("test  inline this.info  : ", this.info)
+                            });
+                        $('.editAnswerTitle').html("<span> ویرایش جواب برای : </span>" + b);
+                        $('#modalEditId').val(a);
+                        $('#modalEditAnswerSurvayId').val(sid);
+                        $('#modalEditSurveyQuestionId').val(s);
+                        $('#modalEditTitle').val(b);
+                        $('#modalEditTitle').text(b);
+                        $('#modalEditWight').val(wi);
+                        $('#modalEditWight').text(wi);
+                        $('#modalEditIndex').val(d);
+                        $('#modalEditIndex').text(d);
+
+                        console.log("test send SurveyId", sid)
+                  
+                        console.log("test  info : ", this.info)
+                        console.log("test send SurveyQuestionId", s)
+                        $('#myModalAnsweres').modal('toggle');
+                        $('#myModalAEditAnswer').modal('show');
+
+
+                    }
+                },
+            })
+            //var myObject2 = {
+            //    "answers": arr
+            //}
+
+            //w3.displayObject("id01", myObject2);
+        }
+    }
+
+</script>
+
+

@@ -1,0 +1,110 @@
+﻿@using Azmoon.Application.Service.PublicRelations.DashboardServices
+@model ResultTotalMembersFromMessengers
+
+@{
+    ViewData["Title"] = "Default";
+    Layout = null;
+}
+
+@section Styles
+{
+    <head>
+        <style>
+            font-face {
+                font-family: 'yekan';
+                src: url('~/theme/dist/font/iranyekanweblight.ttf') format('truetype');
+            }
+        </style>
+    </head>
+}
+
+@{
+    var chartData = new
+    {
+        labels = new[] { "واتس آپ", "تلگرام", "اینستاگرام", "ایکس", "سروش پلاس", "آی گپ", "ایتا", "بله", "روبیکا" },
+        data = new[] { Model.whatsapp, Model.telegram, Model.Instagram, Model.x, Model.sorosh, Model.iGap, Model.eeta, Model.bale, Model.rubika },
+        backgroundColor = new[] {
+            "#FF6F61",   // رنگ سالید برای واتس آپ
+            "#4BC0C0",   // رنگ سالید برای تلگرام
+            "#FF9F40",   // رنگ سالید برای اینستاگرام
+            "#FFCD02",   // رنگ سالید برای ایکس
+            "#F9A602",   // رنگ سالید برای سروش پلاس
+            "#6A5ACD",   // رنگ سالید برای آی گپ
+            "#9B59B6",   // رنگ سالید برای ایتا
+            "#3498DB",   // رنگ سالید برای بله
+            "#1ABC9C"    // رنگ سالید برای روبیکا
+        }
+    };
+}
+
+<canvas id="memberChart" style="width: 100%; height: 300px;" class="chartjs-render-monitor"></canvas>
+
+<script src="~/lib/chartjs/dist/chart.js"></script>
+<script>
+    var ctx = document.getElementById('memberChart').getContext('2d');
+    var chartData = @Html.Raw(Json.Serialize(chartData));
+
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: chartData.labels,
+            datasets: [{
+                label: '',
+                data: chartData.data,
+                backgroundColor: chartData.backgroundColor,  // رنگ‌های مختلف برای هر کانال
+                borderColor: chartData.backgroundColor,  // مرز هر میله همانند رنگ پس‌زمینه باشد
+                borderWidth: 1,
+                /* hoverBackgroundColor: '#F39C12', */  // رنگ پس‌زمینه هنگام هاور
+              /*   hoverBorderColor: '#F39C12', */      // مرز هنگام هاور
+                hoverBorderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1000,  // تنظیم فاصله بین مقادیر در محور Y
+                        font: {
+                            size: 14,
+                            family: 'yekan !important', // فونت دلخواه
+                        }
+                    }
+                },
+                x: {
+                    ticks: {
+                        font: {
+                            size: 14,
+                            family: 'yekan !important' // فونت دلخواه
+                        }
+                    }
+                }
+            },
+            plugins: {
+                tooltip: {
+                    backgroundColor: '#2C3E50',
+                    titleFont: {
+                        size: 16,
+                        family: 'yekan !important' // فونت دلخواه
+                    },
+                    bodyFont: {
+                        size: 14,
+                        family: 'yekan !important' // فونت دلخواه
+                    },
+                    footerFont: {
+                        size: 12,
+                        family: 'yekan !important' // فونت دلخواه
+                    },
+                    cornerRadius: 5,
+                    padding: 10
+                }
+            },
+            animation: {
+                duration: 1000,
+                easing: 'easeInOutBounce'
+            }
+        }
+    });
+</script>

@@ -1,0 +1,829 @@
+﻿@model Azmoon.Application.Service.User.Dto.RegisterUserDto
+@using EndPoint.Site.Useful.Static
+@using Azmoon.Application.Service.WorkPlace.Dto;
+
+@{
+    ViewData["Title"] = "ثبت نام";
+    //Layout = "_Layout.cshtml";
+}
+
+
+<form asp-action="CreateUser" class="shadow p-3 mb-5 bg-body rounded" id="signUpForm">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    @if (ViewBag.Errors != null)
+        {
+        <div class="alert alert-danger">
+           <ul>
+                @foreach (var item in (List<string>)ViewBag.Errors)
+                    {
+                    
+                     <li>@item</li>
+                }
+            </ul>
+        </div>
+        }
+    <input type="hidden" asp-for="Id" class="form-control" />
+    <h3 class="text-center fs-4 mb-2">ایجاد حساب کاربری</h3>
+
+    <!-- start step indicators -->
+    <div class="form-header d-flex mb-4" style="direction: ltr;">
+        <span class="stepIndicator">گام اول </span>
+        <span class="stepIndicator"> گام دوم</span>
+        <span class="stepIndicator"> گام سوم</span>
+    </div>
+    <!-- end step indicators -->
+    <!-- step one -->
+    <div class="step">
+        <span id="step110"></span>
+        <p class="text-center mb-4"> مشخصات منحصر به فرد کاربر </p>
+        <div class="form-group">
+            <label asp-for="melli"></label>
+            <input asp-for="melli" class="form-control" type="number" pattern="^[0-9]{10}$" required oninvalid="this.setCustomValidity('لطفا عدد برابر فرمت کد ملی وارد نمائید')" />
+
+        </div>
+        <div class="form-group">
+            <label asp-for="personeli"></label>
+            <input asp-for="personeli" type="number" class="form-control" pattern="(40|50)\d{7}" required oninput="validatePersoneli(this)" oninvalid="this.setCustomValidity('لطفا عدد برابر فرمت پرسنلی وارد نمائید')" />
+
+        </div>
+    </div>
+
+    <!-- step two -->
+    <div class="step">
+        <p class="text-center mb-4">
+            اطلاعات کاربری
+        </p>
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label asp-for="FirstName"></label>
+                    <input asp-for="FirstName" class="form-control" pattern="^([\u0600-\u06FF]+\s?)+$" required />
+
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label asp-for="LastName"></label>
+                    <input asp-for="LastName" class="form-control" pattern="^([\u0600-\u06FF]+\s?)+$" required />
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label asp-for="TypeDarajeh"></label>
+                    <select class="form-control" asp-for="TypeDarajeh" required>
+                        <option value="">انتخاب...</option>
+                        @foreach (var std3 in ViewData["listTypeDarajeh"] as List<KeyValuePair<string, int>>)
+                            {
+
+                            <option value=@std3.Value.ToString()>@std3.Key</option>
+
+                            }
+
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label asp-for="darajeh"></label>
+                    <select class="form-control" asp-for="darajeh" name="darajeh" searchable required>
+                        <option value="">انتخاب...</option>
+                        @{
+                            var lstdarajeh = ViewData["darajah"] as List<optionAllDarajeh>;
+                            <optgroup label="نظامی">
+                                @foreach (var std in lstdarajeh.Where(p => p.drtype == 1).ToList())
+                                    {
+
+                                    <option value="@std.value" data-dgtype="@std.drtype">@std.text</option>
+
+                                    }
+                            </optgroup>
+                            <optgroup label="کارمند">
+                                @foreach (var std in lstdarajeh.Where(p => p.drtype == 0).ToList())
+                                    {
+
+                                    <option value="@std.value" data-dgtype="@std.drtype">@std.text</option>
+
+                                    }
+                            </optgroup>
+                            <optgroup label="روحانی">
+                                @foreach (var std in lstdarajeh.Where(p => p.drtype == 2).ToList())
+                                    {
+
+                                    <option value="@std.value" data-dgtype="@std.drtype">@std.text</option>
+
+                                    }
+                            </optgroup>
+                        }
+
+
+                    </select>
+                    <span asp-validation-for="darajeh" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label asp-for="name_father"></label>
+                    <input asp-for="name_father" class="form-control" pattern="^(?:[a-zA-Z\s,=%$#&_\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDCF\uFDF0-\uFDFF\uFE70-\uFEFF]|(?:\uD802[\uDE60-\uDE9F]|\uD83B[\uDE00-\uDEFF])){3,15}$" required />
+
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label asp-for="Phone"></label>
+                    <input asp-for="Phone" class="form-control" type="number" pattern="(^09)?(\d{11})$" placeholder="مثال : 09123654789" required />
+
+                </div>
+            </div>
+        </div>
+
+
+
+            <div class="row">
+            <div class="col-md-6 col-sm-12 mb-3">
+                <label asp-for="WorkPlaceId"></label>
+                <div class="input-group">
+
+                    <div class="input-group-prepend" id="select-WorkPlaceId">
+                        <span class="input-group-text cursor-pointer"><i class='fas far fa-eye' style='font-size: 24px; color: red; padding-left: 16px;'></i></span>
+                    </div>
+                    @{
+
+                        if (Model != null)
+                            {
+                            <input type="text" value="@Model.WorkPlaceIdFake" id="WorkPlaceIdFake" class="form-control" name="WorkPlaceIdFake" />
+                            }
+                        else
+                            {
+                            <input type="text" id="WorkPlaceIdFake" name="WorkPlaceIdFake" class="form-control" placeholder="انتخاب ... " autocomplete="off" />
+
+                            }
+                    }
+
+                    <input type="hidden" asp-for="WorkPlaceId" />
+
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label asp-for="NumberBankAccunt"></label>
+                    <input asp-for="NumberBankAccunt" class="form-control" type="number" required />
+
+                </div>
+            </div>
+
+            </div>
+   
+    </div>
+
+    <!-- step three -->
+    <div class="step">
+        <p class="text-center mb-4">رمز عبور</p>
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" type="password" pattern="(?=.*[A-Za-z])(?=.*\d).{6,30}" />
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label asp-for="RePassword"></label>
+                <input asp-for="RePassword" class="form-control" type="password" pattern="(?=.*[A-Za-z])(?=.*\d).{6,30}" />
+
+            </div>
+        </div>
+        <div class="alert alert-danger col-12" role="alert">
+            کاربر محترم به هنگام وارد نمودن رمز عبور باید زبان کیبورد را انگلیسی<span> EN </span> کرده و رمز پیچیده وارد کنید مثال :
+            <span>Aa@123456</span>
+        </div>
+
+    </div>
+
+    <!-- start previous / next buttons -->
+    <div class="form-footer d-flex">
+        <button type="button" id="nextBtn" onclick="nextPrev(1)">بعدی</button>
+        <button type="button" id="prevBtn" onclick="nextPrev(-1)">قبلی</button>
+
+    </div>
+    <!-- end previous / next buttons -->
+</form>
+
+<div class="modal fade" id="TreeViewModal" role="dialog" tabindex="-1" aria-labelledby="TreeViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TreeViewModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="WorkPlaceTreeView_modal_body">
+                @(await Component.InvokeAsync("GetWorkPlaceTreeView"))
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary mr-2" data-btn="save">ثبت انتخاب  </button>
+                <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">خروج</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="overlay">
+    <div class="cv-spinner">
+        <span class="spinner"></span>
+    </div>
+</div>
+@section StyleSheet
+{
+    <link href="~/backend/css/Spiner.css" rel="stylesheet" />
+    <link href="~/lib/MD_BootstrapPersianDateTimePicker-master-bs5/dist/jquery.md.bootstrap.datetimepicker.style.css" rel="stylesheet" />
+    <link href="~/lib/SweetAlert/sweetalert2.css" rel="stylesheet" />
+    <link href="~/lib/select2/select2.css" rel="stylesheet" />
+    <style>
+
+
+        #signUpForm {
+            max-width: 700px;
+            background-color: #ffffff;
+            margin: 40px auto;
+            padding: 40px;
+            box-shadow: 0px 6px 18px rgb(0 0 0 / 9%);
+            border-radius: 12px;
+        }
+
+            #signUpForm .form-header {
+                gap: 5px;
+                text-align: center;
+                font-size: .9em;
+            }
+
+                #signUpForm .form-header .stepIndicator {
+                    position: relative;
+                    flex: 1;
+                    padding-bottom: 30px;
+                }
+
+                    #signUpForm .form-header .stepIndicator.active {
+                        font-weight: 600;
+                    }
+
+                    #signUpForm .form-header .stepIndicator.finish {
+                        font-weight: 600;
+                        color: #009688;
+                    }
+
+                    #signUpForm .form-header .stepIndicator::before {
+                        content: "";
+                        position: absolute;
+                        left: 50%;
+                        bottom: 0;
+                        transform: translateX(-50%);
+                        z-index: 9;
+                        width: 20px;
+                        height: 20px;
+                        background-color: #d5efed;
+                        border-radius: 50%;
+                        border: 3px solid #ecf5f4;
+                    }
+
+                    #signUpForm .form-header .stepIndicator.active::before {
+                        background-color: #a7ede8;
+                        border: 3px solid #d5f9f6;
+                    }
+
+                    #signUpForm .form-header .stepIndicator.finish::before {
+                        background-color: #009688;
+                        border: 3px solid #b7e1dd;
+                    }
+
+                    #signUpForm .form-header .stepIndicator::after {
+                        content: "";
+                        position: absolute;
+                        left: 50%;
+                        bottom: 8px;
+                        width: 100%;
+                        height: 3px;
+                        background-color: #f3f3f3;
+                    }
+
+                    #signUpForm .form-header .stepIndicator.active::after {
+                        background-color: #a7ede8;
+                    }
+
+                    #signUpForm .form-header .stepIndicator.finish::after {
+                        background-color: #009688;
+                    }
+
+                    #signUpForm .form-header .stepIndicator:last-child:after {
+                        display: none;
+                    }
+
+            #signUpForm input {
+                padding: 15px 20px;
+                width: 100%;
+                font-size: 1em;
+                border: 1px solid #e3e3e3;
+                border-radius: 5px;
+            }
+
+                #signUpForm input:focus {
+                    border: 1px solid #009688;
+                    outline: 0;
+                }
+
+                #signUpForm input.invalid {
+                    border: 1px solid #ffaba5;
+                }
+
+            #signUpForm .step {
+                display: none;
+            }
+
+            #signUpForm .form-footer {
+                overflow: auto;
+                gap: 20px;
+            }
+
+                #signUpForm .form-footer button {
+                    background-color: #009688;
+                    border: 1px solid #009688 !important;
+                    color: #ffffff;
+                    border: none;
+                    padding: 13px 30px;
+                    font-size: 1em;
+                    cursor: pointer;
+                    border-radius: 5px;
+                    flex: 1;
+                    margin-top: 5px;
+                }
+
+                    #signUpForm .form-footer button:hover {
+                        opacity: 0.8;
+                    }
+
+                #signUpForm .form-footer #prevBtn {
+                    background-color: #fff;
+                    color: #009688;
+                }
+    </style>
+    <style>
+        .select2-container .select2-selection--single {
+            height: 38px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 34px;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .select2-container {
+            width: 100% !important;
+        }
+    </style>
+}
+@section Scripts {
+    @*<partial name="_ValidationScriptsPartial" />*@
+    <script src="~/lib/select2/select2.js"></script>
+    <script src="~/lib/SweetAlert/sweetalert2.js"></script>
+    <script src="~/lib/SweetAlert/polyfill.js.js"></script>
+    <script src="~/lib/MD_BootstrapPersianDateTimePicker-master-bs5/dist/jquery.md.bootstrap.datetimepicker.js"></script>
+    <script src="~/Them/js/timezone.js"></script>
+
+    <script>
+        function validatePersoneli(input) {
+            const value = input.value.trim();
+            const errorSpan = document.getElementById("error-message");
+
+            // الگوی مورد نظر: شروع با 40 یا 50 و در مجموع 9 رقم
+            const regex = /^(40|50)\d{7}$/;
+
+            if (value === "") {
+                errorSpan.textContent = "وارد کردن شماره پرسنلی الزامی است.";
+                input.setCustomValidity("وارد کردن شماره پرسنلی الزامی است.");
+            } else if (!regex.test(value)) {
+                errorSpan.textContent = "شماره پرسنلی باید ۹ رقم باشد و با 40 یا 50 شروع شود.";
+                input.setCustomValidity("شماره پرسنلی باید ۹ رقم باشد و با 40 یا 50 شروع شود.");
+            } else {
+                errorSpan.textContent = "";
+                input.setCustomValidity("");
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        let serieHtml = $('select[name=darajeh]').html();
+        $('input[name="WorkPlaceIdFake"]').attr('autocomplete', 'none');
+        // selectedFilter();
+        $(document).ready(function () {
+            $('#darajeh').select2({
+                placeholder: ' ... انتخاب ',
+                height: 30,
+            });
+            $('#date5').MdPersianDateTimePicker({
+                targetTextSelector: '#StartDateFake',
+                targetDateSelector: '#tavalod',
+                groupId: 'date5',
+                //fromDate: true,
+                //enableTimePicker: true,
+                format: "YYYY/MM/DD",
+                modalMode: true,
+                yearOffset: 60,
+            });
+            $('#StartDateFake').MdPersianDateTimePicker({
+                targetTextSelector: '#StartDateFake',
+                targetDateSelector: '#tavalod',
+                groupId: 'date5',
+                //fromDate: true,
+                //enableTimePicker: true,
+                format: "YYYY/MM/DD",
+                modalMode: true,
+                yearOffset: 60,
+            });
+
+            $('#select-WorkPlaceId').click(function () {
+                selectWorkPlaceId()
+
+            });
+            $('#WorkPlaceIdFake').click(function () {
+                selectWorkPlaceId()
+
+            });
+        });
+        $('[data-btn="save"]').click(function (e) {
+            e.preventDefault();
+            $('input[type=checkbox]').each(function () {
+                if (this.checked) {
+
+                    $('#WorkPlaceId').val($(this).val());
+                    $('#WorkPlaceIdFake').attr('placeholder', $(this).data('name'));
+                    $('#WorkPlaceIdFake').val($(this).data('name'));
+                    $('#TreeViewModal').modal('hide');
+                }
+            });
+
+        });
+        function selectWorkPlaceId() {
+
+            $('#TreeViewModal').modal('show');
+
+        }
+        function getDarajeh(type) {
+            $("#overlay").fadeIn(300);
+            $.getJSON('/Account/GetDarajeh', { type: type }, function (result, textStatus, jqXHR) {
+
+
+            })
+                .done(function (result) {
+                    $("#overlay").fadeOut(300);
+                    if (result.isSuccess) {
+                        $("#darajeh option").each(function () {
+                            $(this).remove();
+                        });
+                        $.each(result.data.lstoption, function (i, item) {
+                            // console.log("item : ", item);
+                            $('#darajeh').append($('<option>', {
+                                value: item.value,
+                                text: item.text
+                            }));
+                        });
+                        $("#darajeh option").each(function () {
+                            if ($(this).val() == type) {
+                                console.log("item", $(this).val());
+                            }
+
+                        });
+
+                    }
+
+
+
+                })
+                .fail(function (jqxhr, settings, ex) {
+                    $("#overlay").fadeOut(300);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'اطلاعات و مقادیر وارد شده نادرست می باشد دقت فرمائید!!',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                });
+        }
+        function getDarajehAfterPost(type, selectdrajeh) {
+            $.getJSON('/Account/GetDarajeh', { type: type }, function (result, textStatus, jqXHR) {
+
+
+            })
+                .done(function (result) {
+                    if (result.isSuccess) {
+                        //console.log("datatt : ", result.data.lstoption);
+                        $("#darajeh option").each(function () {
+                            $(this).remove();
+                        });
+                        $.each(result.data.lstoption, function (i, item) {
+                            // console.log("item : ", item);
+                            $('#darajeh').append($('<option>', {
+                                value: item.value,
+                                text: item.text
+                            }));
+                        });
+                        $("#darajeh option").each(function () {
+                            if ($(this).val() == selectdrajeh) {
+                                console.log("item", $(this).val());
+                                $('#darajeh option[value=' + selectdrajeh + ']').attr('selected', 'selected');
+                                $("#darajeh option[value=" + selectdrajeh + "]").prop('selected', true);
+                            }
+
+                        });
+
+                    }
+
+
+
+                })
+                .fail(function (jqxhr, settings, ex) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'اطلاعات و مقادیر وارد شده نادرست می باشد دقت فرمائید!!',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                });
+        }
+        $('#TypeDarajeh').change(function () {
+            $('#darajeh').removeAttr('disabled');
+            var $this = $(this).val();
+            // var sel_make = $(this).text();
+            var sel_make = $('#TypeDarajeh :selected').text();
+
+            if ($this == 1 || $this == 0 || $this == 2) {
+
+                $('#darajeh').removeAttr('disabled');
+                $('#darajeh').css('display', 'block');
+                /*  getDarajeh($this);*/
+
+                var serie = $('#darajeh');
+                // restore the full select list first.
+                serie.html(serieHtml);
+
+                //option 1 (show optgroup label + options)
+                var optGroup = $('optgroup[label="' + sel_make + '"]')[0].outerHTML;
+
+                // option 2 (show only options)
+                // var optGroup = $('optgroup[label="' + sel_make + '"]').html();
+
+                serie.html(optGroup);
+
+                $('#darajeh').select2({ placeholder: ' ... انتخاب ', height: 30 });
+
+
+            }
+
+        });
+
+        $(document).ready(function () {
+
+            $('#darajeh').attr('disabled', true);
+            $('#darajeh').prop('disabled', true);
+            var $this2 = $('#TypeDarajeh').find(":selected");
+            if ($this2.val() != 'NULL' || $this2.val() != '') {
+                var bbb = '@Html.Raw(Json.Serialize(Model))';
+                var model = '@(Model != null ? Model.darajeh : 0)';
+
+                if (model != 0) {
+                    $('#darajeh').removeAttr('disabled');
+                    $('#darajeh').css('display', 'block');
+                    getDarajehAfterPost($this2.val(), model);
+
+
+
+
+                }
+
+            }
+
+        });
+        $(document).ready(function () {
+            $('input').change(function () {
+                var filter = $(this).val();
+                $('#select2-darajeh-results').each(function () {
+                    if ($(this).val() == filter) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                    $('select').val(filter);
+                })
+            })
+        })
+    </script>
+    <script>
+        var currentTab = 0; // Current tab is set to be the first tab (0)
+        showTab(currentTab); // Display the current tab
+
+        function showTab(n) {
+            // This function will display the specified tab of the form...
+            var x = document.getElementsByClassName("step");
+            x[n].style.display = "block";
+            //... and fix the Previous/Next buttons:
+            if (n == 0) {
+                document.getElementById("prevBtn").style.display = "none";
+            } else {
+                document.getElementById("prevBtn").style.display = "inline";
+            }
+            if (n == (x.length - 1)) {
+                document.getElementById("nextBtn").innerHTML = "ثبت";
+            } else {
+                document.getElementById("nextBtn").innerHTML = "بعدی";
+            }
+            //... and run a function that will display the correct step indicator:
+            fixStepIndicator(n)
+        }
+
+        function nextPrev(n) {
+            // This function will figure out which tab to display
+            var x = document.getElementsByClassName("step");
+            // Exit the function if any field in the current tab is invalid:
+            if (n == 1 && !validateForm()) return false;
+            var link = x[currentTab].querySelector('#step110');
+            if (link) {
+                var personeli = document.getElementById("personeli").value; //$('personeli').val();
+                var melicode = document.getElementById("melli").value;// $('melli').val()
+                $("#overlay").fadeIn(300);
+                console.log("personeli : " + personeli + " melicode: " + melicode);
+                $.getJSON('/Account/GetHasAcount', { personeli: personeli, melicode: melicode }, function (result, textStatus, jqXHR) {
+
+
+                })
+                    .done(function (result) {
+                        $("#overlay").fadeOut(300);
+                        if (result.isSuccess) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: "مجاز به ثبت نام",
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+
+                            // Hide the current tab:
+                            x[currentTab].style.display = "none";
+                            // Increase or decrease the current tab by 1:
+                            currentTab = currentTab + n;
+                            // if you have reached the end of the form...
+                            if (currentTab >= x.length) {
+                                // ... the form gets submitted:
+                                document.getElementById("signUpForm").submit();
+                                return false;
+                            }
+                            // Otherwise, display the correct tab:
+                            showTab(currentTab);
+
+
+                        }
+                        else {
+
+
+                            Swal.fire({
+                                icon: 'warning',
+                                title: result.message,
+                                showConfirmButton: false,
+                                timer: 4000
+                            })
+
+                            if (result.data == 2) {
+                                setInterval(function () {
+                                    window.location.href = '/Account/login';
+                                }, 4000);
+                            }
+                            if (result.data == 1) {
+                                setInterval(function () {
+                                    window.location.href = '/Account/CreateUser';
+                                }, 4000);
+                            }
+                        }
+
+
+                    })
+                    .fail(function (jqxhr, settings, ex) {
+                        $("#overlay").fadeOut(300);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'اطلاعات و مقادیر وارد شده نادرست می باشد دقت فرمائید!!',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                    });
+            }
+            else {
+                // Hide the current tab:
+                x[currentTab].style.display = "none";
+                // Increase or decrease the current tab by 1:
+                currentTab = currentTab + n;
+                // if you have reached the end of the form...
+                if (currentTab >= x.length) {
+                    // ... the form gets submitted:
+                    document.getElementById("signUpForm").submit();
+                    return false;
+                }
+                // Otherwise, display the correct tab:
+                showTab(currentTab);
+            }
+
+
+        }
+
+        function validateForm() {
+            // This function deals with validation of the form fields
+            var x, y, i, valid = true;
+            x = document.getElementsByClassName("step");
+            y = x[currentTab].getElementsByTagName("input");
+            // A loop that checks every input field in the current tab:
+            for (i = 0; i < y.length; i++) {
+                // If a field is empty...
+                if (y[i].value == "") {
+                    // add an "invalid" class to the field:
+                    y[i].className += " invalid";
+                    // and set the current valid status to false
+                    valid = false;
+                }
+            }
+            // If the valid status is true, mark the step as finished and valid:
+            if (valid) {
+                document.getElementsByClassName("stepIndicator")[currentTab].className += " finish";
+            }
+            return valid; // return the valid status
+        }
+
+        function fixStepIndicator(n) {
+            // This function removes the "active" class of all steps...
+            var i, x = document.getElementsByClassName("stepIndicator");
+            for (i = 0; i < x.length; i++) {
+                x[i].className = x[i].className.replace(" active", "");
+            }
+            //... and adds the "active" class on the current step:
+            x[n].className += " active";
+        }</script>
+    <script>
+        $(document).ready(function () {
+            $("#divCategotyTreeView input[type=checkbox]").change(function () {
+                var firstchecked = $(this);
+                var firstcheckedVal = $(this).val();
+                console.log("firstchecked : ", firstchecked.val());
+
+
+                if ($('#divCategotyTreeView input:checkbox:checked').length > 1) {
+
+                    $('#divCategotyTreeView input[type=checkbox]').each(function () {
+                        var secoundchecked = $(this);
+                        if (this.checked) {
+                            if ($(this).val() != firstcheckedVal) {
+                                $(this).prop('checked', false);
+                                $(this).attr('checked', false);
+                                console.log("secoundchecked : ", secoundchecked.val());
+                            }
+
+                        }
+
+
+
+                    });
+
+                }
+            });
+
+
+
+
+
+        });
+        // hide childe treeView
+        $(function () {
+            $('#RootTreeView ul.child2').hide(300);
+
+            $('#RootTreeView li').on('click', function (e) {
+
+                e.stopPropagation();
+                $(this).children('ul').toggle(500);
+                $(this).children('li').addClass('mr-4');
+                $(this).children('ul').addClass('mr-4');
+                // $(this).find('>:first-child').toggleClass('fa-plus-circle fa-minus-circle')
+                $(this).find('>:first-child').toggleClass('fa-folder  fa-folder-open')
+
+            });
+        });
+    </script>
+}

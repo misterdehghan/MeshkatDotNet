@@ -1,0 +1,219 @@
+﻿@using EndPoint.Site.Areas.PublicRelations.Models.Dto.User
+@model GetUserEditDto
+@using EndPoint.Site.Areas.PublicRelations.Helpers.Convertors;
+
+<style>
+    label {
+        color: #4f54677a;
+        font-size: 90%;
+    }
+</style>
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel1">
+                @("ویرایش اطلاعات" + " " + Model.FirstName + " " + Model.LastName)
+            </h4>
+            @if (Model.IsActive == true)
+            {
+
+                <span style="font-size:65%;" class="badge badge-pill badge-success">فعال</span>
+
+            }
+            else
+            {
+                <span style="font-size:65%;" class="badge badge-pill badge-secondary">غیر فعال</span>
+
+            }
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="idInput" value="@Model.Id">
+
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">نام</label>
+                    <input type="text" class="form-control" id="FirstName" value="@Model.FirstName">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">نام خانوادگی</label>
+                    <input type="text" class="form-control" id="LastName" value="@Model.LastName">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">کد پرسنلی</label>
+                    <input type="text" class="form-control" id="PersonnelCode" value="@Model.UserName">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">شماره تلفن</label>
+                    <input type="text" class="form-control" id="PhoneNumber" value="@Model.PhoneNumber">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">
+                        <span>
+                            @* نمایش اطلاعات ادیت در اینجا *@
+                            @Html.Raw("استان قبلی: <u style='color:red;'>" + Model.Province + "</u>")
+                        </span>
+                    </label>
+                    <select class="form-control" name="Name" asp-items="@ViewBag.Province" id="Province" placeholder="@Model.Province">
+                        <option value="" disabled selected>انتخاب استان جدید</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">
+                        <span>
+                            @* نمایش اطلاعات ادیت در اینجا *@
+                            @Html.Raw("شهرستان قبلی: <u style='color:red;'>" + Model.City + "</u>")
+                        </span>
+                    </label>
+                    <select class="form-control" id="City">
+                        <option value="" disabled selected>انتخاب شهرستان جدید</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">اپراتور</label>
+                    <input type="text"
+                           class="form-control"
+                           id="Operator"
+                           value="@(Model.Operator == null ? "بدون انتخاب": Model.Operator)"
+                           disabled>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+            <a onclick="EditUser()" class="btn btn-primary" style="color:white;">تایید</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#Province').change(function () {
+            var selectedProvinceId = $(this).val();
+
+            // اگر استان انتخاب نشده باشد، خالی کنید
+            if (!selectedProvinceId) {
+                $('#City').empty();
+                return;
+            }
+
+
+            $.ajax({
+                url: '/Account/GetCitiesByProvinceId?provinceId=' + selectedProvinceId,
+                type: 'GET',
+                success: function (data) {
+
+
+                    // بازیابی اطلاعات شهرستان‌ها و به‌روز کردن المان دراپ‌دان شهرستان
+                    var cityDropdown = $('#City');
+                    cityDropdown.empty();
+                    $.each(data, function (i, item) {
+                        cityDropdown.append($('<option></option>').val(item.value).text(item.text));
+                    });
+                },
+                error: function () {
+                    alert('خطا در دریافت اطلاعات شهرستان‌ها.');
+                }
+            });
+        });
+    });
+
+</script>
+
+<script>
+    function EditUser() {
+        // Retrieve edited values from the edit modal form using jQuery
+        var Id = $('#idInput').val();
+        var FirstName = $('#FirstName').val();
+        var LastName = $('#LastName').val();
+        var PersonnelCode = $('#PersonnelCode').val();
+        var PhoneNumber = $('#PhoneNumber').val();
+        var Province = $('#Province').val() || null;  // Use null if not selected
+        var City = $('#City').val() || null;  // Use null if not selected
+
+        // Check if any changes were made
+        var hasChanges = (
+            FirstName !== $('#FirstName').data('original-value') ||
+            LastName !== $('#LastName').data('original-value') ||
+            PersonnelCode !== $('#PersonnelCode').data('original-value') ||
+            PhoneNumber !== $('#PhoneNumber').data('original-value') ||
+            Province !== $('#Province').data('original-value') ||
+            City !== $('#City').data('original-value')
+        );
+
+        // No changes were made: Show info icon and return
+        if (!hasChanges) {
+            swal.fire(
+                'اطلاعات!',
+                'شما هیچ تغییری اعمال نکرده‌اید.',
+                'info'
+            );
+            return;
+        }
+
+        // Send values to the server using AJAX only if changes were made
+        var postData = {
+            'Id': Id,
+            'FirstName': FirstName,
+            'LastName': LastName,
+            'UserName': PersonnelCode,
+            'PhoneNumber': PhoneNumber,
+            'Province': Province,
+            'City': City,
+        };
+
+        $.ajax({
+            contentType: 'application/x-www-form-urlencoded',
+            dataType: 'json',
+            type: 'POST',
+            url: '@Url.Action("PartialViewEditUserModal")',
+            data: postData,
+            success: function (data) {
+                if (data.isSuccess) {
+                    swal.fire(
+                        'موفق!',
+                        data.message,
+                        'success'
+                    ).then(function (isConfirm) {
+                        if (isConfirm) {
+                            location.reload();
+                        }
+                    });
+                } else {
+                    swal.fire(
+                        'خطا!',
+                        data.message,
+                        'error'
+                    );
+                }
+            },
+            error: function (request, status, error) {
+                // Display error message in the console
+                console.error('Error in request:', request.responseText);
+
+                // Display error message to the user
+                swal.fire(
+                    'Error!',
+                    'An error occurred while processing the request. Please try again.',
+                    'error'
+                );
+            },
+        });
+
+        // Set the selected option in the Province dropdown based on the model
+        $('#Province').val(Province);
+
+        // Trigger the change event to update the City dropdown based on the selected Province
+        $('#Province').change();
+
+        // Set the selected option in the City dropdown based on the model
+        $('#City').val(City);
+    }
+</script>

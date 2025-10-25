@@ -1,0 +1,189 @@
+﻿@{
+    ViewData["Title"] = "استان/شهرستان";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="d-flex justify-content-center ">
+    <a href="#" class="" style="border-bottom: none !important;">
+
+        <img src="~/media/IR_MAP-1.png" class="rounded imgselectWorkPlace" alt="...">
+
+
+    </a>
+
+</div>
+
+
+<div class="modal fade" id="TreeViewModal" role="dialog" tabindex="-1" aria-labelledby="TreeViewModalLabel" aria-hidden="true" style="margin-top:40px">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TreeViewModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="WorkPlaceTreeView_modal_body" style=" overflow-y: auto;max-height: calc(100vh - 200px);">
+
+
+             
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary mr-2" data-btn="save">ثبت انتخاب  </button>
+                <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">خروج</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="overlay">
+    <div class="cv-spinner">
+        <span class="spinner"></span>
+    </div>
+</div>
+@section StyleSheet {
+    <link href="~/lib/SweetAlert/sweetalert2.css" rel="stylesheet" />
+
+
+    <link href="~/backend/css/Spiner.css" rel="stylesheet" />
+
+}
+@section Scripts {
+    <script src="~/lib/SweetAlert/sweetalert2.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/assets/js/jquery-3.5.1.js"></script>
+    <script src="~/lib/bootstrap-5.0.2/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/lib/bootstrap-5.0.2/js/bootstrap.min.js"></script>
+    <script>
+      function selectWorkPlaceId() {
+            $("#overlay").fadeIn(300);
+            $.getJSON('/Account/GetWorkPlaceTreeView', { name: 'kami', family: 'zare' }, function (result, textStatus, jqXHR) {
+
+
+            })
+                .done(function (result) {
+                    $("#overlay").fadeOut(300);
+                    if (result.isSuccess) {
+                        $('#WorkPlaceTreeView_modal_body').empty();
+                        $('#WorkPlaceTreeView_modal_body').html(result.data);
+                        $('#TreeViewModal').modal('show');
+
+                    }
+                    else {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: result.data,
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+
+                    }
+
+
+                })
+                .fail(function (jqxhr, settings, ex) {
+                    $("#overlay").fadeOut(300);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'اطلاعات و مقادیر وارد شده نادرست می باشد دقت فرمائید!!',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                });
+        }
+
+
+        $(document).ready(function () {
+
+
+            $('.imgselectWorkPlace').click(function (e) {
+                e.preventDefault();
+                selectWorkPlaceId();
+              
+                console.log("clicked");
+
+            });
+
+
+        });
+
+
+
+    </script>
+    <script>
+
+        $("#divCategotyTreeView input[type=checkbox]").change(function () {
+            var firstchecked = $(this);
+           var name   =     $(this).data('name');
+            var firstcheckedVal = $(this).val();
+            console.log("firstchecked : ", firstchecked.val());
+
+
+            if ($('#divCategotyTreeView input:checkbox:checked').length > 1) {
+
+                $('#divCategotyTreeView input[type=checkbox]').each(function () {
+                    var secoundchecked = $(this);
+                    if (this.checked) {
+                        if ($(this).val() != firstcheckedVal) {
+                            $(this).prop('checked', false);
+                            $(this).attr('checked', false);
+                            console.log("secoundchecked : ", secoundchecked.val());
+                            Swal.fire({
+                                title: "خطا",
+                                text: `شما فقط می توانید یک گزینه را انتخاب نمایید گزینه قبل غیر فعال شد!!!`,
+                                icon: "question",
+                                showConfirmButton: false,
+                                timer: 2500
+                            });
+                        }
+
+                    }
+
+
+
+                });
+
+            }
+        });
+
+
+
+        $('[data-btn="save"]').click(function (e) {
+            e.preventDefault();
+            $('input[type=checkbox]').each(function () {
+                if (this.checked) {
+
+
+                    $('#TreeViewModal').modal('hide');
+                    var name = $(this).data('name');
+                    var url = "/Evaluation/Index?wpId=" + $(this).val();
+                    console.log("url : ",url);
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "انتخاب شما : " + name/* +"  با کد : " + $(this).val() */,
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                    setTimeout(function () {
+                       // window.location.replace("/Evaluation/Index?wpId=" + $(this).val());
+                        window.location.href = url;
+                    }, 2000);
+
+                }
+            });
+
+        });
+        //data-dismiss="modal"
+        $('[data-dismiss="modal"]').click(function (e) {
+            e.preventDefault();
+            $('#TreeViewModal').modal('hide');
+
+        });
+  
+
+    </script>
+}

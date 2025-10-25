@@ -1,0 +1,54 @@
+2025-07-30 11:19:07.8426||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-07-30 11:19:07.8565||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-07-30 11:19:07.8565||INFO|Microsoft.Hosting.Lifetime|Content root path: F:\PROJECT\AzmoonNew\Azmoon\EndPoint.Site |url: |action: 
+
+2025-07-30 11:30:48.8433||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-07-30 11:30:48.8791||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-07-30 11:30:48.8791||INFO|Microsoft.Hosting.Lifetime|Content root path: F:\PROJECT\AzmoonNew\Azmoon\EndPoint.Site |url: |action: 
+
+2025-07-30 11:35:45.9073||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-07-30 11:35:45.9430||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-07-30 11:35:45.9465||INFO|Microsoft.Hosting.Lifetime|Content root path: F:\PROJECT\AzmoonNew\Azmoon\EndPoint.Site |url: |action: 
+
+2025-07-30 11:49:22.5372||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-07-30 11:49:22.5546||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-07-30 11:49:22.5546||INFO|Microsoft.Hosting.Lifetime|Content root path: F:\PROJECT\AzmoonNew\Azmoon\EndPoint.Site |url: |action: 
+
+2025-07-30 11:50:24.6764||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-07-30 11:50:24.7197||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-07-30 11:50:24.7197||INFO|Microsoft.Hosting.Lifetime|Content root path: F:\PROJECT\AzmoonNew\Azmoon\EndPoint.Site |url: |action: 
+
+2025-07-30 11:53:16.7444||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-07-30 11:53:16.7847||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-07-30 11:53:16.7847||INFO|Microsoft.Hosting.Lifetime|Content root path: F:\PROJECT\AzmoonNew\Azmoon\EndPoint.Site |url: |action: 
+
+2025-07-30 11:58:29.7463||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-07-30 11:58:29.7800||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-07-30 11:58:29.7800||INFO|Microsoft.Hosting.Lifetime|Content root path: F:\PROJECT\AzmoonNew\Azmoon\EndPoint.Site |url: |action: 
+
+2025-07-30 12:05:56.8928||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-07-30 12:05:56.9133||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-07-30 12:05:56.9167||INFO|Microsoft.Hosting.Lifetime|Content root path: F:\PROJECT\AzmoonNew\Azmoon\EndPoint.Site |url: |action: 
+
+2025-07-30 12:07:04.3472||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-07-30 12:07:04.3618||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-07-30 12:07:04.3618||INFO|Microsoft.Hosting.Lifetime|Content root path: F:\PROJECT\AzmoonNew\Azmoon\EndPoint.Site |url: |action: 
+

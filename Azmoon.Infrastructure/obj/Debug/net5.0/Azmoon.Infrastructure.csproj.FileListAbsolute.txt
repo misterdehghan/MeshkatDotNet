@@ -1,0 +1,12 @@
+E:\Code\Asp.net\AzmonSaas\Azmoon\Azmoon.Infrastructure\bin\Debug\net5.0\Azmoon.Infrastructure.deps.json
+E:\Code\Asp.net\AzmonSaas\Azmoon\Azmoon.Infrastructure\bin\Debug\net5.0\Azmoon.Infrastructure.dll
+E:\Code\Asp.net\AzmonSaas\Azmoon\Azmoon.Infrastructure\bin\Debug\net5.0\Azmoon.Infrastructure.pdb
+E:\Code\Asp.net\AzmonSaas\Azmoon\Azmoon.Infrastructure\obj\Debug\net5.0\Azmoon.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\Code\Asp.net\AzmonSaas\Azmoon\Azmoon.Infrastructure\obj\Debug\net5.0\Azmoon.Infrastructure.AssemblyInfoInputs.cache
+E:\Code\Asp.net\AzmonSaas\Azmoon\Azmoon.Infrastructure\obj\Debug\net5.0\Azmoon.Infrastructure.AssemblyInfo.cs
+E:\Code\Asp.net\AzmonSaas\Azmoon\Azmoon.Infrastructure\obj\Debug\net5.0\Azmoon.Infrastructure.csproj.CoreCompileInputs.cache
+E:\Code\Asp.net\AzmonSaas\Azmoon\Azmoon.Infrastructure\obj\Debug\net5.0\Azmoon.Infrastructure.sourcelink.json
+E:\Code\Asp.net\AzmonSaas\Azmoon\Azmoon.Infrastructure\obj\Debug\net5.0\Azmoon.Infrastructure.dll
+E:\Code\Asp.net\AzmonSaas\Azmoon\Azmoon.Infrastructure\obj\Debug\net5.0\refint\Azmoon.Infrastructure.dll
+E:\Code\Asp.net\AzmonSaas\Azmoon\Azmoon.Infrastructure\obj\Debug\net5.0\Azmoon.Infrastructure.pdb
+E:\Code\Asp.net\AzmonSaas\Azmoon\Azmoon.Infrastructure\obj\Debug\net5.0\ref\Azmoon.Infrastructure.dll

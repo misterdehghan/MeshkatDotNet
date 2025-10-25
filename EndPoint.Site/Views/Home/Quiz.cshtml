@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "آزمون";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-3">
+
+    @(await Component.InvokeAsync("GetActiveQuiz"))
+
+    <div class="card-deck">
+        <div class="card col-sm-12 col-md-4 col-lg-4 col-xl-4 rounded">
+            <img class="card-img-top" src="~/assets/images/report-icon.png" />
+
+            <div class="card-body text-center">
+                <h4 class="card-title font_W_titr">امکان گزارش گیری با تمام فرمت های رایج</h4>
+
+
+
+            </div>
+
+        </div>
+        <div class="card col-sm-12 col-md-4 col-lg-4 col-xl-4 rounded">
+            <img class="card-img-top" src="~/assets/images/creatQuiz.png" />
+            <div class="card-body text-center">
+                <h4 class="card-title font_W_titr">امکان ایجاد آزمون با تعیین سطح دسترسی</h4>
+
+
+
+            </div>
+
+        </div>
+        <div class="card col-sm-12 col-md-4 col-lg-4 col-xl-4 rounded">
+            <img class="card-img-top" src="~/assets/images/filter-flat.png" />
+            <div class="card-body text-center">
+                <h4 class="card-title ">امکان ایجاد فیلتر های متنوع</h4>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/11/2022 11:54:54" ReportInfo.Modified="05/11/2022 15:23:38" ReportInfo.CreatorVersion="2022.2.5.0">
+  <Styles Name="Green">
+    <Style Name="Title" Font="Arial, 12pt, style=Bold"/>
+    <Style Name="Header" Fill.Color="PaleGreen" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Group" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Data" Font="Arial, 10pt"/>
+    <Style Name="Footer" Fill.Color="PaleGreen" Font="Arial, 10pt"/>
+    <Style Name="EvenRows" Fill.Color="Honeydew" Font="Arial, 10pt"/>
+  </Styles>
+  <Dictionary>
+    <TableDataSource Name="Employ" ReferenceName="NorthWind.Employees" DataType="System.Int32" PropName="Employees" Enabled="true">
+      <Column Name="ID" DataType="System.Int32" PropName="EmployeeID"/>
+      <Column Name="LastName" DataType="System.String"/>
+      <Column Name="FirstName" DataType="System.String"/>
+      <Column Name="Title" DataType="System.String"/>
+      <Column Name="TitleOfCourtesy" Enabled="false" DataType="System.String"/>
+      <Column Name="BirthDate" Enabled="false" DataType="System.DateTime"/>
+      <Column Name="HireDate" Enabled="false" DataType="System.DateTime"/>
+      <Column Name="Address" Enabled="false" DataType="System.String"/>
+      <Column Name="City" Enabled="false" DataType="System.String"/>
+      <Column Name="Region" Enabled="false" DataType="System.String"/>
+      <Column Name="PostalCode" Enabled="false" DataType="System.String"/>
+      <Column Name="Country" Enabled="false" DataType="System.String"/>
+      <Column Name="HomePhone" Enabled="false" DataType="System.String"/>
+      <Column Name="Extension" Enabled="false" DataType="System.String"/>
+      <Column Name="Photo" Enabled="false" DataType="System.Byte[]" BindableControl="Picture"/>
+      <Column Name="Notes" Enabled="false" DataType="System.String"/>
+      <Column Name="ReportsTo" Enabled="false" DataType="System.Int32"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="85.05">
+      <TextObject Name="Text1" Width="718.2" Height="85.05" Dock="Fill" Fill.Color="Silver" Text="گزارش آزمون" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="89.05" Width="718.2" Height="28.35">
+      <TextObject Name="Text3" Width="245.7" Height="18.9" Fill.Color="PaleGreen" IsIntersectedWithOtherObject="true" Text="ID" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text5" Left="103.95" Width="151.2" Height="18.9" Fill.Color="PaleGreen" IsIntersectedWithOtherObject="true" Text="نام" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text7" Left="255.15" Width="236.25" Height="18.9" Fill.Color="PaleGreen" Text="نام خانوادگی" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text9" Left="491.4" Width="226.8" Height="18.9" Fill.Color="PaleGreen" Text="عنوان" Font="Arial, 10pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="121.4" Width="718.2" Height="47.25" EvenStyle="EvenRows" DataSource="Employ">
+      <TextObject Name="Text2" Width="103.95" Height="18.9" Text="[Employ.ID]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text4" Left="113.4" Width="141.75" Height="18.9" Text="[Employ.FirstName]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text6" Left="255.15" Width="236.25" Height="18.9" Text="[Employ.LastName]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text10" Left="491.4" Width="226.8" Height="18.9" Text="[Employ.Title]" Font="Arial, 10pt"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="172.65" Width="718.2" Height="47.25">
+      <TextObject Name="Text8" Width="718.2" Height="47.25" Dock="Fill" Fill.Color="PaleGreen" HorzAlign="Center" Font="Arial, 10pt" Style="Footer"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

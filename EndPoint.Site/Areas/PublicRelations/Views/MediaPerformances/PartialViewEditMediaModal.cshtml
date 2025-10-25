@@ -1,0 +1,150 @@
+﻿@using Azmoon.Application.Service.PublicRelations.MediaPerformances
+@model ResultDetailMedia
+@using EndPoint.Site.Areas.PublicRelations.Helpers.Convertors;
+
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel1">
+                @(Model.ProgramName)
+            </h4>
+            @if (Model.Confirmation == true)
+            {
+
+                <span style="font-size:65%;" class="badge badge-pill badge-success">تایید شده</span>
+
+            }
+            else
+            {
+                <span style="font-size:65%;" class="badge badge-pill badge-secondary">تایید نشده</span>
+
+            }
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="idInput" value="@Model.Id">
+
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">نام رسانه</label>
+                    @*<input type="text" class="form-control" id="NewsAgencyName" value="@Model.Media">*@
+                    <select class="form-control" name="Name" asp-items="@ViewBag.Media" id="MediaId" placeholder="رسانه">
+                        <option value="" disabled selected>انتخاب رسانه</option>
+                    </select>
+                    <small style="text-align:right; color:red;">@("رسانه قبلی" + " " + Model.Media)</small>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">نام شبکه</label>
+                    <input type="text" class="form-control" id="NetworkNameId" value="@Model.NetworkName">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">نام برنامه</label>
+                    <input type="text" class="form-control" id="ProgramNameId" value="@Model.ProgramName">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">موضوع برنامه</label>
+                    <input type="text" class="form-control" id="SubjectId" value="@Model.Subject">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">مستند</label>
+                    <input type="file" id="ImageId" class="form-control" value="">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">مدت برنامه</label>
+                    <input id="TimeId" data-jdp data-jdp-only-time class="form-control form-control-danger" placeholder="@Model.Time" disabled>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">تاریخ برنامه</label>
+                    <input type="text" class="form-control" id="PersonnelCode" value="@Model.BroadcastDate.ToShamsi()" disabled>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">اپراتور</label>
+                    <input type="text"
+                           class="form-control"
+                           id="Operator"
+                           value="@(Model.Operator == null ? "بدون انتخاب": Model.Operator)"
+                           disabled>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">تاریخ ایجاد</label>
+                    <input type="text" class="form-control" id="validationDefault02" value="@Model.InsertTime.ToShamsi()" disabled>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">تاریخ بروز رسانی</label>
+                    <input type="text"
+                           class="form-control"
+                           id="validationDefault02"
+                           value="@(Model.UpdateTime == null ? "بروز رسانی نشده": Model.UpdateTime?.ToShamsi())"
+                           disabled>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+            <a onclick="EditMedia()" class="btn btn-primary" style="color:white;">تایید</a>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function EditMedia() {
+        var Id = $("#idInput").val();
+        var Media = $("#MediaId").val();
+        var NetworkName = $("#NetworkNameId").val();
+        var ProgramName = $("#ProgramNameId").val();
+        var Subject = $("#SubjectId").val();
+        var ImageFile = $("#ImageId")[0].files[0]; // دریافت فایل تصویر
+
+        // ایجاد یک شیء FormData برای ارسال داده‌ها
+        var formData = new FormData();
+        formData.append('Id', Id);
+        formData.append('Media', Media);
+        formData.append('NetworkName', NetworkName);
+        formData.append('ProgramName', ProgramName);
+        formData.append('Subject', Subject);
+        formData.append('Image', ImageFile); // اضافه کردن فایل تصویر به FormData
+
+        $.ajax({
+            url: '@Url.Action("PartialViewEditMediaModal", "MediaPerformances")',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'ویرایش موفق',
+                        text: 'ویرایش با موفقیت انجام شد.'
+                    }).then(() => {
+                        // $('#EditNewsPerformances').modal('hide');
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'خطا',
+                        text: response.message
+                    });
+                }
+            },
+            error: function () {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'خطا',
+                    text: 'خطایی رخ داده است. لطفاً دوباره تلاش کنید.'
+                });
+            }
+        });
+    }
+</script>
+
+
+

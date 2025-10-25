@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Azmoon.Application.Service.QuizTemp.Dto.GetQuizTempDto>
+@using EndPoint.Site.Useful.Ultimite;
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.QuizId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+        
+            <th>
+                @Html.DisplayNameFor(model => model.point)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.massage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ip)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count()>0)
+            {
+            foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuizId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td> 
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @item.StartDate.ToPersianDateTimeStrFarsi()
+                    </td>
+                    <td>
+                        @item.EndDate.ToPersianDateTimeStrFarsi()
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.point)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.massage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ip)
+                    </td>
+
+                </tr>
+                }
+
+
+            }
+        else
+            {
+
+            <tr class="h1">موردی یافت نگردید</tr>
+            }
+          
+    </tbody>
+</table>

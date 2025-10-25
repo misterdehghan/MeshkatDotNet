@@ -1,0 +1,109 @@
+﻿@using Azmoon.Domain.Entities
+@model IEnumerable<LeaveRequest>
+@using EndPoint.Site.Useful.Ultimite;
+@{
+    int totalPages = ViewBag.TotalPages;
+    int currentPage = ViewBag.CurrentPage;
+    Layout = "~/Areas/Person/Views/Shared/_LayoutPerson.cshtml";
+    ViewData["Title"] = "درخواست های من";
+}
+
+<div class="container mt-5">
+    <h4 class="text-center mb-4">درخواست‌های ثبت‌شده</h4>
+    <table class="table table-bordered table-hover text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th>تاریخ</th>
+                <th>نوع</th>
+                <th> شروع</th>
+                <th> پایان</th>
+                <th>دلیل</th>
+                <th>وضعیت</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var req in Model)
+                {
+                <tr>
+                    @if (req.Type==0)
+
+                        {
+                        <td>@req.RequestDate?.ToPersianDateTimeStrFarsi()</td>
+                        <td>
+                            <span class="badge badge-info">
+                                <i class="fas fa-clock"></i>
+                                ساعتی
+                            </span>
+                        </td>
+                        <td>
+                            @(req.FromHour.HasValue ? req.FromHour.Value.ToString("HH:mm tt").Replace("AM", "ق.ظ").Replace("PM", "ب.ظ") : "ندارد")
+
+                        </td>
+                        <td>
+                            @(req.ToHour.HasValue ? req.ToHour.Value.ToString("HH:mm tt").Replace("AM", "ق.ظ").Replace("PM", "ب.ظ") : "ندارد")
+
+
+                        </td>
+                        <td>@req.Reason</td>
+                        <td>
+
+                            <span class="badge badge-@GetStatusClass(req.Status)">
+
+                                @Ultimite.Translate(req.Status)
+                            </span>
+                        </td>
+
+                        }
+                    else
+                        {
+                        <td>@req.RequestDate?.ToPersianDateTimeStrFarsi()</td>
+                        <td>
+                            <span class="badge badge-danger">
+                                <i class="fas fa-calendar"></i>
+                                روزانه
+                            </span>
+                        </td>
+
+                        <td>@req.FromDate?.ToPersianDateStrFarsi()</td>
+
+                        <td>@req.ToDate?.ToPersianDateStrFarsi()</td>
+                        <td>@req.Reason</td>
+                        <td>
+
+                            <span class="badge badge-@GetStatusClass(req.Status)">
+
+                                @Ultimite.Translate(req.Status)
+                            </span>
+                        </td>
+                        }
+               
+                </tr>
+                }
+        </tbody>
+    </table>
+
+    <!-- 🔻 صفحه‌بندی -->
+    <nav>
+        <ul class="pagination justify-content-center">
+            @for (int i = 1; i <= totalPages; i++)
+                {
+                <li class="page-item @(i == currentPage ? "active" : "")">
+                    <a class="page-link" href="?page=@i">@i</a>
+                </li>
+                }
+        </ul>
+    </nav>
+</div>
+
+@functions {
+    public string GetStatusClass(LeaveStatus status)
+        {
+        switch (status)
+            {
+            case LeaveStatus.Approved: return "success";
+            case LeaveStatus.Rejected: return "danger";
+            default: return "secondary";
+            }
+        }
+}
+

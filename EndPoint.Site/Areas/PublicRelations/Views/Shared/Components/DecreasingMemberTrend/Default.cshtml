@@ -1,0 +1,64 @@
+﻿@using Azmoon.Application.Service.PublicRelations.DashboardServices
+@model IEnumerable<ResultDecreasingTrend>
+@{
+    ViewData["Title"] = "Default";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
+    int rowIndex = 1; // شمارنده ردیف
+}
+
+
+<div style="padding-top:30px;">
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="bg-danger text-white">
+                <tr style="text-align:center;">
+                    <th>ردیف</th>
+                    <th>نام کانال</th>
+                    <th>تعداد کاهش مخاطب</th>
+                </tr>
+            </thead>
+            <tbody class="border border-danger">
+                @try
+                    {
+                    if (Model == null)
+                        {
+                        <tr>
+                            <div class="alert alert-danger">
+                                <strong>دورههای زمانی کافی برای مقایسه وجود ندارد!</strong>
+                            </div>
+
+                        </tr>
+
+                        }
+                    else
+                        {
+                        @foreach (var item in Model)
+                            {
+                            <tr style="text-align:center;">
+
+                                @* <td>@item.ChannelId</td> *@
+                                <td>@rowIndex</td>
+                                <td>@item.ChannelName</td>
+                                <td>@item.AudienceDecrease</td>
+                            </tr>
+                            rowIndex++; // افزایش شمارنده
+                            }
+                        }
+
+                    }
+                catch (Exception ex)
+                    {
+                    <tr>
+                        <td colspan="3" class="text-danger text-center">
+                            خطا در بارگذاری اطلاعات: @ex.Message
+                        </td>
+                    </tr>
+                    }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

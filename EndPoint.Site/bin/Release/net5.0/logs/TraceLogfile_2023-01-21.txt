@@ -1,0 +1,40 @@
+2023-01-21 11:47:35.7142 -WARN|Microsoft.AspNetCore.Identity.UserManager| url: |action: 
+
+2023-01-21 11:47:35.7581 -WARN|Microsoft.AspNetCore.Identity.UserManager| url: |action: 
+
+2023-01-21 11:47:35.7717 -WARN|Microsoft.AspNetCore.Identity.UserManager| url: |action: 
+
+2023-01-21 11:47:36.9088 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2023-01-21 11:47:36.9088 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2023-01-21 11:47:36.9088 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2023-01-21 11:47:37.4598 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/Admin/Quiz/Details/1|action: Details
+
+2023-01-21 11:47:37.4598 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/Admin/Quiz/Details/1|action: Details
+
+2023-01-21 13:32:27.8716 -WARN|Microsoft.AspNetCore.Identity.UserManager| url: |action: 
+
+2023-01-21 13:32:27.9781 -WARN|Microsoft.AspNetCore.Identity.UserManager| url: |action: 
+
+2023-01-21 13:32:28.0321 -WARN|Microsoft.AspNetCore.Identity.UserManager| url: |action: 
+
+2023-01-21 13:32:28.9104 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2023-01-21 13:32:28.9104 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2023-01-21 13:32:28.9104 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2023-01-21 13:32:30.7178 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/Admin/Quiz/Details/1|action: Details
+
+2023-01-21 13:32:30.7214 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/Admin/Quiz/Details/1|action: Details
+
+2023-01-21 13:32:48.4212 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/Admin/Quiz/Details/1|action: Details
+
+2023-01-21 13:32:48.4212 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/Admin/Quiz/Details/1|action: Details
+
+2023-01-21 13:32:52.3275 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/Admin/Quiz/Details/1|action: Details
+
+2023-01-21 13:32:52.3275 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/Admin/Quiz/Details/1|action: Details
+

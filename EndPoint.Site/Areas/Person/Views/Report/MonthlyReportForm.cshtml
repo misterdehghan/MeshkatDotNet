@@ -1,0 +1,121 @@
+﻿@using EndPoint.Site.Models
+@using System.Globalization
+
+@{
+    ViewData["Title"] = "MonthlyReportForm";
+    Layout = "~/Areas/Person/Views/Shared/_LayoutPerson.cshtml";
+}
+
+@model MonthlyReportViewModel
+@{
+    ViewBag.Title = "گزارش ماهانه";
+}
+
+<div class="card shadow-sm">
+    <div class="card-header bg-info text-white">
+        <i class="fas fa-calendar-alt"></i>
+        گزارش ماهانه      <span >@Model.FullName</span>
+    </div>
+    <div class="card-body">
+        @if (!ViewData.ModelState.IsValid)
+            {
+            <div class="alert alert-danger" role="alert">
+                <i class="fas fa-exclamation-triangle"></i> لطفاً موارد زیر را بررسی و اصلاح نمایید:
+                <ul class="mt-2">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                        <li><i class="fas fa-times-circle text-danger"></i> @error.ErrorMessage</li>
+                        }
+                </ul>
+            </div>
+            }
+        <form asp-action="MonthlyReportForm" method="post" class="form-row">
+            <input type="hidden" asp-for="EmployeeId" />
+        
+
+            <div class="form-group col-md-4">
+                <label asp-for="Year">سال شمسی</label>
+                <select asp-for="Year" class="form-control" id="YearSelect">
+                    <option value="">-- انتخاب کنید --</option>
+                    @for (int y = 1404; y <= 1410; y++)
+                        {
+                        <option value="@y">@y</option>
+                        }
+                </select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="Month">ماه شمسی</label>
+                <select asp-for="Month" class="form-control" id="MonthSelect">
+                    <option value="">-- انتخاب کنید --</option>
+                    @for (int m = 1; m <= 12; m++)
+                        {
+                        <option value="@m">@CultureInfo.GetCultureInfo("fa-IR").DateTimeFormat.GetMonthName(m)</option>
+                        }
+                </select>
+            </div>
+
+            <div class="form-group col-md-4 align-self-end">
+                <button type="submit" class="btn btn-success btn-block">
+                    <i class="fas fa-search"></i> نمایش گزارش
+                </button>
+            </div>
+
+            <div id="validationMessage" class="col-12 text-danger font-weight-bold mt-2" style="display:none;"></div>
+        </form>
+
+    </div>
+</div>
+@section Styles {
+
+    <link href="~/lib/datatable/datatables.css" rel="stylesheet" />
+    <link href="~/lib/select2/select2.min.css" rel="stylesheet" />
+}
+@section Scripts {
+    <script src="~/lib/datatable/datatables.js"></script>
+    <script src="~/lib/select2/select2.min.js"></script>
+    <script src="~/lib/select2/select2.js"></script>
+
+    <script>
+        $(function() {
+          $("form").on("submit", function(e) {
+            const yearVal = $("#YearSelect").val();
+            const monthVal = $("#MonthSelect").val();
+
+            if (!yearVal || !monthVal) {
+              e.preventDefault(); // جلوگیری از ارسال فرم
+
+              // نمایش پیام هشدار (در صورت وجود div هشدار)
+              $("#validationMessage").text("لطفاً سال و ماه را انتخاب کنید.").show();
+
+              // اگر از SweetAlert یا toastr یا modal استفاده می‌کنید، اینجا می‌توانید قرار دهید
+            }
+          });
+        });
+    </script>
+    <script>
+        $(function(){
+          // Initialize Select2
+          $('#YearSelect, #MonthSelect').select2({
+            theme: 'bootstrap4',
+            dir: 'rtl',
+            placeholder: 'انتخاب کنید'
+          });
+
+          // Tooltip globally
+          $('[data-toggle="tooltip"]').tooltip();
+
+          // DataTable on result table
+          $('#reportTable').DataTable({
+            paging:   true,
+            searching:true,
+            info:     false,
+            order:    [[0, 'asc']],
+            language: {
+              url: '/assets/js/persian.json'
+            }
+          });
+        });
+    </script>
+ }
+

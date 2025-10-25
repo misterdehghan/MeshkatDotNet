@@ -1,0 +1,24 @@
+﻿@using Azmoon.Application.Service.Survaeis.Survayy
+@model List<EditFeature_dto>
+@if (Model!=null && Model.Count()>0)
+{
+<table class="table table-striped" id="tbl_KeyWeight">
+    <thead>
+        <tr>
+            <th>عنوان کلید</th>
+            <th>وزن</th>
+            <th>عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Wight</td>
+                <td><input type="button" class="btn btn-outline-primary btn_edit_Features" value="ویرایش" data-IId="@item.Id" data-tile="@item.Title" data-wight="@item.Wight" onclick="editfeicher(event)" /></td>
+            </tr>
+        }
+    </tbody>
+</table>
+}

@@ -1,0 +1,99 @@
+﻿@using EndPoint.Site.Areas.PublicRelations.Models.Dto.Roles
+@model IEnumerable<RoleListDto>
+
+    @{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/PublicRelations/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-5 align-self-center">
+        </div>
+        <div class="col-7 align-self-center">
+            <div class="d-flex align-items-center justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">گزارش ها</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">گزارش رول ها</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">گزارش رول ها</h4>
+                    <h6 class="card-subtitle">"لطفاً توجه داشته باشید که این صفحه حاوی اطلاعات با ارزش است و باید از هر گونه تغییر در آن بدون اطلاع قبلی پرهیز کرد."</h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm m-b-0">
+                            <thead class="bg-info text-white">
+                                <tr>
+                                    <th scope="col" style="text-align:center;">
+                                        @Html.DisplayNameFor(model => model.Id)
+                                    </th>
+                                    <th scope="col" style="text-align:center;">
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td scope="row" style="text-align:center;">
+                                           *********
+                                        </td>
+                                        <td scope="row" style="text-align:center;">
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+
+                                        @if (item.Name != "AdminPR" && item.Name != "UserPR" && item.Name != "SuperUserAccountPR")
+                                        {
+                                            <td scope="row" style="text-align: left;">
+                                                @Html.ActionLink("ویرایش", "Edit", new { id = item.Id }) |
+                                                @Html.ActionLink("حذف", "Delete", new { id = item.Id })
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td scope="row" style="text-align: left;">
+                                                <span>ویرایش یا حذف برای این رول غیرفعال است.</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <paging total-records="@ViewBag.TotalRowCount"
+                            page-no="@ViewBag.PageNumber"
+                            page-size="@ViewBag.PageSize"
+                            show-prev-next="true"
+                            show-total-pages="false"
+                            show-total-records="false"
+                            show-page-size-nav="true"
+                            show-first-numbered-page="true"
+                            show-last-numbered-page="true"
+                            query-string-key-page-no="Page"
+                            query-string-key-page-size="PageSize"
+                            gap-size="2">
+                    </paging>
+                </div>
+            </div>
+            <a asp-action="Create" class="btn btn-primary mb-2"><i class="fas fa-plus"></i>&nbsp; افزودن رول جدید</a>
+        </div>
+    </div>
+</div>
