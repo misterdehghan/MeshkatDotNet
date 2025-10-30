@@ -45,13 +45,13 @@ namespace Application.Services.Period.Communication
                 .Select(o => new ResultStatusRegistrationMedia
                 {
                     Operator = o.Name,
-                    IsRegistered = _context.MediaPerformances
+                    IsRegistered = _context.MediaPerformances.Where(o => o.IsRemoved == false)
                         .Any(p => p.Operator == o.Name && p.CommunicationPeriodId == request.CommunicationPeriodId),
-                    RegisteredNumber = _context.MediaPerformances
+                    RegisteredNumber = _context.MediaPerformances.Where(o => o.IsRemoved == false)
                         .Count(p => p.Operator == o.Name && p.CommunicationPeriodId == request.CommunicationPeriodId),
-                    ConfirmedNumber = _context.MediaPerformances
+                    ConfirmedNumber = _context.MediaPerformances.Where(o => o.IsRemoved == false)
                         .Count(p => p.Operator == o.Name && p.CommunicationPeriodId == request.CommunicationPeriodId && p.Confirmation == true),
-                    UnconfirmedNumber = _context.MediaPerformances
+                    UnconfirmedNumber = _context.MediaPerformances.Where(o => o.IsRemoved == false)
                         .Count(p => p.Operator == o.Name && p.CommunicationPeriodId == request.CommunicationPeriodId && p.Confirmation == false)
                 })
                 .ToList();

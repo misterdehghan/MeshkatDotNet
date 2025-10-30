@@ -13,7 +13,11 @@ namespace EndPoint.Site.Areas.PublicRelations.Models.Dto.MediaPerformances
         [Required(ErrorMessage = "لطفا نام برنامه را وارد کنید")]
         public string ProgramName { get; set; }
         [Required(ErrorMessage = "لطفا موضوع برنامه را وارد کنید")]
-        public string Subject { get; set; }
+        public int SubjectId { get; set; }
+        [Required(ErrorMessage = "لطفا توضیحات را وارد کنید")]
+        public string Description { get; set; }
+        [Required(ErrorMessage = "لطفا ساعت پخش برنامه را وارد کنید")]
+        public TimeSpan BroadcastStartTime { get; set; } //ساعت پخش
         [Required(ErrorMessage = "لطفا تاریخ برنامه را وارد کنید")]
         public DateTime BroadcastDate { get; set; }
         [Required(ErrorMessage = "لطفا زمان برنامه را وارد کنید")]

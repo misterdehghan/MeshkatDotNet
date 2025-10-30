@@ -63,6 +63,8 @@ namespace Azmoon.Application.Interfaces.Contexts
         DbSet<NewsPerformances> NewsPerformances { get; set; }
         DbSet<CommunicationPeriod> CommunicationPeriod { get; set; }
         DbSet<VirtualSpacePeriod> VirtualSpacePeriod { get; set; }
+        DbSet<Subject> Subjects { get; set; }
+
         #endregion
 
 

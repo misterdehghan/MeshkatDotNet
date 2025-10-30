@@ -5,8 +5,7 @@ using Azmoon.Common.ResultDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Azmoon.Application.Service.PublicRelations.MediaPerformances
 {
@@ -31,7 +30,9 @@ namespace Azmoon.Application.Service.PublicRelations.MediaPerformances
         public string Media { get; set; }
         public string NetworkName { get; set; }
         public string ProgramName { get; set; }
-        public string Subject { get; set; }
+        public string SubjectTitle { get; set; }
+        public string Description { get; set; }
+        public TimeSpan BroadcastStartTime { get; set; } //ساعت پخش
         public DateTime BroadcastDate { get; set; }
         public TimeSpan Time { get; set; }
         public string Image { get; set; }
@@ -72,7 +73,7 @@ namespace Azmoon.Application.Service.PublicRelations.MediaPerformances
                 {
                     result = result.Where(p => p.NetworkName.Contains(request.searchKey) ||
                     p.ProgramName.Contains(request.searchKey) ||
-                    p.Subject.Contains(request.searchKey) ||
+                    p.SubjectTitle.Contains(request.searchKey) ||
                     p.Operator.Contains(request.searchKey));
                 }
                 //------
@@ -91,7 +92,9 @@ namespace Azmoon.Application.Service.PublicRelations.MediaPerformances
                    Media = p.Media,
                    NetworkName = p.NetworkName,
                    ProgramName = p.ProgramName,
-                   Subject = p.Subject,
+                   SubjectTitle = p.SubjectTitle,
+                   Description=p.Description,
+                   BroadcastStartTime=p.BroadcastStartTime,
                    BroadcastDate = p.BroadcastDate,
                    Time = p.Time,
                    Image = p.Image,
@@ -126,7 +129,7 @@ namespace Azmoon.Application.Service.PublicRelations.MediaPerformances
                     {
                         result = result.Where(p => p.NetworkName.Contains(request.searchKey) ||
                         p.ProgramName.Contains(request.searchKey) ||
-                        p.Subject.Contains(request.searchKey) ||
+                        p.SubjectTitle.Contains(request.searchKey) ||
                         p.Operator.Contains(request.searchKey));
                     }
                     var nameByNormalizedName = _getNameByNormalizedNameService.Execute(request.NormalizedName).Data;
@@ -151,7 +154,9 @@ namespace Azmoon.Application.Service.PublicRelations.MediaPerformances
                        Media = p.Media,
                        NetworkName = p.NetworkName,
                        ProgramName = p.ProgramName,
-                       Subject = p.Subject,
+                       SubjectTitle = p.SubjectTitle,
+                       Description = p.Description,
+                       BroadcastStartTime = p.BroadcastStartTime,
                        BroadcastDate = p.BroadcastDate,
                        Time = p.Time,
                        Image = p.Image,

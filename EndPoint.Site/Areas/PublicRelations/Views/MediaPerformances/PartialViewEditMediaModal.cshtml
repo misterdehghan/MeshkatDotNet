@@ -44,9 +44,29 @@
                     <label for="validationDefault02">نام برنامه</label>
                     <input type="text" class="form-control" id="ProgramNameId" value="@Model.ProgramName">
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-12">
                     <label for="validationDefault02">موضوع برنامه</label>
-                    <input type="text" class="form-control" id="SubjectId" value="@Model.Subject">
+                
+
+                     @if (ViewBag.Subjct == null || !((SelectList)ViewBag.Subjct).Any())
+                                {
+                                 <select class="form-control" disabled>
+                                   <option>موضوعی برای انتخاب وجود ندارد</option>
+                                 </select>
+                                }
+                                else
+                                {
+                                 <select class="form-control" name="Name" asp-items="@ViewBag.Subjct" id="SubjectId" autocomplete="off">
+                                     <option value="" disabled selected>انتخاب موضوع برنامه</option>
+                                 </select>
+                                }
+                    <small style="text-align:right; color:red;">@("موضوع قبلی" + " " + Model.SubjectTitle)</small>
+
+
+                </div>
+                <div class="col-md-12">
+                    <label for="validationDefault02"> توضیحات</label>
+                    <input type="text" class="form-control" id="DescriptionId" value="@Model.Description">
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationDefault01">مستند</label>
@@ -54,11 +74,16 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationDefault02">مدت برنامه</label>
-                    <input id="TimeId" data-jdp data-jdp-only-time class="form-control form-control-danger" placeholder="@Model.Time" disabled>
+                    <input id="TimeId" data-jdp data-jdp-only-time class="form-control form-control-danger" placeholder="@Model.Time" autocomplete="off">
+                </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationDefault02"> ساعت پخش</label>
+                    <input id="TimeStartId" data-jdp data-jdp-only-time class="form-control form-control-danger" placeholder="@Model.BroadcastStartTime" autocomplete="off">
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationDefault02">تاریخ برنامه</label>
-                    <input type="text" class="form-control" id="PersonnelCode" value="@Model.BroadcastDate.ToShamsi()" disabled>
+                       <input type="text" id="date-input" data-jdp data-jdp-miladi-input="miladi_date" class="form-control" value="@Model.BroadcastDate.ToShamsi()" autocomplete="off">
+                                <input type="hidden" id="miladi_date" />
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationDefault01">اپراتور</label>
@@ -93,23 +118,150 @@
 </div>
 
 
+
+
+@*Date Picker - برای استفاده در پارشیال ویو *@
+<script>
+    // تابع تبدیل تاریخ
+    function jalali_to_gregorian(jy, jm, jd) {
+        jy = Number(jy);
+        jm = Number(jm);
+        jd = Number(jd);
+        var gy = (jy <= 979) ? 621 : 1600;
+        jy -= (jy <= 979) ? 0 : 979;
+        var days = (365 * jy) + ((parseInt(jy / 33)) * 8) + (parseInt(((jy % 33) + 3) / 4))
+            + 78 + jd + ((jm < 7) ? (jm - 1) * 31 : ((jm - 7) * 30) + 186);
+        gy += 400 * (parseInt(days / 146097));
+        days %= 146097;
+        if (days > 36524) {
+            gy += 100 * (parseInt(--days / 36524));
+            days %= 36524;
+            if (days >= 365) days++;
+        }
+        gy += 4 * (parseInt((days) / 1461));
+        days %= 1461;
+        gy += parseInt((days - 1) / 365);
+        if (days > 365) days = (days - 1) % 365;
+        var gd = days + 1;
+        var sal_a = [0, 31, ((gy % 4 == 0 && gy % 100 != 0) || (gy % 400 == 0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        var gm
+        for (gm = 0; gm < 13; gm++) {
+            var v = sal_a[gm];
+            if (gd <= v) break;
+            gd -= v;
+        }
+        return [gy, gm, gd];
+    }
+
+    // تابع راه‌اندازی datepicker
+    function initializeDatepicker() {
+        // راه‌اندازی datepicker
+        if (typeof jalaliDatepicker !== 'undefined') {
+            jalaliDatepicker.startWatch();
+        }
+
+        // استفاده از event delegation برای المنت‌های داینامیک
+        $(document).off('jdp:change', '[data-jdp-miladi-input]').on('jdp:change', '[data-jdp-miladi-input]', function(e) {
+            var miladiInputId = $(this).attr('data-jdp-miladi-input');
+            var miladiInput = document.getElementById(miladiInputId);
+            
+            if (!miladiInput) {
+                console.error("Element with id '" + miladiInputId + "' not found");
+                return;
+            }
+            
+            if (!this.value) {
+                miladiInput.value = "";
+                return;
+            }
+            
+            var date = this.value.split("/");
+            if (date.length === 3) {
+                var gregorianDate = jalali_to_gregorian(date[0], date[1], date[2]);
+                miladiInput.value = gregorianDate.join("/");
+                console.log("تاریخ میلادی تنظیم شد:", miladiInput.value);
+            }
+        });
+    }
+
+    // اجرای بلافاصله پس از لود پارشیال
+    initializeDatepicker();
+
+    // همچنین بعد از نمایش مودال
+    $('#EditMediaPerformances').on('shown.bs.modal', function() {
+        setTimeout(function() {
+            initializeDatepicker();
+        }, 300);
+    });
+</script>
+
+
+
+@section Scripts
+{
+
+    
+}
 <script type="text/javascript">
     function EditMedia() {
+        // لاگ مقادیر ورودی
+        console.log("🟡 شروع فرآیند ویرایش...");
+        
         var Id = $("#idInput").val();
         var Media = $("#MediaId").val();
         var NetworkName = $("#NetworkNameId").val();
         var ProgramName = $("#ProgramNameId").val();
-        var Subject = $("#SubjectId").val();
-        var ImageFile = $("#ImageId")[0].files[0]; // دریافت فایل تصویر
+        var SubjectId = $("#SubjectId").val();
+        var Description = $("#DescriptionId").val();
+        var BroadcastDate = $("#miladi_date").val();
+        var Time = $("#TimeId").val();
+        var BroadcastStartTime = $("#TimeStartId").val();
+        var ImageFile = $("#ImageId")[0]?.files[0]; // استفاده از optional chaining
+
+        // لاگ مقادیر دریافت شده
+        console.log("📋 مقادیر فرم:");
+        console.log("🔹 ID:", Id);
+        console.log("🔹 Media:", Media);
+        console.log("🔹 NetworkName:", NetworkName);
+        console.log("🔹 ProgramName:", ProgramName);
+        console.log("🔹 SubjectId:", SubjectId);
+        console.log("🔹 Description:", Description);
+        console.log("🔹 BroadcastDate:", BroadcastDate);
+        console.log("🔹 Time:", Time);
+        console.log("🔹 BroadcastStartTime:", BroadcastStartTime);
+        console.log("🔹 ImageFile:", ImageFile ? "فایل انتخاب شده" : "بدون فایل");
+
+        // بررسی مقادیر ضروری
+        if (!Id) {
+            console.error("❌ ID خالی است");
+            Swal.fire({
+                icon: 'error',
+                title: 'خطا',
+                text: 'ID نمی‌تواند خالی باشد'
+            });
+            return;
+        }
 
         // ایجاد یک شیء FormData برای ارسال داده‌ها
         var formData = new FormData();
         formData.append('Id', Id);
-        formData.append('Media', Media);
-        formData.append('NetworkName', NetworkName);
-        formData.append('ProgramName', ProgramName);
-        formData.append('Subject', Subject);
-        formData.append('Image', ImageFile); // اضافه کردن فایل تصویر به FormData
+        formData.append('Media', Media || '');
+        formData.append('NetworkName', NetworkName || '');
+        formData.append('ProgramName', ProgramName || '');
+        formData.append('SubjectId', SubjectId || '');
+        formData.append('Description', Description || '');
+        formData.append('BroadcastDate', BroadcastDate || '');
+        formData.append('Time', Time || '');
+        formData.append('BroadcastStartTime', BroadcastStartTime || '');
+        
+        // اضافه کردن فایل تصویر در صورت وجود
+        if (ImageFile) {
+            formData.append('Image', ImageFile);
+        }
+
+        // لاگ URL و داده‌های ارسالی
+        console.log("🌐 ارسال درخواست به:", '@Url.Action("PartialViewEditMediaModal", "MediaPerformances")');
+        console.log("📤 داده‌های FormData:", formData);
 
         $.ajax({
             url: '@Url.Action("PartialViewEditMediaModal", "MediaPerformances")',
@@ -118,33 +270,40 @@
             processData: false,
             contentType: false,
             success: function (response) {
+                console.log("✅ پاسخ سرور دریافت شد:", response);
+                
                 if (response.success) {
+                    console.log("🎉 ویرایش با موفقیت انجام شد");
                     Swal.fire({
                         icon: 'success',
                         title: 'ویرایش موفق',
                         text: 'ویرایش با موفقیت انجام شد.'
                     }).then(() => {
-                        // $('#EditNewsPerformances').modal('hide');
                         location.reload();
                     });
                 } else {
+                    console.error("❌ خطا در پاسخ سرور:", response.message);
                     Swal.fire({
                         icon: 'error',
                         title: 'خطا',
-                        text: response.message
+                        text: response.message || 'خطایی رخ داده است'
                     });
                 }
             },
-            error: function () {
+            error: function (xhr, status, error) {
+                console.error("❌ خطای AJAX:");
+                console.error("🔴 Status:", status);
+                console.error("🔴 Error:", error);
+                console.error("🔴 Response Text:", xhr.responseText);
+                
                 Swal.fire({
                     icon: 'error',
                     title: 'خطا',
-                    text: 'خطایی رخ داده است. لطفاً دوباره تلاش کنید.'
+                    text: 'خطایی در ارتباط با سرور رخ داده است. لطفاً دوباره تلاش کنید.'
                 });
             }
         });
     }
 </script>
-
 
 

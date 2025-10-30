@@ -1,0 +1,674 @@
+2025-10-30 06:58:04.6936 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 06:58:04.7302 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 06:58:04.7338 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 06:58:05.2227 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 06:59:15.3172 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 07:00:24.6675 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:00:24.6675 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:08:31.2023 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:08:31.2362 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:08:31.2388 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:08:31.6464 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 07:08:51.4852 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 07:09:00.2233 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:09:00.2278 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:13:04.7960 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:13:04.8312 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:13:04.8339 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:13:05.5797 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 07:13:30.8250 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 07:13:42.3124 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:13:42.3164 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:16:42.1435 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:16:42.1653 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:16:42.1653 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:16:42.5701 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 07:17:04.0735 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 07:17:12.3140 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:17:12.3187 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:31:19.5900 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:31:19.6226 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:31:19.6226 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:31:20.0391 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 07:31:36.4455 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 07:31:51.3275 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:31:51.3275 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:31:58.0622 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:31:58.0622 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:32:05.9803 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:32:05.9803 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:32:19.5950 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:32:19.5950 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:34:55.2285 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:34:55.2581 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:34:55.2581 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:34:56.1077 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 07:35:13.0930 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 07:35:18.8822 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/Users|action: Index
+
+2025-10-30 07:35:18.8822 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/Users|action: Index
+
+2025-10-30 07:35:20.8452 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/Operator|action: Index
+
+2025-10-30 07:35:20.8452 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/Operator|action: Index
+
+2025-10-30 07:35:29.7373 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:35:29.7373 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:35:50.4802 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 07:36:07.5669 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 07:41:36.6507 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:41:36.6766 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:41:36.6766 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:41:37.0719 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 07:41:53.9175 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 07:42:03.5739 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:42:03.5739 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:42:57.2132 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 07:46:40.3254 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:46:40.3571 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:46:40.3571 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:46:40.7778 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 07:46:56.2116 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 07:47:07.4842 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:47:07.4842 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:51:27.4490 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 07:52:05.0280 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:52:05.0555 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:52:05.0555 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:52:05.4898 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 07:52:27.7845 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 07:52:47.3960 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:52:47.3960 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:54:04.7305 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 07:54:04.7898 -ERROR|Microsoft.EntityFrameworkCore.Update| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 07:57:45.6760 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:57:45.7045 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:57:45.7089 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 07:57:46.1074 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 07:58:13.8071 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 07:58:22.5115 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 07:58:22.5115 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:00:24.4020 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:00:24.4321 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:00:24.4321 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:00:24.8556 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 08:00:42.4430 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 08:00:49.6824 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:00:49.6824 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:02:47.1578 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:02:47.1856 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:02:47.1856 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:02:47.6030 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 08:03:03.8006 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 08:03:10.7055 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:03:10.7111 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:11:31.6944 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:11:31.7214 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:11:31.7240 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:11:32.1593 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 08:12:00.6072 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 08:12:12.0836 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:12:12.0836 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:15:22.7988 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:15:22.8281 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:15:22.8281 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:15:23.2318 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 08:15:44.7508 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 08:15:56.0967 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:15:56.1009 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:20:00.1766 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:20:00.1766 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:20:19.0391 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:20:19.0897 -ERROR|Microsoft.EntityFrameworkCore.Update| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:20:44.0202 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:22:52.8419 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:22:52.8756 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:22:52.8756 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:22:53.3227 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 08:23:13.6435 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 08:23:21.7663 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:23:21.7709 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:23:33.1924 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:23:33.2619 -ERROR|Microsoft.EntityFrameworkCore.Update| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:25:45.4539 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:26:06.6184 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:26:06.6444 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:26:06.6471 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:26:07.0463 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 08:26:24.1320 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 08:26:33.4494 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:26:33.4494 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:26:50.2672 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:26:50.3247 -ERROR|Microsoft.EntityFrameworkCore.Update| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:27:08.7020 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:29:36.2588 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:29:36.2588 -ERROR|Microsoft.EntityFrameworkCore.Update| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:29:54.6170 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:32:42.6162 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:32:42.6162 -ERROR|Microsoft.EntityFrameworkCore.Update| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:32:43.7288 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:32:54.8648 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/Period/IndexPerformance|action: IndexPerformance
+
+2025-10-30 08:32:54.8648 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/Period/IndexPerformance|action: IndexPerformance
+
+2025-10-30 08:33:01.7396 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/Period/IndexPerformance|action: IndexPerformance
+
+2025-10-30 08:33:01.7396 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/Period/IndexPerformance|action: IndexPerformance
+
+2025-10-30 08:33:43.7232 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:33:43.7608 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:33:43.7608 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:33:44.1852 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 08:34:00.4831 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 08:38:43.2113 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:38:43.2614 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:38:43.2614 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:38:43.7637 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 08:38:58.1767 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 08:39:05.7906 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:39:05.7906 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:41:08.9051 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:41:08.9358 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:41:08.9358 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:41:09.4025 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 08:41:24.4708 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 08:41:41.1570 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:41:41.1608 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:45:13.6420 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:45:13.6744 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:45:13.6771 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:45:14.5116 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 08:45:54.3581 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 08:46:09.8694 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:46:09.8694 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:49:45.2243 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:49:45.2619 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:49:45.2619 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 08:49:45.6714 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 08:49:59.1788 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 08:50:07.4363 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:50:07.4363 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:50:20.3751 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:50:20.4297 -ERROR|Microsoft.EntityFrameworkCore.Update| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:50:51.9737 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:51:30.6742 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:51:30.6742 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:52:34.2292 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:52:34.2292 -ERROR|Microsoft.EntityFrameworkCore.Update| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:52:36.1678 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:53:52.7302 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:53:52.7302 -ERROR|Microsoft.EntityFrameworkCore.Update| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:54:54.8174 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:54:54.8174 -ERROR|Microsoft.EntityFrameworkCore.Update| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:54:54.8174 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:55:03.1347 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:55:03.1347 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:55:03.1347 -ERROR|Microsoft.EntityFrameworkCore.Update| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:55:04.4653 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 08:55:04.5019 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 08:55:04.5019 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:03:29.6265 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:03:29.6561 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:03:29.6561 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:03:30.3846 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 09:07:03.9634 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:07:03.9892 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:07:03.9892 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:07:04.3877 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 09:07:20.3598 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 09:07:30.2642 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:07:30.2642 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:07:39.2167 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:07:39.2784 -ERROR|Microsoft.EntityFrameworkCore.Update| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:07:41.7781 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:09:56.3756 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:09:56.3756 -ERROR|Microsoft.EntityFrameworkCore.Update| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:09:57.9390 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:10:13.7055 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:10:13.7327 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:10:13.7327 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:10:14.1356 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 09:10:33.0350 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 09:10:43.2550 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:10:43.2550 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:11:52.4330 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:11:52.4857 -ERROR|Microsoft.EntityFrameworkCore.Update| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:12:20.4506 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:13:39.0767 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:13:39.0767 -ERROR|Microsoft.EntityFrameworkCore.Update| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:13:40.0341 -ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware| url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:13:58.0324 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:13:58.0575 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:13:58.0575 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:13:58.4530 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 09:14:16.3422 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 09:14:24.7984 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:14:24.8026 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:16:56.3932 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:16:56.4203 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:16:56.4203 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:16:56.8260 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 09:17:17.1700 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 09:17:24.9795 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:17:24.9795 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:19:29.6843 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:19:29.7171 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:19:29.7171 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:19:30.1822 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 09:19:47.6128 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 09:19:54.4288 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:19:54.4288 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:20:52.7485 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:20:52.7485 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:21:15.8045 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:21:15.8045 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:21:28.6427 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:21:28.6427 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:21:45.2406 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:21:45.2406 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:23:55.5136 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:23:55.5136 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:24:59.4566 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:24:59.4566 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:25:27.0623 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:25:27.0623 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:27:55.0466 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:27:55.0466 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:28:10.5256 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:28:10.5619 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:28:10.5619 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:28:10.9736 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 09:28:45.9354 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 09:28:54.4301 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:28:54.4301 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:29:12.3511 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:29:12.3511 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:45:30.9413 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:45:30.9413 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:45:49.4044 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:45:49.4605 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:45:49.4605 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:45:50.3431 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 09:46:06.4970 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 09:46:14.6752 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:46:14.6817 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:46:19.9798 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:46:19.9798 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:47:45.5230 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:47:45.5230 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:48:41.0375 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:48:41.0701 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:48:41.0701 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:48:41.4864 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 09:48:56.2577 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 09:49:05.4762 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:49:05.4762 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:49:37.9310 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:49:37.9310 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:49:54.5577 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:49:54.5577 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:02.7693 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:02.7693 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:10.0729 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:10.0729 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:18.1120 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:18.1120 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:25.3379 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:25.3379 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:36.8137 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:36.8137 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:43.2436 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:43.2436 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:51:02.7160 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:51:02.7160 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:51:30.9810 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:51:30.9810 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:53:03.7508 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/NewsPerformances/Index|action: Index
+
+2025-10-30 09:53:03.7508 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/NewsPerformances/Index|action: Index
+
+2025-10-30 09:53:23.5765 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/NewsPerformances/Index|action: Index
+
+2025-10-30 09:53:23.5765 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/NewsPerformances/Index|action: Index
+
+2025-10-30 09:57:25.1558 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:57:25.1835 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:57:25.1835 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 09:57:25.8561 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 09:59:12.1491 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 09:59:21.5298 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/NewsPerformances/Index|action: Index
+
+2025-10-30 09:59:21.5298 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/NewsPerformances/Index|action: Index
+
+2025-10-30 09:59:46.2436 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/NewsPerformances/Index|action: Index
+
+2025-10-30 09:59:46.2436 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/NewsPerformances/Index|action: Index
+
+2025-10-30 10:02:29.3272 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 10:02:29.3538 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 10:02:29.3538 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-30 10:02:29.7599 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-30 10:02:53.0079 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 10:03:04.5340 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 10:03:04.5393 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+

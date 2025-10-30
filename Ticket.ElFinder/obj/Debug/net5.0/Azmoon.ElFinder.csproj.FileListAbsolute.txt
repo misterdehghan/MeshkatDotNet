@@ -73,3 +73,16 @@ F:\PROJECT\AzmoonNew\Azmoon\Ticket.ElFinder\obj\Debug\net5.0\Azmoon.ElFinder.dll
 F:\PROJECT\AzmoonNew\Azmoon\Ticket.ElFinder\obj\Debug\net5.0\refint\Azmoon.ElFinder.dll
 F:\PROJECT\AzmoonNew\Azmoon\Ticket.ElFinder\obj\Debug\net5.0\Azmoon.ElFinder.pdb
 F:\PROJECT\AzmoonNew\Azmoon\Ticket.ElFinder\obj\Debug\net5.0\ref\Azmoon.ElFinder.dll
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.ElFinder\bin\Debug\net5.0\Azmoon.ElFinder.deps.json
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.ElFinder\bin\Debug\net5.0\Azmoon.ElFinder.dll
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.ElFinder\bin\Debug\net5.0\Azmoon.ElFinder.pdb
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.ElFinder\obj\Debug\net5.0\Azmoon.ElFinder.csproj.AssemblyReference.cache
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.ElFinder\obj\Debug\net5.0\Azmoon.ElFinder.GeneratedMSBuildEditorConfig.editorconfig
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.ElFinder\obj\Debug\net5.0\Azmoon.ElFinder.AssemblyInfoInputs.cache
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.ElFinder\obj\Debug\net5.0\Azmoon.ElFinder.AssemblyInfo.cs
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.ElFinder\obj\Debug\net5.0\Azmoon.ElFinder.csproj.CoreCompileInputs.cache
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.ElFinder\obj\Debug\net5.0\Azmoon.ElFinder.sourcelink.json
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.ElFinder\obj\Debug\net5.0\Azmoon.ElFinder.dll
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.ElFinder\obj\Debug\net5.0\refint\Azmoon.ElFinder.dll
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.ElFinder\obj\Debug\net5.0\Azmoon.ElFinder.pdb
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.ElFinder\obj\Debug\net5.0\ref\Azmoon.ElFinder.dll

@@ -278,6 +278,7 @@ namespace EndPoint.Site
             services.AddTransient<IGetStatusVirtualSpacePeriodForDashboardService, GetStatusVirtualSpacePeriodForDashboardService>();
             services.AddTransient<ICaptchaService, CaptchaService>();
             services.AddScoped<IUserClaimsPrincipalFactory<User>, ApplicationUserClaimsPrincipalFactory>();
+            services.AddScoped<IGetSubjectForDropDownService, GetSubjectForDropDownService>();
 
             #endregion
             // services.AddMediatR(typeof(Startup));

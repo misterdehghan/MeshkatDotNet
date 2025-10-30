@@ -22,7 +22,9 @@ namespace Azmoon.Application.Service.PublicRelations.MediaPerformances
         public string Media { get; set; }
         public string NetworkName { get; set; }
         public string ProgramName { get; set; }
-        public string Subject { get; set; }
+        public string SubjectTitle { get; set; }
+        public string Description { get; set; }
+        public TimeSpan BroadcastStartTime { get; set; }
         public DateTime BroadcastDate { get; set; }
         public TimeSpan Time { get; set; }
         public string Image { get; set; }
@@ -62,7 +64,9 @@ namespace Azmoon.Application.Service.PublicRelations.MediaPerformances
                 Media = mediaPerformance.Media,
                 NetworkName = mediaPerformance.NetworkName,
                 ProgramName = mediaPerformance.ProgramName,
-                Subject = mediaPerformance.Subject,
+                SubjectTitle = mediaPerformance.SubjectTitle,
+                Description=mediaPerformance.Description,
+                BroadcastStartTime=mediaPerformance.BroadcastStartTime,
                 BroadcastDate = mediaPerformance.BroadcastDate,
                 Time = mediaPerformance.Time,
                 Image = mediaPerformance.Image,

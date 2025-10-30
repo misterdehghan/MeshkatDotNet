@@ -22,8 +22,16 @@ namespace Azmoon.Application.Service.PublicRelations.MediaPerformances
         public string Media { get; set; }
         public string NetworkName { get; set; }
         public string ProgramName { get; set; }
-        public string Subject { get; set; }
         public IFormFile Image { get; set; }
+
+
+        public int SubjectId { get; set; }
+        public DateTime BroadcastDate { get; set; }
+        public TimeSpan BroadcastStartTime { get; set; } //ساعت پخش
+        public string Description { get; set; }
+        public TimeSpan Time { get; set; }
+       
+        
     }
 
     public class EditMediaPerformancesService : IEditMediaPerformancesService
@@ -47,40 +55,88 @@ namespace Azmoon.Application.Service.PublicRelations.MediaPerformances
                     IsSuccess = false,
                     Message = "رکورد مورد نظر یافت نشد."
                 };
+            }
 
-            }
-            if (request.Media == "null" &&
-                request.NetworkName == media.NetworkName &&
-                request.ProgramName == media.ProgramName &&
-                request.Subject == media.Subject &&
-                request.Image == null)
-            {
-                return new ResultDto
-                {
-                    IsSuccess = false,
-                    Message = "شما هیچ تغییری ایجاد نکرده اید."
-                };
-            }
+            bool hasChanges = false;
+
+            // آپلود فایل اگر تغییر کرده
             if (request.Image != null)
             {
                 var resultUpload = UploadFile(request.Image);
                 if (resultUpload != null)
                 {
                     media.Image = resultUpload.FileNameAddress;
+                    hasChanges = true;
                 }
             }
 
-
-            if (request.Media == "null")
+            // بررسی تغییرات هر فیلد
+            if (!string.IsNullOrEmpty(request.Media) && media.Media != request.Media)
             {
-                media.Media = media.Media;
-            }
-            else{
                 media.Media = request.Media;
+                hasChanges = true;
             }
-            media.NetworkName = request.NetworkName ?? media.NetworkName;
-            media.ProgramName = request.ProgramName ?? media.ProgramName;
-            media.Subject = request.Subject ?? media.Subject;
+
+            if (request.SubjectId > 0)
+            {
+                var subjectTitle = _context.Subjects.FirstOrDefault(p => p.Id == request.SubjectId)?.Title;
+                if (subjectTitle != null && media.SubjectTitle != subjectTitle)
+                {
+                    media.SubjectTitle = subjectTitle;
+                    hasChanges = true;
+                }
+            }
+
+            if (request.BroadcastDate != DateTime.MinValue &&
+                request.BroadcastDate.Year > 1 &&
+                media.BroadcastDate != request.BroadcastDate)
+            {
+                media.BroadcastDate = request.BroadcastDate;
+                hasChanges = true;
+            }
+
+            if (request.Time != TimeSpan.Zero && media.Time != request.Time)
+            {
+                media.Time = request.Time;
+                hasChanges = true;
+            }
+
+            if (request.BroadcastStartTime != TimeSpan.Zero && media.BroadcastStartTime != request.BroadcastStartTime)
+            {
+                media.BroadcastStartTime = request.BroadcastStartTime;
+                hasChanges = true;
+            }
+
+            if (!string.IsNullOrEmpty(request.NetworkName) && media.NetworkName != request.NetworkName)
+            {
+                media.NetworkName = request.NetworkName;
+                hasChanges = true;
+            }
+
+            if (!string.IsNullOrEmpty(request.ProgramName) && media.ProgramName != request.ProgramName)
+            {
+                media.ProgramName = request.ProgramName;
+                hasChanges = true;
+            }
+
+            if (!string.IsNullOrEmpty(request.Description) && media.Description != request.Description)
+            {
+                media.Description = request.Description;
+                hasChanges = true;
+            }
+
+            // اگر تغییری نبود
+            if (!hasChanges)
+            {
+                return new ResultDto
+                {
+                    IsSuccess = false,
+                    Message = "تغییراتی ایجاد نشد."
+                };
+            }
+
+            // ذخیره تغییرات
+            media.UpdateTime = DateTime.Now;
             _context.SaveChanges();
 
             return new ResultDto

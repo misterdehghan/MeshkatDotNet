@@ -1,0 +1,690 @@
+2025-10-30 09:07:39.2784|10000|ERROR|Microsoft.EntityFrameworkCore.Update|An exception occurred in the database while saving changes for context type 'Azmoon.Persistence.Contexts.DataBaseContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Media', table 'AzmoonDB.dbo.MediaPerformances'; column does not allow nulls. UPDATE fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:834345aa-1cae-4594-ae7f-eea5e8081148
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(DbContext _, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess) Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Media', table 'AzmoonDB.dbo.MediaPerformances'; column does not allow nulls. UPDATE fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:834345aa-1cae-4594-ae7f-eea5e8081148
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(DbContext _, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)|url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:07:41.7781|1|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request. Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Media', table 'AzmoonDB.dbo.MediaPerformances'; column does not allow nulls. UPDATE fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:834345aa-1cae-4594-ae7f-eea5e8081148
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(DbContext _, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at Azmoon.Application.Service.PublicRelations.MediaPerformances.EditMediaPerformancesService.Execute(RequestEditMediaDto request) in E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Application\Service\PublicRelations\MediaPerformances\IEditMediaPerformancesService.cs:line 118
+   at EndPoint.Site.Areas.PublicRelations.Controllers.MediaPerformancesController.PartialViewEditMediaModal(RequestEditMediaDto request) in E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site\Areas\PublicRelations\Controllers\MediaPerformancesController.cs:line 646
+   at lambda_method732(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at FastReport.Web.FastReportMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)|url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:09:56.3756|20102|ERROR|Microsoft.EntityFrameworkCore.Database.Command|Failed executing DbCommand (4ms) [Parameters=[@p4='?' (DbType = Int32), @p0='?' (DbType = Time), @p1='?' (Size = 4000), @p2='?' (DbType = Time), @p3='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [MediaPerformances] SET [BroadcastStartTime] = @p0, [Media] = @p1, [Time] = @p2, [UpdateTime] = @p3
+WHERE [Id] = @p4;
+SELECT @@ROWCOUNT; |url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:09:56.3756|10000|ERROR|Microsoft.EntityFrameworkCore.Update|An exception occurred in the database while saving changes for context type 'Azmoon.Persistence.Contexts.DataBaseContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Media', table 'AzmoonDB.dbo.MediaPerformances'; column does not allow nulls. UPDATE fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:834345aa-1cae-4594-ae7f-eea5e8081148
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(DbContext _, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess) Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Media', table 'AzmoonDB.dbo.MediaPerformances'; column does not allow nulls. UPDATE fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:834345aa-1cae-4594-ae7f-eea5e8081148
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(DbContext _, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)|url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:09:57.9390|1|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request. Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Media', table 'AzmoonDB.dbo.MediaPerformances'; column does not allow nulls. UPDATE fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:834345aa-1cae-4594-ae7f-eea5e8081148
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(DbContext _, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at Azmoon.Application.Service.PublicRelations.MediaPerformances.EditMediaPerformancesService.Execute(RequestEditMediaDto request)
+   at EndPoint.Site.Areas.PublicRelations.Controllers.MediaPerformancesController.PartialViewEditMediaModal(RequestEditMediaDto request) in E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site\Areas\PublicRelations\Controllers\MediaPerformancesController.cs:line 646
+   at lambda_method732(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at FastReport.Web.FastReportMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)|url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:10:13.7055||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-30 09:10:13.7327||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-30 09:10:13.7327||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-30 09:10:33.0350|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 09:10:43.2550||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:10:43.2550||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:11:52.4330|20102|ERROR|Microsoft.EntityFrameworkCore.Database.Command|Failed executing DbCommand (9ms) [Parameters=[@p4='?' (DbType = Int32), @p0='?' (DbType = Time), @p1='?' (Size = 4000), @p2='?' (DbType = Time), @p3='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [MediaPerformances] SET [BroadcastStartTime] = @p0, [Media] = @p1, [Time] = @p2, [UpdateTime] = @p3
+WHERE [Id] = @p4;
+SELECT @@ROWCOUNT; |url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:11:52.4857|10000|ERROR|Microsoft.EntityFrameworkCore.Update|An exception occurred in the database while saving changes for context type 'Azmoon.Persistence.Contexts.DataBaseContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Media', table 'AzmoonDB.dbo.MediaPerformances'; column does not allow nulls. UPDATE fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:5ede9144-e4fb-4970-99dd-ac0f23ebb519
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(DbContext _, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess) Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Media', table 'AzmoonDB.dbo.MediaPerformances'; column does not allow nulls. UPDATE fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:5ede9144-e4fb-4970-99dd-ac0f23ebb519
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(DbContext _, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)|url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:12:20.4506|1|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request. Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Media', table 'AzmoonDB.dbo.MediaPerformances'; column does not allow nulls. UPDATE fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:5ede9144-e4fb-4970-99dd-ac0f23ebb519
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(DbContext _, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at Azmoon.Application.Service.PublicRelations.MediaPerformances.EditMediaPerformancesService.Execute(RequestEditMediaDto request) in E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Application\Service\PublicRelations\MediaPerformances\IEditMediaPerformancesService.cs:line 120
+   at EndPoint.Site.Areas.PublicRelations.Controllers.MediaPerformancesController.PartialViewEditMediaModal(RequestEditMediaDto request) in E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site\Areas\PublicRelations\Controllers\MediaPerformancesController.cs:line 646
+   at lambda_method732(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at FastReport.Web.FastReportMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)|url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:13:39.0767|20102|ERROR|Microsoft.EntityFrameworkCore.Database.Command|Failed executing DbCommand (4ms) [Parameters=[@p4='?' (DbType = Int32), @p0='?' (DbType = Time), @p1='?' (Size = 4000), @p2='?' (DbType = Time), @p3='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [MediaPerformances] SET [BroadcastStartTime] = @p0, [Media] = @p1, [Time] = @p2, [UpdateTime] = @p3
+WHERE [Id] = @p4;
+SELECT @@ROWCOUNT; |url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:13:39.0767|10000|ERROR|Microsoft.EntityFrameworkCore.Update|An exception occurred in the database while saving changes for context type 'Azmoon.Persistence.Contexts.DataBaseContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Media', table 'AzmoonDB.dbo.MediaPerformances'; column does not allow nulls. UPDATE fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:5ede9144-e4fb-4970-99dd-ac0f23ebb519
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(DbContext _, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess) Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Media', table 'AzmoonDB.dbo.MediaPerformances'; column does not allow nulls. UPDATE fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:5ede9144-e4fb-4970-99dd-ac0f23ebb519
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(DbContext _, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)|url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:13:40.0341|1|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request. Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Media', table 'AzmoonDB.dbo.MediaPerformances'; column does not allow nulls. UPDATE fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:5ede9144-e4fb-4970-99dd-ac0f23ebb519
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(DbContext _, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at Azmoon.Application.Service.PublicRelations.MediaPerformances.EditMediaPerformancesService.Execute(RequestEditMediaDto request)
+   at EndPoint.Site.Areas.PublicRelations.Controllers.MediaPerformancesController.PartialViewEditMediaModal(RequestEditMediaDto request) in E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site\Areas\PublicRelations\Controllers\MediaPerformancesController.cs:line 646
+   at lambda_method732(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at FastReport.Web.FastReportMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)|url: https://localhost/PublicRelations/MediaPerformances/PartialViewEditMediaModal|action: PartialViewEditMediaModal
+
+2025-10-30 09:13:58.0324||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-30 09:13:58.0575||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-30 09:13:58.0575||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-30 09:14:16.3422|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 09:14:24.7984||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:14:24.8026||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:16:56.3932||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-30 09:16:56.4203||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-30 09:16:56.4203||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-30 09:17:17.1700|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 09:17:24.9795||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:17:24.9795||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:19:29.6843||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-30 09:19:29.7171||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-30 09:19:29.7171||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-30 09:19:47.6128|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 09:19:54.4288||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:19:54.4288||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:20:52.7485||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:20:52.7485||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:21:15.8045||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:21:15.8045||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:21:28.6427||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:21:28.6427||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:21:45.2406||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:21:45.2406||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:23:55.5136||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:23:55.5136||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:24:59.4566||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:24:59.4566||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:25:27.0623||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:25:27.0623||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:27:55.0466||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:27:55.0466||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:28:10.5256||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-30 09:28:10.5619||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-30 09:28:10.5619||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-30 09:28:45.9354|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 09:28:54.4301||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:28:54.4301||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:29:12.3511||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:29:12.3511||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:45:30.9413||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:45:30.9413||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:45:49.4044||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-30 09:45:49.4605||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-30 09:45:49.4605||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-30 09:46:06.4970|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 09:46:14.6752||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:46:14.6817||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:46:19.9798||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:46:19.9798||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:47:45.5230||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:47:45.5230||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:48:41.0375||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-30 09:48:41.0701||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-30 09:48:41.0701||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-30 09:48:56.2577|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 09:49:05.4762||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:49:05.4762||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:49:37.9310||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:49:37.9310||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:49:54.5577||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:49:54.5577||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:02.7693||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:02.7693||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:10.0729||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:10.0729||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:18.1120||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:18.1120||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:25.3379||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:25.3379||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:36.8137||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:36.8137||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:43.2436||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:50:43.2436||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:51:02.7160||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:51:02.7160||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:51:30.9810||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:51:30.9810||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 09:53:03.7508||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/NewsPerformances/Index|action: Index
+
+2025-10-30 09:53:03.7508||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 3, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/NewsPerformances/Index|action: Index
+
+2025-10-30 09:53:23.5765||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/NewsPerformances/Index|action: Index
+
+2025-10-30 09:53:23.5765||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/NewsPerformances/Index|action: Index
+
+2025-10-30 09:57:25.1558||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-30 09:57:25.1835||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-30 09:57:25.1835||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-30 09:59:12.1491|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 09:59:21.5298||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/NewsPerformances/Index|action: Index
+
+2025-10-30 09:59:21.5298||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/NewsPerformances/Index|action: Index
+
+2025-10-30 09:59:46.2436||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/NewsPerformances/Index|action: Index
+
+2025-10-30 09:59:46.2436||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/NewsPerformances/Index|action: Index
+
+2025-10-30 10:02:29.3272||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-30 10:02:29.3538||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-30 10:02:29.3538||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-30 10:02:53.0079|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-30 10:03:04.5340||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-30 10:03:04.5393||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+

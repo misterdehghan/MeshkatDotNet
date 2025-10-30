@@ -201,11 +201,12 @@
                                     <tr>
                                         <th scope="col">ردیف</th>
                                         <th scope="col">اپرتور</th>
-                                        <th scope="col">نام رسانه</th>
+                                        <th scope="col">رسانه</th>
                                         <th scope="col">نام شبکه</th>
                                         <th scope="col">نام برنامه</th>
                                         <th scope="col">موضوع برنامه</th>
-                                        <th scope="col">تاریخ  برنامه</th>
+                                        <th scope="col">توضیحات</th>
+                                        <th scope="col">تاریخ/ساعت برنامه</th>
                                         <th scope="col">مدت زمان پخش</th>
                                         <th scope="col">مستند</th>
                                         <th scope="col">وضعیت آماری</th>
@@ -220,11 +221,29 @@
                                         <tr>
                                             <td scope="row">@rowIndex</td>
                                             <td>@item.Operator</td>
-                                            <td>@item.Media</td>
+                                            <td>
+                                                @if(item.Media =="تلوزیون")
+                                                {
+                                                    <i style="color:#6a7a8f; font-size:.775rem" class="mdi mdi-television"></i>
+                                                }else if(item.Media =="رادیو"){
+                                                    <i style="color:#6a7a8f; font-size:.775rem;" class="mdi mdi-radio"></i>
+                                                }
+                                                else
+                                                {
+                                                    @item.Media
+                                                }
+                                            </td>
                                             <td>@item.NetworkName</td>
                                             <td>@item.ProgramName</td>
-                                            <td>@item.Subject</td>
-                                            <td>@item.BroadcastDate.ToShamsi()</td>
+                                            <td>@item.SubjectTitle</td>
+                                            <td>@item.Description</td>
+                                            <td>
+                                                  @item.BroadcastDate.ToShamsi()<br />
+                                                  <span class="badge" style="background-color: rgba(13, 240, 240, 0.1); font-weight: bold;">
+                                                    @item.BroadcastStartTime
+                                                  </span>
+                                            </td>
+
                                             <td>@item.Time</td>
                                             <td>
                                                 <a href="/@item.Image" class="image-popup-no-margins">
@@ -568,55 +587,6 @@
 
     </script>
 
-
-    @* <script>
-        $(document).ready(function () {
-            // بارگذاری دوره‌ها بر اساس سال انتخاب‌شده
-            $('#yearSelect').change(function () {
-                var selectedYear = $(this).val();
-                var courseDropdown = $('#courseSelect');
-
-                if (!selectedYear) {
-                    courseDropdown.empty().append('<option value="" disabled selected>انتخاب دوره</option>');
-                    return;
-                }
-
-                $.ajax({
-                    url: '/MediaPerformances/GetCoursesByYear',
-                    type: 'GET',
-                    data: { year: selectedYear },
-                    success: function (data) {
-                        courseDropdown.empty().append('<option value="" disabled selected>انتخاب دوره</option>');
-                        $.each(data, function (i, course) {
-                            courseDropdown.append($('<option></option>').val(course.id).text(course.statisticalPeriod));
-                        });
-                    },
-                    error: function () {
-                        alert('خطا در دریافت اطلاعات. لطفاً دوباره تلاش کنید.');
-                    }
-                });
-            });
-
-            // هنگام کلیک بر روی دکمه نمایش
-            $('#submitButton').click(function () {
-                var courseId = $('#courseSelect').val(); // دریافت آیدی دوره
-
-                if (!courseId) {
-                    alert('لطفاً یک دوره انتخاب کنید.');
-                    return;
-                }
-
-                console.log("Selected Course ID: " + courseId);
-
-                // ساختن URL جدید با اضافه کردن آیدی دوره به پارامتر URL
-                var url = '/MediaPerformances/Index?CommunicationPeriodId=' + courseId;
-
-                // هدایت کاربر به URL جدید
-                window.location.href = url;
-            });
-        });
-    </script> *@
-
     <script>
         $(document).ready(function () {
             $(".clickable-icon").click(function () {
@@ -755,22 +725,95 @@
         });
     </script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.btn6').click(function () {
-                // گرفتن ای دی از دکمه
-                var newsId = $(this).data('mediaperformances-id');
+<script type="text/javascript">
+const miladiElement = document.querySelector("[data-jdp-miladi-input]");
+if (miladiElement) {
+    miladiElement.addEventListener("jdp:change", function (e) {
+        var miladiInput = document.getElementById(this.getAttribute("data-jdp-miladi-input"));
+        if (!this.value) {
+            miladiInput.value = "";
+            return;
+        }
+        var date = this.value.split("/");
+        miladiInput.value = jalali_to_gregorian(date[0], date[1], date[2]).join("/");
+    });
+}
 
-                // ساختن URL با ای دی گرفته شده
-                var url = $('#EditMediaPerformances').data('url') + '?id=' + newsId;
+// فعال سازی datepicker بعد از نمایش مودال
+$('#EditMediaPerformances').on('shown.bs.modal', function () {
+    if (typeof jalaliDatepicker !== 'undefined') {
+        jalaliDatepicker.startWatch();
+    }
+});
 
-                // ارسال درخواست با ای دی
-                $.get(url, function (data) {
-                    $("#EditMediaPerformances").html(data);
-                    $("#EditMediaPerformances").modal('show');
-                });
-            });
+// مدیریت کلیک روی دکمه ویرایش
+$(document).ready(function () {
+    $('.btn6').click(function () {
+        var newsId = $(this).data('mediaperformances-id');
+        var url = $('#EditMediaPerformances').data('url') + '?id=' + newsId;
+
+        $.get(url, function (data) {
+            $("#EditMediaPerformances").html(data);
+            $("#EditMediaPerformances").modal('show');
+
+            if (typeof jalaliDatepicker !== 'undefined') {
+                jalaliDatepicker.startWatch();
+            }
         });
-    </script>
+    });
+});
+</script>
 
+@* <script>
+// تنظیم z-index برای datepicker هنگام فوکوس
+$(document).on('focus', '.jalali-datepicker', function () {
+    // انتظار برای ساخته شدن datepicker
+    let tries = 0;
+    const interval = setInterval(() => {
+        const picker = document.querySelector('jdp-container');
+        tries++;
+
+        if (picker) {
+            picker.style.zIndex = '6000';
+            picker.style.position = 'fixed';
+            clearInterval(interval);
+        }
+
+        if (tries > 20) {
+            clearInterval(interval);
+        }
+    }, 100);
+});
+</script> *@
+
+<script>
+// مشاهده تغییرات DOM برای المان‌های جدید datepicker
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+            if (node.nodeName === 'JDP-CONTAINER') {
+                node.style.zIndex = '1060';
+            }
+        });
+    });
+});
+
+// شروع مشاهده تغییرات در body
+observer.observe(document.body, {
+    childList: true,
+    subtree: true
+});
+
+// تنظیم z-index برای datepickerهای موجود
+document.addEventListener('DOMContentLoaded', function() {
+    const existingPickers = document.querySelectorAll('jdp-container');
+    existingPickers.forEach(picker => {
+        picker.style.zIndex = '1060';
+    });
+});
+</script>
+
+
+
+ 
 }

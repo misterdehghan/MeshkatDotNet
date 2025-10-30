@@ -133,6 +133,7 @@ namespace Azmoon.Persistence.Contexts
         public DbSet<LeaveRequest> LeaveRequests { get; set; }
         public DbSet<LoginLog> LoginLogs { get; set; }
         public DbSet<AttendanceLog> AttendanceLogs { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
         #endregion
 
         private void initUser(ModelBuilder modelBuilder)

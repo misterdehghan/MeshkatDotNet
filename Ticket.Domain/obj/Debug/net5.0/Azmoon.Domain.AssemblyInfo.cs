@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Azmoon.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b191a1c9781b8e782d7ef3147d02cdbb99a986d6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Azmoon.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Azmoon.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

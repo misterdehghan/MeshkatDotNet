@@ -1,0 +1,90 @@
+2025-10-25 10:22:29.8351 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-25 10:22:29.8872 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-25 10:22:29.8872 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-25 10:22:30.4646 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-25 10:23:40.4232 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-25 10:23:53.4215 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/Period/IndexPerformance|action: IndexPerformance
+
+2025-10-25 10:23:53.4215 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/Period/IndexPerformance|action: IndexPerformance
+
+2025-10-25 10:24:02.5895 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/Period/IndexPerformance|action: IndexPerformance
+
+2025-10-25 10:24:02.5895 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/Period/IndexPerformance|action: IndexPerformance
+
+2025-10-25 11:11:09.7056 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-25 11:11:09.7333 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-25 11:11:09.7333 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-25 11:11:10.1525 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-25 11:11:27.1247 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-25 11:11:30.0786 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/Operator|action: Index
+
+2025-10-25 11:11:30.0786 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/Operator|action: Index
+
+2025-10-25 13:08:02.8284 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-25 13:08:02.8678 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-25 13:08:02.8711 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-25 13:08:03.4033 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-25 13:08:45.0849 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-25 13:08:53.3190 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/Period/IndexPerformance|action: IndexPerformance
+
+2025-10-25 13:08:53.3234 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/Period/IndexPerformance|action: IndexPerformance
+
+2025-10-25 13:11:05.4715 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-25 13:11:05.4965 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-25 13:11:05.4965 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-25 13:11:06.0757 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-25 13:11:35.8995 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-25 13:16:13.1913 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: |action: 
+
+2025-10-25 13:16:22.5574 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-25 13:16:22.5903 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-25 13:16:22.5903 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-25 13:16:23.0957 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-25 13:16:45.5085 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-25 13:16:49.1449 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: https://localhost/PublicRelations/MediaPerformances/Add|action: Add
+
+2025-10-25 13:16:49.2126 -ERROR|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/MediaPerformances/Add|action: Add
+
+2025-10-25 13:25:07.8562 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: |action: 
+
+2025-10-25 13:29:32.2033 -ERROR|Microsoft.EntityFrameworkCore.Database.Command| url: |action: 
+
+2025-10-25 13:37:25.0783 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-25 13:37:25.1090 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-25 13:37:25.1090 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-25 13:37:25.5462 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-25 13:37:45.4100 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-25 13:38:25.6802 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-25 13:38:25.6858 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+

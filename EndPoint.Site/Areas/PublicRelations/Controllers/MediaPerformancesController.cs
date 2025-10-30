@@ -43,6 +43,7 @@ namespace EndPoint.Site.Areas.PublicRelations.Controllers
         private readonly IDeleteMediaPerformancesService _deleteMediaPerformancesService;
         private readonly IGetDetailMediaPerformanceService _getDetailMediaPerformanceService;
         private readonly IEditMediaPerformancesService _editMediaPerformancesService;
+        private readonly IGetSubjectForDropDownService _getSubjectForDropDown;
 
         public MediaPerformancesController(IAddMediaPerformancesService addMediaPerformancesService,
             IGetListMediaPerformancesService getListMediaPerformancesService,
@@ -60,7 +61,8 @@ namespace EndPoint.Site.Areas.PublicRelations.Controllers
             IGetStatusMediaPerformances getStatusMediaPerformances,
             IDeleteMediaPerformancesService deleteMediaPerformancesService,
             IGetDetailMediaPerformanceService getDetailMediaPerformanceService,
-            IEditMediaPerformancesService editMediaPerformancesService)
+            IEditMediaPerformancesService editMediaPerformancesService,
+            IGetSubjectForDropDownService getSubjectForDropDown)
         {
             _addMediaPerformancesService = addMediaPerformancesService;
             _getListMediaPerformancesService = getListMediaPerformancesService;
@@ -79,6 +81,7 @@ namespace EndPoint.Site.Areas.PublicRelations.Controllers
             _deleteMediaPerformancesService = deleteMediaPerformancesService;
             _getDetailMediaPerformanceService = getDetailMediaPerformanceService;
             _editMediaPerformancesService = editMediaPerformancesService;
+            _getSubjectForDropDown = getSubjectForDropDown;
         }
 
 
@@ -249,7 +252,7 @@ namespace EndPoint.Site.Areas.PublicRelations.Controllers
                         worksheet.Cells[i + 2, 3].Value = result.mediaDto[i].Media;
                         worksheet.Cells[i + 2, 4].Value = result.mediaDto[i].NetworkName;
                         worksheet.Cells[i + 2, 5].Value = result.mediaDto[i].ProgramName;
-                        worksheet.Cells[i + 2, 6].Value = result.mediaDto[i].Subject;
+                        worksheet.Cells[i + 2, 6].Value = result.mediaDto[i].SubjectTitle;
                         worksheet.Cells[i + 2, 7].Value = result.mediaDto[i].BroadcastDate.ToShamsi();
                         worksheet.Cells[i + 2, 8].Value = result.mediaDto[i].Time;
 
@@ -373,7 +376,7 @@ namespace EndPoint.Site.Areas.PublicRelations.Controllers
                         table.AddCell(new PdfPCell(new Phrase(result.mediaDto[i].Operator, cellFont)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, FixedHeight = otherRowHeight });
 
                         // ترکیب چند مقدار با یک اسلش
-                        string combinedText = $"{result.mediaDto[i].Media} / {result.mediaDto[i].NetworkName} / {result.mediaDto[i].ProgramName}/ {result.mediaDto[i].Subject}";
+                        string combinedText = $"{result.mediaDto[i].Media} / {result.mediaDto[i].NetworkName} / {result.mediaDto[i].ProgramName}/ {result.mediaDto[i].SubjectTitle}";
                         table.AddCell(new PdfPCell(new Phrase(combinedText, cellFont)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, FixedHeight = otherRowHeight });
 
 
@@ -433,6 +436,7 @@ namespace EndPoint.Site.Areas.PublicRelations.Controllers
             ViewBag.Media = new SelectList(Media, "Value", "Text");
 
             ViewBag.Operator = new SelectList(_getOperatorForDropDownService.Execute().Data, "Id", "Name");
+            ViewBag.Subjct = new SelectList(_getSubjectForDropDown.Execute().Data, "Id", "Name");
 
 
             bool isActive = _findActiveCommunicationPeriodService.Execute();
@@ -477,11 +481,14 @@ namespace EndPoint.Site.Areas.PublicRelations.Controllers
                         Media = requestMedia.Media,
                         NetworkName = requestMedia.NetworkName,
                         ProgramName = requestMedia.ProgramName,
-                        Subject = requestMedia.Subject,
+                        SubjectId = requestMedia.SubjectId,
                         BroadcastDate = requestMedia.BroadcastDate,
                         Time = requestMedia.Time,
                         Image = requestMedia.Image,
-                        Operator = _getNameByNormalizedNameService.Execute(operatorName).Data
+                        Operator = _getNameByNormalizedNameService.Execute(operatorName).Data,
+                        BroadcastStartTime=requestMedia.BroadcastStartTime,
+                        Description=requestMedia.Description
+                        
 
                     });
                     return Json(new { isSuccess = true, message = "عملیات با موفقیت انجام شد." });
@@ -493,11 +500,13 @@ namespace EndPoint.Site.Areas.PublicRelations.Controllers
                         Media = requestMedia.Media,
                         NetworkName = requestMedia.NetworkName,
                         ProgramName = requestMedia.ProgramName,
-                        Subject = requestMedia.Subject,
+                        SubjectId=requestMedia.SubjectId,
                         BroadcastDate = requestMedia.BroadcastDate,
                         Time = requestMedia.Time,
                         Image = requestMedia.Image,
-                        Operator = _getNameByNormalizedNameService.Execute(user.Operator).Data
+                        Operator = _getNameByNormalizedNameService.Execute(user.Operator).Data,
+                        BroadcastStartTime = requestMedia.BroadcastStartTime,
+                        Description = requestMedia.Description
 
                     });
                     return Json(new { isSuccess = true, message = "عملیات با موفقیت انجام شد." });
@@ -615,7 +624,7 @@ namespace EndPoint.Site.Areas.PublicRelations.Controllers
             Media.Add(new SelectListItem() { Text = "رادیو", Value = "2" });
 
             ViewBag.Media = new SelectList(Media, "Value", "Text");
-
+            ViewBag.Subjct = new SelectList(_getSubjectForDropDown.Execute().Data, "Id", "Name");
 
 
             var result = _getDetailMediaPerformanceService.Execute(id);
@@ -640,8 +649,12 @@ namespace EndPoint.Site.Areas.PublicRelations.Controllers
                 Media = request.Media,
                 NetworkName = request.NetworkName,
                 ProgramName = request.ProgramName,
-                Subject = request.Subject,
-                Image = request.Image
+                SubjectId = request.SubjectId,
+                Image = request.Image,
+                Time=request.Time,
+                BroadcastStartTime=request.BroadcastStartTime,
+                BroadcastDate=request.BroadcastDate,
+                Description=request.Description
             });
             if (result.IsSuccess)
             {

@@ -73,3 +73,16 @@ F:\PROJECT\AzmoonNew\Azmoon\Ticket.Common\obj\Debug\net5.0\Azmoon.Common.dll
 F:\PROJECT\AzmoonNew\Azmoon\Ticket.Common\obj\Debug\net5.0\refint\Azmoon.Common.dll
 F:\PROJECT\AzmoonNew\Azmoon\Ticket.Common\obj\Debug\net5.0\Azmoon.Common.pdb
 F:\PROJECT\AzmoonNew\Azmoon\Ticket.Common\obj\Debug\net5.0\ref\Azmoon.Common.dll
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Common\bin\Debug\net5.0\Azmoon.Common.deps.json
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Common\bin\Debug\net5.0\Azmoon.Common.dll
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Common\bin\Debug\net5.0\Azmoon.Common.pdb
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Common\obj\Debug\net5.0\Azmoon.Common.csproj.AssemblyReference.cache
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Common\obj\Debug\net5.0\Azmoon.Common.GeneratedMSBuildEditorConfig.editorconfig
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Common\obj\Debug\net5.0\Azmoon.Common.AssemblyInfoInputs.cache
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Common\obj\Debug\net5.0\Azmoon.Common.AssemblyInfo.cs
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Common\obj\Debug\net5.0\Azmoon.Common.csproj.CoreCompileInputs.cache
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Common\obj\Debug\net5.0\Azmoon.Common.sourcelink.json
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Common\obj\Debug\net5.0\Azmoon.Common.dll
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Common\obj\Debug\net5.0\refint\Azmoon.Common.dll
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Common\obj\Debug\net5.0\Azmoon.Common.pdb
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Common\obj\Debug\net5.0\ref\Azmoon.Common.dll

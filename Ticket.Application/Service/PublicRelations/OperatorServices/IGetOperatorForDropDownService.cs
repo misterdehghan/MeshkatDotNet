@@ -9,6 +9,7 @@ namespace Azmoon.Application.Service.PublicRelations.OperatorServices
     public interface IGetOperatorForDropDownService
     {
         ResultDto<List<OperatorForDropDownDto>> Execute();
+
     }
 
     public class GetOperatorForDropDownService : IGetOperatorForDropDownService

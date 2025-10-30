@@ -1,0 +1,511 @@
+2025-10-26 07:14:48.8629||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 07:14:48.9012||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 07:14:48.9012||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 07:16:46.3394|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 07:19:25.5175||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 07:19:25.5417||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 07:19:25.5417||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 07:38:09.0956||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 07:38:09.1244||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 07:38:09.1300||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 07:39:36.1799||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 07:39:36.2077||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 07:39:36.2077||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 07:39:56.8062|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 07:42:01.5695||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 07:42:01.6095||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 07:42:01.6123||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 07:42:24.3065|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 07:52:26.4735||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 07:52:26.5122||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 07:52:26.5122||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 07:52:43.6320|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 07:55:05.2703||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 07:55:05.3103||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 07:55:05.3103||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 07:56:39.9163||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 07:56:39.9438||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 07:56:39.9438||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 07:57:58.6961|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 07:59:29.5212||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 07:59:29.5615||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 07:59:29.5658||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 07:59:55.7035|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 08:00:00.5930||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/Users|action: Index
+
+2025-10-26 08:00:00.5970||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/Users|action: Index
+
+2025-10-26 08:01:07.8122||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 08:01:07.8399||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 08:01:07.8399||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 08:01:27.3126|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 08:11:41.9793||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 08:11:42.0158||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 08:11:42.0185||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 08:12:03.6657|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 08:14:12.4933||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 08:14:12.5246||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 08:14:12.5246||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 08:14:36.9892|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 08:18:33.7624||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 08:18:33.7920||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 08:18:33.7920||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 08:18:53.0624|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 08:25:12.8737||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 08:25:12.9108||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 08:25:12.9108||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 08:25:45.1162|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 08:25:48.6346||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/Users|action: Index
+
+2025-10-26 08:25:48.6346||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/Users|action: Index
+
+2025-10-26 08:32:36.6843||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 08:32:36.7143||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 08:32:36.7143||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 08:32:57.5386|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 08:37:40.9350||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 08:37:40.9601||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 08:37:40.9601||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 08:38:46.4465|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 08:41:02.7610||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 08:41:02.7887||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 08:41:02.7887||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 08:41:22.0965|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 08:43:47.8298||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 08:43:47.8610||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 08:43:47.8610||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 08:44:07.1682|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 08:53:20.0906||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 08:53:20.1257||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 08:53:20.1285||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 08:53:39.9498|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 09:01:45.3403||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 09:01:45.3403||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 09:03:15.0892||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 09:03:15.0892||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 3, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 09:43:12.0943||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 09:43:12.1387||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 09:43:12.1387||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 09:43:28.8532|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 09:43:40.6688||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 09:43:40.6688||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 3, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 09:45:14.9773||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 09:45:15.0130||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 09:45:15.0130||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 09:45:38.5443|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 09:45:51.1265||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 09:45:51.1328||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 3, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 09:50:58.6657||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 09:50:58.6657||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:01:48.4630||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:01:48.4630||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 0, TotalPages: 0, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:02:15.3695|10100|ERROR|Microsoft.EntityFrameworkCore.Query|An exception occurred while iterating over the results of a query for context type 'Azmoon.Persistence.Contexts.DataBaseContext'.
+System.InvalidCastException: Unable to cast object of type 'System.TimeSpan' to type 'System.DateTime'.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_DateTime()
+   at Microsoft.Data.SqlClient.SqlDataReader.GetDateTime(Int32 i)
+   at lambda_method619(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext() System.InvalidCastException: Unable to cast object of type 'System.TimeSpan' to type 'System.DateTime'.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_DateTime()
+   at Microsoft.Data.SqlClient.SqlDataReader.GetDateTime(Int32 i)
+   at lambda_method619(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()|url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:02:21.3622|1|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request. System.InvalidCastException: Unable to cast object of type 'System.TimeSpan' to type 'System.DateTime'.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_DateTime()
+   at Microsoft.Data.SqlClient.SqlDataReader.GetDateTime(Int32 i)
+   at lambda_method619(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at Azmoon.Common.Pagination.Pagination.ToPaged[TSource](IEnumerable`1 source, Int32 page, Int32 pageSize, Int32& rowsCount) in E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Common\Pagination\Pagination.cs:line 16
+   at Azmoon.Application.Service.PublicRelations.MediaPerformances.GetListMediaPerformancesService.Execute(RequestListMPDto request) in E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Application\Service\PublicRelations\MediaPerformances\IGetListMediaPerformancesService.cs:line 85
+   at EndPoint.Site.Areas.PublicRelations.Controllers.MediaPerformancesController.Index(Int32 page, Int32 pageSize, String searchKey, Int32 year, Nullable`1 CommunicationPeriodId, Nullable`1 ConfirmationStatus) in E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site\Areas\PublicRelations\Controllers\MediaPerformancesController.cs:line 167
+   at lambda_method580(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at FastReport.Web.FastReportMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)|url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:02:37.0528||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 10:02:37.0812||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 10:02:37.0812||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 10:02:54.8468|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 10:07:37.6872||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 10:07:37.7192||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 10:07:37.7229||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 10:07:57.2517|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 10:08:08.3086||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:08:08.3086||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:23:49.1103||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 10:23:49.1505||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 10:23:49.1505||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 10:24:32.8103|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 10:26:11.2659||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:26:11.2764||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:12.6435||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:12.6435||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:26.9416||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:26.9416||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:26.9644||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:26.9644||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:28.1392||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:28.1392||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:28.1592||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:28.1592||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:28.8336||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:28.8336||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:28.8500||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:28.8500||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:29.9903||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:29.9903||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:30.0120||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:30.0120||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:30.5047||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:30.5047||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:30.5226||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:30.5226||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:31.1869||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:31.1869||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:31.2042||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:43:31.2042||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:36.6223||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:36.6223||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:36.6877||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:36.6877||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:38.3451||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:38.3451||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:38.3643||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:38.3643||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:39.2163||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:39.2163||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:39.2352||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:39.2352||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:40.1724||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:40.1724||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:40.1950||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:40.1950||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:40.8604||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:40.8604||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:40.8797||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:40.8797||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:41.5620||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:41.5620||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:41.5806||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:41.5806||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:42.0756||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:42.0756||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:42.0960||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:42.0960||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:42.6913||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:42.6913||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:42.7268||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:42.7268||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:43.3125||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:43.3125||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:43.3727||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:43.3727||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:43.8683||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:43.8683||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:43.8901||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:53:43.8901||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:59:57.4505||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 10:59:57.4505||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:05:30.7283||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 11:05:30.7549||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 11:05:30.7549||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 11:07:41.4613|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 11:07:54.3210||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:07:54.3210||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:11:34.9502||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 11:11:34.9835||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 11:11:34.9862||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 11:11:59.5328|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 11:12:02.3134||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/Operator|action: Index
+
+2025-10-26 11:12:02.3192||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 53, TotalPages: 6, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/Operator|action: Index
+
+2025-10-26 11:12:13.0253||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:12:13.0253||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 1, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:13:05.0195||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:13:05.0195||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:21:12.9255||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 11:21:12.9600||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 11:21:12.9600||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 11:21:42.1126|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 11:21:59.5442||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:21:59.5442||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:23:43.7890||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 11:23:43.8297||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 11:23:43.8362||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 11:24:06.1015|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 11:24:09.0517||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/Operator|action: Index
+
+2025-10-26 11:24:09.0517||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 53, TotalPages: 6, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/Operator|action: Index
+
+2025-10-26 11:24:16.8638||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:24:16.8638||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:26:17.7900||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 11:26:17.8194||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 11:26:17.8194||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 11:26:40.2415|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 11:26:52.7044||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:26:52.7084||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:29:32.6909||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 11:29:32.7287||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 11:29:32.7287||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 11:29:51.3303|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 11:30:01.1376||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:30:01.1441||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:33:10.8412||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: 
+
+2025-10-26 11:33:10.8793||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: 
+
+2025-10-26 11:33:10.8793||INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Code\Asp.net\Meshkat\Azmoon\EndPoint.Site |url: |action: 
+
+2025-10-26 11:33:30.5929|10102|WARN|Microsoft.EntityFrameworkCore.Query|The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. |url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-26 11:33:38.9520||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:33:38.9560||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:38:27.9984||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:38:27.9984||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:39:18.9463||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper SettingsJson: default - default |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-26 11:39:18.9463||INFO|LazZiya.TagHelpers.PagingTagHelper|----> PagingTagHelper - PageNo: 1, PageSize: 10, TotalRecords: 2, TotalPages: 1, QueryStringKeyPageNo: Page, QueryStringKeyPageSize: PageSize,  |url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+

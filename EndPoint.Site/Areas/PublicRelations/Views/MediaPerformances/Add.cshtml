@@ -62,25 +62,50 @@
                                 <input type="text" id="ProgramNameId" class="form-control form-control-danger" placeholder="نام برنامه را وارد کنید" autocomplete="off">
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="form-group has-danger">
-                                <label class="control-label">موضوع برنامه</label>
-                                <input type="text" id="SubjectId" class="form-control form-control-danger" placeholder="موضوع برنامه را وارد کنید" autocomplete="off">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
+
+                             <div class="col-md-3">
                             <div class="form-group">
                                 <label class="control-label">تاریخ پخش</label>
                                 <input type="text" id="date-input" data-jdp data-jdp-miladi-input="miladi_date" class="form-control" autocomplete="off">
-                                <input type="hidden" id="miladi_date" />
+                                <input type="text" id="miladi_date" />
 
                             </div>
                         </div>
 
+                        <div class="col-md-6">
+                             <div class="form-group has-danger">
+                                <label class="control-label">موضوع برنامه</label>
+                               @if (ViewBag.Subjct == null || !((SelectList)ViewBag.Subjct).Any())
+                                {
+                                 <select class="form-control" disabled>
+                                   <option>موضوعی برای انتخاب وجود ندارد</option>
+                                 </select>
+                                }
+                                else
+                                {
+                                 <select class="form-control" name="Name" asp-items="@ViewBag.Subjct" id="SubjectId" autocomplete="off">
+                                     <option value="" disabled selected>انتخاب موضوع برنامه</option>
+                                 </select>
+                                }
+                             </div>
+                        </div>
+                             <div class="col-md-6">
+                            <div class="form-group has-danger">
+                                <label class="control-label">توضیحات</label>
+                                <input type="text" id="DescriptionId" class="form-control form-control-danger" placeholder="توضیحات را وارد کنید" autocomplete="off">
+                            </div>
+                        </div>             
                         <div class="col-md-3">
                             <div class="form-group has-danger">
                                 <label class="control-label">مدت زمان</label>
                                 <input id="TimeId" data-jdp data-jdp-only-time class="form-control form-control-danger" placeholder="مدت زمان برنامه" autocomplete="off">
+                                 <small class="form-control-feedback text-danger"> آیتم ها به ترتیب از سمت چپ به راست ساعت، دقیقه و ثانیه است. </small>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group has-danger">
+                                <label class="control-label">ساعت پخش</label>
+                                <input id="TimeStartId" data-jdp data-jdp-only-time class="form-control form-control-danger" placeholder="ساعت پخش برنامه" autocomplete="off">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -183,7 +208,6 @@
 }
 
 
-
 @section Scripts
 {
 
@@ -236,6 +260,8 @@
     </script>
 
 
+
+    @* پیش‌نمایش عکس *@
     <script>
         var loadFile = function (event) {
             var output = document.getElementById('output');
@@ -259,17 +285,22 @@
             var Time = $("#TimeId").val();
             var ImageFile = $("#ImageId")[0].files[0]; // دریافت فایل تصویر
             var Operator = $("#Operator").val();
+            var Description = $("#DescriptionId").val();
+            var BroadcastStartTime = $("#TimeStartId").val();
+
 
             // ایجاد یک شیء FormData برای ارسال داده‌ها
             var formData = new FormData();
             formData.append('Media', Media);
             formData.append('NetworkName', NetworkName);
             formData.append('ProgramName', ProgramName);
-            formData.append('Subject', Subject);
+            formData.append('SubjectId', Subject);
             formData.append('BroadcastDate', BroadcastDate);
             formData.append('Time', Time);
             formData.append('Image', ImageFile); // اضافه کردن فایل تصویر به FormData
             formData.append('Operator', Operator);
+            formData.append('Description',Description);
+            formData.append('BroadcastStartTime',BroadcastStartTime);
 
             // ارسال درخواست AJAX با استفاده از FormData
             $.ajax({

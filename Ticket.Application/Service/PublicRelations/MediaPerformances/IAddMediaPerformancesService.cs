@@ -4,11 +4,9 @@ using Azmoon.Domain.Entities.PublicRelations.Main.Media;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 
 namespace Azmoon.Application.Service.PublicRelations.MediaPerformances
@@ -24,8 +22,10 @@ namespace Azmoon.Application.Service.PublicRelations.MediaPerformances
         public string Media { get; set; }
         public string NetworkName { get; set; }
         public string ProgramName { get; set; }
-        public string Subject { get; set; }
+        public int SubjectId { get; set; }
         public DateTime BroadcastDate { get; set; }
+        public TimeSpan BroadcastStartTime { get; set; } //ساعت پخش
+        public string Description { get; set; }
         public TimeSpan Time { get; set; }
         public IFormFile Image { get; set; }
         public string Operator { get; set; }
@@ -50,6 +50,8 @@ namespace Azmoon.Application.Service.PublicRelations.MediaPerformances
                 .Where(stat => stat.IsRemoved == false)
                 .FirstOrDefault(stat => DateTime.Now >= stat.StartDate && DateTime.Now <= stat.EndDate); // بررسی تاریخ‌ها
 
+
+            var subjectTitle= _context.Subjects.Where(p=>p.Id== requestMedia.SubjectId).FirstOrDefault().Title;
             if (activeStatistics != null)
             {
 
@@ -60,8 +62,11 @@ namespace Azmoon.Application.Service.PublicRelations.MediaPerformances
                     Media = requestMedia.Media,
                     NetworkName = requestMedia.NetworkName,
                     ProgramName = requestMedia.ProgramName,
-                    Subject = requestMedia.Subject,
+                    SubjectId = requestMedia.SubjectId,
+                    SubjectTitle = subjectTitle,
                     BroadcastDate = requestMedia.BroadcastDate,
+                    BroadcastStartTime= requestMedia.BroadcastStartTime,
+                    Description=requestMedia.Description,
                     Time = requestMedia.Time,
                     Image = resultUpload.FileNameAddress,
                     Confirmation = false,

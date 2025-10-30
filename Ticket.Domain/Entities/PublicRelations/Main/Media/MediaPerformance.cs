@@ -20,8 +20,25 @@ namespace Azmoon.Domain.Entities.PublicRelations.Main.Media
         public string Media { get; set; }
         public string NetworkName { get; set; }
         public string ProgramName { get; set; }
-        public string Subject { get; set; }
-        public DateTime BroadcastDate { get; set; }
+
+
+
+        // ذخیره عنوان انتخاب‌شده (برای حفظ تاریخچه)
+        public string SubjectTitle { get; set; }
+
+
+
+        // نگه‌داشتن ارتباط اختیاری برای دسته‌بندی یا فیلتر
+        public int? SubjectId { get; set; }
+        public Subject Subject { get; set; }
+
+
+
+        public string Description { get; set; }
+
+
+        public TimeSpan BroadcastStartTime { get; set; } //ساعت پخش
+        public DateTime BroadcastDate { get; set; } 
         public TimeSpan Time { get; set; }
         public string Image { get; set; }
         public bool Confirmation { get; set; }
@@ -30,6 +47,8 @@ namespace Azmoon.Domain.Entities.PublicRelations.Main.Media
         [ForeignKey("CommunicationPeriodId")]
         public CommunicationPeriod CommunicationPeriod { get; set; }
         public int CommunicationPeriodId { set; get; }
+
+
 
 
         public string Operator { get; set; }

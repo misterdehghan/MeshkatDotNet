@@ -48,13 +48,13 @@ namespace Azmoon.Application.Service.PublicRelations.Period.Communication
                 .Select(o => new ResultStatusRegistration
                 {
                     Operator = o.Name,
-                    IsRegistered = _context.NewsPerformances
+                    IsRegistered = _context.NewsPerformances.Where(p=>p.IsRemoved==false)
                         .Any(p => p.Operator == o.Name && p.CommunicationPeriodId == request.CommunicationPeriodId),
-                    RegisteredNumber = _context.NewsPerformances
+                    RegisteredNumber = _context.NewsPerformances.Where(p => p.IsRemoved == false)
                         .Count(p => p.Operator == o.Name && p.CommunicationPeriodId == request.CommunicationPeriodId),
-                    ConfirmedNumber = _context.NewsPerformances
+                    ConfirmedNumber = _context.NewsPerformances.Where(p => p.IsRemoved == false)
                         .Count(p => p.Operator == o.Name && p.CommunicationPeriodId == request.CommunicationPeriodId && p.Confirmation == true),
-                    UnconfirmedNumber = _context.NewsPerformances
+                    UnconfirmedNumber = _context.NewsPerformances.Where(p => p.IsRemoved == false)
                         .Count(p => p.Operator == o.Name && p.CommunicationPeriodId == request.CommunicationPeriodId && p.Confirmation == false)
 
                 })

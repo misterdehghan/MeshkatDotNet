@@ -1,0 +1,74 @@
+2025-10-27 07:11:51.7951 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-27 07:11:51.8410 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-27 07:11:51.8410 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-27 07:11:52.3838 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-27 07:12:16.5135 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-27 07:35:39.8866 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-27 07:35:39.8866 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-27 07:54:06.4642 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-27 07:54:06.4911 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-27 07:54:06.4911 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-27 07:54:06.9187 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-27 07:54:27.1430 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-27 07:58:00.7267 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/Users|action: Index
+
+2025-10-27 07:58:00.7267 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/Users|action: Index
+
+2025-10-27 07:58:24.4224 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-27 07:58:24.4224 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-27 08:07:38.1326 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-27 08:07:38.1614 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-27 08:07:38.1614 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-27 08:07:38.5682 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-27 08:08:11.9059 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-27 08:08:21.8045 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-27 08:08:21.8045 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-27 08:10:14.5997 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-27 08:10:14.6327 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-27 08:10:14.6327 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-27 08:10:15.0216 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-27 08:10:31.2747 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-27 08:10:41.4943 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-27 08:10:41.4943 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-27 08:51:44.4981 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-27 08:51:44.5329 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-27 08:51:44.5358 -INFO|Microsoft.Hosting.Lifetime| url: |action: 
+
+2025-10-27 08:51:44.9827 -TRACE|EndPoint.Site.Controllers.HomeController| url: https://localhost/|action: Index
+
+2025-10-27 08:52:01.8031 -WARN|Microsoft.EntityFrameworkCore.Query| url: https://localhost/PublicRelations/Dashboard/index|action: Index
+
+2025-10-27 08:52:12.1298 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+
+2025-10-27 08:52:12.1298 -INFO|LazZiya.TagHelpers.PagingTagHelper| url: https://localhost/PublicRelations/MediaPerformances/Index|action: Index
+

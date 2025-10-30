@@ -73,3 +73,16 @@ F:\PROJECT\AzmoonNew\Azmoon\Ticket.Domain\obj\Debug\net5.0\Azmoon.Domain.dll
 F:\PROJECT\AzmoonNew\Azmoon\Ticket.Domain\obj\Debug\net5.0\refint\Azmoon.Domain.dll
 F:\PROJECT\AzmoonNew\Azmoon\Ticket.Domain\obj\Debug\net5.0\Azmoon.Domain.pdb
 F:\PROJECT\AzmoonNew\Azmoon\Ticket.Domain\obj\Debug\net5.0\ref\Azmoon.Domain.dll
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Domain\bin\Debug\net5.0\Azmoon.Domain.deps.json
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Domain\bin\Debug\net5.0\Azmoon.Domain.dll
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Domain\bin\Debug\net5.0\Azmoon.Domain.pdb
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Domain\obj\Debug\net5.0\Azmoon.Domain.csproj.AssemblyReference.cache
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Domain\obj\Debug\net5.0\Azmoon.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Domain\obj\Debug\net5.0\Azmoon.Domain.AssemblyInfoInputs.cache
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Domain\obj\Debug\net5.0\Azmoon.Domain.AssemblyInfo.cs
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Domain\obj\Debug\net5.0\Azmoon.Domain.csproj.CoreCompileInputs.cache
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Domain\obj\Debug\net5.0\Azmoon.Domain.sourcelink.json
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Domain\obj\Debug\net5.0\Azmoon.Domain.dll
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Domain\obj\Debug\net5.0\refint\Azmoon.Domain.dll
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Domain\obj\Debug\net5.0\Azmoon.Domain.pdb
+E:\Code\Asp.net\Meshkat\Azmoon\Ticket.Domain\obj\Debug\net5.0\ref\Azmoon.Domain.dll
